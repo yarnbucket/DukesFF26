@@ -55,6 +55,20 @@ button{cursor:pointer}
 .rec-card.bye-warning{border-color:#ff5b70}.rec-card.bye-warning .rec-meta{color:#ff9baa}
 @keyframes slowBurnGlow{0%,100%{box-shadow:0 0 7px rgba(255,210,26,.35),0 0 14px rgba(255,48,72,.08),inset 0 0 0 1px rgba(255,255,255,.12)}50%{box-shadow:0 0 16px rgba(255,210,26,.78),0 0 30px rgba(255,90,20,.32),inset 0 0 12px rgba(255,210,26,.16)}}
 
+
+/* Compact player profile and external MORE INFO link */
+.player-profile-overlay{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);display:grid;place-items:center;padding:18px}
+.player-profile-card{width:min(430px,100%);border:1px solid #666;border-top:3px solid var(--gold);border-radius:18px;background:linear-gradient(145deg,#181818,#090909);box-shadow:0 30px 90px rgba(0,0,0,.8),0 0 30px rgba(255,210,26,.12);padding:18px;position:relative}
+.player-profile-close{position:absolute;right:12px;top:10px;width:36px;height:36px;border:1px solid #555;border-radius:50%;background:#0b0b0b;color:#fff;font-size:22px;cursor:pointer}
+.player-profile-top{display:grid;grid-template-columns:74px 1fr;gap:14px;align-items:center;padding-right:35px}
+.player-profile-avatar{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;border:3px solid var(--gold);background:linear-gradient(145deg,#2b2b2b,#101010);font-family:Impact,"Arial Narrow",sans-serif;font-size:20px;font-weight:900;color:var(--gold)}
+.player-profile-name{font-size:24px;line-height:1;font-weight:950;margin-bottom:6px}.player-profile-sub{color:var(--muted);font-size:13px;font-weight:800}
+.player-profile-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:16px 0 13px}.profile-stat{padding:9px 6px;border:1px solid #3d3d3d;border-radius:9px;background:#101010;text-align:center}.profile-stat b{display:block;color:#fff;font-size:15px}.profile-stat span{display:block;color:var(--muted);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
+.player-profile-honor{margin:0 0 12px;padding:8px 10px;border-left:3px solid var(--red);background:#111;color:#d7d2c8;font-size:12px;font-weight:850}
+.more-info-link{display:flex;justify-content:center;align-items:center;width:100%;min-height:43px;border:2px solid var(--gold);border-radius:10px;color:#111;background:linear-gradient(180deg,#ffe75b,#f0b900);font-weight:1000;text-decoration:none;letter-spacing:.06em}.more-info-link:hover,.more-info-link:focus{filter:brightness(1.08);box-shadow:0 0 20px rgba(255,210,26,.42)}
+.profile-trigger{cursor:pointer}.profile-trigger:hover{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+@media(max-width:520px){.player-profile-stats{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 <style id="dukes-theme">
 :root{
@@ -285,6 +299,20 @@ html,body{
   <div class="footer-brand"><b>DUKE’S</b> RIB HOUSE <i>&amp;</i> GRILLE · 2026 PPR DRAFT ROOM</div>
 </div>
 
+
+<div class="player-profile-overlay hidden" id="playerProfileOverlay" role="dialog" aria-modal="true" aria-labelledby="playerProfileName">
+  <div class="player-profile-card">
+    <button class="player-profile-close" id="playerProfileClose" type="button" aria-label="Close player profile">×</button>
+    <div class="player-profile-top">
+      <div class="player-profile-avatar" id="playerProfileAvatar">NFL</div>
+      <div><div class="player-profile-name" id="playerProfileName">Player</div><div class="player-profile-sub" id="playerProfileSub"></div></div>
+    </div>
+    <div class="player-profile-stats" id="playerProfileStats"></div>
+    <div class="player-profile-honor" id="playerProfileHonor"></div>
+    <a class="more-info-link" id="playerMoreInfo" href="#" target="_blank" rel="noopener noreferrer">MORE INFO ↗</a>
+  </div>
+</div>
+
 <div class="overlay" id="setupOverlay">
   <div class="modal">
     <div class="dukes-sign modal-sign" role="img" aria-label="Duke's Rib House and Grille">
@@ -469,6 +497,28 @@ function renderStatus(){
   $('#autoPickBtn').classList.toggle('hidden',!isUserTurn());$('#onClockText').textContent=isUserTurn()?'ON THE CLOCK':'';
 }
 
+
+function playerInfoUrl(player){
+  const query=encodeURIComponent(`${player.name} ${player.team} NFL player profile stats news`);
+  return `https://www.google.com/search?q=${query}`;
+}
+
+function openPlayerProfile(playerOrId){
+  const p=typeof playerOrId==='object'?playerOrId:byId(playerOrId);if(!p)return;
+  $('#playerProfileName').textContent=p.name;
+  $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''} · Bye ${p.bye??'—'}`;
+  $('#playerProfileAvatar').textContent=p.pos;
+  $('#playerProfileAvatar').className=`player-profile-avatar pos-${p.pos}`;
+  $('#playerProfileStats').innerHTML=`<div class="profile-stat"><b>${p.rank}</b><span>ADP Rank</span></div><div class="profile-stat"><b>T${p.tier??'—'}</b><span>Tier</span></div><div class="profile-stat"><b>${fmt(p.ppg25)}</b><span>2025 PPG</span></div><div class="profile-stat"><b>${p.espnRank??'—'}</b><span>ESPN Rank</span></div>`;
+  $('#playerProfileHonor').textContent=p.rank<=150?`NFL TOP 150 HONOREE · Ranked No. ${p.rank} in this draft database.`:`PLAYER PROFILE · Ranked No. ${p.rank} in this draft database.`;
+  $('#playerMoreInfo').href=playerInfoUrl(p);
+  $('#playerMoreInfo').target='_blank';
+  $('#playerMoreInfo').rel='noopener noreferrer';
+  $('#playerMoreInfo').setAttribute('aria-label',`More information about ${p.name}`);
+  $('#playerProfileOverlay').classList.remove('hidden');
+}
+function closePlayerProfile(){$('#playerProfileOverlay').classList.add('hidden')}
+
 function filteredPlayers(){
   const q=$('#searchInput').value.trim().toLowerCase(),pos=$('#positionFilter').value,tier=$('#tierFilter').value,sort=$('#sortSelect').value;
   let list=available().filter(p=>(pos==='ALL'||p.pos===pos)&&(tier==='ALL'||String(p.tier)===tier)&&(!q||`${p.name} ${p.team}`.toLowerCase().includes(q)));
@@ -477,7 +527,7 @@ function filteredPlayers(){
 function renderPlayers(){
   $('#availableCount').textContent=`${available().length} available`;
   const list=filteredPlayers(),tbody=$('#playerRows');tbody.innerHTML='';
-  list.slice(0,180).forEach(p=>{const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name">${escapeHtml(p.name)}</div><div class="team-text">${p.team} · ${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button class="btn small ${isUserTurn()?'good':''}" data-draft="${p.rank}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
+  list.slice(0,180).forEach(p=>{const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div><div class="team-text">${p.team} · ${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button class="btn small ${isUserTurn()?'good':''}" data-draft="${p.rank}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
   tbody.querySelectorAll('[data-draft]').forEach(b=>b.onclick=e=>{e.stopPropagation();makePick(byId(b.dataset.draft))});
 
   const guide=$('#rosterGuidance'),rec=$('#recommendations');rec.innerHTML='';
@@ -492,7 +542,7 @@ function renderPlayers(){
       const d=document.createElement('div');d.className=`rec-card ${i===0?'best-fit':''} ${clash.level===2?'bye-warning':''}`;
       const fitText=fills?'Fills a required starter/FLEX need':status.complete?'Best-value backup':'Best available value';
       const byeText=clash.level?` · ⚠ ${clash.text}`:` · Bye ${p.bye??'—'} clear`;
-      d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name">${i===0?'★ ':''}${escapeHtml(p.name)}</div><div class="rec-meta">${fitText} · ADP ${p.rank} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div></div><button class="btn small primary" data-rec="${p.rank}">PICK</button>`;
+      d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name profile-trigger" data-profile="${p.rank}">${i===0?'★ ':''}${escapeHtml(p.name)}</div><div class="rec-meta">${fitText} · ADP ${p.rank} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div></div><button class="btn small primary" data-rec="${p.rank}">PICK</button>`;
       rec.appendChild(d)
     });
     rec.querySelectorAll('[data-rec]').forEach(b=>b.onclick=()=>makePick(byId(b.dataset.rec)));
@@ -512,7 +562,7 @@ function renderRoster(){
 function renderRecent(limit=10){const box=$('#recentPicks');const picks=state.picks.slice(-limit).reverse();if(!picks.length){box.innerHTML='<div class="pick-empty">The draft board is empty.</div>';return}box.innerHTML=picks.map(x=>{const p=byId(x.playerId);return `<div class="pick-item"><div class="pick-no">${pickLabel(x.overall-1)}</div><div><div class="pick-player">${escapeHtml(p.name)}</div><div class="pick-team">${escapeHtml(teamName(x.teamSlot))}</div></div><span class="pos ${p.pos}">${p.pos}</span></div>`}).join('')}
 function renderBoard(){
   const box=$('#draftGrid');box.innerHTML='<div class="grid-cell grid-head">ROUND</div>'+Array.from({length:12},(_,i)=>`<div class="grid-cell grid-head">${escapeHtml(teamName(i+1))}</div>`).join('');
-  for(let r=1;r<=15;r++){box.insertAdjacentHTML('beforeend',`<div class="grid-cell grid-round">R${r}</div>`);for(let slot=1;slot<=12;slot++){const overall=(r-1)*12+(r%2?slot:13-slot),x=state.picks.find(y=>y.overall===overall),p=x?byId(x.playerId):null,posClass=p?` drafted-pick pick-${p.pos}`:'',userClass=slot===state.userSlot?' user-pick':'';box.insertAdjacentHTML('beforeend',`<div class="grid-cell${posClass}${userClass}"><div class="grid-pick">${pickLabel(overall-1)}</div>${p?`<div class="grid-player">${escapeHtml(p.name)}</div><div class="grid-meta">${p.pos} · ${p.team} · ADP ${p.rank}</div>`:''}</div>`)} }
+  for(let r=1;r<=15;r++){box.insertAdjacentHTML('beforeend',`<div class="grid-cell grid-round">R${r}</div>`);for(let slot=1;slot<=12;slot++){const overall=(r-1)*12+(r%2?slot:13-slot),x=state.picks.find(y=>y.overall===overall),p=x?byId(x.playerId):null,posClass=p?` drafted-pick pick-${p.pos}`:'',userClass=slot===state.userSlot?' user-pick':'';box.insertAdjacentHTML('beforeend',`<div class="grid-cell${posClass}${userClass}${p?' profile-trigger':''}" ${p?`data-profile="${p.rank}"`:''}><div class="grid-pick">${pickLabel(overall-1)}</div>${p?`<div class="grid-player">${escapeHtml(p.name)}</div><div class="grid-meta">${p.pos} · ${p.team} · ADP ${p.rank}</div>`:''}</div>`)} }
 }
 function renderTeamEditor(){
   const fields=$('#teamEditorFields');if(!fields)return;fields.innerHTML='';
@@ -621,6 +671,13 @@ function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;',
 function buildFilters(){const tiers=[...new Set(PLAYERS.map(p=>p.tier).filter(Boolean))].sort((a,b)=>a-b);tiers.forEach(t=>$('#tierFilter').insertAdjacentHTML('beforeend',`<option value="${t}">Tier ${t}</option>`));['searchInput','positionFilter','sortSelect','tierFilter'].forEach(id=>$('#'+id).addEventListener(id==='searchInput'?'input':'change',renderPlayers));}
 
 $('#startBtn').onclick=startDraft;$('#autoPickBtn').onclick=()=>{const p=recommendedPlayers()[0]||available()[0];makePick(p,true)};$('#undoBtn').onclick=undoTurn;$('#resetBtn').onclick=resetDraft;$('#exportBtn').onclick=exportBoardJpg;$('#editTeamsBtn').onclick=openTeamEditor;$('#cancelTeamEditBtn').onclick=closeTeamEditor;$('#saveTeamNamesBtn').onclick=saveTeamNames;$$('.tab').forEach(t=>t.onclick=()=>switchView(t.dataset.view));
+
+document.addEventListener('click',e=>{const t=e.target.closest('[data-profile]');if(t&&!e.target.closest('[data-draft],[data-rec]')){e.preventDefault();e.stopPropagation();openPlayerProfile(t.dataset.profile)}});
+$('#playerProfileClose').onclick=closePlayerProfile;
+$('#playerProfileOverlay').onclick=e=>{if(e.target===$('#playerProfileOverlay'))closePlayerProfile()};
+$('#playerMoreInfo').onclick=e=>{const href=e.currentTarget.href;if(!href||href.endsWith('#')){e.preventDefault();toast('Player information link is unavailable.','bad');return}closePlayerProfile();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayerProfile()});
+
 buildFilters();initializeSetup();renderAll();
 </script>
 </body>
