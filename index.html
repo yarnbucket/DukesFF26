@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Duke's PPR Mini Draft</title>
+<!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <style>
 :root{
@@ -87,6 +88,197 @@ select.setup-input{appearance:auto;-webkit-appearance:menulist;background:#f9f9f
 @media(max-width:520px){.setup-light-overlay{padding:10px}.setup-phone-card{border-radius:20px;padding:18px 20px 22px}.setup-sign{height:91px;padding:7px 17px}.setup-sign .dukes-word{font-size:47px}.setup-sign .dukes-sub{font-size:13px}.setup-sign .dukes-sub b{font-size:24px}.setup-subtitle{font-size:17px;margin-bottom:19px}.setup-phone-card h2{font-size:35px;margin-bottom:24px}.setup-form{gap:18px}.setup-field-light:nth-child(3) label{font-size:22px}.setup-input{height:51px;font-size:17px}.setup-start,.setup-resume{height:55px;font-size:20px}}
 
 .setup-mode-note{margin-top:8px;font-size:11px;line-height:1.35;color:#777;font-weight:700}
+
+
+/* === Football field second-page redesign === */
+body{
+  background:
+    linear-gradient(rgba(8,16,7,.78),rgba(8,16,7,.86)),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.16) 0 2px, transparent 2px 64px),
+    linear-gradient(90deg, rgba(255,255,255,.95) 0 7px, transparent 7px calc(100% - 7px), rgba(255,255,255,.95) calc(100% - 7px) 100%),
+    linear-gradient(180deg,#3a702f 0%,#335f29 52%,#24451f 100%);
+  background-attachment:fixed;
+}
+.app{max-width:1160px;padding:14px 18px 24px}
+.topbar{background:linear-gradient(180deg,rgba(7,7,7,.96),rgba(7,7,7,.9));border:0;border-radius:0 0 16px 16px;padding:10px 10px 14px;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.field-hero{position:relative;margin:16px 0 8px;padding:6px 0 4px}
+.hero-football{
+  position:relative; width:min(100%,860px); aspect-ratio:2.35/1; margin:0 auto;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+  color:#fff; border-radius:50%/56%;
+  background:radial-gradient(circle at 50% 26%, #cc4c36 0%, #992515 42%, #6d120b 74%, #460905 100%);
+  box-shadow:inset 0 -18px 24px rgba(0,0,0,.45), inset 0 18px 26px rgba(255,255,255,.07), 0 18px 38px rgba(0,0,0,.38);
+  overflow:hidden; border:3px solid rgba(46,11,7,.9)
+}
+.hero-football::before,.hero-football::after{
+  content:''; position:absolute; top:14%; bottom:14%; width:11.5%; border-radius:28px;
+  background:linear-gradient(180deg,#f2ebdb,#d8d3c7 54%,#f6f4ed); box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)
+}
+.hero-football::before{left:16%}.hero-football::after{right:16%}
+.football-laces{position:absolute;top:10%;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2}
+.football-laces span{display:block;width:8px;height:44px;border-radius:10px;background:#f4ede0;box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.football-laces::before,.football-laces::after{content:'';position:absolute;top:16px;width:90px;height:6px;background:#f4ede0;border-radius:10px}
+.football-laces::before{right:100%;margin-right:-4px;transform:rotate(12deg)}
+.football-laces::after{left:100%;margin-left:-4px;transform:rotate(-12deg)}
+.hero-overline{position:relative;z-index:2;margin-top:22px;font-size:clamp(22px,4vw,48px);font-weight:1000;letter-spacing:.02em;text-transform:uppercase;text-shadow:0 3px 8px rgba(0,0,0,.45)}
+.hero-title{position:relative;z-index:2;font-size:clamp(30px,5.5vw,68px);font-weight:1000;color:var(--gold);letter-spacing:.02em;line-height:.92;text-transform:uppercase;text-shadow:0 3px 10px rgba(0,0,0,.55)}
+.hero-year-wrap{position:relative;z-index:2;display:flex;align-items:center;gap:14px;margin-top:6px}
+.hero-year{font-size:clamp(34px,6.2vw,84px);font-weight:1000;line-height:.95;text-shadow:0 3px 8px rgba(0,0,0,.5)}
+.hero-year-line{display:block;width:72px;max-width:18vw;height:4px;border-radius:999px;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 9px rgba(255,210,26,.45)}
+.hero-sub{position:relative;z-index:2;margin-top:6px;font-size:clamp(15px,2.6vw,34px);font-weight:1000;color:#ffe46e;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 3px 8px rgba(0,0,0,.45)}
+.status-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:8px 0 14px}
+.stat,.progress-card{border-radius:20px;border:2px solid #920910;background:linear-gradient(180deg,#e3131f 0%,#c20d15 30%,#101010 31%,#090909 100%);box-shadow:0 10px 24px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.12);padding:0;overflow:hidden}
+.stat-label,.progress-label{display:block;padding:11px 18px 10px;background:linear-gradient(180deg,#ff2525,#b60811);font-size:clamp(12px,1.4vw,17px);font-weight:1000;color:#fff;text-transform:uppercase;letter-spacing:.12em;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.stat-value{padding:16px 18px 17px;font-size:clamp(24px,4vw,46px);font-weight:1000;color:#fff;line-height:1.02}.stat-value.gold,.stat-value.green{color:var(--gold)}
+.progress-card{grid-column:1/-1;padding-bottom:14px}
+.progress-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.progress-head strong{padding:0 18px;color:#fff;font-size:clamp(24px,4vw,44px);font-weight:1000}
+.progress-track{margin:12px 14px 0;height:32px;border-radius:16px;border:2px solid #222;background:linear-gradient(180deg,#0a0a0a,#171717);box-shadow:inset 0 4px 10px rgba(0,0,0,.45);overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(180deg,#ff4239,#d80e1a 55%,#b80610);box-shadow:inset 0 2px 0 rgba(255,255,255,.25), 0 0 18px rgba(255,55,55,.35);border-radius:14px}
+.turn-banner{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;background:linear-gradient(180deg,#d8141e 0%,#a90c13 56%,#8e0910 100%);border:2px solid #8a0810;border-radius:26px;padding:18px 18px 20px;text-align:center;box-shadow:0 14px 28px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.18);margin-bottom:16px}
+.turn-banner strong{display:block;font-size:clamp(22px,4.6vw,42px);font-weight:1000;color:#fff;font-style:italic;letter-spacing:.01em;text-shadow:0 2px 6px rgba(0,0,0,.35)}
+.turn-banner span{display:block;font-size:clamp(14px,2.4vw,24px);font-weight:900;color:#fff;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.28)}
+#autoPickBtn{margin-top:4px;min-width:min(86vw,420px);min-height:58px;border-radius:18px;border:2px solid #8e0811;background:linear-gradient(180deg,#ff2e2a,#d3111c 52%,#bb0913);color:#fff;font-size:clamp(20px,3.2vw,34px);font-weight:1000;box-shadow:0 8px 18px rgba(0,0,0,.28), inset 0 2px 0 rgba(255,255,255,.18)}
+.layout{gap:16px}
+.panel{background:linear-gradient(180deg,rgba(12,15,11,.95),rgba(7,8,7,.97));border:2px solid rgba(255,255,255,.14);border-radius:26px;box-shadow:0 16px 30px rgba(0,0,0,.26)}
+.panel-head{padding:18px 18px 12px;border-bottom:2px solid rgba(223,38,52,.75);box-shadow:none}
+.tabs{gap:20px}.tab{padding:12px 2px 14px;border-radius:0;font-size:clamp(20px,3vw,38px);font-weight:1000;color:#f0ede6;background:transparent;border-bottom:5px solid transparent;line-height:1}.tab.active{background:transparent;color:var(--gold);border-bottom-color:var(--gold)}
+#availableCount{font-size:clamp(12px,1.7vw,19px)!important;color:#f0ede6!important}
+.panel-body{padding:14px 18px 18px}
+.controls{grid-template-columns:minmax(190px,1fr) 135px 135px 135px;gap:10px;margin-bottom:14px}
+.field{border:2px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(4,4,4,.86);color:#fff;min-height:52px;font-size:18px}
+.field::placeholder{color:#9f9b92}
+.board-tools{margin-bottom:10px}
+.btn.small.primary,#editTeamsBtn{border-radius:16px;background:linear-gradient(180deg,#ffe22e,#f7ca15);color:#121212;border:0;box-shadow:0 8px 18px rgba(0,0,0,.18);font-weight:1000}
+.position-legend{gap:10px;margin-top:10px;flex-wrap:wrap}.legend-chip{border-radius:999px;padding:8px 14px;background:rgba(10,10,10,.8);border:2px solid rgba(255,255,255,.12);color:#fff;font-weight:900}
+.legend-dot{width:18px;height:18px;border-radius:5px;display:inline-block;margin-right:8px}
+.legend-dot.QB{background:#e894ba}.legend-dot.RB{background:#52ca67}.legend-dot.WR{background:#f6cf27}.legend-dot.TE{background:#8d5ae1}.legend-dot.K{background:#9c7656}.legend-dot.DST{background:#5f9be7}
+.recommendations{gap:12px}.rec-card{border-radius:18px;border:2px solid rgba(255,255,255,.12);background:rgba(8,8,8,.88);box-shadow:0 8px 16px rgba(0,0,0,.25)}
+.table-wrap,.board-scroll{border-radius:20px;border:2px solid rgba(255,255,255,.12);background:rgba(7,7,7,.78)}
+.player-table th{font-size:12px;letter-spacing:.08em}.player-table td{font-size:14px}
+.side-stack .panel:first-child .panel-head h2,.side-stack .panel:nth-child(2) .panel-head h2{font-size:clamp(18px,2vw,24px)}
+@media (max-width:900px){.controls{grid-template-columns:1fr 1fr}.controls .search{grid-column:1/-1}}
+@media (max-width:720px){
+  .app{padding:10px 10px 22px}
+  .topbar{padding:10px 8px 12px;border-radius:0 0 14px 14px}
+  .brand{align-items:flex-start;gap:10px}.brand-copy h1{font-size:clamp(26px,7vw,38px)}.brand-copy small{font-size:clamp(12px,3.8vw,18px)}
+  .dukes-sign{width:min(42vw,270px);height:auto;min-height:74px}
+  .hero-football{width:100%;aspect-ratio:1.9/1}
+  .football-laces span{height:28px;width:6px}.football-laces::before,.football-laces::after{width:58px;height:5px;top:10px}
+  .hero-overline{margin-top:6px}.hero-year-line{width:44px}
+  .status-strip{grid-template-columns:1fr 1fr;gap:12px}.stat-value{font-size:clamp(22px,8vw,34px)}.progress-head strong{font-size:clamp(24px,8vw,34px)}
+  .turn-banner{padding:16px 14px 18px}.turn-banner strong{font-size:clamp(22px,7vw,34px)}.turn-banner span{font-size:clamp(14px,4.2vw,18px)}
+  .panel-head{padding:16px 16px 12px}.tab{font-size:clamp(18px,6vw,28px)}
+  .controls{grid-template-columns:1fr}.field{font-size:17px;min-height:50px}
+}
+
+
+
+/* === tighter match to the supplied football-field layout === */
+:root{
+  --field-dark:#24461d;
+  --field-mid:#3d6f2e;
+  --field-light:#5a8a42;
+}
+body{
+  background:
+    linear-gradient(rgba(7,14,6,.18),rgba(7,14,6,.24)),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.11) 0 2px, transparent 2px 104px),
+    linear-gradient(90deg,
+      transparent 0 14px,
+      rgba(255,255,255,.78) 14px 18px,
+      transparent 18px calc(100% - 18px),
+      rgba(255,255,255,.78) calc(100% - 18px) calc(100% - 14px),
+      transparent calc(100% - 14px) 100%),
+    linear-gradient(180deg,var(--field-light) 0%, var(--field-mid) 42%, var(--field-dark) 100%);
+  background-attachment:fixed;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;opacity:.6;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 34px,
+      rgba(255,255,255,.12) 34px 36px,
+      transparent 36px 68px,
+      rgba(255,255,255,.06) 68px 70px,
+      transparent 70px 100%);
+  mix-blend-mode:soft-light;
+}
+.app{max-width:1040px;padding:6px 14px 24px;position:relative;z-index:1}
+.topbar{
+  position:sticky;top:0;z-index:20;display:flex;justify-content:flex-end;align-items:center;
+  padding:8px 0 6px;border:0;border-radius:0;background:transparent;box-shadow:none;min-height:0
+}
+.topbar .brand{display:none!important}
+.topbar .header-actions{margin-left:auto;display:flex;gap:10px}
+.header-actions .btn{width:56px;min-width:56px;height:56px;padding:0;border-radius:16px;background:rgba(11,11,11,.72);border:1.8px solid rgba(255,255,255,.18);backdrop-filter:blur(3px)}
+.header-actions .btn .text-label{display:none!important}
+.header-actions .btn.danger.ghost{border-color:#d9212c;color:#ffccd0}
+.header-actions .btn:hover{transform:none}
+.field-hero{margin:0 0 12px;padding:0}
+.hero-football{
+  width:min(100%,970px);aspect-ratio:2.28/1;margin:0 auto;border-radius:50%/54%;
+  background:
+    radial-gradient(circle at 48% 18%, rgba(255,255,255,.22), transparent 24%),
+    radial-gradient(circle at 50% 62%, rgba(0,0,0,.38), transparent 44%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.05) 0 1px, transparent 1px 8px),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.04) 0 1px, transparent 1px 9px),
+    linear-gradient(180deg,#c34932 0%,#9e2819 38%,#7c150d 74%,#590d08 100%);
+  background-size:auto,auto,13px 13px,17px 17px,auto;
+  box-shadow:inset 0 -26px 30px rgba(0,0,0,.42), inset 0 18px 24px rgba(255,255,255,.06), 0 18px 34px rgba(0,0,0,.28);
+  border:0;overflow:hidden;position:relative;
+}
+.hero-football::before,.hero-football::after{
+  content:'';position:absolute;top:14%;bottom:14%;width:9.5%;border-radius:24px;
+  background:linear-gradient(180deg,#f4f0e6,#e0dbcf 52%,#faf7ef);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 4px 10px rgba(0,0,0,.12);
+}
+.hero-football::before{left:13%}.hero-football::after{right:13%}
+.football-laces{top:8%;gap:15px}.football-laces span{width:8px;height:48px;border-radius:999px;background:#f5f0e5}
+.football-laces::before,.football-laces::after{top:18px;width:112px;height:7px;background:#f5f0e5;border-radius:999px}
+.football-laces::before{transform:rotate(11deg)}.football-laces::after{transform:rotate(-11deg)}
+.hero-overline{margin-top:18px;font-size:clamp(24px,4.8vw,58px);font-weight:1000;text-transform:uppercase;line-height:.95;text-shadow:0 3px 8px rgba(0,0,0,.45)}
+.hero-title{font-size:clamp(36px,6vw,82px);line-height:.92;color:#ffd420;text-shadow:0 3px 10px rgba(0,0,0,.52)}
+.hero-year-wrap{gap:18px;margin-top:4px}.hero-year{font-size:clamp(42px,7vw,98px);line-height:.9}
+.hero-year-line{width:88px;height:4px;background:linear-gradient(90deg,transparent,#ffd420,transparent)}
+.hero-sub{margin-top:4px;font-size:clamp(17px,2.6vw,36px);color:#ffe86a;letter-spacing:.05em}
+.status-strip{gap:12px;margin:10px 0 14px}
+.stat,.progress-card{border:2px solid #9b0c12;border-radius:20px;overflow:hidden;background:#080808;box-shadow:0 10px 20px rgba(0,0,0,.24)}
+.stat-label,.progress-label{padding:11px 16px;background:linear-gradient(180deg,#ff232b,#bb0c14);font-size:clamp(12px,1.6vw,18px);letter-spacing:.12em}
+.stat-value{padding:18px 16px 19px;background:linear-gradient(180deg,#090909,#040404);font-size:clamp(24px,4vw,46px);white-space:normal;overflow:visible;text-overflow:clip;line-height:1.04}
+.progress-card{padding-bottom:12px}.progress-head strong{font-size:clamp(28px,4vw,50px)}
+.progress-track{margin:14px 14px 0;height:28px;border-radius:999px;border:2px solid #1f1f1f;background:linear-gradient(180deg,#020202,#121212);overflow:hidden}
+.progress-fill{background:linear-gradient(180deg,#ff2b34,#cf0f1b 54%,#bb0710);box-shadow:inset 0 2px 0 rgba(255,255,255,.18)}
+.turn-banner{padding:18px 16px 20px;border-radius:24px;background:linear-gradient(180deg,#ea101e 0%,#c30f17 54%,#a90b12 100%);border:2px solid #960a10;box-shadow:0 12px 22px rgba(0,0,0,.22)}
+.turn-banner strong{font-size:clamp(22px,4.2vw,44px);font-style:italic;line-height:1.08}
+.turn-banner span{font-size:clamp(15px,2.3vw,24px);line-height:1.35}
+#autoPickBtn{min-width:min(86vw,380px);height:64px;border-radius:20px;font-size:clamp(22px,3.4vw,34px);background:linear-gradient(180deg,#ff2b34,#d1141f 56%,#b70b14);border:2px solid #900b10;box-shadow:0 8px 18px rgba(0,0,0,.24), inset 0 2px 0 rgba(255,255,255,.16)}
+.panel{border-radius:24px;background:linear-gradient(180deg,rgba(9,9,9,.96),rgba(4,4,4,.98));border:2px solid rgba(255,255,255,.16)}
+.panel-head{padding:18px 18px 12px;border-bottom:2px solid rgba(219,20,30,.88)}
+.tab{font-size:clamp(18px,3vw,36px);padding:10px 0 12px}
+.tab.active{border-bottom-width:6px}
+.panel-body{padding:14px 16px 18px}
+.controls{margin-bottom:12px}
+.field{background:#070707;border:2px solid rgba(255,255,255,.12);border-radius:14px;min-height:52px}
+.recommendations .rec-card,.table-wrap,.board-scroll,.roster-grid,.picks-list{border-radius:18px}
+@media (max-width:720px){
+  .app{padding:4px 8px 18px}
+  .topbar{padding-top:6px;padding-bottom:2px}
+  .header-actions .btn{width:48px;min-width:48px;height:48px;border-radius:14px}
+  .hero-football{aspect-ratio:2.1/1}
+  .hero-football::before,.hero-football::after{width:10%;top:16%;bottom:16%}
+  .football-laces{top:8%;gap:11px}.football-laces span{height:34px;width:6px}.football-laces::before,.football-laces::after{width:78px;height:6px;top:12px}
+  .hero-overline{margin-top:20px;font-size:clamp(20px,7vw,36px)}
+  .hero-title{font-size:clamp(28px,10vw,52px)}
+  .hero-year{font-size:clamp(34px,12vw,64px)}
+  .hero-year-line{width:42px}
+  .hero-sub{font-size:clamp(14px,4.8vw,21px)}
+  .status-strip{grid-template-columns:1fr 1fr}
+  .stat-value{font-size:clamp(20px,8vw,32px)}
+  .progress-head strong{font-size:clamp(24px,8vw,40px)}
+  .turn-banner strong{font-size:clamp(22px,8.4vw,34px)}
+  .turn-banner span{font-size:clamp(14px,4vw,18px)}
+}
+
 </style>
 <style id="dukes-theme">
 :root{
@@ -235,6 +427,358 @@ select.setup-input{appearance:auto;-webkit-appearance:menulist;background:#f9f9f
 .setup-sound-toggle[aria-pressed="false"]{background:#eceae6;color:#706c65}
 .setup-sound-toggle:active{transform:translateY(1px)}
 @media(max-width:720px){.header-actions .sound-toggle .text-label{display:none}}
+
+
+/* === Football field second-page redesign === */
+body{
+  background:
+    linear-gradient(rgba(8,16,7,.78),rgba(8,16,7,.86)),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.16) 0 2px, transparent 2px 64px),
+    linear-gradient(90deg, rgba(255,255,255,.95) 0 7px, transparent 7px calc(100% - 7px), rgba(255,255,255,.95) calc(100% - 7px) 100%),
+    linear-gradient(180deg,#3a702f 0%,#335f29 52%,#24451f 100%);
+  background-attachment:fixed;
+}
+.app{max-width:1160px;padding:14px 18px 24px}
+.topbar{background:linear-gradient(180deg,rgba(7,7,7,.96),rgba(7,7,7,.9));border:0;border-radius:0 0 16px 16px;padding:10px 10px 14px;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.field-hero{position:relative;margin:16px 0 8px;padding:6px 0 4px}
+.hero-football{
+  position:relative; width:min(100%,860px); aspect-ratio:2.35/1; margin:0 auto;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+  color:#fff; border-radius:50%/56%;
+  background:radial-gradient(circle at 50% 26%, #cc4c36 0%, #992515 42%, #6d120b 74%, #460905 100%);
+  box-shadow:inset 0 -18px 24px rgba(0,0,0,.45), inset 0 18px 26px rgba(255,255,255,.07), 0 18px 38px rgba(0,0,0,.38);
+  overflow:hidden; border:3px solid rgba(46,11,7,.9)
+}
+.hero-football::before,.hero-football::after{
+  content:''; position:absolute; top:14%; bottom:14%; width:11.5%; border-radius:28px;
+  background:linear-gradient(180deg,#f2ebdb,#d8d3c7 54%,#f6f4ed); box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)
+}
+.hero-football::before{left:16%}.hero-football::after{right:16%}
+.football-laces{position:absolute;top:10%;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2}
+.football-laces span{display:block;width:8px;height:44px;border-radius:10px;background:#f4ede0;box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.football-laces::before,.football-laces::after{content:'';position:absolute;top:16px;width:90px;height:6px;background:#f4ede0;border-radius:10px}
+.football-laces::before{right:100%;margin-right:-4px;transform:rotate(12deg)}
+.football-laces::after{left:100%;margin-left:-4px;transform:rotate(-12deg)}
+.hero-overline{position:relative;z-index:2;margin-top:22px;font-size:clamp(22px,4vw,48px);font-weight:1000;letter-spacing:.02em;text-transform:uppercase;text-shadow:0 3px 8px rgba(0,0,0,.45)}
+.hero-title{position:relative;z-index:2;font-size:clamp(30px,5.5vw,68px);font-weight:1000;color:var(--gold);letter-spacing:.02em;line-height:.92;text-transform:uppercase;text-shadow:0 3px 10px rgba(0,0,0,.55)}
+.hero-year-wrap{position:relative;z-index:2;display:flex;align-items:center;gap:14px;margin-top:6px}
+.hero-year{font-size:clamp(34px,6.2vw,84px);font-weight:1000;line-height:.95;text-shadow:0 3px 8px rgba(0,0,0,.5)}
+.hero-year-line{display:block;width:72px;max-width:18vw;height:4px;border-radius:999px;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 9px rgba(255,210,26,.45)}
+.hero-sub{position:relative;z-index:2;margin-top:6px;font-size:clamp(15px,2.6vw,34px);font-weight:1000;color:#ffe46e;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 3px 8px rgba(0,0,0,.45)}
+.status-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:8px 0 14px}
+.stat,.progress-card{border-radius:20px;border:2px solid #920910;background:linear-gradient(180deg,#e3131f 0%,#c20d15 30%,#101010 31%,#090909 100%);box-shadow:0 10px 24px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.12);padding:0;overflow:hidden}
+.stat-label,.progress-label{display:block;padding:11px 18px 10px;background:linear-gradient(180deg,#ff2525,#b60811);font-size:clamp(12px,1.4vw,17px);font-weight:1000;color:#fff;text-transform:uppercase;letter-spacing:.12em;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.stat-value{padding:16px 18px 17px;font-size:clamp(24px,4vw,46px);font-weight:1000;color:#fff;line-height:1.02}.stat-value.gold,.stat-value.green{color:var(--gold)}
+.progress-card{grid-column:1/-1;padding-bottom:14px}
+.progress-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.progress-head strong{padding:0 18px;color:#fff;font-size:clamp(24px,4vw,44px);font-weight:1000}
+.progress-track{margin:12px 14px 0;height:32px;border-radius:16px;border:2px solid #222;background:linear-gradient(180deg,#0a0a0a,#171717);box-shadow:inset 0 4px 10px rgba(0,0,0,.45);overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(180deg,#ff4239,#d80e1a 55%,#b80610);box-shadow:inset 0 2px 0 rgba(255,255,255,.25), 0 0 18px rgba(255,55,55,.35);border-radius:14px}
+.turn-banner{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;background:linear-gradient(180deg,#d8141e 0%,#a90c13 56%,#8e0910 100%);border:2px solid #8a0810;border-radius:26px;padding:18px 18px 20px;text-align:center;box-shadow:0 14px 28px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.18);margin-bottom:16px}
+.turn-banner strong{display:block;font-size:clamp(22px,4.6vw,42px);font-weight:1000;color:#fff;font-style:italic;letter-spacing:.01em;text-shadow:0 2px 6px rgba(0,0,0,.35)}
+.turn-banner span{display:block;font-size:clamp(14px,2.4vw,24px);font-weight:900;color:#fff;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.28)}
+#autoPickBtn{margin-top:4px;min-width:min(86vw,420px);min-height:58px;border-radius:18px;border:2px solid #8e0811;background:linear-gradient(180deg,#ff2e2a,#d3111c 52%,#bb0913);color:#fff;font-size:clamp(20px,3.2vw,34px);font-weight:1000;box-shadow:0 8px 18px rgba(0,0,0,.28), inset 0 2px 0 rgba(255,255,255,.18)}
+.layout{gap:16px}
+.panel{background:linear-gradient(180deg,rgba(12,15,11,.95),rgba(7,8,7,.97));border:2px solid rgba(255,255,255,.14);border-radius:26px;box-shadow:0 16px 30px rgba(0,0,0,.26)}
+.panel-head{padding:18px 18px 12px;border-bottom:2px solid rgba(223,38,52,.75);box-shadow:none}
+.tabs{gap:20px}.tab{padding:12px 2px 14px;border-radius:0;font-size:clamp(20px,3vw,38px);font-weight:1000;color:#f0ede6;background:transparent;border-bottom:5px solid transparent;line-height:1}.tab.active{background:transparent;color:var(--gold);border-bottom-color:var(--gold)}
+#availableCount{font-size:clamp(12px,1.7vw,19px)!important;color:#f0ede6!important}
+.panel-body{padding:14px 18px 18px}
+.controls{grid-template-columns:minmax(190px,1fr) 135px 135px 135px;gap:10px;margin-bottom:14px}
+.field{border:2px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(4,4,4,.86);color:#fff;min-height:52px;font-size:18px}
+.field::placeholder{color:#9f9b92}
+.board-tools{margin-bottom:10px}
+.btn.small.primary,#editTeamsBtn{border-radius:16px;background:linear-gradient(180deg,#ffe22e,#f7ca15);color:#121212;border:0;box-shadow:0 8px 18px rgba(0,0,0,.18);font-weight:1000}
+.position-legend{gap:10px;margin-top:10px;flex-wrap:wrap}.legend-chip{border-radius:999px;padding:8px 14px;background:rgba(10,10,10,.8);border:2px solid rgba(255,255,255,.12);color:#fff;font-weight:900}
+.legend-dot{width:18px;height:18px;border-radius:5px;display:inline-block;margin-right:8px}
+.legend-dot.QB{background:#e894ba}.legend-dot.RB{background:#52ca67}.legend-dot.WR{background:#f6cf27}.legend-dot.TE{background:#8d5ae1}.legend-dot.K{background:#9c7656}.legend-dot.DST{background:#5f9be7}
+.recommendations{gap:12px}.rec-card{border-radius:18px;border:2px solid rgba(255,255,255,.12);background:rgba(8,8,8,.88);box-shadow:0 8px 16px rgba(0,0,0,.25)}
+.table-wrap,.board-scroll{border-radius:20px;border:2px solid rgba(255,255,255,.12);background:rgba(7,7,7,.78)}
+.player-table th{font-size:12px;letter-spacing:.08em}.player-table td{font-size:14px}
+.side-stack .panel:first-child .panel-head h2,.side-stack .panel:nth-child(2) .panel-head h2{font-size:clamp(18px,2vw,24px)}
+@media (max-width:900px){.controls{grid-template-columns:1fr 1fr}.controls .search{grid-column:1/-1}}
+@media (max-width:720px){
+  .app{padding:10px 10px 22px}
+  .topbar{padding:10px 8px 12px;border-radius:0 0 14px 14px}
+  .brand{align-items:flex-start;gap:10px}.brand-copy h1{font-size:clamp(26px,7vw,38px)}.brand-copy small{font-size:clamp(12px,3.8vw,18px)}
+  .dukes-sign{width:min(42vw,270px);height:auto;min-height:74px}
+  .hero-football{width:100%;aspect-ratio:1.9/1}
+  .football-laces span{height:28px;width:6px}.football-laces::before,.football-laces::after{width:58px;height:5px;top:10px}
+  .hero-overline{margin-top:6px}.hero-year-line{width:44px}
+  .status-strip{grid-template-columns:1fr 1fr;gap:12px}.stat-value{font-size:clamp(22px,8vw,34px)}.progress-head strong{font-size:clamp(24px,8vw,34px)}
+  .turn-banner{padding:16px 14px 18px}.turn-banner strong{font-size:clamp(22px,7vw,34px)}.turn-banner span{font-size:clamp(14px,4.2vw,18px)}
+  .panel-head{padding:16px 16px 12px}.tab{font-size:clamp(18px,6vw,28px)}
+  .controls{grid-template-columns:1fr}.field{font-size:17px;min-height:50px}
+}
+
+
+
+/* === tighter match to the supplied football-field layout === */
+:root{
+  --field-dark:#24461d;
+  --field-mid:#3d6f2e;
+  --field-light:#5a8a42;
+}
+body{
+  background:
+    linear-gradient(rgba(7,14,6,.18),rgba(7,14,6,.24)),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.11) 0 2px, transparent 2px 104px),
+    linear-gradient(90deg,
+      transparent 0 14px,
+      rgba(255,255,255,.78) 14px 18px,
+      transparent 18px calc(100% - 18px),
+      rgba(255,255,255,.78) calc(100% - 18px) calc(100% - 14px),
+      transparent calc(100% - 14px) 100%),
+    linear-gradient(180deg,var(--field-light) 0%, var(--field-mid) 42%, var(--field-dark) 100%);
+  background-attachment:fixed;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;opacity:.6;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 34px,
+      rgba(255,255,255,.12) 34px 36px,
+      transparent 36px 68px,
+      rgba(255,255,255,.06) 68px 70px,
+      transparent 70px 100%);
+  mix-blend-mode:soft-light;
+}
+.app{max-width:1040px;padding:6px 14px 24px;position:relative;z-index:1}
+.topbar{
+  position:sticky;top:0;z-index:20;display:flex;justify-content:flex-end;align-items:center;
+  padding:8px 0 6px;border:0;border-radius:0;background:transparent;box-shadow:none;min-height:0
+}
+.topbar .brand{display:none!important}
+.topbar .header-actions{margin-left:auto;display:flex;gap:10px}
+.header-actions .btn{width:56px;min-width:56px;height:56px;padding:0;border-radius:16px;background:rgba(11,11,11,.72);border:1.8px solid rgba(255,255,255,.18);backdrop-filter:blur(3px)}
+.header-actions .btn .text-label{display:none!important}
+.header-actions .btn.danger.ghost{border-color:#d9212c;color:#ffccd0}
+.header-actions .btn:hover{transform:none}
+.field-hero{margin:0 0 12px;padding:0}
+.hero-football{
+  width:min(100%,970px);aspect-ratio:2.28/1;margin:0 auto;border-radius:50%/54%;
+  background:
+    radial-gradient(circle at 48% 18%, rgba(255,255,255,.22), transparent 24%),
+    radial-gradient(circle at 50% 62%, rgba(0,0,0,.38), transparent 44%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.05) 0 1px, transparent 1px 8px),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.04) 0 1px, transparent 1px 9px),
+    linear-gradient(180deg,#c34932 0%,#9e2819 38%,#7c150d 74%,#590d08 100%);
+  background-size:auto,auto,13px 13px,17px 17px,auto;
+  box-shadow:inset 0 -26px 30px rgba(0,0,0,.42), inset 0 18px 24px rgba(255,255,255,.06), 0 18px 34px rgba(0,0,0,.28);
+  border:0;overflow:hidden;position:relative;
+}
+.hero-football::before,.hero-football::after{
+  content:'';position:absolute;top:14%;bottom:14%;width:9.5%;border-radius:24px;
+  background:linear-gradient(180deg,#f4f0e6,#e0dbcf 52%,#faf7ef);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 4px 10px rgba(0,0,0,.12);
+}
+.hero-football::before{left:13%}.hero-football::after{right:13%}
+.football-laces{top:8%;gap:15px}.football-laces span{width:8px;height:48px;border-radius:999px;background:#f5f0e5}
+.football-laces::before,.football-laces::after{top:18px;width:112px;height:7px;background:#f5f0e5;border-radius:999px}
+.football-laces::before{transform:rotate(11deg)}.football-laces::after{transform:rotate(-11deg)}
+.hero-overline{margin-top:18px;font-size:clamp(24px,4.8vw,58px);font-weight:1000;text-transform:uppercase;line-height:.95;text-shadow:0 3px 8px rgba(0,0,0,.45)}
+.hero-title{font-size:clamp(36px,6vw,82px);line-height:.92;color:#ffd420;text-shadow:0 3px 10px rgba(0,0,0,.52)}
+.hero-year-wrap{gap:18px;margin-top:4px}.hero-year{font-size:clamp(42px,7vw,98px);line-height:.9}
+.hero-year-line{width:88px;height:4px;background:linear-gradient(90deg,transparent,#ffd420,transparent)}
+.hero-sub{margin-top:4px;font-size:clamp(17px,2.6vw,36px);color:#ffe86a;letter-spacing:.05em}
+.status-strip{gap:12px;margin:10px 0 14px}
+.stat,.progress-card{border:2px solid #9b0c12;border-radius:20px;overflow:hidden;background:#080808;box-shadow:0 10px 20px rgba(0,0,0,.24)}
+.stat-label,.progress-label{padding:11px 16px;background:linear-gradient(180deg,#ff232b,#bb0c14);font-size:clamp(12px,1.6vw,18px);letter-spacing:.12em}
+.stat-value{padding:18px 16px 19px;background:linear-gradient(180deg,#090909,#040404);font-size:clamp(24px,4vw,46px);white-space:normal;overflow:visible;text-overflow:clip;line-height:1.04}
+.progress-card{padding-bottom:12px}.progress-head strong{font-size:clamp(28px,4vw,50px)}
+.progress-track{margin:14px 14px 0;height:28px;border-radius:999px;border:2px solid #1f1f1f;background:linear-gradient(180deg,#020202,#121212);overflow:hidden}
+.progress-fill{background:linear-gradient(180deg,#ff2b34,#cf0f1b 54%,#bb0710);box-shadow:inset 0 2px 0 rgba(255,255,255,.18)}
+.turn-banner{padding:18px 16px 20px;border-radius:24px;background:linear-gradient(180deg,#ea101e 0%,#c30f17 54%,#a90b12 100%);border:2px solid #960a10;box-shadow:0 12px 22px rgba(0,0,0,.22)}
+.turn-banner strong{font-size:clamp(22px,4.2vw,44px);font-style:italic;line-height:1.08}
+.turn-banner span{font-size:clamp(15px,2.3vw,24px);line-height:1.35}
+#autoPickBtn{min-width:min(86vw,380px);height:64px;border-radius:20px;font-size:clamp(22px,3.4vw,34px);background:linear-gradient(180deg,#ff2b34,#d1141f 56%,#b70b14);border:2px solid #900b10;box-shadow:0 8px 18px rgba(0,0,0,.24), inset 0 2px 0 rgba(255,255,255,.16)}
+.panel{border-radius:24px;background:linear-gradient(180deg,rgba(9,9,9,.96),rgba(4,4,4,.98));border:2px solid rgba(255,255,255,.16)}
+.panel-head{padding:18px 18px 12px;border-bottom:2px solid rgba(219,20,30,.88)}
+.tab{font-size:clamp(18px,3vw,36px);padding:10px 0 12px}
+.tab.active{border-bottom-width:6px}
+.panel-body{padding:14px 16px 18px}
+.controls{margin-bottom:12px}
+.field{background:#070707;border:2px solid rgba(255,255,255,.12);border-radius:14px;min-height:52px}
+.recommendations .rec-card,.table-wrap,.board-scroll,.roster-grid,.picks-list{border-radius:18px}
+@media (max-width:720px){
+  .app{padding:4px 8px 18px}
+  .topbar{padding-top:6px;padding-bottom:2px}
+  .header-actions .btn{width:48px;min-width:48px;height:48px;border-radius:14px}
+  .hero-football{aspect-ratio:2.1/1}
+  .hero-football::before,.hero-football::after{width:10%;top:16%;bottom:16%}
+  .football-laces{top:8%;gap:11px}.football-laces span{height:34px;width:6px}.football-laces::before,.football-laces::after{width:78px;height:6px;top:12px}
+  .hero-overline{margin-top:20px;font-size:clamp(20px,7vw,36px)}
+  .hero-title{font-size:clamp(28px,10vw,52px)}
+  .hero-year{font-size:clamp(34px,12vw,64px)}
+  .hero-year-line{width:42px}
+  .hero-sub{font-size:clamp(14px,4.8vw,21px)}
+  .status-strip{grid-template-columns:1fr 1fr}
+  .stat-value{font-size:clamp(20px,8vw,32px)}
+  .progress-head strong{font-size:clamp(24px,8vw,40px)}
+  .turn-banner strong{font-size:clamp(22px,8.4vw,34px)}
+  .turn-banner span{font-size:clamp(14px,4vw,18px)}
+}
+
+
+
+/* Roster and recent picks are main tabs */
+.layout{grid-template-columns:1fr!important}
+.tabs{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;width:100%}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;scroll-snap-align:start}
+.tab-view-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:2px solid rgba(219,20,30,.8)}
+.tab-view-head h2{margin:0;font-size:clamp(19px,3vw,30px);font-weight:1000;letter-spacing:.04em}
+.tab-view-head span{color:var(--gold);font-size:14px;font-weight:1000}
+#rosterView .roster-grid{max-width:920px}
+#recentView .picks-list{max-height:none;min-height:180px;border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;background:rgba(5,5,5,.58)}
+#completePanel{margin-top:16px}
+@media(max-width:720px){
+  .panel-head{display:block}
+  .tabs{gap:24px;padding:2px 2px 5px}
+  .tab{font-size:21px!important;min-width:max-content}
+  #availableCount{display:block;margin-top:10px}
+  .tab-view-head{margin-bottom:12px}
+}
+
+
+
+/* Final mobile readability pass */
+@media (max-width:720px){
+  .app{padding:4px 8px 18px}
+  .field-hero{margin-bottom:9px}
+  .hero-football{aspect-ratio:2.42/1;min-height:0}
+  .hero-football::before,.hero-football::after{top:17%;bottom:17%;width:9%}
+  .football-laces{top:7%;gap:9px}
+  .football-laces span{width:5px;height:27px}
+  .football-laces::before,.football-laces::after{top:10px;width:61px;height:5px}
+  .hero-overline{margin-top:10px;font-size:clamp(17px,5.2vw,26px);line-height:1}
+  .hero-title{font-size:clamp(24px,7.8vw,38px);line-height:.96}
+  .hero-year-wrap{gap:8px;margin-top:2px}
+  .hero-year{font-size:clamp(31px,9.5vw,46px);line-height:.92}
+  .hero-year-line{width:30px;height:3px}
+  .hero-sub{margin-top:3px;font-size:clamp(12px,3.7vw,17px);letter-spacing:.035em}
+
+  .status-strip{gap:9px;margin:8px 0 10px}
+  .stat,.progress-card{border-radius:16px}
+  .stat-label,.progress-label{padding:8px 11px 7px;font-size:11px;letter-spacing:.09em}
+  .stat-value{padding:12px 11px 13px;font-size:clamp(20px,6.5vw,28px);line-height:1.05}
+  #teamNameStat{font-size:clamp(19px,6vw,26px)}
+  .progress-card{padding-bottom:9px}
+  .progress-head strong{padding:0 11px;font-size:clamp(24px,7vw,32px)}
+  .progress-track{height:22px;margin:9px 10px 0}
+
+  .turn-banner{padding:14px 12px 15px;border-radius:18px;gap:7px;margin-bottom:11px}
+  .turn-banner strong{font-size:clamp(21px,6.8vw,29px);line-height:1.08}
+  .turn-banner span{font-size:clamp(13px,3.9vw,16px);line-height:1.35}
+  #autoPickBtn{height:52px;min-height:52px;min-width:min(88vw,350px);font-size:clamp(18px,5.5vw,24px);border-radius:15px}
+
+  .panel{border-radius:18px}
+  .panel-head{padding:13px 13px 9px}
+  .tabs{gap:18px;padding:1px 1px 4px}
+  .tab{font-size:17px!important;padding:9px 0 10px;border-bottom-width:4px!important}
+  #availableCount{margin-top:7px!important;font-size:13px!important}
+  .panel-body{padding:11px 12px 15px}
+  .field{min-height:48px;font-size:16px;border-radius:12px}
+  .roster-guidance{font-size:12px;line-height:1.45}
+  .rec-card{font-size:14px}
+}
+
+@media (max-width:390px){
+  .hero-football{aspect-ratio:2.48/1}
+  .hero-overline{font-size:16px}
+  .hero-title{font-size:23px}
+  .hero-year{font-size:30px}
+  .hero-sub{font-size:11px}
+  .stat-label,.progress-label{font-size:10px}
+  .stat-value{font-size:20px}
+  #teamNameStat{font-size:18px}
+  .turn-banner strong{font-size:21px}
+  .turn-banner span{font-size:13px}
+  .tabs{gap:16px}
+  .tab{font-size:16px!important}
+}
+
+
+/* === Complete five-view tab revision === */
+.layout{display:block!important;width:100%!important}
+.layout>section.panel:first-child{width:100%!important;max-width:none!important}
+#completePanel{margin-top:16px;width:100%!important}
+.draft-view{width:100%;min-width:0}
+.draft-view.hidden{display:none!important}
+.tabs{
+  display:flex!important;
+  width:100%!important;
+  max-width:100%!important;
+  gap:20px!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  padding:2px 2px 7px!important;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto!important;
+  min-width:max-content!important;
+  white-space:nowrap!important;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.tab:focus-visible{outline:3px solid rgba(255,210,26,.62);outline-offset:4px;border-radius:5px}
+.tab[aria-selected="true"]{color:var(--gold)!important;border-bottom-color:var(--gold)!important}
+
+/* Players use the page's normal downward scroll; only wide columns scroll sideways. */
+#playersView .table-wrap{
+  max-height:none!important;
+  min-height:0!important;
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+  -webkit-overflow-scrolling:touch;
+}
+#playersView .player-table{min-width:760px}
+
+/* The complete 12-team x 15-round board is always rendered vertically in full. */
+#boardView .board-scroll{
+  width:100%!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+}
+#boardView .draft-grid{
+  width:max-content!important;
+  min-width:1864px!important;
+  grid-template-columns:64px repeat(12,150px)!important;
+}
+#boardView .grid-head{position:static!important}
+#boardView .grid-round{position:sticky!important;left:0!important;z-index:2!important}
+
+/* Each non-player tab gets its own full-width list area. */
+#teamsView .team-cards{width:100%}
+#rosterView .roster-grid{width:100%;max-width:none!important}
+#recentView .picks-list{
+  width:100%;
+  max-height:none!important;
+  overflow:visible!important;
+}
+.tab-view-head{position:relative}
+
+@media(max-width:720px){
+  .panel-head{display:block!important}
+  .tabs{gap:22px!important;padding:2px 1px 8px!important}
+  .tab{font-size:17px!important;padding:10px 0 11px!important}
+  #availableCount{display:block;margin-top:8px}
+  #boardView{padding-left:10px!important;padding-right:10px!important}
+  #boardView .draft-grid{min-width:1744px!important;grid-template-columns:64px repeat(12,140px)!important}
+  #boardView .grid-cell{min-height:70px}
+}
+@media(max-width:390px){
+  .tabs{gap:18px!important}
+  .tab{font-size:16px!important}
+}
+
 </style>
 </head>
 <body>
@@ -256,12 +800,25 @@ select.setup-input{appearance:auto;-webkit-appearance:menulist;background:#f9f9f
     </div>
   </header>
 
+  <section class="field-hero" aria-label="Fantasy Football PPR Draft 2026 banner">
+    <div class="hero-football">
+      <div class="football-laces" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="hero-overline">FANTASY FOOTBALL</div>
+      <div class="hero-title">PPR DRAFT</div>
+      <div class="hero-year-wrap"><span class="hero-year-line"></span><div class="hero-year">2026</div><span class="hero-year-line"></span></div>
+      <div class="hero-sub">12 TEAM SNAKE DRAFT</div>
+    </div>
+  </section>
+
   <section class="status-strip">
     <div class="stat"><div class="stat-label">Your Team</div><div class="stat-value" id="teamNameStat">Duke's Ribbers</div></div>
     <div class="stat"><div class="stat-label">Draft Slot</div><div class="stat-value gold" id="slotStat">—</div></div>
     <div class="stat"><div class="stat-label">Current Pick</div><div class="stat-value" id="pickStat">1.01</div></div>
     <div class="stat"><div class="stat-label">Your Next Pick</div><div class="stat-value" id="nextPickStat">—</div></div>
-    <div class="stat"><div class="stat-label">Draft Progress</div><div class="stat-value green" id="progressStat">0 / 180</div></div>
+    <div class="progress-card">
+      <div class="progress-head"><span class="progress-label">Draft Progress</span><strong id="progressStat">0 / 180</strong></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
   </section>
 
   <div class="turn-banner" id="turnBanner">
@@ -272,14 +829,16 @@ select.setup-input{appearance:auto;-webkit-appearance:menulist;background:#f9f9f
   <main class="layout">
     <section class="panel">
       <div class="panel-head">
-        <div class="tabs" role="tablist">
-          <button class="tab active" data-view="players">Players</button>
-          <button class="tab" data-view="board">Draft Board</button>
-          <button class="tab" data-view="teams">All Teams</button>
+        <div class="tabs" id="draftRoomTabs" role="tablist" aria-label="Draft room sections">
+          <button class="tab active" id="playersTab" data-view="players" type="button" role="tab" aria-controls="playersView" aria-selected="true" tabindex="0">Players</button>
+          <button class="tab" id="boardTab" data-view="board" type="button" role="tab" aria-controls="boardView" aria-selected="false" tabindex="-1">Draft Board</button>
+          <button class="tab" id="teamsTab" data-view="teams" type="button" role="tab" aria-controls="teamsView" aria-selected="false" tabindex="-1">All Teams</button>
+          <button class="tab" id="rosterTab" data-view="roster" type="button" role="tab" aria-controls="rosterView" aria-selected="false" tabindex="-1">My Roster</button>
+          <button class="tab" id="recentTab" data-view="recent" type="button" role="tab" aria-controls="recentView" aria-selected="false" tabindex="-1">Recent Picks</button>
         </div>
         <div id="availableCount" style="color:var(--muted);font-size:12px;font-weight:850">500 available</div>
       </div>
-      <div class="panel-body" id="playersView">
+      <div class="panel-body draft-view" id="playersView" role="tabpanel" aria-labelledby="playersTab">
         <div class="controls">
           <input class="field search" id="searchInput" type="search" placeholder="Search player or NFL team…" autocomplete="off">
           <select class="field" id="positionFilter"><option value="ALL">All positions</option><option>QB</option><option>RB</option><option>WR</option><option>TE</option><option>DST</option><option>K</option></select>
@@ -295,7 +854,7 @@ select.setup-input{appearance:auto;-webkit-appearance:menulist;background:#f9f9f
           </table>
         </div>
       </div>
-      <div class="panel-body hidden" id="boardView">
+      <div class="panel-body draft-view hidden" id="boardView" role="tabpanel" aria-labelledby="boardTab" aria-hidden="true">
         <div class="board-tools">
           <button class="btn small primary" id="editTeamsBtn" type="button">✎ EDIT TEAM NAMES</button>
           <div class="position-legend" aria-label="Draft board position colors">
@@ -314,34 +873,38 @@ select.setup-input{appearance:auto;-webkit-appearance:menulist;background:#f9f9f
         </div>
         <div class="board-scroll"><div class="draft-grid" id="draftGrid"></div></div>
       </div>
-      <div class="panel-body hidden" id="teamsView"><div class="team-cards" id="teamCards"></div></div>
+      <div class="panel-body draft-view hidden" id="teamsView" role="tabpanel" aria-labelledby="teamsTab" aria-hidden="true"><div class="team-cards" id="teamCards"></div></div>
+
+      <div class="panel-body draft-view hidden" id="rosterView" role="tabpanel" aria-labelledby="rosterTab" aria-hidden="true">
+        <div class="tab-view-head">
+          <h2 id="rosterTitle">MY ROSTER</h2>
+          <span id="rosterCount">0 / 15</span>
+        </div>
+        <div class="roster-grid" id="rosterGrid"></div>
+        <div class="needs" id="needsBar"></div>
+      </div>
+
+      <div class="panel-body draft-view hidden" id="recentView" role="tabpanel" aria-labelledby="recentTab" aria-hidden="true">
+        <div class="tab-view-head">
+          <h2>RECENT PICKS</h2>
+          <span id="onClockText"></span>
+        </div>
+        <div class="picks-list" id="recentPicks"><div class="pick-empty">The draft board is empty.</div></div>
+      </div>
     </section>
 
-    <aside class="side-stack">
-      <section class="panel">
-        <div class="panel-head"><h2 id="rosterTitle">MY ROSTER</h2><span id="rosterCount" style="color:var(--muted);font-size:12px;font-weight:850">0 / 15</span></div>
-        <div class="panel-body">
-          <div class="roster-grid" id="rosterGrid"></div>
-          <div class="needs" id="needsBar"></div>
+    <section class="panel hidden" id="completePanel">
+      <div class="complete-card">
+        <div style="font-size:12px;color:var(--muted);font-weight:950;letter-spacing:.1em">DRAFT COMPLETE</div>
+        <div class="grade" id="draftGrade">B+</div>
+        <div id="gradeMessage" style="font-weight:900">A balanced PPR build.</div>
+        <div class="complete-stats">
+          <div class="complete-stat"><strong id="valueScore">0</strong><span>ADP Value</span></div>
+          <div class="complete-stat"><strong id="avgPpg">—</strong><span>2025 PPG</span></div>
+          <div class="complete-stat"><strong id="byeClashes">0</strong><span>Bye Clashes</span></div>
         </div>
-      </section>
-      <section class="panel">
-        <div class="panel-head"><h2>RECENT PICKS</h2><span id="onClockText" style="color:var(--gold);font-size:12px;font-weight:900"></span></div>
-        <div class="panel-body picks-list" id="recentPicks"><div class="pick-empty">The draft board is empty.</div></div>
-      </section>
-      <section class="panel hidden" id="completePanel">
-        <div class="complete-card">
-          <div style="font-size:12px;color:var(--muted);font-weight:950;letter-spacing:.1em">DRAFT COMPLETE</div>
-          <div class="grade" id="draftGrade">B+</div>
-          <div id="gradeMessage" style="font-weight:900">A balanced PPR build.</div>
-          <div class="complete-stats">
-            <div class="complete-stat"><strong id="valueScore">0</strong><span>ADP Value</span></div>
-            <div class="complete-stat"><strong id="avgPpg">—</strong><span>2025 PPG</span></div>
-            <div class="complete-stat"><strong id="byeClashes">0</strong><span>Bye Clashes</span></div>
-          </div>
-        </div>
-      </section>
-    </aside>
+      </div>
+    </section>
   </main>
   <div class="footer-brand"><b>DUKE’S</b> RIB HOUSE <i>&amp;</i> GRILLE · 2026 PPR DRAFT ROOM</div>
 </div>
@@ -512,8 +1075,14 @@ function setScrollTop(el){
   el.scrollTop=0;
 }
 function scrollActiveViewToTop(view=state.view||'players'){
-  const target=view==='board'?document.querySelector('.board-scroll'):view==='teams'?document.querySelector('#teamsView'):document.querySelector('.table-wrap');
-  setScrollTop(target);
+  const targets={
+    players:document.querySelector('.table-wrap'),
+    board:document.querySelector('.board-scroll'),
+    teams:document.querySelector('#teamsView'),
+    roster:document.querySelector('#rosterView'),
+    recent:document.querySelector('#recentPicks')
+  };
+  setScrollTop(targets[view]);
 }
 function scrollPageToTop(resetInner=true){
   const apply=()=>{
@@ -630,18 +1199,40 @@ async function runCpuUntilUser(){
 }
 
 function renderAll(){renderStatus();renderPlayers();renderRoster();renderRecent();renderBoard();renderTeams();renderComplete();switchView(state.view||'players',false);$('#undoBtn').disabled=!state.history.length;}
-function renderStatusOnly(){renderStatus();renderRecent(5)}
+function renderStatusOnly(){renderStatus();if(state.view==='recent')renderRecent()}
 function renderStatus(){
-  $('#teamNameStat').textContent=state.teamName;$('#slotStat').textContent=state.started?ordinal(state.userSlot):'—';$('#pickStat').textContent=state.currentPick<TOTAL_PICKS?pickLabel(state.currentPick):'Complete';$('#progressStat').textContent=`${state.currentPick} / ${TOTAL_PICKS}`;
-  let next='—';const nextStart=isUserTurn()?state.currentPick+1:state.currentPick;for(let i=nextStart;i<TOTAL_PICKS;i++)if(pickTeamSlot(i)===state.userSlot){next=pickLabel(i);break}$('#nextPickStat').textContent=next;
+  $('#teamNameStat').textContent=state.teamName;
+  $('#slotStat').textContent=state.started?ordinal(state.userSlot):'—';
+  $('#pickStat').textContent=state.currentPick<TOTAL_PICKS?pickLabel(state.currentPick):'Complete';
+  $('#progressStat').textContent=`${state.currentPick} / ${TOTAL_PICKS}`;
+  const pct=Math.max(0,Math.min(100,(state.currentPick/TOTAL_PICKS)*100));
+  if($('#progressFill'))$('#progressFill').style.width=`${pct}%`;
+  let next='—';
+  const nextStart=isUserTurn()?state.currentPick+1:state.currentPick;
+  for(let i=nextStart;i<TOTAL_PICKS;i++)if(pickTeamSlot(i)===state.userSlot){next=pickLabel(i);break}
+  $('#nextPickStat').textContent=next;
   const turnSlot=state.currentPick<TOTAL_PICKS?pickTeamSlot(state.currentPick):null;
   $('#autoPickBtn').classList.toggle('hidden',isBuildMode()||!isUserTurn());
-  if(state.currentPick>=TOTAL_PICKS){$('#turnTitle').textContent='Draft complete.';$('#turnSub').textContent='Review your roster and export the results.'}
-  else if(isBuildMode()&&state.started){const st=starterStatus(rosterFor(turnSlot));$('#turnTitle').textContent=`BUILD MODE: ${teamName(turnSlot)} is on the clock.`;$('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} · You control all 180 selections · ${st.complete?'Starters complete—choose the best-value backup.':`Required needs: ${[...new Set(st.missing)].join(', ')}`}`;}
-  else if(isUserTurn()){$('#turnTitle').textContent=`${state.teamName}, you are on the clock.`;const st=starterStatus(rosterFor(state.userSlot));$('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} · ${available().length} available · ${st.complete?'Starters complete—draft value backups and avoid bye clashes.':`Required needs: ${[...new Set(st.missing)].join(', ')}`}`;}
-  else if(state.started){$('#turnTitle').textContent=`${teamName(turnSlot)} is selecting…`;$('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} · Your next pick is ${next}.`}
-  else{$('#turnTitle').textContent='Set up your draft to begin.';$('#turnSub').textContent='Choose a draft mode and begin.'}
-  $('#autoPickBtn').classList.toggle('hidden',!isUserTurn());$('#onClockText').textContent=isUserTurn()?'ON THE CLOCK':'';
+  if(state.currentPick>=TOTAL_PICKS){
+    $('#turnTitle').textContent='Draft Complete.';
+    $('#turnSub').textContent='Review your roster and export the results.';
+  }else if(isBuildMode()&&state.started){
+    const st=starterStatus(rosterFor(turnSlot));
+    $('#turnTitle').textContent=`${teamName(turnSlot)}, You Are On The Clock!`;
+    $('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} - ${available().length} available • ${st.complete?'Build Mode • Starters complete, select the best-value backup.':`Needs: ${[...new Set(st.missing)].join(', ')}`}`;
+  }else if(isUserTurn()){
+    const st=starterStatus(rosterFor(state.userSlot));
+    $('#turnTitle').textContent=`${state.teamName}, You Are On The Clock!`;
+    $('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} - ${available().length} available • ${st.complete?'Needs: Bench Value / Avoid Bye Clashes':`Needs: ${[...new Set(st.missing)].join(', ')}`}`;
+  }else if(state.started){
+    $('#turnTitle').textContent=`${teamName(turnSlot)} Is Selecting…`;
+    $('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} • Your next pick is ${next}.`;
+  }else{
+    $('#turnTitle').textContent='Set Up Your Draft To Begin';
+    $('#turnSub').textContent='Choose a draft mode and begin.';
+  }
+  $('#autoPickBtn').classList.toggle('hidden',!isUserTurn());
+  $('#onClockText').textContent=isUserTurn()?'ON THE CLOCK':'';
 }
 
 
@@ -675,7 +1266,7 @@ function filteredPlayers(){
 function renderPlayers(){
   $('#availableCount').textContent=`${available().length} available`;
   const list=filteredPlayers(),tbody=$('#playerRows');tbody.innerHTML='';
-  list.slice(0,180).forEach(p=>{const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div><div class="team-text">${p.team} · ${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button class="btn small ${isUserTurn()?'good':''}" data-draft="${p.rank}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
+  list.forEach(p=>{const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div><div class="team-text">${p.team} · ${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button class="btn small ${isUserTurn()?'good':''}" data-draft="${p.rank}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
   tbody.querySelectorAll('[data-draft]').forEach(b=>b.onclick=e=>{e.stopPropagation();makePick(byId(b.dataset.draft))});
 
   const guide=$('#rosterGuidance'),rec=$('#recommendations');rec.innerHTML='';
@@ -704,10 +1295,15 @@ function assignRoster(roster){
   for(let i=1;i<=5;i++)out.push({label:`BN${i}`,p:remaining.shift()||null});return out
 }
 function renderRoster(){
-  const roster=rosterFor(isBuildMode()?activeDraftSlot():state.userSlot),assigned=assignRoster(roster),box=$('#rosterGrid');$('#rosterTitle').textContent=isBuildMode()?`${teamName(activeDraftSlot())} ROSTER`:'MY ROSTER';box.innerHTML='';assigned.forEach(x=>{box.insertAdjacentHTML('beforeend',`<div class="slot">${x.label}</div><div class="slot-player ${x.p?'':'empty'}">${x.p?`<span class="pos ${x.p.pos}" style="margin-right:7px;min-width:31px;height:22px">${x.p.pos}</span>${escapeHtml(x.p.name)}`:'Empty'}</div><div class="slot-bye">${x.p?.bye?`B${x.p.bye}`:''}</div>`)});$('#rosterCount').textContent=`${roster.length} / 15`;
+  const roster=rosterFor(state.userSlot),assigned=assignRoster(roster),box=$('#rosterGrid');$('#rosterTitle').textContent=`${teamName(state.userSlot)} ROSTER`;box.innerHTML='';assigned.forEach(x=>{box.insertAdjacentHTML('beforeend',`<div class="slot">${x.label}</div><div class="slot-player ${x.p?'':'empty'}">${x.p?`<span class="pos ${x.p.pos}" style="margin-right:7px;min-width:31px;height:22px">${x.p.pos}</span>${escapeHtml(x.p.name)}`:'Empty'}</div><div class="slot-bye">${x.p?.bye?`B${x.p.bye}`:''}</div>`)});$('#rosterCount').textContent=`${roster.length} / 15`;
   const c=posCounts(roster),needs=$('#needsBar');needs.innerHTML='';Object.entries(TARGETS).forEach(([p,n])=>{const got=p==='FLEX'?Math.min(1,flexCount(roster)):(c[p]||0);const el=document.createElement('span');el.className=`need ${got>=n?'met':'warn'}`;el.textContent=`${p} ${got}/${n}`;needs.appendChild(el)});
 }
-function renderRecent(limit=10){const box=$('#recentPicks');const picks=state.picks.slice(-limit).reverse();if(!picks.length){box.innerHTML='<div class="pick-empty">The draft board is empty.</div>';return}box.innerHTML=picks.map(x=>{const p=byId(x.playerId);return `<div class="pick-item"><div class="pick-no">${pickLabel(x.overall-1)}</div><div><div class="pick-player">${escapeHtml(p.name)}</div><div class="pick-team">${escapeHtml(teamName(x.teamSlot))}</div></div><span class="pos ${p.pos}">${p.pos}</span></div>`}).join('')}
+function renderRecent(){
+  const box=$('#recentPicks');
+  const picks=state.picks.slice().reverse();
+  if(!picks.length){box.innerHTML='<div class="pick-empty">The draft board is empty.</div>';return}
+  box.innerHTML=picks.map(x=>{const p=byId(x.playerId);return `<div class="pick-item"><div class="pick-no">${pickLabel(x.overall-1)}</div><div><div class="pick-player">${escapeHtml(p.name)}</div><div class="pick-team">${escapeHtml(teamName(x.teamSlot))}</div></div><span class="pos ${p.pos}">${p.pos}</span></div>`}).join('');
+}
 function renderBoard(){
   const box=$('#draftGrid');box.innerHTML='<div class="grid-cell grid-head">ROUND</div>'+Array.from({length:12},(_,i)=>`<div class="grid-cell grid-head">${escapeHtml(teamName(i+1))}</div>`).join('');
   for(let r=1;r<=15;r++){box.insertAdjacentHTML('beforeend',`<div class="grid-cell grid-round">R${r}</div>`);for(let slot=1;slot<=12;slot++){const overall=(r-1)*12+(r%2?slot:13-slot),x=state.picks.find(y=>y.overall===overall),p=x?byId(x.playerId):null,posClass=p?` drafted-pick pick-${p.pos}`:'',userClass=slot===state.userSlot?' user-pick':'';box.insertAdjacentHTML('beforeend',`<div class="grid-cell${posClass}${userClass}${p?' profile-trigger':''}" ${p?`data-profile="${p.rank}"`:''}><div class="grid-pick">${pickLabel(overall-1)}</div>${p?`<div class="grid-player">${escapeHtml(p.name)}</div><div class="grid-meta">${p.pos} · ${p.team} · ADP ${p.rank}</div>`:''}</div>`)} }
@@ -730,7 +1326,52 @@ function renderTeams(){const box=$('#teamCards');box.innerHTML='';for(let slot=1
 function renderComplete(){
   const done=state.currentPick>=TOTAL_PICKS;$('#completePanel').classList.toggle('hidden',!done);if(!done)return;const r=rosterFor(state.userSlot),userPicks=state.picks.filter(x=>x.teamSlot===state.userSlot);const value=userPicks.reduce((s,x)=>s+(byId(x.playerId).rank-x.overall),0);const ppg=r.filter(p=>p.ppg25).map(p=>p.ppg25),avg=ppg.length?ppg.reduce((a,b)=>a+b,0)/ppg.length:null;const byes={};r.forEach(p=>{if(p.bye)byes[p.bye]=(byes[p.bye]||0)+1});const clashes=Object.values(byes).reduce((s,n)=>s+Math.max(0,n-2),0);const c=posCounts(r);let rosterScore=0;Object.entries(TARGETS).forEach(([p,n])=>rosterScore+=Math.min(c[p]||0,n)*4);let total=value/10+rosterScore-clashes*2;let grade=total>=38?'A+':total>=32?'A':total>=26?'A-':total>=20?'B+':total>=14?'B':total>=8?'B-':total>=2?'C+':'C';$('#draftGrade').textContent=grade;$('#valueScore').textContent=value>0?`+${value}`:value;$('#avgPpg').textContent=fmt(avg);$('#byeClashes').textContent=clashes;$('#gradeMessage').textContent=grade.startsWith('A')?'A sharp, value-heavy PPR build.':grade.startsWith('B')?'A balanced PPR roster with upside.':'A risky build—but championships enjoy chaos.';
 }
-function switchView(view,render=true){state.view=view;$$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===view));$('#playersView').classList.toggle('hidden',view!=='players');$('#boardView').classList.toggle('hidden',view!=='board');$('#teamsView').classList.toggle('hidden',view!=='teams');if(view!=='board')closeTeamEditor();if(render){if(view==='board')renderBoard();if(view==='teams')renderTeams();save();scrollActiveViewToTop(view);scrollPageToTop(false)}}
+function updateTabMeta(view){
+  const meta=$('#availableCount');if(!meta)return;
+  if(view==='players')meta.textContent=`${available().length} available`;
+  else if(view==='board')meta.textContent=`${state.picks.length} / ${TOTAL_PICKS} picks`;
+  else if(view==='teams')meta.textContent='12 teams';
+  else if(view==='roster')meta.textContent=`${rosterFor(state.userSlot).length} / 15`;
+  else if(view==='recent')meta.textContent=state.picks.length?'Latest selections':'No picks yet';
+}
+const DRAFT_VIEWS={
+  players:{panel:'#playersView',render:renderPlayers},
+  board:{panel:'#boardView',render:renderBoard},
+  teams:{panel:'#teamsView',render:renderTeams},
+  roster:{panel:'#rosterView',render:renderRoster},
+  recent:{panel:'#recentView',render:renderRecent}
+};
+function centerActiveTab(tab){
+  const strip=$('#draftRoomTabs');if(!strip||!tab)return;
+  const left=tab.offsetLeft-(strip.clientWidth-tab.offsetWidth)/2;
+  try{strip.scrollTo({left:Math.max(0,left),behavior:'smooth'})}catch(_){strip.scrollLeft=Math.max(0,left)}
+}
+function switchView(requestedView,render=true){
+  const view=DRAFT_VIEWS[requestedView]?requestedView:'players';
+  state.view=view;
+  $$('.tab[data-view]').forEach(tab=>{
+    const active=tab.dataset.view===view;
+    tab.classList.toggle('active',active);
+    tab.setAttribute('aria-selected',String(active));
+    tab.tabIndex=active?0:-1;
+  });
+  Object.entries(DRAFT_VIEWS).forEach(([name,config])=>{
+    const panel=$(config.panel);if(!panel)return;
+    const active=name===view;
+    panel.classList.toggle('hidden',!active);
+    panel.hidden=!active;
+    panel.setAttribute('aria-hidden',String(!active));
+  });
+  if(view!=='board')closeTeamEditor();
+  if(render){
+    DRAFT_VIEWS[view].render();
+    save();
+    scrollActiveViewToTop(view);
+    scrollPageToTop(false);
+  }
+  updateTabMeta(view);
+  centerActiveTab($(`.tab[data-view="${view}"]`));
+}
 function exportBoardJpg(){
   const cols=12, rows=15, cellW=150, cellH=72, roundW=64, headerH=48, titleH=86, pad=18, scale=2;
   const boardW=roundW+cols*cellW, boardH=headerH+rows*cellH, width=boardW+pad*2, height=titleH+boardH+pad*2;
@@ -826,7 +1467,32 @@ document.addEventListener('click',event=>{
 });
 updateSoundToggles();
 
-$('#startBtn').onclick=startDraft;$('#autoPickBtn').onclick=()=>{const p=recommendedPlayers()[0]||available()[0];makePick(p,true)};$('#undoBtn').onclick=undoTurn;$('#resetBtn').onclick=resetDraft;$('#exportBtn').onclick=exportBoardJpg;$('#editTeamsBtn').onclick=openTeamEditor;$('#cancelTeamEditBtn').onclick=closeTeamEditor;$('#saveTeamNamesBtn').onclick=saveTeamNames;$$('.tab').forEach(t=>t.onclick=()=>switchView(t.dataset.view));
+function initializeDraftTabs(){
+  const tabs=$$('.tab[data-view]');
+  tabs.forEach((tab,index)=>{
+    tab.addEventListener('click',()=>switchView(tab.dataset.view));
+    tab.addEventListener('keydown',event=>{
+      if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+      event.preventDefault();
+      let next=index;
+      if(event.key==='ArrowRight')next=(index+1)%tabs.length;
+      if(event.key==='ArrowLeft')next=(index-1+tabs.length)%tabs.length;
+      if(event.key==='Home')next=0;
+      if(event.key==='End')next=tabs.length-1;
+      tabs[next].focus();
+      switchView(tabs[next].dataset.view);
+    });
+  });
+}
+$('#startBtn').onclick=startDraft;
+$('#autoPickBtn').onclick=()=>{const p=recommendedPlayers()[0]||available()[0];makePick(p,true)};
+$('#undoBtn').onclick=undoTurn;
+$('#resetBtn').onclick=resetDraft;
+$('#exportBtn').onclick=exportBoardJpg;
+$('#editTeamsBtn').onclick=openTeamEditor;
+$('#cancelTeamEditBtn').onclick=closeTeamEditor;
+$('#saveTeamNamesBtn').onclick=saveTeamNames;
+initializeDraftTabs();
 
 document.addEventListener('click',e=>{const t=e.target.closest('[data-profile]');if(t&&!e.target.closest('[data-draft],[data-rec]')){e.preventDefault();e.stopPropagation();openPlayerProfile(t.dataset.profile)}});
 $('#playerProfileClose').onclick=closePlayerProfile;
