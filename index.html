@@ -1119,63 +1119,155 @@ function snapshot(){state.history.push({currentPick:state.currentPick,picks:JSON
 function undoTurn(){if(!state.history.length){toast('No completed user turn to undo.','bad');return}simToken++;const prev=state.history.pop();state.currentPick=prev.currentPick;state.picks=prev.picks;selectedPlayerId=null;save();renderAll();toast('Your last turn was restored.');}
 function resetDraft(){if(!confirm('Reset the entire draft and erase the saved results?'))return;simToken++;localStorage.removeItem(STORAGE_KEY);state=normalizeState({});location.reload()}
 
+
+/**********************************************************************
+ * DUKE'S FANTASY DRAFT INTELLIGENCE ENGINE
+ * Adapted from Fantasy Football Draft Grading Engine v1.0.
+ * Runs entirely inside this single HTML file and maps the app's player
+ * database to the grading model without changing the user interface.
+ **********************************************************************/
+const DraftIntelligence=(()=>{
+  const SETTINGS={
+    teams:12,rounds:15,draftType:'snake',scoringFormat:'PPR',regularSeasonWeeks:14,playoffWeeks:[15,16,17],
+    starters:{QB:1,RB:2,WR:3,TE:1,FLEX:1,K:1,DEF:1},flexEligible:['RB','WR','TE'],benchSpots:5,
+    replacementRanks:{QB:15,RB:45,WR:60,TE:15,K:13,DEF:13},
+    recommendedRosterRanges:{QB:{min:1,idealMax:2,hardMax:2},RB:{min:4,idealMax:6,hardMax:7},WR:{min:5,idealMax:7,hardMax:8},TE:{min:1,idealMax:2,hardMax:2},K:{min:1,idealMax:1,hardMax:1},DEF:{min:1,idealMax:1,hardMax:2}},
+    weights:{startingLineupStrength:30,draftValueEfficiency:20,rosterConstructionDepth:20,availabilityByeCoverage:15,riskUpsideFlexibility:15},
+    hardPenalties:{missingRequiredStarter:15,thirdQB:4,fourthQB:10,fifthQB:18,secondKicker:8,extraKickerAfterSecond:15,secondDefense:3,extraDefenseAfterSecond:8,thirdTightEnd:5,earlyKickerModerate:3,earlyKickerSevere:8,earlyDefenseModerate:2,earlyDefenseSevere:6,lowRBDepth:6,lowWRDepth:8,deadBenchThree:8,deadBenchFour:12,deadBenchFive:15}
+  };
+  const clamp=(v,min=0,max=100)=>Math.max(min,Math.min(max,v));
+  const avg=a=>{const v=a.filter(Number.isFinite);return v.length?v.reduce((s,x)=>s+x,0)/v.length:0};
+  const sum=a=>a.filter(Number.isFinite).reduce((s,x)=>s+x,0);
+  const round=(v,d=1)=>Math.round(v*10**d)/10**d;
+  const pos=p=>p==='DST'?'DEF':p;
+  const projectionFallback=p=>{
+    const baselines={QB:14,RB:5.5,WR:5.2,TE:4.8,K:7,DEF:7};
+    const rankDecay=Math.max(0,10-(p.rank||250)/55);
+    const positionBoost={QB:5,RB:3,WR:3,TE:2,K:0,DEF:0}[pos(p.pos)]||0;
+    return round((baselines[pos(p.pos)]||4)+rankDecay+positionBoost,1);
+  };
+  function inferredRisk(p){
+    let injury=45,role=45,upside=50,floor=50;
+    if(Number.isFinite(p.ppg25)){floor+=Math.min(24,p.ppg25);upside+=Math.min(22,p.ppg25*.8)}
+    if(Number.isFinite(p.trend)){upside+=p.trend*2.2;floor+=p.trend;role-=p.trend*1.4}
+    if(p.tier<=3){floor+=14;upside+=12;role-=12}else if(p.tier>=11){floor-=12;role+=15}
+    if(p.rank>250){role+=12;floor-=8}else if(p.rank<=60){role-=8;floor+=8}
+    return {injuryRisk:clamp(injury),roleRisk:clamp(role),upside:clamp(upside),floor:clamp(floor),tradeValue:clamp(105-(p.rank||250)/4)};
+  }
+  function mapPlayer(p,pick=null){
+    const risk=inferredRisk(p);
+    const projectedWeeklyPoints=Number.isFinite(p.ppg25)?p.ppg25:projectionFallback(p);
+    const draftPick=pick?.overall??null;
+    return {
+      id:String(p.rank),name:p.name,position:pos(p.pos),nflTeam:p.team,draftPick,
+      draftRound:draftPick?Math.ceil(draftPick/SETTINGS.teams):null,adp:p.rank,positionRank:p.posRank,tier:p.tier,
+      projectedWeeklyPoints,projectedPoints:projectedWeeklyPoints*17,byeWeek:p.bye,
+      weeklyProjections:Object.fromEntries(Array.from({length:17},(_,i)=>[i+1,i+1===p.bye?0:projectedWeeklyPoints])),
+      ...risk,age:null,depthChartRole:p.rank<=180?'starter':p.rank<=300?'committee':'reserve',handcuffOf:null,
+      standaloneValue:p.rank<=220,tags:[p.trend>3?'rising':'',p.tier<=4?'premium':''].filter(Boolean)
+    };
+  }
+  const getProjection=(p,w=null)=>w!==null&&p.weeklyProjections&&Number.isFinite(p.weeklyProjections[w])?p.weeklyProjections[w]:(p.projectedWeeklyPoints||0);
+  const counts=r=>['QB','RB','WR','TE','K','DEF'].reduce((o,k)=>(o[k]=r.filter(p=>p.position===k).length,o),{});
+  const getRound=pick=>Math.ceil(pick/SETTINGS.teams);
+  const snakePick=(round,slot)=>round%2?(round-1)*12+slot:round*12-slot+1;
+  const picksUntilNext=(pick,slot)=>{const n=getRound(pick)+1;return n>15?0:Math.max(0,snakePick(n,slot)-pick-1)};
+  function legality(r){
+    const c=counts(r),issues=[];
+    for(const k of ['QB','RB','WR','TE','K','DEF'])if(c[k]<SETTINGS.starters[k])issues.push({type:'missing-starter',position:k,missing:SETTINGS.starters[k]-c[k]});
+    const flex=Math.max(0,c.RB-2)+Math.max(0,c.WR-3)+Math.max(0,c.TE-1);
+    if(flex<1)issues.push({type:'missing-flex',position:'FLEX',missing:1-flex});
+    return {isLegal:!issues.length,counts:c,issues};
+  }
+  function bestLineup(r,week=null){
+    const available=r.filter(p=>week===null||p.byeWeek!==week),selected=new Set(),lineup={QB:[],RB:[],WR:[],TE:[],FLEX:[],K:[],DEF:[]};
+    const take=(k,n)=>{lineup[k]=available.filter(p=>p.position===k&&!selected.has(p.id)).sort((a,b)=>getProjection(b,week)-getProjection(a,week)).slice(0,n);lineup[k].forEach(p=>selected.add(p.id))};
+    take('QB',1);take('RB',2);take('WR',3);take('TE',1);
+    lineup.FLEX=available.filter(p=>SETTINGS.flexEligible.includes(p.position)&&!selected.has(p.id)).sort((a,b)=>getProjection(b,week)-getProjection(a,week)).slice(0,1);lineup.FLEX.forEach(p=>selected.add(p.id));
+    take('K',1);take('DEF',1);
+    const starters=Object.values(lineup).flat(),bench=available.filter(p=>!selected.has(p.id));
+    const missing=[];Object.entries(SETTINGS.starters).forEach(([k,n])=>{if(lineup[k].length<n)missing.push({position:k,missing:n-lineup[k].length})});
+    return {lineup,starters,bench,missingSlots:missing,projectedPoints:round(sum(starters.map(p=>getProjection(p,week))),2)};
+  }
+  function season(r){
+    const weeks=Array.from({length:14},(_,i)=>{const l=bestLineup(r,i+1);return {week:i+1,...l}}),normal=bestLineup(r);
+    return {weeks,normalProjectedPoints:normal.projectedPoints,averageWeeklyPoints:round(avg(weeks.map(w=>w.projectedPoints)),2),seasonProjectedPoints:round(sum(weeks.map(w=>w.projectedPoints)),2),weeksWithMissingSlots:weeks.filter(w=>w.missingSlots.length)};
+  }
+  function draftValue(r,slot){
+    const grades=r.map(p=>{if(!Number.isFinite(p.draftPick))return {player:p,score:50,rawValue:0,adjustedValue:0,label:'No ADP data'};const rd=p.draftRound||getRound(p.draftPick),mult=rd<=3?1:rd<=7?.8:rd<=11?.55:.3,raw=p.adp-p.draftPick,turn=picksUntilNext(p.draftPick,slot)>=20?8:picksUntilNext(p.draftPick,slot)>=16?6:picksUntilNext(p.draftPick,slot)>=12?4:picksUntilNext(p.draftPick,slot)>=8?2:0,adj=raw*mult+(raw<0?turn:0);return {player:p,score:clamp(50+adj*1.4),rawValue:round(raw),adjustedValue:round(adj),label:adj>=15?'Excellent value':adj>=7?'Good value':adj<=-15?'Major reach':adj<=-7?'Moderate reach':adj<0?'Small reach':'Fair value'}});
+    return {score:round(avg(grades.map(x=>x.score))),pickGrades:grades,totalRawADPValue:round(sum(grades.map(x=>x.rawValue))),totalAdjustedADPValue:round(sum(grades.map(x=>x.adjustedValue))),bestPick:[...grades].sort((a,b)=>b.adjustedValue-a.adjustedValue)[0],biggestReach:[...grades].sort((a,b)=>a.adjustedValue-b.adjustedValue)[0]};
+  }
+  function replacement(position,pool){const rank=SETTINGS.replacementRanks[position],list=pool.filter(p=>p.position===position).sort((a,b)=>getProjection(b)-getProjection(a));return list[rank-1]?getProjection(list[rank-1]):({QB:17,RB:7.5,WR:7.5,TE:7,K:7,DEF:7}[position]||0)}
+  function vor(p,pool){return round(getProjection(p)-replacement(p.position,pool),2)}
+  function benchEvaluation(r){
+    const b=bestLineup(r).bench,c=counts(r),ev=b.map(p=>{let s=50+(p.upside-50)*.3+(p.tradeValue-50)*.15-(p.roleRisk-50)*.1;if(p.position==='QB'&&c.QB>=3)s-=25;if(p.position==='TE'&&c.TE>=3)s-=20;if(p.position==='K'&&c.K>=2)s-=40;if(p.position==='DEF'&&c.DEF>=2)s-=20;if(p.position==='RB'&&p.standaloneValue)s+=8;if(p.position==='WR'&&p.upside>=70)s+=10;if(['starter','committee'].includes(p.depthChartRole))s+=8;return {player:p,score:clamp(s),isDeadBenchSpot:s<35}});
+    return {score:round(ev.length?avg(ev.map(x=>x.score)):0),evaluations:ev,deadBenchCount:ev.filter(x=>x.isDeadBenchSpot).length};
+  }
+  function byeCoverage(r){const sim=season(r),normal=sim.normalProjectedPoints||1,damage=sim.weeks.map(w=>({week:w.week,damagePercent:round(Math.max(0,(normal-w.projectedPoints)/normal*100),2),missingSlots:w.missingSlots})),missing=sum(damage.map(w=>w.missingSlots.reduce((s,x)=>s+x.missing,0)*8));return {score:round(clamp(100-avg(damage.map(x=>x.damagePercent))*2-missing)),worstByeWeek:[...damage].sort((a,b)=>b.damagePercent-a.damagePercent)[0],weeklyDamage:damage}};
+  function riskUpside(r){const line=bestLineup(r),starterRisk=avg(line.starters.map(p=>p.injuryRisk*.6+p.roleRisk*.4)),up=avg(r.map(p=>p.upside)),floor=avg(r.map(p=>p.floor)),benchUp=avg(line.bench.map(p=>p.upside));return {score:round(clamp(70-starterRisk*.35+up*.25+floor*.15+benchUp*.2)),starterRisk:round(starterRisk),upside:round(up),floor:round(floor),benchUpside:round(benchUp)} }
+  function specialTiming(r){let score=100;for(const p of r){const rd=p.draftRound||15;if(p.position==='K')score-=rd<=10?8:rd<=13?3:0;if(p.position==='DEF')score-=rd<=9?6:rd<=12?2:0}return clamp(score)}
+  function construction(r){const legal=legality(r),c=legal.counts,b=benchEvaluation(r);let score=100;if(!legal.isLegal)score-=35;if(c.RB<4)score-=12;if(c.WR<5)score-=15;if(c.QB>2)score-=(c.QB-2)*12;if(c.K>1)score-=(c.K-1)*20;if(c.DEF>1)score-=(c.DEF-1)*10;score=score*.65+b.score*.22+specialTiming(r)*.13;return {score:round(clamp(score)),legality:legal,counts:c,bench:b}}
+  function penalties(r){const c=counts(r),legal=legality(r),b=benchEvaluation(r),items=[];for(const x of legal.issues)items.push({amount:15*x.missing,reason:`Cannot fill ${x.position} starting requirement.`});if(c.QB===3)items.push({amount:4,reason:'Third quarterback reduces bench flexibility.'});if(c.QB===4)items.push({amount:10,reason:'Four quarterbacks is excessive.'});if(c.QB>=5)items.push({amount:18,reason:'Five or more quarterbacks creates severe imbalance.'});if(c.K>=2)items.push({amount:8+Math.max(0,c.K-2)*15,reason:'Multiple kickers waste bench spots.'});if(c.DEF>=2)items.push({amount:3+Math.max(0,c.DEF-2)*8,reason:'Multiple defenses reduce flexibility.'});if(c.TE>=3)items.push({amount:5*(c.TE-2),reason:'Three or more tight ends creates redundancy.'});if(c.RB<4)items.push({amount:6,reason:'Running-back depth below recommended minimum.'});if(c.WR<5)items.push({amount:8,reason:'Wide-receiver depth too low for three-WR league.'});if(b.deadBenchCount>=3)items.push({amount:b.deadBenchCount>=5?15:b.deadBenchCount===4?12:8,reason:`${b.deadBenchCount} dead bench spots.`});return {penalties:items,totalPenalty:sum(items.map(x=>x.amount))}}
+  function startingStrength(r,all){const team=bestLineup(r),league=all.length?all.map(x=>bestLineup(x).projectedPoints):[125],la=avg(league),adv=team.projectedPoints-la,sorted=[...league].sort((a,b)=>b-a);return {score:round(clamp(70+adv*2.5)),projectedWeeklyPoints:team.projectedPoints,leagueAverageProjection:round(la,2),advantage:round(adv,2),leagueRank:all.length?sorted.findIndex(x=>x===team.projectedPoints)+1:null,lineup:team}}
+  function positionGroups(r){const g=['QB','RB','WR','TE','K','DEF'].map(k=>{const ps=r.filter(p=>p.position===k);return {position:k,playerCount:ps.length,score:round(avg(ps.map(getProjection))*4+avg(ps.map(p=>p.upside))*.3)}}),s=[...g].sort((a,b)=>b.score-a.score);return {groups:g,strongestPosition:s[0],weakestPosition:s[s.length-1]}}
+  function teamCorrelation(r){const groups={};r.forEach(p=>(groups[p.nflTeam]??=[]).push(p));const stacks=[],warnings=[];for(const [team,ps] of Object.entries(groups)){const q=ps.filter(p=>p.position==='QB'),rec=ps.filter(p=>['WR','TE'].includes(p.position));q.forEach(qb=>rec.forEach(receiver=>stacks.push({nflTeam:team,quarterback:qb,receiver})));if(ps.length>=4)warnings.push({nflTeam:team,playerCount:ps.length})}let score=70;if(stacks.length>=1&&stacks.length<=2)score+=8;if(stacks.length>3)score-=5;warnings.forEach(w=>score-=(w.playerCount-3)*6);return {score:clamp(score),stacks,concentrationWarnings:warnings}}
+  function letter(s){return s>=97?'A+':s>=93?'A':s>=90?'A-':s>=87?'B+':s>=83?'B':s>=80?'B-':s>=77?'C+':s>=73?'C':s>=70?'C-':s>=67?'D+':s>=63?'D':s>=60?'D-':'F'}
+  function explanations(res){const strengths=[],concerns=[],recommendations=[];if(res.startingLineupStrength.advantage>=5)strengths.push(`Starting lineup projects ${res.startingLineupStrength.advantage} points above league average.`);if(res.draftValue.score>=80)strengths.push('Strong value compared with ADP.');if(res.rosterConstruction.bench.score>=75)strengths.push('Bench contains useful depth and upside.');if(!res.rosterConstruction.legality.isLegal){concerns.push('Roster cannot fill every required starting position.');recommendations.push('Add a player who fills the missing position.')}if(res.rosterConstruction.counts.QB>=3){concerns.push('Too many quarterbacks for a one-QB league.');recommendations.push('Replace an extra quarterback with an upside RB or WR.')}if(res.rosterConstruction.bench.deadBenchCount>=2)concerns.push(`${res.rosterConstruction.bench.deadBenchCount} bench spots have limited usefulness.`);if(res.byeCoverage.worstByeWeek?.damagePercent>=15)concerns.push(`Week ${res.byeCoverage.worstByeWeek.week} is the most damaging bye week.`);if(res.draftValue.bestPick?.adjustedValue>=8)strengths.push(`${res.draftValue.bestPick.player.name} was the strongest ADP value.`);if(res.draftValue.biggestReach?.adjustedValue<=-10)concerns.push(`${res.draftValue.biggestReach.player.name} was the largest adjusted reach.`);return {strengths,concerns,recommendations}}
+  function grade({roster,draftSlot=1,allLeagueRosters=[],playerPool=[]}){
+    const start=startingStrength(roster,allLeagueRosters),dv=draftValue(roster,draftSlot),rc=construction(roster),bye=byeCoverage(roster),risk=riskUpside(roster),hard=penalties(roster),sim=season(roster),pg=positionGroups(roster),corr=teamCorrelation(roster);
+    const weighted=start.score*.30+dv.score*.20+rc.score*.20+bye.score*.15+risk.score*.15,score=round(clamp(weighted-hard.totalPenalty));
+    const results={overallScore:score,letterGrade:letter(score),draftDecisionScore:round(clamp(dv.score*.5+rc.score*.35+risk.score*.15-hard.totalPenalty)),rosterPowerScore:round(clamp(start.score*.55+bye.score*.2+risk.score*.15+75*.1)),startingLineupStrength:start,draftValue:dv,rosterConstruction:rc,byeCoverage:bye,riskUpside:risk,hardPenalties:hard,seasonSimulation:sim,positionGroups:pg,teamCorrelation:corr,valueOverReplacement:roster.map(p=>({player:p,valueOverReplacement:vor(p,playerPool)}))};results.draftDecisionGrade=letter(results.draftDecisionScore);results.rosterPowerGrade=letter(results.rosterPowerScore);results.explanations=explanations(results);return results;
+  }
+  function appRoster(slot){return state.picks.filter(x=>x.teamSlot===slot).map(x=>{const p=byId(x.playerId);return p?mapPlayer(p,x):null}).filter(Boolean)}
+  function appLeagueRosters(){return Array.from({length:12},(_,i)=>appRoster(i+1))}
+  function appPlayerPool(){return PLAYERS.map(p=>mapPlayer(p))}
+  function gradeSlot(slot){return grade({roster:appRoster(slot),draftSlot:slot,allLeagueRosters:appLeagueRosters(),playerPool:appPlayerPool()})}
+  function candidateScore(player,slot,pickIndex,mode='balanced'){
+    const roster=appRoster(slot),mapped=mapPlayer(player,{overall:pickIndex+1}),roundNo=Math.floor(pickIndex/12)+1,c=counts(roster),legal=legality(roster),remaining=15-roster.length;
+    const missingCount=legal.issues.reduce((s,x)=>s+x.missing,0),fills=legal.issues.some(x=>x.position===mapped.position||(x.position==='FLEX'&&SETTINGS.flexEligible.includes(mapped.position)));
+    if(mode==='chalk'){
+      let strict=100000-player.rank*100;
+      if(missingCount>=remaining)strict+=fills?1000000:-1000000;
+      if((mapped.position==='K'||mapped.position==='DEF')&&roundNo<12&&missingCount<remaining)strict-=500000;
+      return strict;
+    }
+    const before=bestLineup(roster).projectedPoints,after=bestLineup([...roster,mapped]).projectedPoints,marginal=after-before;
+    let s=10000-player.rank*7+marginal*115+vor(mapped,appPlayerPool())*38;
+    if(fills)s+=460;if(missingCount>=remaining)s+=fills?100000:-100000;
+    const range=SETTINGS.recommendedRosterRanges[mapped.position];if(range&&c[mapped.position]>=range.hardMax)s-=120000;else if(range&&c[mapped.position]>=range.idealMax)s-=900;
+    if(mapped.position==='K'||mapped.position==='DEF'){const need=c[mapped.position]<1;s+=need?(roundNo<12?-3400:(roundNo-11)*650):-50000}
+    if(mapped.position==='QB'&&c.QB>=1)s-=roundNo<10?900:150;
+    if(mapped.position==='TE'&&c.TE>=2)s-=1100;
+    const sameBye=roster.filter(p=>p.byeWeek&&p.byeWeek===mapped.byeWeek),samePos=sameBye.filter(p=>p.position===mapped.position);s-=sameBye.length*120+samePos.length*300;
+    s+=(mapped.upside-50)*7+(mapped.floor-50)*4-(mapped.roleRisk-50)*4;
+    if(player.tier<=3)s+=180;if(player.trend>2)s+=player.trend*18;
+    const turn=picksUntilNext(pickIndex+1,slot);if(turn>=16&&player.tier&&available().filter(x=>x.pos===player.pos&&x.tier===player.tier).length<=2)s+=350;
+    if(mode==='chaos')s+=(Math.random()-.5)*900;
+    return s;
+  }
+  return {SETTINGS,mapPlayer,grade,gradeSlot,candidateScore,bestLineup,season,legality,letter,appRoster,appLeagueRosters,appPlayerPool};
+})();
+window.FantasyDraftGrader={DEFAULT_LEAGUE_SETTINGS:DraftIntelligence.SETTINGS,gradeFantasyDraft:DraftIntelligence.grade,buildBestLineup:DraftIntelligence.bestLineup,simulateSeason:DraftIntelligence.season,checkRosterLegality:DraftIntelligence.legality,getLetterGrade:DraftIntelligence.letter};
+
 function scoreCandidate(p,slot,pickIndex){
-  const roster=rosterFor(slot), counts=posCounts(roster), status=starterStatus(roster), round=Math.floor(pickIndex/12)+1;
-  let score=1000-p.rank*4;
-  const style=state.cpuStyle, chaos=style==='chaos'?70:style==='chalk'?18:38;
-  score+=(Math.random()-.5)*chaos;
-  const c=counts[p.pos]||0;
-  if(c>=MAX_CPU[p.pos])score-=3000;
-
-  const fills=playerFillsNeed(p,roster);
-  const picksRemaining=15-roster.length;
-  if(fills)score+=260;
-  if(status.missing.length>=picksRemaining&&fills)score+=5000;
-  if(status.missing.length>=picksRemaining&&!fills)score-=5000;
-
-  if(p.pos==='K'||p.pos==='DST'){
-    const needed=(p.pos==='K'?(counts.K||0)<1:(counts.DST||0)<1);
-    score+=needed?(round<12?-500:(round-11)*95):-2500;
-  }
-  if(p.pos==='QB')score+=(counts.QB||0)===0?(round>=5?95:-55):((counts.QB||0)===1&&status.complete?20:-260);
-  if(p.pos==='TE')score+=(counts.TE||0)===0?(round>=3?70:5):((counts.TE||0)===1&&status.flex<1?55:(status.complete?12:-190));
-  if(p.pos==='RB'||p.pos==='WR'){
-    const target=p.pos==='RB'?2:3;
-    score+=c<target?150:status.flex<1?95:55;
-    if(p.pos==='WR'&&p.ppg25)score+=p.ppg25*1.2;
-  }
-  if(status.complete&&['QB','RB','WR','TE'].includes(p.pos)){
-    const backupNeed={QB:2,RB:5,WR:6,TE:2}[p.pos];
-    if(c<backupNeed)score+=75;
-  }
-  if(p.trend>3)score+=12;if(p.tier<=3)score+=20;
-  const clash=byeConflict(roster,p);score-=clash.level===2?150:clash.level===1?45:0;
-  return score;
+  return DraftIntelligence.candidateScore(p,slot,pickIndex,state.cpuStyle);
 }
 function cpuChoice(slot,pickIndex){
   const roster=rosterFor(slot),status=starterStatus(roster),remaining=15-roster.length;
   let pool=available().filter(p=>(posCounts(roster)[p.pos]||0)<MAX_CPU[p.pos]);
   if(status.missing.length>=remaining){const forced=pool.filter(p=>playerFillsNeed(p,roster));if(forced.length)pool=forced;}
-  const window=pool.slice(0,state.cpuStyle==='chaos'?55:38);
+  const windowSize=state.cpuStyle==='chaos'?70:state.cpuStyle==='chalk'?Math.min(pool.length,12):55;
+  const window=pool.slice(0,windowSize);
   window.sort((a,b)=>scoreCandidate(b,slot,pickIndex)-scoreCandidate(a,slot,pickIndex));
   return window[0]||pool[0]||available()[0];
 }
-function recommendedPlayers(){if(!state.started)return[];const pool=available();return pool.slice(0,85).map(p=>({p,s:scoreUserCandidate(p)})).sort((a,b)=>b.s-a.s).slice(0,3).map(x=>x.p)}
+function recommendedPlayers(){
+  if(!state.started)return[];
+  const pool=available().slice(0,110),slot=activeDraftSlot();
+  return pool.map(p=>({p,s:DraftIntelligence.candidateScore(p,slot,state.currentPick,'balanced')})).sort((a,b)=>b.s-a.s).slice(0,3).map(x=>x.p);
+}
 function scoreUserCandidate(p){
-  const roster=rosterFor(activeDraftSlot()),c=posCounts(roster),status=starterStatus(roster),round=Math.floor(state.currentPick/12)+1;
-  let s=1000-p.rank*4;
-  if(playerFillsNeed(p,roster))s+=260;
-  const remaining=15-roster.length;
-  if(status.missing.length>=remaining)s+=playerFillsNeed(p,roster)?5000:-5000;
-  if(p.pos==='RB')s+=(c.RB||0)<2?150:status.flex<1?100:45;
-  if(p.pos==='WR')s+=(c.WR||0)<3?150:status.flex<1?100:45;
-  if(p.pos==='TE')s+=(c.TE||0)<1?125:status.flex<1?70:15;
-  if(p.pos==='QB')s+=(c.QB||0)<1?(round>=5?110:25):10;
-  if(p.pos==='K'||p.pos==='DST'){const needed=p.pos==='K'?(c.K||0)<1:(c.DST||0)<1;s+=needed?(round<12?-500:220):-2200;}
-  if(status.complete&&['QB','RB','WR','TE'].includes(p.pos))s+=65;
-  const clash=byeConflict(roster,p);s-=clash.level===2?180:clash.level===1?55:0;
-  if(p.trend>2)s+=p.trend*2;if(p.ppg25)s+=p.ppg25;
-  return s;
+  return DraftIntelligence.candidateScore(p,activeDraftSlot(),state.currentPick,'balanced');
 }
 
 function makePick(player,auto=false){
@@ -1324,7 +1416,22 @@ function saveTeamNames(){
 }
 function renderTeams(){const box=$('#teamCards');box.innerHTML='';for(let slot=1;slot<=12;slot++){const r=rosterFor(slot),c=posCounts(r);const card=document.createElement('div');card.className='team-card';card.innerHTML=`<div class="team-card-head"><span>${escapeHtml(teamName(slot))}</span><span>${r.length}/15</span></div><div class="team-card-body">${r.length?r.map(p=>`<div class="tiny-player"><span><span class="pos ${p.pos}" style="margin-right:6px;min-width:31px;height:21px">${p.pos}</span>${escapeHtml(p.name)}</span><span style="color:var(--muted)">${p.rank}</span></div>`).join(''):'<div class="pick-empty">No picks</div>'}</div>`;box.appendChild(card)}}
 function renderComplete(){
-  const done=state.currentPick>=TOTAL_PICKS;$('#completePanel').classList.toggle('hidden',!done);if(!done)return;const r=rosterFor(state.userSlot),userPicks=state.picks.filter(x=>x.teamSlot===state.userSlot);const value=userPicks.reduce((s,x)=>s+(byId(x.playerId).rank-x.overall),0);const ppg=r.filter(p=>p.ppg25).map(p=>p.ppg25),avg=ppg.length?ppg.reduce((a,b)=>a+b,0)/ppg.length:null;const byes={};r.forEach(p=>{if(p.bye)byes[p.bye]=(byes[p.bye]||0)+1});const clashes=Object.values(byes).reduce((s,n)=>s+Math.max(0,n-2),0);const c=posCounts(r);let rosterScore=0;Object.entries(TARGETS).forEach(([p,n])=>rosterScore+=Math.min(c[p]||0,n)*4);let total=value/10+rosterScore-clashes*2;let grade=total>=38?'A+':total>=32?'A':total>=26?'A-':total>=20?'B+':total>=14?'B':total>=8?'B-':total>=2?'C+':'C';$('#draftGrade').textContent=grade;$('#valueScore').textContent=value>0?`+${value}`:value;$('#avgPpg').textContent=fmt(avg);$('#byeClashes').textContent=clashes;$('#gradeMessage').textContent=grade.startsWith('A')?'A sharp, value-heavy PPR build.':grade.startsWith('B')?'A balanced PPR roster with upside.':'A risky build—but championships enjoy chaos.';
+  const done=state.currentPick>=TOTAL_PICKS;
+  $('#completePanel').classList.toggle('hidden',!done);
+  if(!done)return;
+  const results=DraftIntelligence.gradeSlot(state.userSlot);
+  const r=rosterFor(state.userSlot),ppg=r.filter(p=>Number.isFinite(p.ppg25)).map(p=>p.ppg25);
+  const avgPpg=ppg.length?ppg.reduce((a,b)=>a+b,0)/ppg.length:null;
+  const worstBye=results.byeCoverage.worstByeWeek;
+  const byeSeverity=worstBye?Math.round(worstBye.damagePercent):0;
+  $('#draftGrade').textContent=results.letterGrade;
+  $('#valueScore').textContent=results.draftValue.totalAdjustedADPValue>0?`+${results.draftValue.totalAdjustedADPValue}`:results.draftValue.totalAdjustedADPValue;
+  $('#avgPpg').textContent=fmt(avgPpg);
+  $('#byeClashes').textContent=byeSeverity;
+  const topStrength=results.explanations.strengths[0];
+  const topConcern=results.explanations.concerns[0];
+  $('#gradeMessage').textContent=topStrength||topConcern||`${results.overallScore}/100 overall · ${results.rosterPowerGrade} roster power · ${results.draftDecisionGrade} draft decisions.`;
+  window.latestDraftGrade=results;
 }
 function updateTabMeta(view){
   const meta=$('#availableCount');if(!meta)return;
