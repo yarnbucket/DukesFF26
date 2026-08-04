@@ -779,6 +779,78 @@ body::before{
   .tab{font-size:16px!important}
 }
 
+
+
+/* Duke's logo fire-glow flicker */
+.dukes-sign{
+  isolation:isolate;
+  animation:dukesFireGlow 2.35s infinite steps(1,end);
+  will-change:filter,box-shadow;
+}
+.dukes-sign::before{
+  content:"";
+  position:absolute;
+  inset:-8px;
+  z-index:-1;
+  border-radius:inherit;
+  pointer-events:none;
+  background:radial-gradient(ellipse at center,
+    rgba(255,62,33,.34) 0%,
+    rgba(237,20,28,.22) 42%,
+    rgba(255,116,19,.10) 62%,
+    transparent 76%);
+  filter:blur(10px);
+  opacity:.76;
+  animation:dukesFlameAura 1.65s infinite ease-in-out alternate;
+}
+.dukes-word{
+  animation:dukesLetterFlicker 2.35s infinite steps(1,end);
+  text-shadow:
+    0 0 3px rgba(255,255,255,.82),
+    0 0 8px rgba(255,50,35,.95),
+    0 0 15px rgba(226,8,18,.82),
+    0 0 25px rgba(255,91,18,.52);
+}
+.dukes-rule,.dukes-sub{
+  animation:dukesSubtleFlicker 2.35s infinite steps(1,end);
+}
+@keyframes dukesFireGlow{
+  0%,7%,11%,19%,28%,44%,49%,63%,71%,86%,100%{
+    filter:brightness(1.03) saturate(1.08);
+    box-shadow:0 0 7px rgba(255,34,30,.72),0 0 17px rgba(214,9,18,.50),0 0 30px rgba(255,85,20,.22),inset 0 0 14px rgba(255,35,25,.08);
+  }
+  8%,20%,45%,72%{
+    filter:brightness(.88) saturate(.95);
+    box-shadow:0 0 3px rgba(255,25,25,.42),0 0 9px rgba(198,5,16,.30),inset 0 0 8px rgba(255,25,20,.05);
+  }
+  9%,21%,46%,73%,87%{
+    filter:brightness(1.2) saturate(1.2);
+    box-shadow:0 0 10px rgba(255,63,31,.94),0 0 22px rgba(229,10,20,.72),0 0 42px rgba(255,110,15,.34),inset 0 0 18px rgba(255,45,20,.12);
+  }
+  10%,47%,74%{
+    filter:brightness(.96) saturate(1);
+  }
+}
+@keyframes dukesLetterFlicker{
+  0%,7%,11%,19%,28%,44%,49%,63%,71%,86%,100%{opacity:1}
+  8%,20%,45%,72%{opacity:.78}
+  9%,21%,46%,73%,87%{opacity:1;color:#fffdf5}
+  10%,47%,74%{opacity:.9}
+}
+@keyframes dukesSubtleFlicker{
+  0%,19%,28%,44%,63%,86%,100%{opacity:1}
+  20%,45%,72%{opacity:.84}
+  21%,46%,73%{opacity:1}
+}
+@keyframes dukesFlameAura{
+  from{transform:scale(.985);opacity:.58;filter:blur(9px)}
+  to{transform:scale(1.025);opacity:.94;filter:blur(13px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .dukes-sign,.dukes-sign::before,.dukes-word,.dukes-rule,.dukes-sub{animation:none!important}
+  .dukes-sign{filter:brightness(1.06) saturate(1.08);box-shadow:0 0 8px rgba(255,34,30,.72),0 0 20px rgba(214,9,18,.48)}
+}
+
 </style>
 </head>
 <body>
@@ -1217,7 +1289,7 @@ const DraftIntelligence=(()=>{
     const start=startingStrength(roster,allLeagueRosters),dv=draftValue(roster,draftSlot),rc=construction(roster),bye=byeCoverage(roster),risk=riskUpside(roster),hard=penalties(roster),sim=season(roster),pg=positionGroups(roster),corr=teamCorrelation(roster);
     const weighted=start.score*.30+dv.score*.20+rc.score*.20+bye.score*.15+risk.score*.15,score=round(clamp(weighted-hard.totalPenalty));
     const results={overallScore:score,letterGrade:letter(score),draftDecisionScore:round(clamp(dv.score*.5+rc.score*.35+risk.score*.15-hard.totalPenalty)),rosterPowerScore:round(clamp(start.score*.55+bye.score*.2+risk.score*.15+75*.1)),startingLineupStrength:start,draftValue:dv,rosterConstruction:rc,byeCoverage:bye,riskUpside:risk,hardPenalties:hard,seasonSimulation:sim,positionGroups:pg,teamCorrelation:corr,valueOverReplacement:roster.map(p=>({player:p,valueOverReplacement:vor(p,playerPool)}))};
-    const compositePick=compositeBestPick(roster,draftSlot,playerPool);
+    const compositePick=(typeof strategyBestHistoricalPick==='function'?strategyBestHistoricalPick(draftSlot):compositeBestPick(roster,draftSlot,playerPool));
     if(compositePick)results.draftValue.bestPick=compositePick;
     results.draftDecisionGrade=letter(results.draftDecisionScore);results.rosterPowerGrade=letter(results.rosterPowerScore);results.explanations=explanations(results);return results;
   }
@@ -1293,25 +1365,1198 @@ const DraftIntelligence=(()=>{
 })();
 window.FantasyDraftGrader={DEFAULT_LEAGUE_SETTINGS:DraftIntelligence.SETTINGS,gradeFantasyDraft:DraftIntelligence.grade,buildBestLineup:DraftIntelligence.bestLineup,simulateSeason:DraftIntelligence.season,checkRosterLegality:DraftIntelligence.legality,getLetterGrade:DraftIntelligence.letter};
 
+
+
+/* Integrated from DUKES_FF26_COMPLETE_DRAFT_LOGIC.txt */
+/**********************************************************************
+ * DUKE'S FF26 — FANTASY FOOTBALL DRAFT STRATEGY ENGINE
+ * Version: 1.0
+ *
+ * League:
+ * - 12 teams
+ * - 15 rounds
+ * - Snake draft
+ * - 1 QB
+ * - 2 RB
+ * - 3 WR
+ * - 1 TE
+ * - 1 FLEX: RB/WR/TE
+ * - 1 K
+ * - 1 DEF
+ * - 5 bench
+ *
+ * PURPOSE
+ * -------
+ * This module:
+ *  1. Scores every available player for the current pick.
+ *  2. Adjusts recommendations by round, roster needs, scarcity, tiers,
+ *     ADP value, positional cliffs, risk, upside, and opportunity cost.
+ *  3. Delays QB, K, and DEF unless value or roster need justifies them.
+ *  4. Prevents wasteful bench construction.
+ *  5. Recommends the best pick for the user's current roster.
+ *
+ * EXPECTED PLAYER OBJECT
+ * ----------------------
+ * {
+ *   id: "player-id",
+ *   name: "Player Name",
+ *   position: "QB" | "RB" | "WR" | "TE" | "K" | "DEF",
+ *   nflTeam: "BUF",
+ *   byeWeek: 7,
+ *   rank: 24,                 // overall ranking
+ *   adp: 29.4,                // average draft position
+ *   projectedPoints: 248.5,
+ *   vor: 41.2,                // value over replacement
+ *   tier: 3,                  // lower number = better tier
+ *   floor: 7.5,               // 0-10
+ *   ceiling: 9.2,             // 0-10
+ *   consistency: 7.8,         // 0-10
+ *   injuryRisk: 3.0,          // 0-10, higher = worse
+ *   roleRisk: 2.0,            // 0-10, higher = worse
+ *   ageRisk: 1.0,             // 0-10, higher = worse
+ *   breakoutScore: 8.0,       // 0-10
+ *   handcuffScore: 0,         // 0-10
+ *   stackScore: 0,            // 0-10
+ *   starterProbability: 0.95, // 0-1
+ *   expectedGames: 16.4,
+ *   notes: []
+ * }
+ *********************************************************************/
+
+const DukesFF26DraftEngine = (() => {
+  "use strict";
+
+  const CONFIG = {
+    teams: 12,
+    rounds: 15,
+
+    starters: {
+      QB: 1,
+      RB: 2,
+      WR: 3,
+      TE: 1,
+      FLEX: 1,
+      K: 1,
+      DEF: 1
+    },
+
+    benchSpots: 5,
+
+    allowedFlex: ["RB", "WR", "TE"],
+
+    preferredFinalRoster: {
+      QB: { min: 1, ideal: 1, max: 2 },
+      RB: { min: 4, ideal: 5, max: 7 },
+      WR: { min: 5, ideal: 6, max: 8 },
+      TE: { min: 1, ideal: 1, max: 2 },
+      K: { min: 1, ideal: 1, max: 1 },
+      DEF: { min: 1, ideal: 1, max: 1 }
+    },
+
+    replacementRanks: {
+      QB: 14,
+      RB: 36,
+      WR: 48,
+      TE: 14,
+      K: 12,
+      DEF: 12
+    },
+
+    // Default weights. These can be tuned without changing engine logic.
+    weights: {
+      projectedPoints: 0.12,
+      vor: 1.15,
+      rankValue: 0.95,
+      adpValue: 0.75,
+      tierValue: 3.75,
+      positionalNeed: 7.5,
+      scarcity: 5.25,
+      lineupImpact: 6.0,
+      flexValue: 3.0,
+      floor: 0.75,
+      ceiling: 1.05,
+      consistency: 0.55,
+      breakout: 0.85,
+      starterProbability: 5.0,
+      expectedGames: 0.4,
+      stack: 0.25,
+      handcuff: 0.45,
+
+      injuryRisk: 1.25,
+      roleRisk: 1.10,
+      ageRisk: 0.45,
+      reachPenalty: 1.1,
+      rosterImbalance: 5.5,
+      deadBench: 8.5,
+      duplicatePosition: 5.0,
+      earlyQB: 10.0,
+      earlyTE: 4.0,
+      earlyK: 40.0,
+      earlyDEF: 38.0,
+      byeConflict: 0.9,
+      teamConcentration: 1.1,
+      opportunityCost: 1.0
+    },
+
+    qbStrategy: {
+      hardAvoidRounds: [1, 2],
+      strongPenaltyRounds: [3, 4],
+      earliestTargetRound: 5,
+      preferredRounds: [6, 7, 8],
+      waitRounds: [9, 10, 11],
+      emergencyRound: 12,
+      maxBeforeRound10: 1,
+      eliteTierThreshold: 1,
+      acceptableFallPicks: 12
+    },
+
+    teStrategy: {
+      eliteTierThreshold: 1,
+      acceptableEarlyRounds: [3, 4, 5],
+      preferredRounds: [6, 7, 8, 9],
+      waitAfterMissedElite: true
+    },
+
+    specialTeamsStrategy: {
+      kickerEarliestRound: 14,
+      defenseEarliestRound: 13,
+      preferredKickerRound: 15,
+      preferredDefenseRound: 14
+    },
+
+    riskBalance: {
+      safeShareTarget: 0.70,
+      upsideShareTarget: 0.30
+    },
+
+    positionBaseScarcity: {
+      QB: 0.35,
+      RB: 1.00,
+      WR: 0.82,
+      TE: 0.62,
+      K: 0.05,
+      DEF: 0.08
+    }
+  };
+
+  const POSITIONS = ["QB", "RB", "WR", "TE", "K", "DEF"];
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function numberOr(value, fallback = 0) {
+    return Number.isFinite(Number(value)) ? Number(value) : fallback;
+  }
+
+  function normalizePosition(position) {
+    const pos = String(position || "").toUpperCase().trim();
+    if (pos === "DST" || pos === "D/ST" || pos === "D") return "DEF";
+    return pos;
+  }
+
+  function countRoster(roster = []) {
+    const counts = Object.fromEntries(POSITIONS.map(pos => [pos, 0]));
+    for (const player of roster) {
+      const pos = normalizePosition(player.position);
+      if (counts[pos] !== undefined) counts[pos] += 1;
+    }
+    return counts;
+  }
+
+  function getDraftedCountByPosition(draftedPlayers = []) {
+    return countRoster(draftedPlayers);
+  }
+
+  function getCurrentPickNumber(round, pickInRound, draftSlot, teams = CONFIG.teams) {
+    if (Number.isFinite(pickInRound)) {
+      return (round - 1) * teams + pickInRound;
+    }
+
+    if (!Number.isFinite(draftSlot)) {
+      throw new Error("Either pickInRound or draftSlot must be supplied.");
+    }
+
+    const isOddRound = round % 2 === 1;
+    const slotPick = isOddRound ? draftSlot : teams - draftSlot + 1;
+    return (round - 1) * teams + slotPick;
+  }
+
+  function getRosterSlotsFilled(roster = []) {
+    const counts = countRoster(roster);
+
+    const filled = {
+      QB: Math.min(counts.QB, CONFIG.starters.QB),
+      RB: Math.min(counts.RB, CONFIG.starters.RB),
+      WR: Math.min(counts.WR, CONFIG.starters.WR),
+      TE: Math.min(counts.TE, CONFIG.starters.TE),
+      K: Math.min(counts.K, CONFIG.starters.K),
+      DEF: Math.min(counts.DEF, CONFIG.starters.DEF),
+      FLEX: 0,
+      BENCH: 0
+    };
+
+    const extraRB = Math.max(0, counts.RB - filled.RB);
+    const extraWR = Math.max(0, counts.WR - filled.WR);
+    const extraTE = Math.max(0, counts.TE - filled.TE);
+
+    filled.FLEX = Math.min(
+      CONFIG.starters.FLEX,
+      extraRB + extraWR + extraTE
+    );
+
+    const starterCount =
+      filled.QB +
+      filled.RB +
+      filled.WR +
+      filled.TE +
+      filled.FLEX +
+      filled.K +
+      filled.DEF;
+
+    filled.BENCH = Math.max(0, roster.length - starterCount);
+
+    return filled;
+  }
+
+  function isStartingLineupComplete(roster = []) {
+    const filled = getRosterSlotsFilled(roster);
+    return (
+      filled.QB >= CONFIG.starters.QB &&
+      filled.RB >= CONFIG.starters.RB &&
+      filled.WR >= CONFIG.starters.WR &&
+      filled.TE >= CONFIG.starters.TE &&
+      filled.FLEX >= CONFIG.starters.FLEX &&
+      filled.K >= CONFIG.starters.K &&
+      filled.DEF >= CONFIG.starters.DEF
+    );
+  }
+
+  function getRoundNeedMultiplier(position, round, roster) {
+    const counts = countRoster(roster);
+    const pos = normalizePosition(position);
+
+    if (pos === "RB") {
+      if (counts.RB === 0 && round >= 3) return 1.55;
+      if (counts.RB < 2 && round >= 5) return 1.45;
+      if (counts.RB < 4 && round >= 9) return 1.25;
+      return 1.0;
+    }
+
+    if (pos === "WR") {
+      if (counts.WR === 0 && round >= 3) return 1.65;
+      if (counts.WR < 3 && round >= 6) return 1.50;
+      if (counts.WR < 5 && round >= 10) return 1.25;
+      return 1.0;
+    }
+
+    if (pos === "QB") {
+      if (counts.QB === 0 && round >= 9) return 1.25;
+      if (counts.QB === 0 && round >= CONFIG.qbStrategy.emergencyRound) return 1.75;
+      if (counts.QB >= 1) return 0.15;
+      return 1.0;
+    }
+
+    if (pos === "TE") {
+      if (counts.TE === 0 && round >= 8) return 1.25;
+      if (counts.TE === 0 && round >= 11) return 1.55;
+      if (counts.TE >= 1) return 0.30;
+      return 1.0;
+    }
+
+    if (pos === "DEF") {
+      if (counts.DEF === 0 && round >= 14) return 1.55;
+      if (counts.DEF >= 1) return 0;
+      return round < CONFIG.specialTeamsStrategy.defenseEarliestRound ? 0.10 : 1.0;
+    }
+
+    if (pos === "K") {
+      if (counts.K === 0 && round >= 15) return 1.75;
+      if (counts.K >= 1) return 0;
+      return round < CONFIG.specialTeamsStrategy.kickerEarliestRound ? 0.05 : 1.0;
+    }
+
+    return 1.0;
+  }
+
+  function calculatePositionalNeed(position, roster, round) {
+    const pos = normalizePosition(position);
+    const counts = countRoster(roster);
+    const target = CONFIG.preferredFinalRoster[pos];
+
+    if (!target) return 0;
+
+    let need = 0;
+
+    if (counts[pos] < target.min) need += 1.0;
+    if (counts[pos] < target.ideal) need += 0.55;
+    if (counts[pos] >= target.max) need -= 1.25;
+
+    need *= getRoundNeedMultiplier(pos, round, roster);
+
+    return need;
+  }
+
+  function calculateLineupImpact(position, roster) {
+    const pos = normalizePosition(position);
+    const filled = getRosterSlotsFilled(roster);
+    const counts = countRoster(roster);
+
+    if (pos === "QB" && filled.QB < CONFIG.starters.QB) return 1.0;
+    if (pos === "RB" && filled.RB < CONFIG.starters.RB) return 1.0;
+    if (pos === "WR" && filled.WR < CONFIG.starters.WR) return 1.0;
+    if (pos === "TE" && filled.TE < CONFIG.starters.TE) return 1.0;
+    if (pos === "K" && filled.K < CONFIG.starters.K) return 0.35;
+    if (pos === "DEF" && filled.DEF < CONFIG.starters.DEF) return 0.35;
+
+    if (
+      CONFIG.allowedFlex.includes(pos) &&
+      filled.FLEX < CONFIG.starters.FLEX
+    ) {
+      return 0.75;
+    }
+
+    const ideal = CONFIG.preferredFinalRoster[pos]?.ideal ?? 0;
+    if (counts[pos] < ideal) return 0.35;
+
+    return 0.05;
+  }
+
+  function calculateFlexValue(position, roster) {
+    const pos = normalizePosition(position);
+    if (!CONFIG.allowedFlex.includes(pos)) return 0;
+
+    const counts = countRoster(roster);
+    const filled = getRosterSlotsFilled(roster);
+
+    if (filled.FLEX < CONFIG.starters.FLEX) {
+      if (pos === "WR") return 1.0;
+      if (pos === "RB") return 0.95;
+      if (pos === "TE") return 0.45;
+    }
+
+    if (pos === "WR" && counts.WR < 6) return 0.65;
+    if (pos === "RB" && counts.RB < 5) return 0.60;
+    if (pos === "TE" && counts.TE >= 1) return 0.05;
+
+    return 0.2;
+  }
+
+  function calculateScarcity(player, availablePlayers, draftedPlayers) {
+    const pos = normalizePosition(player.position);
+    const samePosition = availablePlayers
+      .filter(p => normalizePosition(p.position) === pos)
+      .sort((a, b) => numberOr(a.rank, 999) - numberOr(b.rank, 999));
+
+    const playerIndex = samePosition.findIndex(p => p.id === player.id);
+    const nextPlayers = samePosition.slice(playerIndex + 1, playerIndex + 5);
+
+    const currentProjection = numberOr(player.projectedPoints);
+    const nextAvgProjection = nextPlayers.length
+      ? nextPlayers.reduce((sum, p) => sum + numberOr(p.projectedPoints), 0) / nextPlayers.length
+      : currentProjection * 0.80;
+
+    const projectionDrop = currentProjection > 0
+      ? clamp((currentProjection - nextAvgProjection) / currentProjection, 0, 0.35)
+      : 0;
+
+    const draftedCounts = getDraftedCountByPosition(draftedPlayers);
+    const marketPressure = clamp(
+      draftedCounts[pos] / Math.max(1, CONFIG.replacementRanks[pos]),
+      0,
+      1.5
+    );
+
+    const baseScarcity = CONFIG.positionBaseScarcity[pos] || 0;
+
+    return baseScarcity + projectionDrop * 3 + marketPressure * 0.45;
+  }
+
+  function calculateTierValue(player, availablePlayers) {
+    const pos = normalizePosition(player.position);
+    const tier = Math.max(1, numberOr(player.tier, 99));
+
+    const samePosition = availablePlayers
+      .filter(p => normalizePosition(p.position) === pos)
+      .sort((a, b) => numberOr(a.rank, 999) - numberOr(b.rank, 999));
+
+    const sameTierRemaining = samePosition.filter(
+      p => numberOr(p.tier, 99) === tier
+    ).length;
+
+    const nextTier = samePosition.find(p => numberOr(p.tier, 99) > tier);
+    const nextTierDrop = nextTier
+      ? Math.max(
+          0,
+          numberOr(player.projectedPoints) - numberOr(nextTier.projectedPoints)
+        )
+      : 0;
+
+    let score = 1 / tier;
+
+    if (sameTierRemaining <= 1) score += 0.75;
+    else if (sameTierRemaining === 2) score += 0.40;
+
+    score += clamp(nextTierDrop / 20, 0, 1.25);
+
+    return score;
+  }
+
+  function calculateAdpValue(player, currentPick) {
+    const adp = numberOr(player.adp, currentPick);
+    const difference = adp - currentPick;
+
+    if (difference >= 24) return 2.0;
+    if (difference >= 12) return 1.3;
+    if (difference >= 6) return 0.7;
+    if (difference >= -6) return 0.2;
+    if (difference >= -12) return -0.6;
+    if (difference >= -24) return -1.25;
+    return -2.0;
+  }
+
+  function calculateRankValue(player, currentPick) {
+    const rank = numberOr(player.rank, currentPick);
+    const difference = currentPick - rank;
+
+    if (difference >= 24) return 2.0;
+    if (difference >= 12) return 1.2;
+    if (difference >= 6) return 0.7;
+    if (difference >= -6) return 0.2;
+    if (difference >= -12) return -0.5;
+    return -1.0;
+  }
+
+  function calculateReachPenalty(player, currentPick) {
+    const adp = numberOr(player.adp, currentPick);
+    const reach = currentPick - adp;
+
+    if (reach >= 0) return 0;
+    const picksEarly = Math.abs(reach);
+
+    if (picksEarly <= 6) return 0.25;
+    if (picksEarly <= 12) return 0.75;
+    if (picksEarly <= 24) return 1.5;
+    return 2.75;
+  }
+
+  function calculateQBTimingAdjustment(player, round, currentPick, roster) {
+    if (normalizePosition(player.position) !== "QB") return 0;
+
+    const counts = countRoster(roster);
+    const tier = numberOr(player.tier, 99);
+    const adpFall = numberOr(player.adp, currentPick) - currentPick;
+
+    if (counts.QB >= 2) return -8;
+    if (counts.QB >= 1) return round < 12 ? -5 : -2;
+
+    if (CONFIG.qbStrategy.hardAvoidRounds.includes(round)) {
+      return -3.5;
+    }
+
+    if (CONFIG.qbStrategy.strongPenaltyRounds.includes(round)) {
+      const eliteFall =
+        tier <= CONFIG.qbStrategy.eliteTierThreshold &&
+        adpFall >= CONFIG.qbStrategy.acceptableFallPicks;
+
+      return eliteFall ? -0.25 : -2.0;
+    }
+
+    if (round === CONFIG.qbStrategy.earliestTargetRound) {
+      return tier <= 2 || adpFall >= 8 ? 0.75 : -0.65;
+    }
+
+    if (CONFIG.qbStrategy.preferredRounds.includes(round)) {
+      return tier <= 3 ? 1.25 : 0.75;
+    }
+
+    if (CONFIG.qbStrategy.waitRounds.includes(round)) {
+      return 1.0;
+    }
+
+    if (round >= CONFIG.qbStrategy.emergencyRound) {
+      return 2.0;
+    }
+
+    return 0;
+  }
+
+  function calculateTETimingAdjustment(player, round, roster) {
+    if (normalizePosition(player.position) !== "TE") return 0;
+
+    const counts = countRoster(roster);
+    const tier = numberOr(player.tier, 99);
+
+    if (counts.TE >= 2) return -6;
+    if (counts.TE >= 1) return round < 12 ? -3.0 : -1.0;
+
+    if (round <= 2) return -2.5;
+
+    if (CONFIG.teStrategy.acceptableEarlyRounds.includes(round)) {
+      return tier <= CONFIG.teStrategy.eliteTierThreshold ? 1.25 : -0.75;
+    }
+
+    if (CONFIG.teStrategy.preferredRounds.includes(round)) {
+      return tier <= 4 ? 0.85 : 0.35;
+    }
+
+    if (round >= 10 && counts.TE === 0) return 1.25;
+
+    return 0;
+  }
+
+  function calculateSpecialTeamsAdjustment(player, round, roster) {
+    const pos = normalizePosition(player.position);
+    const counts = countRoster(roster);
+
+    if (pos === "K") {
+      if (counts.K >= 1) return -10;
+      if (round < CONFIG.specialTeamsStrategy.kickerEarliestRound) return -5;
+      if (round === CONFIG.specialTeamsStrategy.preferredKickerRound) return 1.5;
+      return 0.3;
+    }
+
+    if (pos === "DEF") {
+      if (counts.DEF >= 1) return -10;
+      if (round < CONFIG.specialTeamsStrategy.defenseEarliestRound) return -5;
+      if (round === CONFIG.specialTeamsStrategy.preferredDefenseRound) return 1.5;
+      return 0.5;
+    }
+
+    return 0;
+  }
+
+  function calculateRosterImbalancePenalty(player, roster, round) {
+    const pos = normalizePosition(player.position);
+    const counts = countRoster(roster);
+    const target = CONFIG.preferredFinalRoster[pos];
+
+    if (!target) return 0;
+
+    let penalty = 0;
+
+    if (counts[pos] >= target.max) {
+      penalty += 1.5;
+    } else if (counts[pos] >= target.ideal) {
+      penalty += 0.45;
+    }
+
+    if (pos === "QB" && counts.QB >= 1 && round < 11) penalty += 1.0;
+    if (pos === "TE" && counts.TE >= 1 && round < 11) penalty += 0.75;
+    if ((pos === "K" || pos === "DEF") && counts[pos] >= 1) penalty += 5;
+
+    return penalty;
+  }
+
+  function calculateDeadBenchPenalty(player, roster, round) {
+    const pos = normalizePosition(player.position);
+    const counts = countRoster(roster);
+
+    if (round <= 8) return 0;
+
+    if (pos === "QB" && counts.QB >= 1) return 1.25;
+    if (pos === "TE" && counts.TE >= 1) return 0.85;
+    if (pos === "K" || pos === "DEF") {
+      return round < 13 ? 2.5 : 0;
+    }
+
+    const ceiling = numberOr(player.ceiling, 5);
+    const breakout = numberOr(player.breakoutScore, 5);
+    const starterProbability = numberOr(player.starterProbability, 0.5);
+
+    if (
+      CONFIG.allowedFlex.includes(pos) &&
+      ceiling < 5 &&
+      breakout < 4 &&
+      starterProbability < 0.50
+    ) {
+      return 1.0;
+    }
+
+    return 0;
+  }
+
+  function calculateByeConflictPenalty(player, roster) {
+    const byeWeek = numberOr(player.byeWeek, 0);
+    if (!byeWeek) return 0;
+
+    const pos = normalizePosition(player.position);
+    const sameByeSamePosition = roster.filter(
+      p =>
+        normalizePosition(p.position) === pos &&
+        numberOr(p.byeWeek, 0) === byeWeek
+    ).length;
+
+    const sameByeStarters = roster.filter(
+      p =>
+        numberOr(p.byeWeek, 0) === byeWeek &&
+        ["QB", "RB", "WR", "TE"].includes(normalizePosition(p.position))
+    ).length;
+
+    let penalty = sameByeSamePosition * 0.45;
+    if (sameByeStarters >= 4) penalty += 0.75;
+
+    return penalty;
+  }
+
+  function calculateTeamConcentrationPenalty(player, roster) {
+    const team = String(player.nflTeam || "").toUpperCase();
+    if (!team) return 0;
+
+    const teamCount = roster.filter(
+      p => String(p.nflTeam || "").toUpperCase() === team
+    ).length;
+
+    if (teamCount <= 1) return 0;
+    if (teamCount === 2) return 0.35;
+    if (teamCount === 3) return 0.85;
+    return 1.5;
+  }
+
+  function calculateOpportunityCost(player, availablePlayers, roster, round) {
+    const pos = normalizePosition(player.position);
+
+    const topAlternatives = availablePlayers
+      .filter(p => p.id !== player.id)
+      .sort((a, b) => numberOr(a.rank, 999) - numberOr(b.rank, 999))
+      .slice(0, 12);
+
+    const strongRBWR = topAlternatives.filter(p => {
+      const pPos = normalizePosition(p.position);
+      return (
+        (pPos === "RB" || pPos === "WR") &&
+        numberOr(p.tier, 99) <= 4
+      );
+    }).length;
+
+    let cost = 0;
+
+    if ((pos === "QB" || pos === "TE") && round <= 5 && strongRBWR >= 4) {
+      cost += 1.0;
+    }
+
+    if ((pos === "K" || pos === "DEF") && round <= 12) {
+      cost += 3.0;
+    }
+
+    const counts = countRoster(roster);
+    if (pos === "QB" && counts.RB < 2 && counts.WR < 3 && round <= 7) {
+      cost += 0.8;
+    }
+
+    return cost;
+  }
+
+  function calculateRiskScore(player) {
+    return (
+      numberOr(player.injuryRisk) * CONFIG.weights.injuryRisk +
+      numberOr(player.roleRisk) * CONFIG.weights.roleRisk +
+      numberOr(player.ageRisk) * CONFIG.weights.ageRisk
+    );
+  }
+
+  function calculateUpsideScore(player, round) {
+    const lateRoundMultiplier = round >= 9 ? 1.35 : 1.0;
+
+    return (
+      numberOr(player.ceiling) * CONFIG.weights.ceiling +
+      numberOr(player.breakoutScore) * CONFIG.weights.breakout +
+      numberOr(player.handcuffScore) * CONFIG.weights.handcuff +
+      numberOr(player.stackScore) * CONFIG.weights.stack
+    ) * lateRoundMultiplier;
+  }
+
+  function scorePlayer(player, context) {
+    const {
+      roster = [],
+      draftedPlayers = [],
+      availablePlayers = [],
+      round,
+      currentPick
+    } = context;
+
+    const pos = normalizePosition(player.position);
+    const w = CONFIG.weights;
+
+    const components = {
+      projectedPoints:
+        numberOr(player.projectedPoints) * w.projectedPoints,
+
+      vor:
+        numberOr(player.vor) * w.vor,
+
+      rankValue:
+        calculateRankValue(player, currentPick) * w.rankValue,
+
+      adpValue:
+        calculateAdpValue(player, currentPick) * w.adpValue,
+
+      tierValue:
+        calculateTierValue(player, availablePlayers) * w.tierValue,
+
+      positionalNeed:
+        calculatePositionalNeed(pos, roster, round) * w.positionalNeed,
+
+      scarcity:
+        calculateScarcity(player, availablePlayers, draftedPlayers) * w.scarcity,
+
+      lineupImpact:
+        calculateLineupImpact(pos, roster) * w.lineupImpact,
+
+      flexValue:
+        calculateFlexValue(pos, roster) * w.flexValue,
+
+      floor:
+        numberOr(player.floor) * w.floor,
+
+      consistency:
+        numberOr(player.consistency) * w.consistency,
+
+      starterProbability:
+        numberOr(player.starterProbability, 0.5) * w.starterProbability,
+
+      expectedGames:
+        numberOr(player.expectedGames, 16) * w.expectedGames,
+
+      upside:
+        calculateUpsideScore(player, round),
+
+      qbTiming:
+        calculateQBTimingAdjustment(
+          player,
+          round,
+          currentPick,
+          roster
+        ) * w.earlyQB,
+
+      teTiming:
+        calculateTETimingAdjustment(
+          player,
+          round,
+          roster
+        ) * w.earlyTE,
+
+      specialTeamsTiming:
+        calculateSpecialTeamsAdjustment(
+          player,
+          round,
+          roster
+        ),
+
+      risk:
+        -calculateRiskScore(player),
+
+      reachPenalty:
+        -calculateReachPenalty(player, currentPick) * w.reachPenalty,
+
+      rosterImbalance:
+        -calculateRosterImbalancePenalty(
+          player,
+          roster,
+          round
+        ) * w.rosterImbalance,
+
+      deadBench:
+        -calculateDeadBenchPenalty(
+          player,
+          roster,
+          round
+        ) * w.deadBench,
+
+      byeConflict:
+        -calculateByeConflictPenalty(
+          player,
+          roster
+        ) * w.byeConflict,
+
+      teamConcentration:
+        -calculateTeamConcentrationPenalty(
+          player,
+          roster
+        ) * w.teamConcentration,
+
+      opportunityCost:
+        -calculateOpportunityCost(
+          player,
+          availablePlayers,
+          roster,
+          round
+        ) * w.opportunityCost
+    };
+
+    const rawScore = Object.values(components).reduce(
+      (sum, value) => sum + numberOr(value),
+      0
+    );
+
+    return {
+      player,
+      score: Number(rawScore.toFixed(2)),
+      components,
+      recommendation: createRecommendationLabel(rawScore),
+      reasons: buildPlayerReasons(player, context, components)
+    };
+  }
+
+  function createRecommendationLabel(score) {
+    if (score >= 95) return "ELITE PICK";
+    if (score >= 82) return "STRONG PICK";
+    if (score >= 70) return "GOOD VALUE";
+    if (score >= 58) return "ACCEPTABLE";
+    if (score >= 45) return "RISKY";
+    return "AVOID";
+  }
+
+  function buildPlayerReasons(player, context, components) {
+    const reasons = [];
+    const pos = normalizePosition(player.position);
+    const { roster, round, currentPick } = context;
+    const counts = countRoster(roster);
+
+    if (components.adpValue > 0.5) {
+      reasons.push("Falling below ADP and providing draft value.");
+    }
+
+    if (components.tierValue > 4) {
+      reasons.push("Near a positional tier break.");
+    }
+
+    if (components.scarcity > 5) {
+      reasons.push("Positional scarcity increases the value of this pick.");
+    }
+
+    if (components.lineupImpact >= 4.5) {
+      reasons.push("Immediately improves the starting lineup.");
+    }
+
+    if (components.upside >= 12) {
+      reasons.push("Offers strong ceiling or breakout potential.");
+    }
+
+    if (components.risk <= -10) {
+      reasons.push("Carries meaningful injury, role, or age risk.");
+    }
+
+    if (pos === "QB") {
+      if (round <= 4) {
+        reasons.push("Quarterback is normally delayed because only one starts.");
+      } else if (round >= 6 && round <= 8 && counts.QB === 0) {
+        reasons.push("This is within the preferred quarterback window.");
+      } else if (round >= 9 && counts.QB === 0) {
+        reasons.push("Quarterback need is increasing as the draft advances.");
+      }
+    }
+
+    if (pos === "TE" && counts.TE >= 1) {
+      reasons.push("A second tight end may create a low-value bench spot.");
+    }
+
+    if ((pos === "K" || pos === "DEF") && round < 13) {
+      reasons.push("Kicker and defense should normally be drafted at the end.");
+    }
+
+    if (calculateReachPenalty(player, currentPick) >= 1.5) {
+      reasons.push("This selection would be a significant reach.");
+    }
+
+    if (!reasons.length) {
+      reasons.push("Balanced value based on roster construction and player grade.");
+    }
+
+    return reasons;
+  }
+
+  function recommendBestPick(context) {
+    const {
+      availablePlayers = [],
+      roster = [],
+      draftedPlayers = [],
+      round,
+      pickInRound,
+      draftSlot,
+      currentPick: suppliedCurrentPick
+    } = context;
+
+    if (!Number.isFinite(round) || round < 1 || round > CONFIG.rounds) {
+      throw new Error(`Round must be between 1 and ${CONFIG.rounds}.`);
+    }
+
+    const currentPick = Number.isFinite(suppliedCurrentPick)
+      ? suppliedCurrentPick
+      : getCurrentPickNumber(
+          round,
+          pickInRound,
+          draftSlot,
+          CONFIG.teams
+        );
+
+    const scored = availablePlayers
+      .map(player =>
+        scorePlayer(player, {
+          roster,
+          draftedPlayers,
+          availablePlayers,
+          round,
+          currentPick
+        })
+      )
+      .sort((a, b) => b.score - a.score);
+
+    return {
+      currentPick,
+      round,
+      rosterCounts: countRoster(roster),
+      lineupStatus: getRosterSlotsFilled(roster),
+      bestPick: scored[0] || null,
+      alternatives: scored.slice(1, 6),
+      fullRanking: scored
+    };
+  }
+
+  function gradeRoster(roster = []) {
+    const counts = countRoster(roster);
+    const filled = getRosterSlotsFilled(roster);
+
+    let score = 100;
+    const notes = [];
+
+    for (const pos of POSITIONS) {
+      const target = CONFIG.preferredFinalRoster[pos];
+
+      if (counts[pos] < target.min) {
+        const deficit = target.min - counts[pos];
+        score -= deficit * 12;
+        notes.push(`Needs ${deficit} more ${pos}.`);
+      }
+
+      if (counts[pos] > target.max) {
+        const excess = counts[pos] - target.max;
+        score -= excess * 8;
+        notes.push(`Has ${excess} unnecessary extra ${pos}.`);
+      }
+    }
+
+    if (filled.FLEX < CONFIG.starters.FLEX) {
+      score -= 12;
+      notes.push("FLEX position is not filled.");
+    }
+
+    const benchPlayers = Math.max(0, roster.length - 10);
+    if (benchPlayers > CONFIG.benchSpots) {
+      score -= (benchPlayers - CONFIG.benchSpots) * 5;
+    }
+
+    if (counts.QB > 1) {
+      score -= 5;
+      notes.push("A second quarterback reduces bench upside.");
+    }
+
+    if (counts.TE > 1) {
+      score -= 4;
+      notes.push("A second tight end may be unnecessary.");
+    }
+
+    if (counts.K > 1 || counts.DEF > 1) {
+      score -= 15;
+      notes.push("Never roster multiple kickers or defenses after the draft.");
+    }
+
+    const skillPlayers = roster.filter(p =>
+      ["RB", "WR", "TE"].includes(normalizePosition(p.position))
+    );
+
+    const upsidePlayers = skillPlayers.filter(
+      p =>
+        numberOr(p.ceiling) >= 7.5 ||
+        numberOr(p.breakoutScore) >= 7.5 ||
+        numberOr(p.handcuffScore) >= 7.5
+    );
+
+    const upsideShare = skillPlayers.length
+      ? upsidePlayers.length / skillPlayers.length
+      : 0;
+
+    if (upsideShare < 0.20) {
+      score -= 6;
+      notes.push("Bench lacks enough league-winning upside.");
+    }
+
+    if (upsideShare > 0.50) {
+      score -= 4;
+      notes.push("Roster may carry too much volatility.");
+    }
+
+    score = clamp(score, 0, 100);
+
+    return {
+      score,
+      grade:
+        score >= 93 ? "A" :
+        score >= 85 ? "B" :
+        score >= 75 ? "C" :
+        score >= 65 ? "D" : "F",
+      counts,
+      filled,
+      complete: isStartingLineupComplete(roster),
+      notes
+    };
+  }
+
+  function validateRosterLegality(roster = []) {
+    const errors = [];
+    const counts = countRoster(roster);
+
+    if (roster.length > CONFIG.rounds) {
+      errors.push(`Roster exceeds ${CONFIG.rounds} total players.`);
+    }
+
+    if (counts.K > 1) errors.push("Roster contains more than one kicker.");
+    if (counts.DEF > 1) errors.push("Roster contains more than one defense.");
+
+    for (const player of roster) {
+      const pos = normalizePosition(player.position);
+      if (!POSITIONS.includes(pos)) {
+        errors.push(`Unknown position for ${player.name || "player"}: ${pos}`);
+      }
+    }
+
+    return {
+      legal: errors.length === 0,
+      errors
+    };
+  }
+
+  return {
+    CONFIG,
+    countRoster,
+    getCurrentPickNumber,
+    getRosterSlotsFilled,
+    isStartingLineupComplete,
+    validateRosterLegality,
+    scorePlayer,
+    recommendBestPick,
+    gradeRoster
+  };
+})();
+
+/**********************************************************************
+ * BASIC USAGE EXAMPLE
+ *********************************************************************/
+
+// const result = DukesFF26DraftEngine.recommendBestPick({
+//   round: 6,
+//   draftSlot: 4,
+//   roster: myRoster,
+//   draftedPlayers: allDraftedPlayers,
+//   availablePlayers: availablePlayers
+// });
+//
+// console.log("BEST PICK:", result.bestPick);
+// console.log("ALTERNATIVES:", result.alternatives);
+//
+// const rosterGrade = DukesFF26DraftEngine.gradeRoster(myRoster);
+// console.log(rosterGrade);
+
+/**********************************************************************
+ * BROWSER EXPORT
+ *********************************************************************/
+
+if (typeof window !== "undefined") {
+  window.DukesFF26DraftEngine = DukesFF26DraftEngine;
+}
+
+/**********************************************************************
+ * NODE / MODULE EXPORT
+ *********************************************************************/
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = DukesFF26DraftEngine;
+}
+
+
+function strategyPlayerFromApp(player,pickIndex=null){
+  const mapped=DraftIntelligence.mapPlayer(player,pickIndex===null?null:{overall:pickIndex+1});
+  const pool=PLAYERS.filter(x=>x.pos===player.pos).map(x=>DraftIntelligence.mapPlayer(x));
+  const replacementIndex={QB:13,RB:35,WR:47,TE:13,K:11,DEF:11}[mapped.position]??11;
+  const replacement=pool.sort((a,b)=>b.projectedPoints-a.projectedPoints)[replacementIndex]?.projectedPoints||mapped.projectedPoints*.72;
+  const riskScale=v=>Math.max(0,Math.min(10,(Number(v)||50)/10));
+  return {
+    id:mapped.id,name:mapped.name,position:mapped.position,nflTeam:mapped.nflTeam,byeWeek:mapped.byeWeek,
+    rank:Number(player.rank)||999,adp:Number(mapped.adp)||Number(player.rank)||999,
+    projectedPoints:Number(mapped.projectedPoints)||0,vor:(Number(mapped.projectedPoints)||0)-replacement,
+    tier:Number(mapped.tier)||99,floor:riskScale(mapped.floor),ceiling:riskScale(mapped.upside),
+    consistency:riskScale((mapped.floor||50)*.65+(100-(mapped.roleRisk||50))*.35),
+    injuryRisk:riskScale(mapped.injuryRisk),roleRisk:riskScale(mapped.roleRisk),ageRisk:5,
+    breakoutScore:riskScale(mapped.upside),handcuffScore:mapped.handcuffOf?7:0,
+    stackScore:0,starterProbability:mapped.depthChartRole==='starter'?.9:mapped.depthChartRole==='committee'?.62:.35,
+    expectedGames:Math.max(10,17-riskScale(mapped.injuryRisk)*.45),notes:mapped.tags||[]
+  };
+}
+function strategyRosterFor(slot){
+  return state.picks.filter(x=>x.teamSlot===slot).map(x=>{const p=byId(x.playerId);return p?strategyPlayerFromApp(p,x.overall-1):null}).filter(Boolean);
+}
+function strategyDraftedPlayers(){
+  return state.picks.map(x=>{const p=byId(x.playerId);return p?strategyPlayerFromApp(p,x.overall-1):null}).filter(Boolean);
+}
+function strategyAvailablePlayers(){return available().map(p=>strategyPlayerFromApp(p));}
+function strategyEvaluation(p,slot,pickIndex){
+  const result=DukesFF26DraftEngine.scorePlayer(strategyPlayerFromApp(p,pickIndex),{
+    roster:strategyRosterFor(slot),draftedPlayers:strategyDraftedPlayers(),availablePlayers:strategyAvailablePlayers(),
+    round:Math.floor(pickIndex/12)+1,currentPick:pickIndex+1
+  });
+  return result;
+}
 function scoreCandidate(p,slot,pickIndex){
-  return DraftIntelligence.candidateScore(p,slot,pickIndex,state.cpuStyle);
+  const strategy=strategyEvaluation(p,slot,pickIndex);
+  const grading=DraftIntelligence.candidateScore(p,slot,pickIndex,state.cpuStyle);
+  // Strategy is primary; the existing grading engine supplies legality and marginal-roster confirmation.
+  return strategy.score*100+grading*.08;
 }
 function cpuChoice(slot,pickIndex){
   const roster=rosterFor(slot),status=starterStatus(roster),remaining=15-roster.length;
   let pool=available().filter(p=>(posCounts(roster)[p.pos]||0)<MAX_CPU[p.pos]);
   if(status.missing.length>=remaining){const forced=pool.filter(p=>playerFillsNeed(p,roster));if(forced.length)pool=forced;}
-  const windowSize=state.cpuStyle==='chaos'?70:state.cpuStyle==='chalk'?Math.min(pool.length,12):55;
-  const window=pool.slice(0,windowSize);
-  window.sort((a,b)=>scoreCandidate(b,slot,pickIndex)-scoreCandidate(a,slot,pickIndex));
-  return window[0]||pool[0]||available()[0];
+  if(!pool.length)return available()[0];
+
+  // Preserve all existing draft modes while applying legality and roster limits.
+  if(state.cpuStyle==='chalk')return [...pool].sort((a,b)=>a.rank-b.rank)[0];
+
+  const ranked=[...pool].slice(0,75).sort((a,b)=>scoreCandidate(b,slot,pickIndex)-scoreCandidate(a,slot,pickIndex));
+  if(state.cpuStyle==='chaos'){
+    // Controlled variation among strong strategy-approved options; never randomize from the whole pool.
+    const chaosPool=ranked.slice(0,Math.min(8,ranked.length));
+    const weights=chaosPool.map((_,i)=>Math.max(1,8-i));
+    let roll=Math.random()*weights.reduce((a,b)=>a+b,0);
+    for(let i=0;i<chaosPool.length;i++){roll-=weights[i];if(roll<=0)return chaosPool[i];}
+  }
+  return ranked[0]||pool[0];
 }
 function recommendedPlayers(){
   if(!state.started)return[];
-  const pool=available().slice(0,110),slot=activeDraftSlot();
-  return pool.map(p=>({p,s:DraftIntelligence.candidateScore(p,slot,state.currentPick,'balanced')})).sort((a,b)=>b.s-a.s).slice(0,3).map(x=>x.p);
+  const slot=activeDraftSlot();
+  // Use the exact shared composite score used by CPU selections and Best Pick.
+  return [...available()].slice(0,100)
+    .sort((a,b)=>scoreCandidate(b,slot,state.currentPick)-scoreCandidate(a,slot,state.currentPick))
+    .slice(0,3);
 }
-function scoreUserCandidate(p){
-  return DraftIntelligence.candidateScore(p,activeDraftSlot(),state.currentPick,'balanced');
+function scoreUserCandidate(p){return scoreCandidate(p,activeDraftSlot(),state.currentPick);}
+function strategyBestHistoricalPick(slot){
+  const teamPicks=state.picks.filter(x=>x.teamSlot===slot).sort((a,b)=>a.overall-b.overall),built=[];
+  let best=null;
+  for(const pick of teamPicks){
+    const p=byId(pick.playerId);if(!p)continue;
+    const candidate=strategyPlayerFromApp(p,pick.overall-1);
+    const draftedBefore=state.picks.filter(x=>x.overall<pick.overall).map(x=>{const dp=byId(x.playerId);return dp?strategyPlayerFromApp(dp,x.overall-1):null}).filter(Boolean);
+    const draftedIds=new Set(draftedBefore.map(dp=>dp.id));
+    const availableAtPick=PLAYERS.filter(ap=>!draftedIds.has(String(ap.rank))).map(strategyPlayerFromApp);
+    const evaluation=DukesFF26DraftEngine.scorePlayer(candidate,{roster:[...built],draftedPlayers:draftedBefore,availablePlayers:availableAtPick,round:pick.round,currentPick:pick.overall});
+    const grading=DraftIntelligence.candidateScore(p,slot,pick.overall-1,'balanced');
+    const sharedScore=evaluation.score*100+grading*.08;
+    const entry={player:DraftIntelligence.mapPlayer(p,pick),score:sharedScore,compositeImpact:sharedScore,adjustedValue:evaluation.components.adpValue,label:evaluation.recommendation,breakdown:evaluation};
+    if(!best||entry.score>best.score)best=entry;
+    built.push(candidate);
+  }
+  return best;
 }
 
 function makePick(player,auto=false){
