@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Duke's PPR Mini Draft</title>
+<title>Duke's FF26</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <style>
@@ -790,7 +790,7 @@ body::before{
         <div class="dukes-rule"></div>
         <div class="dukes-sub"><span>RIB HOUSE</span><b>&amp;</b><span>GRILLE</span></div>
       </div>
-      <div class="brand-copy"><h1><span>DUKE’S</span> PPR MINI DRAFT</h1><small>12 teams · 15 rounds · snake</small></div>
+      <div class="brand-copy"><h1><span>DUKE’S</span> FF26</h1><small>12 teams · 15 rounds · snake</small></div>
     </div>
     <div class="header-actions">
       <button class="btn small ghost sound-toggle" type="button" data-sound-toggle aria-pressed="true" title="Turn sound off"><span class="sound-icon" aria-hidden="true">🔊</span> <span class="text-label sound-label">Sound On</span></button>
@@ -906,7 +906,7 @@ body::before{
       </div>
     </section>
   </main>
-  <div class="footer-brand"><b>DUKE’S</b> RIB HOUSE <i>&amp;</i> GRILLE · 2026 PPR DRAFT ROOM</div>
+  <div class="footer-brand"><b>DUKE’S FF26</b> · 12 TEAM PPR DRAFT ROOM</div>
 </div>
 
 
@@ -930,7 +930,7 @@ body::before{
       <div class="dukes-rule"></div>
       <div class="dukes-sub"><span>RIB HOUSE</span><b>&amp;</b><span>GRILLE</span></div>
     </div>
-    <div class="setup-subtitle">12 TEAM PPR SNAKE DRAFT</div>
+    <div class="setup-subtitle">DUKE’S FF26 · 12 TEAM PPR SNAKE DRAFT</div>
     <h2>2026 FANTASY<br>FOOTBALL</h2>
     <div class="setup-form">
       <div class="setup-field-light">
@@ -1216,36 +1216,80 @@ const DraftIntelligence=(()=>{
   function grade({roster,draftSlot=1,allLeagueRosters=[],playerPool=[]}){
     const start=startingStrength(roster,allLeagueRosters),dv=draftValue(roster,draftSlot),rc=construction(roster),bye=byeCoverage(roster),risk=riskUpside(roster),hard=penalties(roster),sim=season(roster),pg=positionGroups(roster),corr=teamCorrelation(roster);
     const weighted=start.score*.30+dv.score*.20+rc.score*.20+bye.score*.15+risk.score*.15,score=round(clamp(weighted-hard.totalPenalty));
-    const results={overallScore:score,letterGrade:letter(score),draftDecisionScore:round(clamp(dv.score*.5+rc.score*.35+risk.score*.15-hard.totalPenalty)),rosterPowerScore:round(clamp(start.score*.55+bye.score*.2+risk.score*.15+75*.1)),startingLineupStrength:start,draftValue:dv,rosterConstruction:rc,byeCoverage:bye,riskUpside:risk,hardPenalties:hard,seasonSimulation:sim,positionGroups:pg,teamCorrelation:corr,valueOverReplacement:roster.map(p=>({player:p,valueOverReplacement:vor(p,playerPool)}))};results.draftDecisionGrade=letter(results.draftDecisionScore);results.rosterPowerGrade=letter(results.rosterPowerScore);results.explanations=explanations(results);return results;
+    const results={overallScore:score,letterGrade:letter(score),draftDecisionScore:round(clamp(dv.score*.5+rc.score*.35+risk.score*.15-hard.totalPenalty)),rosterPowerScore:round(clamp(start.score*.55+bye.score*.2+risk.score*.15+75*.1)),startingLineupStrength:start,draftValue:dv,rosterConstruction:rc,byeCoverage:bye,riskUpside:risk,hardPenalties:hard,seasonSimulation:sim,positionGroups:pg,teamCorrelation:corr,valueOverReplacement:roster.map(p=>({player:p,valueOverReplacement:vor(p,playerPool)}))};
+    const compositePick=compositeBestPick(roster,draftSlot,playerPool);
+    if(compositePick)results.draftValue.bestPick=compositePick;
+    results.draftDecisionGrade=letter(results.draftDecisionScore);results.rosterPowerGrade=letter(results.rosterPowerScore);results.explanations=explanations(results);return results;
   }
   function appRoster(slot){return state.picks.filter(x=>x.teamSlot===slot).map(x=>{const p=byId(x.playerId);return p?mapPlayer(p,x):null}).filter(Boolean)}
   function appLeagueRosters(){return Array.from({length:12},(_,i)=>appRoster(i+1))}
   function appPlayerPool(){return PLAYERS.map(p=>mapPlayer(p))}
   function gradeSlot(slot){return grade({roster:appRoster(slot),draftSlot:slot,allLeagueRosters:appLeagueRosters(),playerPool:appPlayerPool()})}
-  function candidateScore(player,slot,pickIndex,mode='balanced'){
-    const roster=appRoster(slot),mapped=mapPlayer(player,{overall:pickIndex+1}),roundNo=Math.floor(pickIndex/12)+1,c=counts(roster),legal=legality(roster),remaining=15-roster.length;
-    const missingCount=legal.issues.reduce((s,x)=>s+x.missing,0),fills=legal.issues.some(x=>x.position===mapped.position||(x.position==='FLEX'&&SETTINGS.flexEligible.includes(mapped.position)));
-    if(mode==='chalk'){
-      let strict=100000-player.rank*100;
-      if(missingCount>=remaining)strict+=fills?1000000:-1000000;
-      if((mapped.position==='K'||mapped.position==='DEF')&&roundNo<12&&missingCount<remaining)strict-=500000;
-      return strict;
+  function evaluateCandidate(player,slot,pickIndex,mode='balanced',rosterOverride=null,poolOverride=null){
+    const roster=rosterOverride||appRoster(slot),mapped=mapPlayer(player,{overall:pickIndex+1}),roundNo=Math.floor(pickIndex/12)+1,c=counts(roster),legal=legality(roster),remaining=15-roster.length;
+    const playerPool=poolOverride||appPlayerPool();
+    const missingCount=legal.issues.reduce((s,x)=>s+x.missing,0);
+    const fills=legal.issues.some(x=>x.position===mapped.position||(x.position==='FLEX'&&SETTINGS.flexEligible.includes(mapped.position)));
+    const beforeLineup=bestLineup(roster).projectedPoints,afterLineup=bestLineup([...roster,mapped]).projectedPoints;
+    const marginalLineup=afterLineup-beforeLineup;
+    const beforeConstruction=construction(roster).score,afterConstruction=construction([...roster,mapped]).score;
+    const constructionGain=afterConstruction-beforeConstruction;
+    const beforeBye=roster.length?byeCoverage(roster).score:50,afterBye=byeCoverage([...roster,mapped]).score;
+    const byeGain=afterBye-beforeBye;
+    const beforeRisk=roster.length?riskUpside(roster).score:50,afterRisk=riskUpside([...roster,mapped]).score;
+    const riskGain=afterRisk-beforeRisk;
+    const beforePenalty=penalties(roster).totalPenalty,afterPenalty=penalties([...roster,mapped]).totalPenalty;
+    const penaltyImprovement=beforePenalty-afterPenalty;
+    const rd=roundNo,mult=rd<=3?1:rd<=7?.8:rd<=11?.55:.3,rawADP=(mapped.adp??player.rank)-(pickIndex+1);
+    const turnAdj=rawADP<0?(picksUntilNext(pickIndex+1,slot)>=20?8:picksUntilNext(pickIndex+1,slot)>=16?6:picksUntilNext(pickIndex+1,slot)>=12?4:picksUntilNext(pickIndex+1,slot)>=8?2:0):0;
+    const adjustedADP=rawADP*mult+turnAdj;
+    const replacementValue=vor(mapped,playerPool);
+    let score=
+      marginalLineup*115 +
+      adjustedADP*22 +
+      constructionGain*28 +
+      byeGain*15 +
+      riskGain*12 +
+      penaltyImprovement*80 +
+      replacementValue*34 +
+      (mapped.upside-50)*6 +
+      (mapped.floor-50)*3 -
+      (mapped.roleRisk-50)*4;
+    if(fills)score+=520;
+    if(missingCount>=remaining)score+=fills?100000:-100000;
+    const range=SETTINGS.recommendedRosterRanges[mapped.position];
+    if(range&&c[mapped.position]>=range.hardMax)score-=120000;
+    else if(range&&c[mapped.position]>=range.idealMax)score-=950;
+    if(mapped.position==='K'||mapped.position==='DEF'){
+      const need=c[mapped.position]<1;
+      score+=need?(roundNo<12?-3400:(roundNo-11)*650):-50000;
     }
-    const before=bestLineup(roster).projectedPoints,after=bestLineup([...roster,mapped]).projectedPoints,marginal=after-before;
-    let s=10000-player.rank*7+marginal*115+vor(mapped,appPlayerPool())*38;
-    if(fills)s+=460;if(missingCount>=remaining)s+=fills?100000:-100000;
-    const range=SETTINGS.recommendedRosterRanges[mapped.position];if(range&&c[mapped.position]>=range.hardMax)s-=120000;else if(range&&c[mapped.position]>=range.idealMax)s-=900;
-    if(mapped.position==='K'||mapped.position==='DEF'){const need=c[mapped.position]<1;s+=need?(roundNo<12?-3400:(roundNo-11)*650):-50000}
-    if(mapped.position==='QB'&&c.QB>=1)s-=roundNo<10?900:150;
-    if(mapped.position==='TE'&&c.TE>=2)s-=1100;
-    const sameBye=roster.filter(p=>p.byeWeek&&p.byeWeek===mapped.byeWeek),samePos=sameBye.filter(p=>p.position===mapped.position);s-=sameBye.length*120+samePos.length*300;
-    s+=(mapped.upside-50)*7+(mapped.floor-50)*4-(mapped.roleRisk-50)*4;
-    if(player.tier<=3)s+=180;if(player.trend>2)s+=player.trend*18;
-    const turn=picksUntilNext(pickIndex+1,slot);if(turn>=16&&player.tier&&available().filter(x=>x.pos===player.pos&&x.tier===player.tier).length<=2)s+=350;
-    if(mode==='chaos')s+=(Math.random()-.5)*900;
-    return s;
+    if(mapped.position==='QB'&&c.QB>=1)score-=roundNo<10?900:150;
+    if(mapped.position==='TE'&&c.TE>=2)score-=1100;
+    const sameBye=roster.filter(p=>p.byeWeek&&p.byeWeek===mapped.byeWeek),samePos=sameBye.filter(p=>p.position===mapped.position);
+    score-=sameBye.length*120+samePos.length*300;
+    if(player.tier<=3)score+=180;
+    if(player.trend>2)score+=player.trend*18;
+    const turn=picksUntilNext(pickIndex+1,slot);
+    if(turn>=16&&player.tier&&available().filter(x=>x.pos===player.pos&&x.tier===player.tier).length<=2)score+=350;
+    if(mode==='chalk')score=100000-player.rank*100+(fills?450:0)+(missingCount>=remaining?(fills?1000000:-1000000):0)+((mapped.position==='K'||mapped.position==='DEF')&&roundNo<12&&missingCount<remaining?-500000:0);
+    if(mode==='chaos')score+=(Math.random()-.5)*900;
+    return {score,mapped,fills,marginalLineup,adjustedADP,replacementValue,constructionGain,byeGain,riskGain,penaltyImprovement};
   }
-  return {SETTINGS,mapPlayer,grade,gradeSlot,candidateScore,bestLineup,season,legality,letter,appRoster,appLeagueRosters,appPlayerPool};
+  function candidateScore(player,slot,pickIndex,mode='balanced',rosterOverride=null,poolOverride=null){
+    return evaluateCandidate(player,slot,pickIndex,mode,rosterOverride,poolOverride).score;
+  }
+  function compositeBestPick(roster,slot,playerPool){
+    const ordered=[...roster].filter(p=>Number.isFinite(p.draftPick)).sort((a,b)=>a.draftPick-b.draftPick),built=[];
+    const impacts=ordered.map(mapped=>{
+      const source=PLAYERS.find(p=>String(p.rank)===String(mapped.id))||{rank:mapped.adp,name:mapped.name,pos:mapped.position==='DEF'?'DST':mapped.position,team:mapped.nflTeam,tier:mapped.tier,ppg25:mapped.projectedWeeklyPoints,bye:mapped.byeWeek,trend:0};
+      const result=evaluateCandidate(source,slot,mapped.draftPick-1,'balanced',built,playerPool);
+      built.push(mapped);
+      return {player:mapped,score:round(result.score,1),compositeImpact:round(result.score,1),adjustedValue:round(result.adjustedADP,1),rawValue:round((mapped.adp??0)-mapped.draftPick,1),label:'Best composite draft impact',breakdown:result};
+    });
+    return impacts.sort((a,b)=>b.compositeImpact-a.compositeImpact)[0]||null;
+  }
+  return {SETTINGS,mapPlayer,grade,gradeSlot,candidateScore,evaluateCandidate,compositeBestPick,bestLineup,season,legality,letter,appRoster,appLeagueRosters,appPlayerPool};
 })();
 window.FantasyDraftGrader={DEFAULT_LEAGUE_SETTINGS:DraftIntelligence.SETTINGS,gradeFantasyDraft:DraftIntelligence.grade,buildBestLineup:DraftIntelligence.bestLineup,simulateSeason:DraftIntelligence.season,checkRosterLegality:DraftIntelligence.legality,getLetterGrade:DraftIntelligence.letter};
 
@@ -1369,9 +1413,9 @@ function renderPlayers(){
     guide.innerHTML=`<strong>ROSTER RULE:</strong> ${escapeHtml(rosterRequirementText(roster))}`;
     rec.classList.remove('hidden');
     recommendedPlayers().forEach((p,i)=>{
-      const clash=byeConflict(roster,p),fills=playerFillsNeed(p,roster);
+      const clash=byeConflict(roster,p),assessment=DraftIntelligence.evaluateCandidate(p,activeDraftSlot(),state.currentPick,'balanced'),fills=assessment.fills;
       const d=document.createElement('div');d.className=`rec-card ${i===0?'best-fit':''} ${clash.level===2?'bye-warning':''}`;
-      const fitText=fills?'Fills a required starter/FLEX need':status.complete?'Best-value backup':'Best available value';
+      const fitText=fills?'Fills a required starter/FLEX need':assessment.marginalLineup>0.5?'Improves the projected starting lineup':assessment.adjustedADP>=5?'Strong ADP and turn value':status.complete?'Best-value depth pick':'Best composite roster value';
       const byeText=clash.level?` · ⚠ ${clash.text}`:` · Bye ${p.bye??'—'} clear`;
       d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name profile-trigger" data-profile="${p.rank}">${i===0?'★ ':''}${escapeHtml(p.name)}</div><div class="rec-meta">${fitText} · ADP ${p.rank} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div></div><button class="btn small primary" data-rec="${p.rank}">PICK</button>`;
       rec.appendChild(d)
@@ -1479,7 +1523,7 @@ function switchView(requestedView,render=true){
   updateTabMeta(view);
   centerActiveTab($(`.tab[data-view="${view}"]`));
 }
-function exportBoardJpg(){
+async function exportBoardJpg(){
   const cols=12, rows=15, cellW=150, cellH=72, roundW=64, headerH=48, titleH=86, pad=18, scale=2;
   const boardW=roundW+cols*cellW, boardH=headerH+rows*cellH, width=boardW+pad*2, height=titleH+boardH+pad*2;
   const canvas=document.createElement('canvas');
@@ -1506,7 +1550,7 @@ function exportBoardJpg(){
   roundRect(pad,pad,width-pad*2,height-pad*2,18,colors.panel,'#555');ctx.lineWidth=1;
 
   const left=pad, top=pad;
-  drawText("DUKE'S PPR MINI DRAFT", left+12, top+30, 26, colors.text, '900');
+  drawText("DUKE'S FF26", left+12, top+30, 26, colors.text, '900');
   drawText('DRAFT BOARD EXPORT', left+12, top+58, 15, colors.gold, '900');
   drawText('12 TEAMS • 15 ROUNDS • SNAKE', left+280, top+58, 15, colors.muted, '800');
   drawText(`${state.picks.length} OF ${TOTAL_PICKS} PICKS MADE`, width-pad-12, top+34, 16, colors.gold, '900', 'right');
@@ -1556,11 +1600,56 @@ function exportBoardJpg(){
     }
   }
 
-  const a=document.createElement('a');
-  a.href=canvas.toDataURL('image/jpeg',0.94);
-  a.download='Dukes_PPR_Mini_Draft_Board.jpg';
-  a.click();
-  toast('Draft board exported as JPG.','good');
+  const fileName='Dukes_FF26_Draft_Board.jpg';
+  const blob=await new Promise((resolve,reject)=>{
+    canvas.toBlob(result=>result?resolve(result):reject(new Error('Could not create JPG export.')),'image/jpeg',0.94);
+  });
+
+  try{
+    // Desktop browsers that support the File System Access API show a true Save As dialog.
+    if(typeof window.showSaveFilePicker==='function'){
+      const handle=await window.showSaveFilePicker({
+        suggestedName:fileName,
+        types:[{description:'JPEG image',accept:{'image/jpeg':['.jpg','.jpeg']}}]
+      });
+      const writable=await handle.createWritable();
+      await writable.write(blob);
+      await writable.close();
+      toast('Draft board saved.','good');
+      return;
+    }
+
+    // iPad/iPhone Safari: open the native Share sheet. Choose “Save to Files”
+    // there to select iCloud Drive, On My iPad, or a specific folder.
+    const file=new File([blob],fileName,{type:'image/jpeg'});
+    if(navigator.share && (!navigator.canShare || navigator.canShare({files:[file]}))){
+      await navigator.share({
+        files:[file],
+        title:"Duke's FF26 Draft Board",
+        text:'Save the complete 12-team, 15-round draft board.'
+      });
+      toast('Export dialog closed.','good');
+      return;
+    }
+
+    // Final fallback for browsers without either save dialog.
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=fileName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+    toast('Draft board downloaded.','good');
+  }catch(error){
+    if(error && error.name==='AbortError'){
+      toast('Export canceled.');
+      return;
+    }
+    console.error('Export failed:',error);
+    toast('Unable to open the save dialog.','bad');
+  }
 }
 function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 
