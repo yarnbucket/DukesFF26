@@ -820,6 +820,24 @@ body::before{
   text-shadow:0 0 5px rgba(226,20,28,.28);
 }
 
+
+/* Draft-room cleanup: percentage progress, centered needs, compact Auto-Pick */
+#turnSub{width:100%;text-align:center}
+#autoPickBtn{
+  min-width:0!important;
+  width:auto!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:14px 28px!important;
+  border:3px solid #090909!important;
+  border-radius:15px!important;
+  margin:4px auto 0!important;
+  display:block;
+}
+#autoPickBtn.hidden{display:none!important}
+@media(max-width:720px){
+  #autoPickBtn{padding:12px 24px!important;font-size:clamp(18px,5.3vw,23px)!important}
+}
 </style>
 </head>
 <body>
@@ -864,7 +882,7 @@ body::before{
 
   <div class="turn-banner" id="turnBanner">
     <div><strong id="turnTitle">Set up your draft to begin.</strong><br><span id="turnSub">The computer controls the other 11 teams.</span></div>
-    <button class="btn primary hidden" id="autoPickBtn">AUTO-PICK BEST</button>
+    <button class="btn primary hidden" id="autoPickBtn">AUTO-PICK</button>
   </div>
 
   <main class="layout">
@@ -2649,12 +2667,28 @@ async function runCpuUntilUser(){
 
 function renderAll(){renderStatus();renderPlayers();renderRoster();renderRecent();renderBoard();renderTeams();renderComplete();switchView(state.view||'players',false);$('#undoBtn').disabled=!state.history.length;}
 function renderStatusOnly(){renderStatus();if(state.view==='recent')renderRecent()}
+function formatOnClockNeeds(roster){
+  const c=posCounts(roster);
+  const flex=flexCount(roster);
+  const parts=[];
+  const add=(count,label)=>{if(count>0)parts.push(`${count>1?count+' ':''}${label}`)};
+  add(Math.max(0,1-(c.QB||0)),'QB');
+  add(Math.max(0,3-(c.WR||0)),'WR');
+  add(Math.max(0,2-(c.RB||0)),'RB');
+  add(Math.max(0,1-(c.TE||0)),'TE');
+  add(Math.max(0,1-flex),'FLEX');
+  add(Math.max(0,1-(c.DST||0)),'DST');
+  add(Math.max(0,1-(c.K||0)),'K');
+  return parts.length?parts.join(', '):'BENCH VALUE';
+}
+
 function renderStatus(){
   $('#teamNameStat').textContent=state.teamName;
   $('#slotStat').textContent=state.started?ordinal(state.userSlot):'—';
   $('#pickStat').textContent=state.currentPick<TOTAL_PICKS?pickLabel(state.currentPick):'Complete';
-  $('#progressStat').textContent=`${state.currentPick} / ${TOTAL_PICKS}`;
-  const pct=Math.max(0,Math.min(100,(state.currentPick/TOTAL_PICKS)*100));
+  const completedRounds=state.currentPick>=TOTAL_PICKS?15:Math.floor(state.currentPick/12);
+  const pct=Math.max(0,Math.min(100,Math.round((completedRounds/15)*100)));
+  $('#progressStat').textContent=`${pct}%`;
   if($('#progressFill'))$('#progressFill').style.width=`${pct}%`;
   let next='—';
   const nextStart=isUserTurn()?state.currentPick+1:state.currentPick;
@@ -2666,13 +2700,13 @@ function renderStatus(){
     $('#turnTitle').textContent='Draft Complete.';
     $('#turnSub').textContent='Review your roster and export the results.';
   }else if(isBuildMode()&&state.started){
-    const st=starterStatus(rosterFor(turnSlot));
+    const roster=rosterFor(turnSlot);
     $('#turnTitle').textContent=`${teamName(turnSlot)}, You Are On The Clock!`;
-    $('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} - ${available().length} available • ${st.complete?'Build Mode • Starters complete, select the best-value backup.':`Needs: ${[...new Set(st.missing)].join(', ')}`}`;
+    $('#turnSub').textContent=formatOnClockNeeds(roster);
   }else if(isUserTurn()){
-    const st=starterStatus(rosterFor(state.userSlot));
+    const roster=rosterFor(state.userSlot);
     $('#turnTitle').textContent=`${state.teamName}, You Are On The Clock!`;
-    $('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} - ${available().length} available • ${st.complete?'Needs: Bench Value / Avoid Bye Clashes':`Needs: ${[...new Set(st.missing)].join(', ')}`}`;
+    $('#turnSub').textContent=formatOnClockNeeds(roster);
   }else if(state.started){
     $('#turnTitle').textContent=`${teamName(turnSlot)} Is Selecting…`;
     $('#turnSub').textContent=`Pick ${pickLabel(state.currentPick)} • Your next pick is ${next}.`;
