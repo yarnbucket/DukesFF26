@@ -2987,6 +2987,706 @@ async function exportBoardJpg(){
 }
 function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 
+
+/* Strategy-player normalization cache for full-pool scoring performance. */
+const dukesStrategyBaseCache = new Map();
+let dukesStrategyCacheReady = false;
+
+function dukesPrepareStrategyCache() {
+  if (dukesStrategyCacheReady) return;
+
+  const mappedPlayers = PLAYERS.map(player => ({
+    app: player,
+    mapped: DraftIntelligence.mapPlayer(player)
+  }));
+
+  const byPosition = {};
+  for (const item of mappedPlayers) {
+    const position = item.mapped.position;
+    (byPosition[position] ||= []).push(item.mapped);
+  }
+
+  for (const group of Object.values(byPosition)) {
+    group.sort((a, b) =>
+      (Number(b.projectedPoints) || 0) -
+      (Number(a.projectedPoints) || 0)
+    );
+  }
+
+  const replacementIndexes = {
+    QB: 13,
+    RB: 35,
+    WR: 47,
+    TE: 13,
+    K: 11,
+    DEF: 11
+  };
+
+  const riskScale = value =>
+    Math.max(0, Math.min(10, (Number(value) || 50) / 10));
+
+  for (const { app, mapped } of mappedPlayers) {
+    const group = byPosition[mapped.position] || [];
+    const replacementIndex = replacementIndexes[mapped.position] ?? 11;
+    const projection = Number(mapped.projectedPoints) || 0;
+    const replacement =
+      Number(group[replacementIndex]?.projectedPoints) ||
+      projection * 0.72;
+
+    dukesStrategyBaseCache.set(app.rank, Object.freeze({
+      id: mapped.id,
+      name: mapped.name,
+      position: mapped.position,
+      nflTeam: mapped.nflTeam,
+      byeWeek: mapped.byeWeek,
+      rank: Number(app.rank) || 999,
+      adp: Number(mapped.adp) || Number(app.rank) || 999,
+      projectedPoints: projection,
+      vor: projection - replacement,
+      tier: Number(mapped.tier) || 99,
+      floor: riskScale(mapped.floor),
+      ceiling: riskScale(mapped.upside),
+      consistency: riskScale(
+        (mapped.floor || 50) * 0.65 +
+        (100 - (mapped.roleRisk || 50)) * 0.35
+      ),
+      injuryRisk: riskScale(mapped.injuryRisk),
+      roleRisk: riskScale(mapped.roleRisk),
+      ageRisk: 5,
+      breakoutScore: riskScale(mapped.upside),
+      handcuffScore: mapped.handcuffOf ? 7 : 0,
+      stackScore: 0,
+      starterProbability:
+        mapped.depthChartRole === 'starter' ? 0.9 :
+        mapped.depthChartRole === 'committee' ? 0.62 : 0.35,
+      expectedGames: Math.max(
+        10,
+        17 - riskScale(mapped.injuryRisk) * 0.45
+      ),
+      notes: mapped.tags || []
+    }));
+  }
+
+  dukesStrategyCacheReady = true;
+}
+
+strategyPlayerFromApp = function(player, pickIndex = null) {
+  dukesPrepareStrategyCache();
+  const base = dukesStrategyBaseCache.get(player.rank);
+  if (!base) return null;
+
+  return {
+    ...base,
+    draftPick: pickIndex === null ? undefined : pickIndex + 1,
+    draftRound:
+      pickIndex === null ? undefined : Math.floor(pickIndex / 12) + 1
+  };
+};
+
+/*
+=======================================================================
+DUKE'S FF26 — UNIFIED DRAFT LOGIC CLEANUP PATCH
+Version 2.0
+
+INSTALLATION
+------------
+Paste this block near the END of the existing <script>, after the current
+draft-engine functions have been declared, but before the closing script tag.
+
+This patch intentionally does not change:
+- HTML layout
+- CSS
+- player data
+- draft board
+- export features
+- team-name editor
+- sounds
+- player profiles
+
+It replaces the active CPU-selection and BEST ROSTER PICK paths with one
+consistent eligibility-and-scoring pipeline.
+
+IMPORTANT
+---------
+After installing this patch, start a NEW draft or press RESET. Old saved
+drafts may already contain illegal roster construction from the previous
+logic.
+=======================================================================
+*/
+
+const DUKES_UNIFIED_RULES = Object.freeze({
+  rosterSize: 15,
+
+  hardMax: Object.freeze({
+    QB: 2,
+    RB: 7,
+    WR: 7,
+    TE: 3,
+    DST: 1,
+    K: 1
+  }),
+
+  preferredDepth: Object.freeze({
+    RB: 4,
+    WR: 5,
+    TE: 1,
+    QB: 1
+  }),
+
+  timing: Object.freeze({
+    defenseUnlockRound: 13,
+    defensePreferredRound: 14,
+    kickerUnlockRound: 14,
+    kickerPreferredRound: 15,
+    secondQBUnlockRound: 11,
+    secondTEUnlockRound: 11
+  })
+});
+
+function dukesDraftRound(pickIndex) {
+  return Math.floor(pickIndex / 12) + 1;
+}
+
+function dukesPosition(player) {
+  const pos = String(player?.pos || player?.position || '').toUpperCase();
+  return pos === 'DEF' || pos === 'D/ST' ? 'DST' : pos;
+}
+
+function dukesCoreStatus(roster) {
+  const counts = posCounts(roster);
+  const flex = flexCount(roster);
+
+  const missing = [];
+
+  if ((counts.QB || 0) < 1) missing.push('QB');
+  if ((counts.RB || 0) < 2) {
+    missing.push(...Array(2 - (counts.RB || 0)).fill('RB'));
+  }
+  if ((counts.WR || 0) < 3) {
+    missing.push(...Array(3 - (counts.WR || 0)).fill('WR'));
+  }
+  if ((counts.TE || 0) < 1) missing.push('TE');
+  if (flex < 1) missing.push('FLEX');
+
+  return {
+    counts,
+    flex,
+    missing,
+    complete: missing.length === 0
+  };
+}
+
+function dukesFullStatus(roster) {
+  const core = dukesCoreStatus(roster);
+  const counts = core.counts;
+  const missing = [...core.missing];
+
+  if ((counts.DST || 0) < 1) missing.push('DST');
+  if ((counts.K || 0) < 1) missing.push('K');
+
+  return {
+    ...core,
+    missing,
+    complete: missing.length === 0
+  };
+}
+
+function dukesPlayerFillsPositionNeed(player, roster, includeSpecialTeams = true) {
+  const pos = dukesPosition(player);
+  const core = dukesCoreStatus(roster);
+  const counts = core.counts;
+
+  if (pos === 'QB') return (counts.QB || 0) < 1;
+  if (pos === 'RB') return (counts.RB || 0) < 2 || core.flex < 1;
+  if (pos === 'WR') return (counts.WR || 0) < 3 || core.flex < 1;
+  if (pos === 'TE') return (counts.TE || 0) < 1 || core.flex < 1;
+
+  if (includeSpecialTeams && pos === 'DST') {
+    return (counts.DST || 0) < 1;
+  }
+
+  if (includeSpecialTeams && pos === 'K') {
+    return (counts.K || 0) < 1;
+  }
+
+  return false;
+}
+
+function dukesSkillDepthSecure(roster) {
+  const counts = posCounts(roster);
+
+  return (
+    (counts.QB || 0) >= DUKES_UNIFIED_RULES.preferredDepth.QB &&
+    (counts.RB || 0) >= DUKES_UNIFIED_RULES.preferredDepth.RB &&
+    (counts.WR || 0) >= DUKES_UNIFIED_RULES.preferredDepth.WR &&
+    (counts.TE || 0) >= DUKES_UNIFIED_RULES.preferredDepth.TE
+  );
+}
+
+function dukesRosterCanStillBeCompleted(roster, candidate) {
+  const nextRoster = [...roster, candidate];
+  const remainingAfterPick =
+    DUKES_UNIFIED_RULES.rosterSize - nextRoster.length;
+
+  if (remainingAfterPick < 0) return false;
+
+  const missingAfterPick = dukesFullStatus(nextRoster).missing.length;
+
+  return missingAfterPick <= remainingAfterPick;
+}
+
+function dukesForcedNeedMode(roster) {
+  const remainingPicks =
+    DUKES_UNIFIED_RULES.rosterSize - roster.length;
+
+  const status = dukesFullStatus(roster);
+
+  return {
+    active: status.missing.length >= remainingPicks,
+    missing: status.missing,
+    remainingPicks
+  };
+}
+
+function dukesIsEligiblePick(player, roster, pickIndex) {
+  if (!player) return false;
+  if (roster.length >= DUKES_UNIFIED_RULES.rosterSize) return false;
+
+  const round = dukesDraftRound(pickIndex);
+  const pos = dukesPosition(player);
+  const counts = posCounts(roster);
+  const currentCount = counts[pos] || 0;
+  const max = DUKES_UNIFIED_RULES.hardMax[pos];
+
+  if (!Number.isFinite(max)) return false;
+  if (currentCount >= max) return false;
+
+  /*
+   * Special teams are unavailable before their proper windows.
+   * They are filtered out completely instead of merely receiving a penalty.
+   */
+  if (
+    pos === 'DST' &&
+    round < DUKES_UNIFIED_RULES.timing.defenseUnlockRound
+  ) {
+    return false;
+  }
+
+  if (
+    pos === 'K' &&
+    round < DUKES_UNIFIED_RULES.timing.kickerUnlockRound
+  ) {
+    return false;
+  }
+
+  /*
+   * Do not spend a special-teams pick while the offensive core is incomplete.
+   * Round 15 is exempt because the final remaining required position may need
+   * to be forced.
+   */
+  const core = dukesCoreStatus(roster);
+
+  if (
+    (pos === 'DST' || pos === 'K') &&
+    !core.complete &&
+    round < 15
+  ) {
+    return false;
+  }
+
+  /*
+   * A second quarterback is a late luxury pick only.
+   * It requires healthy RB/WR depth and cannot occur before Round 11.
+   */
+  if (pos === 'QB' && currentCount >= 1) {
+    if (
+      round <
+      DUKES_UNIFIED_RULES.timing.secondQBUnlockRound
+    ) {
+      return false;
+    }
+
+    if (!dukesSkillDepthSecure(roster)) {
+      return false;
+    }
+  }
+
+  /*
+   * A second tight end is also a late luxury pick.
+   */
+  if (pos === 'TE' && currentCount >= 1) {
+    if (
+      round <
+      DUKES_UNIFIED_RULES.timing.secondTEUnlockRound
+    ) {
+      return false;
+    }
+
+    if (
+      (counts.RB || 0) <
+        DUKES_UNIFIED_RULES.preferredDepth.RB ||
+      (counts.WR || 0) <
+        DUKES_UNIFIED_RULES.preferredDepth.WR
+    ) {
+      return false;
+    }
+  }
+
+  /*
+   * Never allow a choice that makes a legal final roster impossible.
+   */
+  if (!dukesRosterCanStillBeCompleted(roster, player)) {
+    return false;
+  }
+
+  /*
+   * When the number of missing required slots equals the number of picks
+   * remaining, every pick must fill a current requirement.
+   */
+  const forced = dukesForcedNeedMode(roster);
+
+  if (
+    forced.active &&
+    !dukesPlayerFillsPositionNeed(player, roster, true)
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+function dukesActiveNeeds(roster, pickIndex) {
+  const round = dukesDraftRound(pickIndex);
+  const core = dukesCoreStatus(roster);
+  const needs = [...core.missing];
+
+  if (
+    round >= DUKES_UNIFIED_RULES.timing.defenseUnlockRound &&
+    (core.counts.DST || 0) < 1
+  ) {
+    needs.push('DST');
+  }
+
+  if (
+    round >= DUKES_UNIFIED_RULES.timing.kickerUnlockRound &&
+    (core.counts.K || 0) < 1
+  ) {
+    needs.push('K');
+  }
+
+  return needs;
+}
+
+function dukesUnifiedScore(player, slot, pickIndex, context = null) {
+  const roster = rosterFor(slot);
+  const round = dukesDraftRound(pickIndex);
+  const pos = dukesPosition(player);
+  const counts = posCounts(roster);
+
+  if (!dukesIsEligiblePick(player, roster, pickIndex)) {
+    return Number.NEGATIVE_INFINITY;
+  }
+
+  /*
+   * The newer Duke's strategy engine is the single primary intelligence
+   * source. The older mixed-scale DraftIntelligence score is intentionally
+   * excluded from the final selection score.
+   */
+  let score = strategyEvaluation(
+    player,
+    slot,
+    pickIndex,
+    context || buildStrategyContext(slot, pickIndex)
+  ).score;
+
+  const rank = Number(player.rank) || 999;
+  const currentPick = pickIndex + 1;
+  const adpValue = rank - currentPick;
+  const core = dukesCoreStatus(roster);
+
+  /*
+   * Small, interpretable roster adjustments.
+   * These guide close decisions without overwhelming player value.
+   */
+  if (dukesPlayerFillsPositionNeed(player, roster, false)) {
+    score += 8;
+  }
+
+  if (pos === 'RB' && (counts.RB || 0) < 4) {
+    score += round >= 5 ? 5 : 2;
+  }
+
+  if (pos === 'WR' && (counts.WR || 0) < 5) {
+    score += round >= 6 ? 6 : 3;
+  }
+
+  if (pos === 'QB' && (counts.QB || 0) === 0) {
+    if (round >= 6 && round <= 8) score += 6;
+    if (round >= 9) score += 9;
+  }
+
+  if (pos === 'QB' && (counts.QB || 0) >= 1) {
+    score -= 12;
+  }
+
+  if (pos === 'TE' && (counts.TE || 0) === 0) {
+    if (round >= 7) score += 5;
+  }
+
+  if (pos === 'TE' && (counts.TE || 0) >= 1) {
+    score -= 8;
+  }
+
+  if (pos === 'DST') {
+    if (
+      round ===
+      DUKES_UNIFIED_RULES.timing.defensePreferredRound
+    ) {
+      score += 7;
+    } else {
+      score -= 2;
+    }
+  }
+
+  if (pos === 'K') {
+    if (
+      round ===
+      DUKES_UNIFIED_RULES.timing.kickerPreferredRound
+    ) {
+      score += 9;
+    } else {
+      score -= 3;
+    }
+  }
+
+  /*
+   * Reward meaningful ADP falls, but never let ADP override legality,
+   * roster construction, tiers, or lineup impact.
+   */
+  if (adpValue >= 24) score += 7;
+  else if (adpValue >= 12) score += 4;
+  else if (adpValue >= 6) score += 2;
+  else if (adpValue <= -24) score -= 7;
+  else if (adpValue <= -12) score -= 4;
+
+  /*
+   * Late-round upside should beat low-ceiling bench clutter.
+   */
+  if (round >= 9) {
+    const trend = Number(player.trend) || 0;
+    const tier = Number(player.tier) || 99;
+
+    if (trend >= 3) score += 3;
+    if (tier <= 8 && (pos === 'RB' || pos === 'WR')) {
+      score += 2;
+    }
+  }
+
+  /*
+   * A defense or kicker is never treated as equal to an unfinished core
+   * offensive starter merely because it fills an empty box.
+   */
+  if (
+    (pos === 'DST' || pos === 'K') &&
+    !core.complete
+  ) {
+    score -= 30;
+  }
+
+  return score;
+}
+
+function dukesEligiblePool(slot, pickIndex) {
+  const roster = rosterFor(slot);
+
+  return available().filter(player =>
+    dukesIsEligiblePick(player, roster, pickIndex)
+  );
+}
+
+function dukesEmergencyPool(slot, pickIndex) {
+  const roster = rosterFor(slot);
+
+  /*
+   * Safety fallback: use the exact same hard legality gate as the primary
+   * pool. No fallback may bypass roster caps, position timing, forced needs,
+   * or final-roster completion.
+   */
+  return available().filter(player =>
+    dukesIsEligiblePick(player, roster, pickIndex)
+  );
+}
+
+/*
+ * REPLACEMENT: CPU DRAFT CHOICE
+ *
+ * ADP ONLY remains ADP-driven, but only inside the legal eligible pool.
+ * ADP MIX uses the unified score.
+ * ADP CHAOS varies only among the best legal strategic choices.
+ */
+cpuChoice = function(slot, pickIndex) {
+  let pool = dukesEligiblePool(slot, pickIndex);
+
+  if (!pool.length) {
+    pool = dukesEmergencyPool(slot, pickIndex);
+  }
+
+  if (!pool.length) return null;
+
+  if (state.cpuStyle === 'chalk') {
+    return [...pool].sort((a, b) =>
+      (Number(a.rank) || 999) -
+      (Number(b.rank) || 999)
+    )[0];
+  }
+
+  const context = buildStrategyContext(slot, pickIndex);
+
+  const ranked = [...pool]
+    .map(player => ({
+      player,
+      score: dukesUnifiedScore(
+        player,
+        slot,
+        pickIndex,
+        context
+      )
+    }))
+    .sort((a, b) =>
+      b.score - a.score ||
+      (Number(a.player.rank) || 999) -
+      (Number(b.player.rank) || 999)
+    );
+
+  if (state.cpuStyle === 'chaos') {
+    const chaosPool = ranked.slice(
+      0,
+      Math.min(6, ranked.length)
+    );
+
+    const weights = chaosPool.map(
+      (_, index) => Math.max(1, 6 - index)
+    );
+
+    let roll =
+      Math.random() *
+      weights.reduce((sum, value) => sum + value, 0);
+
+    for (let index = 0; index < chaosPool.length; index++) {
+      roll -= weights[index];
+
+      if (roll <= 0) {
+        return chaosPool[index].player;
+      }
+    }
+  }
+
+  return ranked[0]?.player || null;
+};
+
+/*
+ * REPLACEMENT: BEST ROSTER PICK AND ALTERNATIVES
+ *
+ * No ADP-based need-filler override.
+ * The highlighted recommendation is the highest-scoring legal player.
+ */
+recommendedPlayers = function() {
+  if (!state.started) return [];
+
+  const slot = activeDraftSlot();
+  const pickIndex = state.currentPick;
+
+  let pool = dukesEligiblePool(slot, pickIndex);
+
+  if (!pool.length) {
+    pool = dukesEmergencyPool(slot, pickIndex);
+  }
+
+  if (!pool.length) return [];
+
+  const context = buildStrategyContext(slot, pickIndex);
+
+  return [...pool]
+    .map(player => ({
+      player,
+      score: dukesUnifiedScore(
+        player,
+        slot,
+        pickIndex,
+        context
+      )
+    }))
+    .sort((a, b) =>
+      b.score - a.score ||
+      (Number(a.player.rank) || 999) -
+      (Number(b.player.rank) || 999)
+    )
+    .slice(0, 3)
+    .map(item => item.player);
+};
+
+/*
+ * REPLACEMENT: USER-CANDIDATE SCORE
+ *
+ * Keeps table/recommendation sorting aligned with BEST ROSTER PICK.
+ */
+scoreUserCandidate = function(player) {
+  return dukesUnifiedScore(
+    player,
+    activeDraftSlot(),
+    state.currentPick
+  );
+};
+
+/*
+ * USER/BUILD PICK SAFETY GATE
+ * Every team, including the manually controlled team, uses the same legal
+ * eligibility rules. This prevents direct table-button picks from bypassing
+ * position caps or timing locks.
+ */
+const dukesOriginalMakePick = makePick;
+makePick = function(player, auto = false) {
+  const slot = isBuildMode() ? activeDraftSlot() : state.userSlot;
+  const roster = rosterFor(slot);
+
+  if (!dukesIsEligiblePick(player, roster, state.currentPick)) {
+    toast('That player is not a legal pick for this roster and round.', 'bad');
+    return;
+  }
+
+  return dukesOriginalMakePick(player, auto);
+};
+
+/*
+ * REPLACEMENT: ROSTER GUIDANCE TEXT
+ *
+ * Defense and kicker do not appear as urgent early-round needs.
+ */
+rosterRequirementText = function(roster) {
+  const needs = dukesActiveNeeds(
+    roster,
+    state.currentPick
+  );
+
+  if (!needs.length) return 'BENCH VALUE';
+
+  return [...new Set(needs)].join(', ');
+};
+
+console.info(
+  "Duke's FF26 unified draft logic patch loaded."
+);
+
+
+window.DukesFF26UnifiedLogic = Object.freeze({
+  rules: DUKES_UNIFIED_RULES,
+  isEligiblePick: dukesIsEligiblePick,
+  eligiblePool: dukesEligiblePool,
+  score: dukesUnifiedScore,
+  activeNeeds: dukesActiveNeeds
+});
+
+
 function buildFilters(){const tiers=[...new Set(PLAYERS.map(p=>p.tier).filter(Boolean))].sort((a,b)=>a-b);tiers.forEach(t=>$('#tierFilter').insertAdjacentHTML('beforeend',`<option value="${t}">Tier ${t}</option>`));['searchInput','positionFilter','sortSelect','tierFilter'].forEach(id=>$('#'+id).addEventListener(id==='searchInput'?'input':'change',renderPlayers));}
 
 document.querySelectorAll('[data-sound-toggle]').forEach(button=>button.addEventListener('click',()=>setSoundEnabled(!soundEnabled,{confirmWithSound:!soundEnabled})));
@@ -3015,7 +3715,7 @@ function initializeDraftTabs(){
   });
 }
 $('#startBtn').onclick=startDraft;
-$('#autoPickBtn').onclick=()=>{const p=recommendedPlayers()[0]||available()[0];makePick(p,true)};
+$('#autoPickBtn').onclick=()=>{const slot=activeDraftSlot(),pickIndex=state.currentPick;const p=recommendedPlayers()[0]||dukesEligiblePool(slot,pickIndex)[0]||dukesEmergencyPool(slot,pickIndex)[0];if(p)makePick(p,true);else toast('No legal player is available for this pick.','bad')};
 $('#undoBtn').onclick=undoTurn;
 $('#resetBtn').onclick=resetDraft;
 $('#exportBtn').onclick=exportBoardJpg;
