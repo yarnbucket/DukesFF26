@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "scoring": "PPR",
+  "updatedAt": "2026-08-07T15:41:00-04:00",
+  "statusRules": {
+    "GREEN": "Good to go / no active availability concern",
+    "YELLOW": "Questionable or caution; see player/DST profile",
+    "RED": "Currently unavailable, not practicing, out, or major unit concern"
+  },
+  "players": {
+    "Jahmyr Gibbs": {
+      "status": "GREEN",
+      "label": "GOOD TO GO",
+      "reasonType": "CONTRACT RESOLVED",
+      "summary": "Contract extension is complete and Gibbs is back at practice.",
+      "fantasyImpact": "No current availability penalty.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Bijan Robinson": {
+      "status": "GREEN",
+      "label": "GOOD TO GO",
+      "reasonType": "HOLD-IN RESOLVED",
+      "summary": "Robinson’s hold-in is over and there is no current contract-related practice concern.",
+      "fantasyImpact": "No current availability penalty.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Malik Nabers": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "KNEE RECOVERY",
+      "summary": "Nabers is participating in camp while returning from his knee injury; workload and full-team participation remain worth monitoring.",
+      "fantasyImpact": "Caution only; do not automatically change ADP.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Xavier Worthy": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "SHOULDER",
+      "summary": "Worthy is dealing with a shoulder issue during Chiefs camp.",
+      "fantasyImpact": "Monitor practice participation before drafting.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "DeVonta Smith": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "HAMSTRING",
+      "summary": "Smith is dealing with a hamstring issue in Eagles camp.",
+      "fantasyImpact": "Short-term caution; watch for a return to full work.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Tucker Kraft": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "ACL RECOVERY / CONTRACT",
+      "summary": "Kraft is practicing in his return from an ACL tear while also working without a new contract.",
+      "fantasyImpact": "Positive recovery trend, but keep the medical caution tag active.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Rashee Rice": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "RECOVERY",
+      "summary": "Rice has progressed to team drills, a positive step in his return.",
+      "fantasyImpact": "Trending up, but continue to monitor workload and availability.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Tua Tagovailoa": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "BACK",
+      "summary": "Tagovailoa returned after missing time with back tightness early in Falcons camp.",
+      "fantasyImpact": "Currently a minor monitor rather than a major downgrade.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Michael Penix Jr.": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "ACL RECOVERY",
+      "summary": "Penix is not yet cleared for full team drills while recovering from his ACL injury.",
+      "fantasyImpact": "Meaningful availability concern until full team work resumes.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Xavier Legette": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "INJURY MONITOR",
+      "summary": "Legette avoided a serious injury after a camp scare, but his health and role remain worth monitoring.",
+      "fantasyImpact": "Minor caution; no automatic ADP penalty.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Jonathon Brooks": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "KNEE RECOVERY",
+      "summary": "Camp reports are positive as Brooks works back from major knee injuries.",
+      "fantasyImpact": "High-upside recovery profile with elevated medical risk.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Trey Benson": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "KNEE",
+      "summary": "Benson had a flare-up in his surgically repaired knee and Arizona is being cautious.",
+      "fantasyImpact": "Monitor workload and return to normal practice.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-aug-3"
+    },
+    "Mike Evans": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "QUAD",
+      "summary": "Evans has been sitting out 49ers camp work with a quad issue.",
+      "fantasyImpact": "Temporary red flag while he is not practicing.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Christian Kirk": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "CALF",
+      "summary": "Kirk has been sitting out 49ers camp work with a calf issue.",
+      "fantasyImpact": "Temporary red flag while he is not practicing.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Elic Ayomanor": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "SHOULDER",
+      "summary": "Ayomanor left Thursday practice early with a shoulder issue; the team is awaiting more information.",
+      "fantasyImpact": "Monitor closely until the severity and practice status are clearer.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Kenyon Sadiq": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "HERNIA RECOVERY",
+      "summary": "Sadiq has had a setback in his recovery from hernia surgery.",
+      "fantasyImpact": "Early-season role and availability are less certain.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Jalen McMillan": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "KNEE",
+      "summary": "McMillan has missed practices with a knee injury and the return timeline is uncertain.",
+      "fantasyImpact": "Meaningful draft caution until he returns to practice.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nbcsports.com/fantasy/football/player-news/2026-08-06/bowles-unsure-how-long-mcmillan-knee-will-be-out"
+    },
+    "Jaylen Waddle": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "LEG STRAIN",
+      "summary": "Waddle is currently sidelined with a leg strain; Sean Payton indicated a return in roughly four to five days.",
+      "fantasyImpact": "Short-term red flag while he is not practicing.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.milehighreport.com/denver-broncos-training-camp/180716/2026-denver-broncos-training-camp-day-6-news-and-notes-courtland-sutton-pat-bryant-jahdae-barron-hall-of-fame-game"
+    },
+    "Tank Dell": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "KNEE RECOVERY",
+      "summary": "Dell completed his first padded practice since 2024 in a limited capacity.",
+      "fantasyImpact": "Very positive recovery step, but workload remains limited.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "MarShawn Lloyd": {
+      "status": "GREEN",
+      "label": "GOOD TO GO",
+      "reasonType": "HEALTHY",
+      "summary": "Lloyd is healthy and participating through camp after an injury-heavy start to his career.",
+      "fantasyImpact": "No active availability penalty.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Bo Nix": {
+      "status": "GREEN",
+      "label": "GOOD TO GO",
+      "reasonType": "HEALTHY",
+      "summary": "Nix is healthy and has looked good in Broncos camp.",
+      "fantasyImpact": "No active availability penalty.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "Patrick Mahomes II": {
+      "status": "GREEN",
+      "label": "GOOD TO GO",
+      "reasonType": "HEALTHY",
+      "summary": "Camp reporting indicates Mahomes looks fully healthy in his return from knee surgery.",
+      "fantasyImpact": "No active availability penalty.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "A.J. Brown": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "THUMB",
+      "summary": "Brown disclosed a dislocated thumb from Patriots practice. He returned to practice and continued catching passes, but the injury is worth monitoring.",
+      "fantasyImpact": "Minor caution while he plays through the thumb issue; no automatic ADP change.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    },
+    "Alec Pierce": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "CALF / PUP",
+      "summary": "Pierce remains on the Active/PUP list with a calf injury and did not participate in the Colts’ Aug. 6 practice.",
+      "fantasyImpact": "Active availability concern until he is removed from PUP and returns to practice.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://1075thefan.com/731021/colts-camp-notebook-day-7-daniel-jones-strong-again/"
+    },
+    "Jordan James": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "RIB FRACTURE",
+      "summary": "James is expected to miss time after suffering a rib fracture in 49ers practice. No firm return timetable has been announced.",
+      "fantasyImpact": "Do not treat him as fully available until he returns to practice.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    },
+    "Chris Brazzell II": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "KNEE / LCL",
+      "summary": "Brazzell is expected to miss his rookie season after surgery was chosen to repair a moderate LCL tear in his left knee.",
+      "fantasyImpact": "Remove from normal 2026 redraft consideration unless his status materially changes.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    },
+    "DJ Giddens": {
+      "status": "RED",
+      "label": "NOT PRACTICING / OUT",
+      "reasonType": "HAMSTRING",
+      "summary": "Giddens did not participate in the Colts’ Aug. 6 practice because of a hamstring injury.",
+      "fantasyImpact": "Short-term availability concern; monitor for return to practice.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://1075thefan.com/731021/colts-camp-notebook-day-7-daniel-jones-strong-again/"
+    },
+    "Greg Dulcich": {
+      "status": "YELLOW",
+      "label": "QUESTIONABLE / CAUTION",
+      "reasonType": "HAND / FINGER",
+      "summary": "Dulcich has returned to practice in a red no-contact jersey while managing a right hand/finger issue.",
+      "fantasyImpact": "Minor caution; current reporting does not describe the injury as major.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.thephinsider.com/miami-dolphins-roster/121406/miami-dolphins-training-camp-injuries-roster-moves-jeremiah-franklin-waivers-new-england-patriots"
+    }
+  },
+  "dst": {
+    "CHI": {
+      "status": "RED",
+      "label": "MAJOR DEFENSIVE CONCERN",
+      "reasonType": "SECONDARY",
+      "summary": "Coby Bryant is expected to miss roughly 8–10 weeks with a knee injury, while Kyler Gordon is also on PUP.",
+      "fantasyImpact": "Significant early-season secondary availability concern.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    },
+    "GB": {
+      "status": "RED",
+      "label": "MAJOR DEFENSIVE CONCERN",
+      "reasonType": "EDGE / ACL RECOVERY",
+      "summary": "Micah Parsons remains unavailable while recovering from a torn ACL and has discussed a possible in-season return rather than an immediate Week 1 return.",
+      "fantasyImpact": "Major pass-rush availability issue until Parsons is cleared.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.foxsports.com/stories/nfl/packers-star-micah-parsons-says-week-6-return-against-cowboys-realistic"
+    },
+    "ATL": {
+      "status": "RED",
+      "label": "MAJOR DEFENSIVE CONCERN",
+      "reasonType": "EDGE / ACL",
+      "summary": "Atlanta lost edge defender Jalon Walker to a torn ACL, a season-long personnel loss for the front seven.",
+      "fantasyImpact": "Meaningful personnel downgrade; weekly matchup remains a separate grade.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    },
+    "TB": {
+      "status": "YELLOW",
+      "label": "DEFENSIVE CAUTION",
+      "reasonType": "CONTRACT / TRADE",
+      "summary": "Vita Vea remains in a contract standoff with Tampa Bay and his agent has said a trade may result.",
+      "fantasyImpact": "Monitor because Vea materially affects Tampa Bay’s interior defense.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/vita-vea-agent-contract-standoff-buccaneers-trade"
+    },
+    "ARI": {
+      "status": "YELLOW",
+      "label": "DEFENSIVE CAUTION",
+      "reasonType": "PUP",
+      "summary": "Josh Sweat is currently on the PUP list, although the team has expressed confidence about his regular-season availability.",
+      "fantasyImpact": "Current personnel caution, not a Week 1 matchup downgrade.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.nfl.com/news/2026-nfl-training-camp-early-takeaways-for-all-32-teams"
+    },
+    "CAR": {
+      "status": "RED",
+      "label": "MAJOR DEFENSIVE CONCERN",
+      "reasonType": "EDGE / ACL",
+      "summary": "Carolina placed edge defender Nic Scourton on injured reserve after a torn ACL suffered at the start of training camp.",
+      "fantasyImpact": "Season-long front-seven personnel loss.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    },
+    "NO": {
+      "status": "RED",
+      "label": "MAJOR DEFENSIVE CONCERN",
+      "reasonType": "DEFENSIVE LINE / ACL",
+      "summary": "Defensive tackle Bryan Bresee suffered a season-ending ACL injury, removing a major interior contributor from the Saints defense.",
+      "fantasyImpact": "Meaningful interior defensive-line downgrade.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    },
+    "CIN": {
+      "status": "YELLOW",
+      "label": "DEFENSIVE CAUTION",
+      "reasonType": "EDGE / KNEE",
+      "summary": "Shemar Stewart suffered a hyperextended knee in camp. Testing showed no ligament damage, but his return timetable remains worth monitoring.",
+      "fantasyImpact": "Short-term front-seven caution rather than a season-long downgrade.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    },
+    "DET": {
+      "status": "YELLOW",
+      "label": "DEFENSIVE CAUTION",
+      "reasonType": "DEFENSIVE LINE / NECK",
+      "summary": "Alim McNeill left practice with a neck injury, creating a current availability concern on Detroit’s defensive front.",
+      "fantasyImpact": "Monitor the interior line until McNeill’s practice status clears.",
+      "updatedAt": "Aug. 7, 2026",
+      "sourceUrl": "https://www.cbssports.com/nfl/news/nfl-training-camp-injuries-tracker/"
+    }
+  }
+}
