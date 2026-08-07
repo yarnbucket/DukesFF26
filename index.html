@@ -6,6 +6,11 @@
 <title>Duke's FF26</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Duke’s FF26">
+<meta name="format-detection" content="telephone=no">
 <style id="dukes-clean-styles">
 
 :root{
@@ -46,6 +51,7 @@ button{cursor:pointer}
 .toast{position:fixed;right:18px;bottom:18px;z-index:90;background:#172e49;border:1px solid #36597f;color:#fff;padding:12px 15px;border-radius:12px;box-shadow:var(--shadow);font-weight:850;max-width:360px;transform:translateY(120px);opacity:0;transition:.25s}.toast.show{transform:translateY(0);opacity:1}.toast.good{border-color:rgba(61,220,151,.55)}.toast.bad{border-color:rgba(255,107,107,.6)}
 .simulating{position:fixed;inset:0;background:rgba(2,7,13,.45);z-index:40;display:grid;place-items:center;pointer-events:none}.sim-card{background:#112844;border:1px solid #355878;padding:14px 18px;border-radius:14px;font-weight:950;box-shadow:var(--shadow)}.dots:after{content:'';animation:dots 1s steps(4,end) infinite}@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%,100%{content:'...'}}
 .complete-card{text-align:center;padding:14px}.grade{font-size:74px;font-weight:1000;color:var(--gold);line-height:1}.complete-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.complete-stat{background:#0a1b2e;border:1px solid var(--line);border-radius:11px;padding:10px}.complete-stat strong{display:block;font-size:21px}.complete-stat span{font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:900}
+.complete-stat-button{width:100%;color:#fff;font:inherit;text-align:center;cursor:pointer;transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}.complete-stat-button:hover,.complete-stat-button:focus-visible{border-color:#ff5b70;box-shadow:0 0 0 3px rgba(255,91,112,.14);outline:0;transform:translateY(-1px)}.complete-stat-button #byeClashes{color:#ff9baa}.bye-clash-modal{width:min(620px,100%)}.bye-clash-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:8px}.bye-clash-modal-head h2{margin:0;font-size:clamp(24px,5vw,38px)}.bye-clash-close{border:1px solid #4e5870;background:#171b25;color:#fff;border-radius:10px;width:40px;height:40px;font-size:24px;font-weight:900;line-height:1;cursor:pointer}.bye-clash-summary{color:#ff9baa;font-weight:900;margin:0 0 14px}.bye-clash-list{display:grid;gap:10px;max-height:min(55vh,430px);overflow:auto}.bye-clash-week{border:1px solid #4d3040;border-left:4px solid #ff5b70;border-radius:12px;background:linear-gradient(145deg,#17131b,#10151f);padding:12px}.bye-clash-week-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.bye-clash-week-head strong{font-size:17px}.bye-clash-score{color:#ff9baa;font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.05em}.bye-clash-players{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}.bye-clash-player{border:1px solid #414a5b;background:#0d1420;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:850}.bye-clash-reason{color:#c9b7bf;font-size:12px;line-height:1.45}.bye-clash-empty{border:1px solid var(--line);border-radius:12px;padding:24px 14px;text-align:center;color:var(--muted);font-weight:850}
 @media(max-width:1000px){.layout{grid-template-columns:1fr}.side-stack{grid-template-columns:1fr 1fr}.table-wrap{max-height:580px}.team-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.app{padding:9px}.topbar{align-items:flex-start}.brand small{display:none}.header-actions .text-label{display:none}.status-strip{grid-template-columns:repeat(2,1fr)}.status-strip .stat:last-child{grid-column:1/-1}.layout{display:block}.side-stack{display:grid;grid-template-columns:1fr;margin-top:10px}.controls{grid-template-columns:1fr 1fr}.controls .search{grid-column:1/-1}.recommendations{grid-template-columns:1fr}.table-wrap{min-height:420px;max-height:60vh}.setup-grid{grid-template-columns:1fr}.setup-field.full{grid-column:auto}.slot-buttons{grid-template-columns:repeat(4,1fr)}.modal{padding:18px}.team-cards{grid-template-columns:1fr}.topbar{position:sticky;top:0;z-index:15;background:linear-gradient(180deg,#07111f 72%,transparent)}.stat{min-height:62px;padding:10px}.stat-value{font-size:18px}.turn-banner{align-items:flex-start;flex-direction:column}.hide-mobile{display:none!important}}
 
@@ -54,7 +60,7 @@ button{cursor:pointer}
 .roster-guidance strong{color:var(--gold)}.roster-guidance .warning{color:#ff8fa0}.roster-guidance .ok{color:#7ee69a}
 .rec-card.best-fit{position:relative;border:3px solid var(--gold);box-shadow:0 0 8px rgba(255,210,26,.45),inset 0 0 0 1px rgba(255,255,255,.16);animation:slowBurnGlow 2.8s ease-in-out infinite}
 .rec-card.best-fit::after{content:'BEST ROSTER PICK';position:absolute;top:-10px;right:10px;padding:2px 7px;border-radius:999px;background:#111;color:var(--gold);border:1px solid var(--gold);font-size:9px;font-weight:1000;letter-spacing:.08em}
-.rec-card.bye-warning{border-color:#ff5b70}.rec-card.bye-warning .rec-meta{color:#ff9baa}
+.rec-card.bye-warning{border-color:#ff5b70}.rec-card.bye-warning .rec-meta{color:#ff9baa}.player-table .bye-clash{color:#ff9baa;font-weight:900}
 .rec-strategy{margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,210,26,.25);color:#e8dfc7;font-size:11px;line-height:1.35;font-weight:750}.rec-strategy strong{color:var(--gold);letter-spacing:.05em;text-transform:uppercase}
 @keyframes slowBurnGlow{0%,100%{box-shadow:0 0 7px rgba(255,210,26,.35),0 0 14px rgba(255,48,72,.08),inset 0 0 0 1px rgba(255,255,255,.12)}50%{box-shadow:0 0 16px rgba(255,210,26,.78),0 0 30px rgba(255,90,20,.32),inset 0 0 12px rgba(255,210,26,.16)}}
 
@@ -956,6 +962,53 @@ body::before{
   .progress-track{width:calc(100% - 20px)!important}
 }
 
+
+/* Approved final reports: compact bye-week grouping and Draft Complete analysis */
+.turn-summary-button{appearance:none;-webkit-appearance:none;border:0;background:transparent;color:inherit;padding:0;margin:0;min-width:0;flex:1;text-align:left;font:inherit;display:block}
+.turn-summary-button strong,.turn-summary-button span{display:block}
+.turn-summary-button:disabled{cursor:default}
+.turn-summary-button.analysis-ready{cursor:pointer;border-radius:14px;padding:4px 6px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.turn-summary-button.analysis-ready:hover,.turn-summary-button.analysis-ready:focus-visible{outline:0;background:rgba(0,0,0,.12);box-shadow:0 0 0 3px rgba(255,255,255,.18);transform:translateY(-1px)}
+.turn-banner.analysis-ready{box-shadow:0 12px 22px rgba(0,0,0,.22),0 0 0 3px rgba(255,255,255,.08) inset}
+.bye-clash-modal{font-family:"Arial Narrow",Arial,sans-serif!important;max-height:88dvh;overflow:hidden;padding:16px}
+.bye-clash-modal-head{margin-bottom:4px}.bye-clash-modal-head h2{font-family:"Arial Narrow",Arial,sans-serif!important;font-size:clamp(21px,5vw,32px);letter-spacing:-.02em}.bye-clash-summary{font-size:13px;line-height:1.25;margin:0 0 8px}
+.bye-clash-list{gap:7px;max-height:68dvh;padding-right:2px}.bye-clash-week{padding:8px 9px;border-radius:9px}.bye-clash-week-head{margin-bottom:5px}.bye-clash-week-head strong{font-size:15px}.bye-clash-score{font-size:10px}.bye-clash-players{display:grid;grid-template-columns:1fr;gap:3px;margin:0 0 5px}.bye-clash-player{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:6px;border:0;border-bottom:1px solid rgba(65,74,91,.55);background:transparent;border-radius:0;padding:3px 0;font-size:11px;line-height:1.2}.bye-clash-player:last-child{border-bottom:0}.bye-clash-player-name{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:900}.bye-clash-player-team{color:#b7c1cf;font-size:10px;font-weight:900}.bye-clash-reason{font-size:10px;line-height:1.25}.bye-clash-week.shared-only{border-left-color:#f4b942}.bye-clash-week.shared-only .bye-clash-score{color:#f4c86a}.bye-clash-empty{font-size:12px;padding:18px 10px}
+.draft-analysis-modal{width:min(860px,100%);max-height:90dvh;overflow:hidden;padding:16px;font-family:"Arial Narrow",Arial,sans-serif!important}.draft-analysis-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px}.draft-analysis-kicker{font-size:10px;color:var(--muted);font-weight:950;letter-spacing:.12em}.draft-analysis-head h2{font-family:"Arial Narrow",Arial,sans-serif!important;margin:1px 0 0;font-size:clamp(23px,5vw,36px)}.draft-analysis-body{max-height:76dvh;overflow:auto;padding-right:4px;color:#eef2f7}.draft-analysis-body section{border-top:1px solid rgba(116,135,159,.28);padding:10px 0}.draft-analysis-body section:first-child{border-top:0;padding-top:2px}.draft-analysis-body h3{font-size:17px;margin:0 0 6px;color:#fff}.draft-analysis-body h4{font-size:14px;margin:8px 0 3px;color:#ffcf42}.draft-analysis-body p,.draft-analysis-body li{font-size:12px;line-height:1.38}.draft-analysis-body p{margin:0}.draft-analysis-body ul{margin:5px 0 0;padding-left:18px}.draft-analysis-body li+li{margin-top:4px}.draft-analysis-summary{font-weight:900;font-size:14px!important}.strategy-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:9px;margin-top:6px}.strategy-table{width:100%;min-width:620px;border-collapse:collapse}.strategy-table th,.strategy-table td{padding:7px 8px;border-right:1px solid rgba(116,135,159,.22);border-bottom:1px solid rgba(116,135,159,.22);text-align:left;font-size:11px;vertical-align:top}.strategy-table th{background:#142c48;color:#fff;font-weight:950}.strategy-table th:first-child,.strategy-table td:first-child{position:sticky;left:0;background:#10243b;font-weight:950;z-index:1}.strategy-table tr:last-child td{border-bottom:0}.strategy-table th:last-child,.strategy-table td:last-child{border-right:0}.analysis-team-label{display:block;color:#ffcf42;font-size:10px;margin-top:2px}.analysis-chip{display:inline-block;border:1px solid #43536a;border-radius:999px;padding:2px 6px;margin:2px 3px 2px 0;font-size:10px;font-weight:900}
+@media(max-width:720px){.turn-summary-button{width:100%;text-align:center}.turn-summary-button.analysis-ready{padding:3px}.draft-analysis-modal{padding:13px}.draft-analysis-body{max-height:78dvh}.draft-analysis-body h3{font-size:15px}.draft-analysis-body p,.draft-analysis-body li{font-size:11px}.bye-clash-modal{padding:13px}.bye-clash-list{max-height:72dvh}}
+
+/* iOS + Android mobile hardening */
+:root{--mobile-vh:1vh;color-scheme:dark}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overscroll-behavior-y:none}
+body{min-height:100vh;min-height:100svh;min-height:100dvh;overscroll-behavior-y:none;-webkit-font-smoothing:antialiased}
+button,a,input,select,[role="button"]{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.app{padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right));padding-bottom:max(18px,env(safe-area-inset-bottom))}
+.topbar{padding-top:max(6px,env(safe-area-inset-top))}
+.overlay,.player-profile-overlay,.setup-light-overlay{overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-top:max(12px,env(safe-area-inset-top));padding-right:max(12px,env(safe-area-inset-right));padding-bottom:max(12px,env(safe-area-inset-bottom));padding-left:max(12px,env(safe-area-inset-left))}
+.bye-clash-modal,.draft-analysis-modal,.player-profile-card{max-width:calc(100vw - max(24px,env(safe-area-inset-left)) - max(24px,env(safe-area-inset-right)))}
+.bye-clash-modal,.draft-analysis-modal{max-height:calc((var(--mobile-vh,1vh) * 100) - max(24px,env(safe-area-inset-top)) - max(24px,env(safe-area-inset-bottom)))}
+.bye-clash-list,.draft-analysis-body,.strategy-table-wrap{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.complete-stat-button,.turn-summary-button.analysis-ready,.bye-clash-close,.player-profile-close{min-height:44px;min-width:44px}
+.complete-stat-button,.turn-summary-button.analysis-ready{touch-action:manipulation}
+body.mobile-dialog-open{position:fixed;left:0;right:0;width:100%;overflow:hidden;overscroll-behavior:none}
+@media(hover:none) and (pointer:coarse){
+  .btn:hover,.complete-stat-button:hover,.turn-summary-button.analysis-ready:hover{transform:none}
+  .tab,.draft-player-btn,.draft-rec-btn,.header-actions .btn,.setup-sound-toggle{min-height:44px}
+}
+@media(max-width:720px){
+  .overlay,.player-profile-overlay{place-items:center;overflow:hidden}
+  .turn-summary-button.analysis-ready{min-height:62px;padding:8px!important}
+  .complete-stat-button{min-height:64px}
+  .bye-clash-close,.player-profile-close{width:44px;height:44px}
+  .bye-clash-modal,.draft-analysis-modal{width:100%;border-radius:16px}
+  .bye-clash-list{max-height:calc((var(--mobile-vh,1vh) * 100) - 170px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
+  .draft-analysis-body{max-height:calc((var(--mobile-vh,1vh) * 100) - 145px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
+  .strategy-table{min-width:560px}
+  .strategy-table th,.strategy-table td{padding:6px;font-size:10px}
+}
+@media(max-height:560px) and (orientation:landscape){
+  .overlay,.player-profile-overlay{place-items:start center;overflow-y:auto}
+  .bye-clash-modal,.draft-analysis-modal,.player-profile-card{margin:auto 0}
+}
 </style>
 </head>
 <body>
@@ -1001,7 +1054,10 @@ body::before{
   </section>
 
   <div class="turn-banner" id="turnBanner">
-    <div><strong id="turnTitle">Set up your draft to begin.</strong><br><span id="turnSub">The computer controls the other 11 teams.</span></div>
+    <button class="turn-summary-button" id="draftAnalysisButton" type="button" aria-haspopup="dialog" aria-controls="draftAnalysisOverlay" aria-label="Draft status" aria-expanded="false" disabled>
+      <strong id="turnTitle">Set up your draft to begin.</strong>
+      <span id="turnSub">The computer controls the other 11 teams.</span>
+    </button>
     <button class="btn primary hidden" id="autoPickBtn">AUTO-PICK</button>
   </div>
 
@@ -1085,7 +1141,7 @@ body::before{
         <div class="complete-stats">
           <div class="complete-stat"><strong id="valueScore">0</strong><span>ADP Value</span></div>
           <div class="complete-stat"><strong id="avgPpg">—</strong><span>2025 PPG</span></div>
-          <div class="complete-stat"><strong id="byeClashes">0</strong><span>Bye Clashes</span></div>
+          <button class="complete-stat complete-stat-button" id="byeClashesButton" type="button" aria-haspopup="dialog" aria-controls="byeClashOverlay" aria-label="Show bye clashes for this team" aria-expanded="false"><strong id="byeClashes">0</strong><span>Bye Clashes</span></button>
         </div>
       </div>
     </section>
@@ -1093,6 +1149,33 @@ body::before{
   <div class="footer-brand" id="footerLeagueLabel"><b>DUKE’S FF26</b> · 12 TEAM PPR DRAFT ROOM</div>
 </div>
 
+
+<div class="overlay hidden" id="byeClashOverlay" role="dialog" aria-modal="true" aria-labelledby="byeClashTitle">
+  <div class="modal bye-clash-modal">
+    <div class="bye-clash-modal-head">
+      <div>
+        <div style="font-size:12px;color:var(--muted);font-weight:950;letter-spacing:.1em">TEAM BYE REPORT</div>
+        <h2 id="byeClashTitle">BYE CLASHES</h2>
+      </div>
+      <button class="bye-clash-close" id="byeClashClose" type="button" aria-label="Close bye clashes">×</button>
+    </div>
+    <p class="bye-clash-summary" id="byeClashSummary"></p>
+    <div class="bye-clash-list" id="byeClashList"></div>
+  </div>
+</div>
+
+<div class="overlay hidden" id="draftAnalysisOverlay" role="dialog" aria-modal="true" aria-labelledby="draftAnalysisTitle">
+  <div class="modal draft-analysis-modal">
+    <div class="draft-analysis-head">
+      <div>
+        <div class="draft-analysis-kicker">DUKE’S FF26 TEAM REPORT</div>
+        <h2 id="draftAnalysisTitle">DRAFT ANALYSIS</h2>
+      </div>
+      <button class="bye-clash-close" id="draftAnalysisClose" type="button" aria-label="Close draft analysis">×</button>
+    </div>
+    <div class="draft-analysis-body" id="draftAnalysisBody"></div>
+  </div>
+</div>
 
 <div class="player-profile-overlay hidden" id="playerProfileOverlay" role="dialog" aria-modal="true" aria-labelledby="playerProfileName">
   <div class="player-profile-card">
@@ -3181,6 +3264,28 @@ function ordinal(n){const s=['th','st','nd','rd'],v=n%100;return n+(s[(v-20)%10]
 function fmt(v,d=1){return typeof v==='number'?v.toFixed(d):'—'}
 function toast(msg,type=''){const el=$('#toast');el.textContent=msg;el.className=`toast show ${type}`;clearTimeout(toast.t);toast.t=setTimeout(()=>el.className='toast',2500)}
 
+let mobileDialogScrollY=0,mobileDialogDepth=0;
+function updateMobileViewportHeight(){
+  document.documentElement.style.setProperty('--mobile-vh',`${Math.max(window.innerHeight,1)*.01}px`);
+}
+function focusWithoutScroll(element){
+  if(!element)return;
+  requestAnimationFrame(()=>{try{element.focus({preventScroll:true})}catch(_){element.focus()}});
+}
+function lockMobilePageScroll(){
+  if(mobileDialogDepth++>0)return;
+  mobileDialogScrollY=window.scrollY||document.documentElement.scrollTop||0;
+  document.body.style.top=`-${mobileDialogScrollY}px`;
+  document.body.classList.add('mobile-dialog-open');
+}
+function unlockMobilePageScroll(){
+  if(mobileDialogDepth===0)return;
+  mobileDialogDepth--;
+  if(mobileDialogDepth>0)return;
+  document.body.classList.remove('mobile-dialog-open');
+  document.body.style.top='';
+  try{window.scrollTo({top:mobileDialogScrollY,left:0,behavior:'auto'})}catch(_){window.scrollTo(0,mobileDialogScrollY)}
+}
 
 function setScrollTop(el){
   if(!el)return;
@@ -4720,10 +4825,15 @@ function renderStatus(){
   for(let i=nextStart;i<TOTAL_PICKS;i++)if(pickTeamSlot(i)===state.userSlot){next=pickLabel(i);break}
   $('#nextPickStat').textContent=next;
   const turnSlot=state.currentPick<TOTAL_PICKS?pickTeamSlot(state.currentPick):null;
+  const analysisButton=$('#draftAnalysisButton'),analysisReady=state.currentPick>=TOTAL_PICKS;
+  analysisButton.disabled=!analysisReady;
+  analysisButton.classList.toggle('analysis-ready',analysisReady);
+  $('#turnBanner').classList.toggle('analysis-ready',analysisReady);
+  analysisButton.setAttribute('aria-label',analysisReady?`Open completed draft analysis for ${teamName(state.userSlot)}`:'Draft status');
   $('#autoPickBtn').classList.toggle('hidden',isBuildMode()||!isUserTurn());
   if(state.currentPick>=TOTAL_PICKS){
     $('#turnTitle').textContent='Draft Complete.';
-    $('#turnSub').textContent='Review your roster and export the results.';
+    $('#turnSub').textContent='Press here for your full team analysis.';
   }else if(isBuildMode()&&state.started){
     const roster=rosterFor(turnSlot);
     $('#turnTitle').textContent=`${teamName(turnSlot)}, You Are On The Clock!`;
@@ -4761,10 +4871,18 @@ function openPlayerProfile(playerOrId){
   $('#playerMoreInfo').target='_blank';
   $('#playerMoreInfo').rel='noopener noreferrer';
   $('#playerMoreInfo').setAttribute('aria-label',`More information about ${p.name}`);
-  $('#playerProfileOverlay').classList.remove('hidden');
-  setScrollTop($('#playerProfileOverlay'));
+  const overlay=$('#playerProfileOverlay');
+  if(overlay.classList.contains('hidden'))lockMobilePageScroll();
+  overlay.classList.remove('hidden');
+  setScrollTop(overlay);
+  focusWithoutScroll($('#playerProfileClose'));
 }
-function closePlayerProfile(){$('#playerProfileOverlay').classList.add('hidden')}
+function closePlayerProfile(){
+  const overlay=$('#playerProfileOverlay');
+  if(!overlay||overlay.classList.contains('hidden'))return;
+  overlay.classList.add('hidden');
+  unlockMobilePageScroll();
+}
 
 function filteredPlayers(){
   const q=$('#searchInput').value.trim().toLowerCase(),pos=$('#positionFilter').value,tier=$('#tierFilter').value,sort=$('#sortSelect').value;
@@ -4797,7 +4915,8 @@ function bestPickStrategyText(player,slot,pickIndex){
 function renderPlayers(){
   $('#availableCount').textContent=`${available().length} available`;
   const list=filteredPlayers(),tbody=$('#playerRows');tbody.innerHTML='';
-  list.forEach(p=>{const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div><div class="team-text">${p.team} · ${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
+  const clashRoster=state.started?rosterFor(state.userSlot):[];
+  list.forEach(p=>{const clash=byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div><div class="team-text">${p.team} · ${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
 
   const guide=$('#rosterGuidance'),rec=$('#recommendations');rec.innerHTML='';
   if(!isUserTurn()){rec.classList.add('hidden');guide.classList.add('hidden')}
@@ -4881,6 +5000,181 @@ function saveTeamNames(){
   state.teamNames=names;state.teamName=names[state.userSlot-1];save();closeTeamEditor();renderAll();toast('Team names updated.','good')
 }
 function renderTeams(){const box=$('#teamCards');box.innerHTML='';for(let slot=1;slot<=TOTAL_TEAMS;slot++){const r=rosterFor(slot),c=posCounts(r);const card=document.createElement('div');card.className='team-card';card.innerHTML=`<div class="team-card-head"><span>${escapeHtml(teamName(slot))}</span><span>${r.length}/${DUKES_FF26_LEAGUE.roster.draftedRosterSize}</span></div><div class="team-card-body">${r.length?r.map(p=>`<div class="tiny-player"><span><span class="pos ${p.pos}" style="margin-right:6px;min-width:31px;height:21px">${p.pos}</span>${escapeHtml(p.name)}</span><span style="color:var(--muted)">${p.rank}</span></div>`).join(''):'<div class="pick-empty">No picks</div>'}</div>`;box.appendChild(card)}}
+function byeClashDetailsForSlot(slot){
+  const roster=rosterFor(slot).filter(player=>['QB','RB','WR','TE'].includes(player.pos)&&Number.isFinite(Number(player.bye)));
+  const byWeek=new Map();
+  roster.forEach(player=>{
+    const week=Number(player.bye);
+    if(!byWeek.has(week))byWeek.set(week,[]);
+    byWeek.get(week).push(player);
+  });
+  return [...byWeek.entries()].sort((a,b)=>a[0]-b[0]).map(([week,players])=>{
+    const ordered=[...players].sort((a,b)=>POS_ORDER.indexOf(a.pos)-POS_ORDER.indexOf(b.pos)||(Number(a.rank)||999)-(Number(b.rank)||999));
+    const counts=ordered.reduce((result,player)=>(result[player.pos]=(result[player.pos]||0)+1,result),{});
+    const positionOverflow=Math.max(0,(counts.QB||0)-1)+Math.max(0,(counts.RB||0)-2)+Math.max(0,(counts.WR||0)-3)+Math.max(0,(counts.TE||0)-1);
+    const groupOverflow=ordered.length>=4?ordered.length-3:0;
+    const clashScore=positionOverflow+groupOverflow;
+    const reasons=[];
+    if((counts.QB||0)>1)reasons.push(`${counts.QB} QBs share this bye`);
+    if((counts.RB||0)>2)reasons.push(`${counts.RB} RBs share this bye`);
+    if((counts.WR||0)>3)reasons.push(`${counts.WR} WRs share this bye`);
+    if((counts.TE||0)>1)reasons.push(`${counts.TE} TEs share this bye`);
+    if(ordered.length>=4)reasons.push(`${ordered.length} offensive players are unavailable together`);
+    if(!reasons.length)reasons.push(`${ordered.length} offensive players share the week; depth is reduced but the lineup threshold is not exceeded`);
+    return {week,players:ordered,clashScore,reasons,isScoredClash:clashScore>0};
+  }).filter(item=>item.players.length>=2);
+}
+function renderByeClashDetails(){
+  const details=byeClashDetailsForSlot(state.userSlot);
+  const scored=details.filter(item=>item.isScoredClash);
+  const total=scored.reduce((sum,item)=>sum+item.clashScore,0);
+  $('#byeClashTitle').textContent=`${teamName(state.userSlot)} BYE CLASHES`;
+  $('#byeClashSummary').textContent=details.length
+    ?`${total} scored clash point${total===1?'':'s'} across ${scored.length} high-risk week${scored.length===1?'':'s'}; all ${details.length} shared bye week${details.length===1?' is':'s are'} shown below.`
+    :'No shared offensive bye weeks were detected for this team.';
+  $('#byeClashList').innerHTML=details.length?details.map(item=>`<section class="bye-clash-week${item.isScoredClash?'':' shared-only'}"><div class="bye-clash-week-head"><strong>WEEK ${item.week}</strong><span class="bye-clash-score">${item.isScoredClash?`${item.clashScore} CLASH POINT${item.clashScore===1?'':'S'}`:'SHARED BYE'}</span></div><div class="bye-clash-players">${item.players.map(player=>`<div class="bye-clash-player"><span class="pos ${player.pos}" style="min-width:31px;height:18px;padding:0 4px;font-size:9px">${player.pos}</span><span class="bye-clash-player-name">${escapeHtml(player.name)}</span><span class="bye-clash-player-team">${escapeHtml(player.team)}</span></div>`).join('')}</div><div class="bye-clash-reason">${item.reasons.map(escapeHtml).join(' · ')}</div></section>`).join(''):'<div class="bye-clash-empty">This roster has no offensive players sharing the same bye week.</div>';
+}
+function openByeClashDetails(){
+  renderByeClashDetails();
+  const overlay=$('#byeClashOverlay');
+  if(overlay.classList.contains('hidden'))lockMobilePageScroll();
+  overlay.classList.remove('hidden');
+  $('#byeClashesButton')?.setAttribute('aria-expanded','true');
+  focusWithoutScroll($('#byeClashClose'));
+}
+function closeByeClashDetails(){
+  const overlay=$('#byeClashOverlay');
+  if(!overlay||overlay.classList.contains('hidden'))return;
+  overlay.classList.add('hidden');
+  $('#byeClashesButton')?.setAttribute('aria-expanded','false');
+  unlockMobilePageScroll();
+  focusWithoutScroll($('#byeClashesButton'));
+}
+function draftPickInfoForSlot(slot){
+  return state.picks.filter(pick=>pick.teamSlot===slot).sort((a,b)=>a.overall-b.overall).map(pick=>{
+    const player=byId(pick.playerId);
+    return player?{...pick,player,round:Number(pick.round)||Math.floor((pick.overall-1)/TOTAL_TEAMS)+1}:null;
+  }).filter(Boolean);
+}
+function draftStrategyLabel(slot){
+  const picks=draftPickInfoForSlot(slot);
+  const early=picks.filter(item=>item.round<=5);
+  const earlyRB=early.filter(item=>item.player.pos==='RB').length;
+  const earlyWR=early.filter(item=>item.player.pos==='WR').length;
+  const firstRB=picks.find(item=>item.player.pos==='RB')?.round??99;
+  const earlyElite=early.find(item=>['QB','TE'].includes(item.player.pos));
+  if(firstRB>=5)return 'Zero RB';
+  if(earlyRB>=3)return 'Robust RB';
+  if(earlyRB===1&&earlyWR>=2)return 'Hero RB';
+  if(earlyWR>=3)return 'WR-Heavy';
+  if(earlyElite&&earlyElite.round<=4)return 'Elite QB/TE';
+  return 'Balanced PPR';
+}
+function draftSlotContext(slot){
+  if(slot<=2||slot>=11)return 'drafting from the turn';
+  if(slot>=5&&slot<=8)return 'drafting from the middle';
+  return slot<=4?'drafting from the early side':'drafting from the late side';
+}
+function rosterRoundText(slot,positions){
+  const entries=draftPickInfoForSlot(slot).filter(item=>positions.includes(item.player.pos));
+  return entries.length?entries.map(item=>`${escapeHtml(item.player.name)} (R${item.round})`).join(', '):'None selected';
+}
+function flexFlexibilityLabel(counts){
+  const extras=Math.max(0,(counts.RB||0)-2)+Math.max(0,(counts.WR||0)-3)+Math.max(0,(counts.TE||0)-1);
+  const level=extras>=7?'High':extras>=5?'Moderate':'Limited';
+  return `${level} · ${extras} flex-capable extras`;
+}
+function injuryResilienceLabel(results){
+  const risk=Number(results?.riskUpside?.starterRisk)||50;
+  const level=risk<=35?'High':risk<=52?'Moderate':'Low';
+  return `${level} · starter risk ${Math.round(risk)}`;
+}
+function pprFloorLabel(results){
+  const floor=Number(results?.riskUpside?.floor)||0;
+  const level=floor>=68?'High':floor>=54?'Moderate':'Volatile';
+  return `${level} · ${Math.round(floor)}/100`;
+}
+function draftTeamProfile(slot){
+  const roster=rosterFor(slot);
+  const counts=posCounts(roster);
+  const results=DraftIntelligence.gradeSlot(slot);
+  const topAsset=[...roster].sort((a,b)=>(Number(a.rank)||999)-(Number(b.rank)||999))[0];
+  return {
+    slot,name:teamName(slot),roster,counts,results,strategy:draftStrategyLabel(slot),
+    topAsset:topAsset?`Tier ${topAsset.tier} · ${topAsset.name}`:'—',
+    floor:pprFloorLabel(results),flex:flexFlexibilityLabel(counts),resilience:injuryResilienceLabel(results)
+  };
+}
+function comparisonProfilesForUser(){
+  const others=Array.from({length:TOTAL_TEAMS},(_,i)=>draftTeamProfile(i+1)).filter(profile=>profile.slot!==state.userSlot);
+  const selected=[];
+  for(const profile of [...others].sort((a,b)=>(b.results?.overallScore||0)-(a.results?.overallScore||0))){
+    if(!selected.some(item=>item.strategy===profile.strategy))selected.push(profile);
+    if(selected.length===3)break;
+  }
+  for(const profile of others){
+    if(selected.length===3)break;
+    if(!selected.some(item=>item.slot===profile.slot))selected.push(profile);
+  }
+  return selected;
+}
+function positionCapitalSummary(slot,pos){
+  const entries=draftPickInfoForSlot(slot).filter(item=>item.player.pos===pos);
+  if(!entries.length)return {count:0,first:99,bestTier:99,names:'None'};
+  return {count:entries.length,first:entries[0].round,bestTier:Math.min(...entries.map(item=>Number(item.player.tier)||99)),names:entries.map(item=>`${escapeHtml(item.player.name)} (R${item.round})`).join(', ')};
+}
+function buildDraftAnalysis(){
+  const user=draftTeamProfile(state.userSlot);
+  const comparisons=comparisonProfilesForUser();
+  const rb=positionCapitalSummary(state.userSlot,'RB');
+  const wr=positionCapitalSummary(state.userSlot,'WR');
+  const qb=positionCapitalSummary(state.userSlot,'QB');
+  const te=positionCapitalSummary(state.userSlot,'TE');
+  const grade=user.results;
+  const topGroup=grade?.positionGroups?.strongestPosition?.position||'skill-position depth';
+  const weakestGroup=grade?.positionGroups?.weakestPosition?.position||'bench depth';
+  const bestValue=grade?.draftValue?.bestPick?.player?.name;
+  const biggestReach=grade?.draftValue?.biggestReach?.player?.name;
+  const clashes=byeClashDetailsForSlot(state.userSlot).filter(item=>item.isScoredClash);
+  const earlyRB=rb.first<=2?'an early anchor asset':rb.first<=4?'mid-early RB capital':'a delayed RB build';
+  const earlyWR=wr.first<=2?'premium WR capital':wr.first<=4?'balanced early WR investment':'a later WR start';
+  const eliteTiming=Math.min(qb.first,te.first);
+  const eliteText=eliteTiming<=4?'Premium draft capital was spent at QB/TE, raising weekly ceiling but increasing opportunity cost at RB/WR.':eliteTiming<=9?'QB and TE were secured in the preferred middle-round window without forcing the build.':'QB/TE were delayed, preserving early-round volume at RB and WR.';
+  const strengthOne=bestValue?`${escapeHtml(bestValue)} delivered the best adjusted ADP value, improving the floor/ceiling ratio without forcing roster structure.`:`The ${escapeHtml(topGroup)} room grades as the roster’s strongest position group.`;
+  const strengthTwo=`${escapeHtml(user.flex)} creates lineup optionality across a three-WR, one-FLEX format.`;
+  const weaknessOne=clashes.length?`${clashes.length} high-risk bye week${clashes.length===1?'':'s'} compress lineup depth; the Bye Clashes report identifies the exact weeks.`:`No scored bye clash is present, but weekly depth still depends on health at the thinnest position.`;
+  const weaknessTwo=biggestReach?`${escapeHtml(biggestReach)} was the largest adjusted reach; that pick carries the clearest opportunity-cost risk.`:`${escapeHtml(weakestGroup)} is the lowest-graded position group and the first area to monitor after the draft.`;
+  const headers=[user,...comparisons];
+  const tableRows=[
+    ['Top Asset Tier',...headers.map(p=>escapeHtml(p.topAsset))],
+    ['PPR Weekly Floor',...headers.map(p=>escapeHtml(p.floor))],
+    ['Flex Flexibility',...headers.map(p=>escapeHtml(p.flex))],
+    ['Injury Resilience',...headers.map(p=>escapeHtml(p.resilience))]
+  ];
+  $('#draftAnalysisTitle').textContent=`${user.name} · SLOT ${state.userSlot}`;
+  $('#draftAnalysisBody').innerHTML=`
+    <section><h3>1. Executive Summary</h3><p class="draft-analysis-summary"><strong>${escapeHtml(user.name)} finished with a ${escapeHtml(user.strategy)} identity from Slot ${state.userSlot}, ${draftSlotContext(state.userSlot)}.</strong> The build earned a ${escapeHtml(grade.letterGrade||window.latestDraftGrade?.strategyV3?.grade||'—')} overall outlook, led by ${escapeHtml(topGroup)} strength and ${escapeHtml(user.flex.toLowerCase())}. Its weekly profile is ${escapeHtml(user.floor.toLowerCase())}, with the main risk concentrated in ${escapeHtml(weakestGroup)} and any compressed bye weeks.</p></section>
+    <section><h3>2. Positional Breakdown</h3><h4>Running Backs</h4><p>${rb.count} RBs were selected, beginning in Round ${rb.first===99?'—':rb.first}. The room used ${earlyRB}; best RB tier: ${rb.bestTier===99?'—':rb.bestTier}. ${rb.names}.</p><h4>Wide Receivers</h4><p>${wr.count} WRs were selected, beginning in Round ${wr.first===99?'—':wr.first}. The build shows ${earlyWR}; best WR tier: ${wr.bestTier===99?'—':wr.bestTier}. ${wr.names}.</p><h4>Elite Positions (QB/TE)</h4><p>${eliteText} QB: ${qb.names}. TE: ${te.names}.</p></section>
+    <section><h3>3. Strategy Comparison Matrix</h3><div class="strategy-table-wrap"><table class="strategy-table"><thead><tr><th>Measure</th>${headers.map(p=>`<th>${escapeHtml(p.name)}<span class="analysis-team-label">${escapeHtml(p.strategy)} · Slot ${p.slot}</span></th>`).join('')}</tr></thead><tbody>${tableRows.map(row=>`<tr>${row.map((cell,index)=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>
+    <section><h3>4. Strengths &amp; Weaknesses</h3><ul><li><strong>Strength:</strong> ${strengthOne}</li><li><strong>Strength:</strong> ${strengthTwo}</li><li><strong>Risk:</strong> ${weaknessOne}</li><li><strong>Risk:</strong> ${weaknessTwo}</li></ul></section>`;
+}
+function openDraftAnalysis(){
+  if(state.currentPick<TOTAL_PICKS)return;
+  buildDraftAnalysis();
+  const overlay=$('#draftAnalysisOverlay');
+  if(overlay.classList.contains('hidden'))lockMobilePageScroll();
+  overlay.classList.remove('hidden');
+  $('#draftAnalysisButton')?.setAttribute('aria-expanded','true');
+  focusWithoutScroll($('#draftAnalysisClose'));
+}
+function closeDraftAnalysis(){
+  const overlay=$('#draftAnalysisOverlay');
+  if(!overlay||overlay.classList.contains('hidden'))return;
+  overlay.classList.add('hidden');
+  $('#draftAnalysisButton')?.setAttribute('aria-expanded','false');
+  unlockMobilePageScroll();
+  focusWithoutScroll($('#draftAnalysisButton'));
+}
 function renderComplete(){
   const done=state.currentPick>=TOTAL_PICKS;
   $('#completePanel').classList.toggle('hidden',!done);
@@ -4893,6 +5187,7 @@ function renderComplete(){
   $('#valueScore').textContent=results.draftValue.totalAdjustedADPValue>0?`+${results.draftValue.totalAdjustedADPValue}`:results.draftValue.totalAdjustedADPValue;
   $('#avgPpg').textContent=fmt(avgPpg);
   $('#byeClashes').textContent=byeSeverity;
+  $('#byeClashesButton').setAttribute('aria-label',`Show ${byeSeverity} bye clash${byeSeverity===1?'':'es'} for ${teamName(state.userSlot)}`);
   const topStrength=results.explanations.strengths[0];
   const topConcern=results.hardPenalties.penalties[0]?.reason||results.explanations.concerns[0];
   $('#gradeMessage').textContent=strategyGrade.notes[0]||topConcern||topStrength||`${strategyGrade.score}/100 strategy grade · ${results.rosterPowerGrade} roster power · ${results.draftDecisionGrade} draft decisions.`;
@@ -5384,14 +5679,26 @@ document.addEventListener('click',e=>{
 });
 
 document.addEventListener('click',e=>{const t=e.target.closest('[data-profile]');if(t&&!e.target.closest('[data-draft],[data-rec]')){e.preventDefault();e.stopPropagation();openPlayerProfile(t.dataset.profile)}});
+$('#byeClashesButton').onclick=openByeClashDetails;
+$('#byeClashClose').onclick=closeByeClashDetails;
+$('#byeClashOverlay').onclick=e=>{if(e.target===$('#byeClashOverlay'))closeByeClashDetails()};
+$('#draftAnalysisButton').onclick=openDraftAnalysis;
+$('#draftAnalysisClose').onclick=closeDraftAnalysis;
+$('#draftAnalysisOverlay').onclick=e=>{if(e.target===$('#draftAnalysisOverlay'))closeDraftAnalysis()};
 $('#playerProfileClose').onclick=closePlayerProfile;
 $('#playerProfileOverlay').onclick=e=>{if(e.target===$('#playerProfileOverlay'))closePlayerProfile()};
 $('#playerMoreInfo').onclick=e=>{const href=e.currentTarget.href;if(!href||href.endsWith('#')){e.preventDefault();toast('Player information link is unavailable.','bad');return}closePlayerProfile();};
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayerProfile()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePlayerProfile();closeByeClashDetails();closeDraftAnalysis()}});
 
 if('scrollRestoration' in history)history.scrollRestoration='manual';
-window.addEventListener('pageshow',()=>scrollPageToTop());
-window.addEventListener('load',()=>scrollPageToTop());
+let mobileViewportRaf=0;
+function scheduleMobileViewportUpdate(){cancelAnimationFrame(mobileViewportRaf);mobileViewportRaf=requestAnimationFrame(updateMobileViewportHeight)}
+updateMobileViewportHeight();
+window.addEventListener('resize',scheduleMobileViewportUpdate,{passive:true});
+window.addEventListener('orientationchange',scheduleMobileViewportUpdate,{passive:true});
+window.visualViewport?.addEventListener('resize',scheduleMobileViewportUpdate,{passive:true});
+window.addEventListener('pageshow',()=>{updateMobileViewportHeight();scrollPageToTop()});
+window.addEventListener('load',()=>{updateMobileViewportHeight();scrollPageToTop()});
 buildFilters();initializeSetup();renderAll();scrollPageToTop();
 </script>
 </body>
