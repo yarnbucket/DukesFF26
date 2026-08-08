@@ -3372,6 +3372,21 @@ function playSound(soundId){
     if(playPromise&&typeof playPromise.catch==='function')playPromise.catch(()=>{});
   }catch(_error){}
 }
+function stopSound(soundId,{reset=true}={}){
+  const sound=document.getElementById(soundId);
+  if(!sound)return;
+  try{
+    sound.pause();
+    if(reset)sound.currentTime=0;
+  }catch(_error){}
+}
+function playDraftCompleteSound(){
+  // Locked audio handoff: startup/button audio must never overlap the
+  // draft-complete cue when pick 192 is committed.
+  stopSound('startupSound');
+  stopSound('buttonSound');
+  playSound('completeSound');
+}
 function primeSounds(){
   ['startupSound','buttonSound','completeSound'].forEach(id=>{
     const sound=document.getElementById(id);
@@ -3485,7 +3500,7 @@ function initializeSetup(){
   const slotSelect=$('#draftSlotSelect');
   slotSelect.value=String(state.userSlot||1);
   slotSelect.onchange=()=>{state.userSlot=Number(slotSelect.value)||1};
-  const saved=loadSaved(); if(saved){$('#resumeBtn').classList.remove('hidden');$('#resumeBtn').onclick=()=>{primeSounds();playSound('startupSound');scrollPageToTop();state=saved;$('#setupOverlay').classList.add('hidden');renderAll();scrollPageToTop();if(!isBuildMode()&&!isUserTurn()&&state.currentPick<TOTAL_PICKS)runCpuUntilUser();};}
+  const saved=loadSaved(); if(saved){$('#resumeBtn').classList.remove('hidden');$('#resumeBtn').onclick=()=>{primeSounds();scrollPageToTop();state=saved;$('#setupOverlay').classList.add('hidden');renderAll();scrollPageToTop();if(state.currentPick<TOTAL_PICKS)playSound('startupSound');if(!isBuildMode()&&!isUserTurn()&&state.currentPick<TOTAL_PICKS)runCpuUntilUser();};}
 }
 
 function startDraft(){
@@ -4944,7 +4959,7 @@ function makePick(player,auto=false){
     toast('The pick could not be completed. Please try again.','bad');
   }
 }
-function commitPick(player,slot,source){const completesDraft=state.currentPick===TOTAL_PICKS-1;state.picks.push({overall:state.currentPick+1,round:Math.floor(state.currentPick/TOTAL_TEAMS)+1,teamSlot:slot,playerId:player.rank,source});state.currentPick++;save();if(completesDraft)playSound('completeSound')}
+function commitPick(player,slot,source){const completesDraft=state.currentPick===TOTAL_PICKS-1;state.picks.push({overall:state.currentPick+1,round:Math.floor(state.currentPick/TOTAL_TEAMS)+1,teamSlot:slot,playerId:player.rank,source});state.currentPick++;save();if(completesDraft)playDraftCompleteSound()}
 async function runCpuUntilUser(){
   if(isBuildMode()){renderAll();return}
   if(!state.started||state.currentPick>=TOTAL_PICKS){renderAll();return}
@@ -5325,7 +5340,7 @@ function buildDraftAnalysis(){
   ];
   $('#draftAnalysisTitle').textContent=`${user.name} · SLOT ${state.userSlot}`;
   $('#draftAnalysisBody').innerHTML=`
-    <section><h3>1. Executive Summary</h3><p class="draft-analysis-summary"><strong>${escapeHtml(user.name)} finished with a ${escapeHtml(user.strategy)} identity from Slot ${state.userSlot}, ${draftSlotContext(state.userSlot)}.</strong> The build earned a ${escapeHtml(grade.letterGrade||window.latestDraftGrade?.strategyV3?.grade||'—')} overall outlook, led by ${escapeHtml(topGroup)} strength and ${escapeHtml(user.flex.toLowerCase())}. Its weekly profile is ${escapeHtml(user.floor.toLowerCase())}, with the main risk concentrated in ${escapeHtml(weakestGroup)} and any compressed bye weeks.</p></section>
+    <section><h3>1. Executive Summary</h3><p class="draft-analysis-summary"><strong>${escapeHtml(user.name)} finished with a ${escapeHtml(user.strategy)} identity from Slot ${state.userSlot}, ${draftSlotContext(state.userSlot)}.</strong> The build earned a ${escapeHtml(grade.letterGrade||'—')} overall outlook, led by ${escapeHtml(topGroup)} strength and ${escapeHtml(user.flex.toLowerCase())}. Its weekly profile is ${escapeHtml(user.floor.toLowerCase())}, with the main risk concentrated in ${escapeHtml(weakestGroup)} and any compressed bye weeks.</p></section>
     <section><h3>2. Positional Breakdown</h3><h4>Running Backs</h4><p>${rb.count} RBs were selected, beginning in Round ${rb.first===99?'—':rb.first}. The room used ${earlyRB}; best RB tier: ${rb.bestTier===99?'—':rb.bestTier}. ${rb.names}.</p><h4>Wide Receivers</h4><p>${wr.count} WRs were selected, beginning in Round ${wr.first===99?'—':wr.first}. The build shows ${earlyWR}; best WR tier: ${wr.bestTier===99?'—':wr.bestTier}. ${wr.names}.</p><h4>Elite Positions (QB/TE)</h4><p>${eliteText} QB: ${qb.names}. TE: ${te.names}.</p></section>
     <section><h3>3. Strategy Comparison Matrix</h3><div class="strategy-table-wrap"><table class="strategy-table"><thead><tr><th>Measure</th>${headers.map(p=>`<th>${escapeHtml(p.name)}<span class="analysis-team-label">${escapeHtml(p.strategy)} · Slot ${p.slot}</span></th>`).join('')}</tr></thead><tbody>${tableRows.map(row=>`<tr>${row.map((cell,index)=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>
     <section><h3>4. Strengths &amp; Weaknesses</h3><ul><li><strong>Strength:</strong> ${strengthOne}</li><li><strong>Strength:</strong> ${strengthTwo}</li><li><strong>Risk:</strong> ${weaknessOne}</li><li><strong>Risk:</strong> ${weaknessTwo}</li></ul></section>`;
@@ -5355,7 +5370,10 @@ function renderComplete(){
   const r=rosterFor(state.userSlot),strategyGrade=DUKES_STRATEGY_V3.gradeRoster(r.map(player=>strategyPlayerFromApp(player)).filter(Boolean)),ppg=r.filter(p=>Number.isFinite(p.ppg25)).map(p=>p.ppg25);
   const avgPpg=ppg.length?ppg.reduce((a,b)=>a+b,0)/ppg.length:null;
   const byeSeverity=results.byeClashes||0;
-  $('#draftGrade').textContent=strategyGrade.grade;
+  // FINAL GRADE SOURCE OF TRUTH:
+  // Match the completed Executive Summary, which uses DraftIntelligence's
+  // full A+ through F grading scale. Strategy V3 remains supporting analysis.
+  $('#draftGrade').textContent=results.letterGrade;
   $('#valueScore').textContent=results.draftValue.totalAdjustedADPValue>0?`+${results.draftValue.totalAdjustedADPValue}`:results.draftValue.totalAdjustedADPValue;
   $('#avgPpg').textContent=fmt(avgPpg);
   $('#byeClashes').textContent=byeSeverity;
@@ -5363,7 +5381,7 @@ function renderComplete(){
   const topStrength=results.explanations.strengths[0];
   const topConcern=results.hardPenalties.penalties[0]?.reason||results.explanations.concerns[0];
   $('#gradeMessage').textContent=strategyGrade.notes[0]||topConcern||topStrength||`${strategyGrade.score}/100 strategy grade · ${results.rosterPowerGrade} roster power · ${results.draftDecisionGrade} draft decisions.`;
-  window.latestDraftGrade={...results,strategyV3:strategyGrade};
+  window.latestDraftGrade={...results,finalGrade:results.letterGrade,strategyV3:strategyGrade};
 }
 function updateTabMeta(view){
   const meta=$('#availableCount');if(!meta)return;
@@ -5814,6 +5832,8 @@ document.querySelectorAll('[data-sound-toggle]').forEach(button=>button.addEvent
 document.addEventListener('click',event=>{
   const control=event.target.closest('button,.tab');
   if(!control||control.disabled||control.matches('[data-sound-toggle],#startBtn,#resumeBtn'))return;
+  // Do not let a bubbled click sound overlap the final completion cue.
+  if(state&&state.currentPick>=TOTAL_PICKS)return;
   playSound('buttonSound');
 });
 updateSoundToggles();
