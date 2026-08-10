@@ -977,11 +977,25 @@ body::before{
 @media(max-width:720px){.turn-summary-button{width:100%;text-align:center}.turn-summary-button.analysis-ready{padding:3px}.draft-analysis-modal{padding:13px}.draft-analysis-body{max-height:78dvh}.draft-analysis-body h3{font-size:15px}.draft-analysis-body p,.draft-analysis-body li{font-size:11px}.bye-clash-modal{padding:13px}.bye-clash-list{max-height:72dvh}}
 
 
-/* v1.1 live-data layer — presentation only; draft engine remains locked */
+/* v1.1 live-data + approved manual-pick flexibility */
 .live-data-status{margin:7px auto 0;width:max-content;max-width:100%;padding:5px 9px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(3,10,18,.48);color:#b9c8d9;font-size:10px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;line-height:1.2}
 .live-data-status.good{color:#9af0c9;border-color:rgba(61,220,151,.42)}
 .live-data-status.warn{color:#ffd37a;border-color:rgba(255,193,69,.42)}
 .live-data-status.bad{color:#ffabab;border-color:rgba(255,107,107,.48)}
+
+/* Live player availability indicator — rendered for every player. */
+.player-name-line,.rec-name-line{display:flex;align-items:center;gap:6px;min-width:0}
+.player-name-line .player-name,.rec-name-line .rec-name{min-width:0}
+.player-live-status{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto;padding:2px 5px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(8,14,23,.72);font-size:8px;line-height:1;font-weight:950;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;vertical-align:middle}
+.player-live-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#7f8a98;box-shadow:0 0 0 2px rgba(127,138,152,.12)}
+.player-live-status.status-green{color:#8ff0c2;border-color:rgba(61,220,151,.34)}
+.player-live-status.status-green::before{background:#3ddc97;box-shadow:0 0 0 2px rgba(61,220,151,.14)}
+.player-live-status.status-yellow{color:#ffd36d;border-color:rgba(255,193,69,.36)}
+.player-live-status.status-yellow::before{background:#ffc145;box-shadow:0 0 0 2px rgba(255,193,69,.14)}
+.player-live-status.status-red{color:#ffabab;border-color:rgba(255,107,107,.40)}
+.player-live-status.status-red::before{background:#ff6b6b;box-shadow:0 0 0 2px rgba(255,107,107,.14)}
+.player-live-status.status-unknown{color:#aeb9c7;border-color:rgba(174,185,199,.25)}
+@media(max-width:720px){.player-live-status{font-size:7px;padding:2px 4px;gap:3px}.player-live-status::before{width:5px;height:5px}.player-name-line,.rec-name-line{gap:4px}}
 
 /* iOS + Android mobile hardening */
 :root{--mobile-vh:1vh;color-scheme:dark}
@@ -3192,8 +3206,8 @@ function safeStorageRemove(key){
 
 /*
  * Duke's FF26 v1.1 live-data bootstrap.
- * This layer only refreshes the input data consumed by the locked v1 engine.
- * No draft, recommendation, scoring, roster, grading, or report functions are changed.
+ * Live data refreshes the inputs consumed by the v1 engine.
+ * Approved v1.1 exception: manual skill-position picks are flexible while recommendation, CPU, scoring and grading strategy remain unchanged.
  */
 const LIVE_PLAYER_DATA_URL='players.json';
 const LIVE_STATUS_DATA_URL='ff26-status.json';
@@ -4976,7 +4990,7 @@ function playerInfoUrl(player){
 function openPlayerProfile(playerOrId){
   const p=typeof playerOrId==='object'?playerOrId:byId(playerOrId);if(!p)return;
   $('#playerProfileName').textContent=p.name;
-  $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''} · Bye ${p.bye??'—'}`;
+  $('#playerProfileSub').innerHTML=`${escapeHtml(p.team)} · ${escapeHtml(p.pos)}${p.posRank||''} · Bye ${p.bye??'—'} &nbsp; ${playerLiveStatusBadgeHtml(p)}`;
   $('#playerProfileAvatar').textContent=p.pos;
   $('#playerProfileAvatar').className=`player-profile-avatar pos-${p.pos}`;
   $('#playerProfileStats').innerHTML=`<div class="profile-stat"><b>${p.rank}</b><span>ADP Rank</span></div><div class="profile-stat"><b>T${p.tier??'—'}</b><span>Tier</span></div><div class="profile-stat"><b>${fmt(p.ppg25)}</b><span>2025 PPG</span></div><div class="profile-stat"><b>${p.espnRank??'—'}</b><span>ESPN Rank</span></div>`;
@@ -5026,11 +5040,23 @@ function bestPickStrategyText(player,slot,pickIndex){
   }
 }
 
+function playerLiveStatusView(player){
+  const status=String(player?.liveStatus||'UNKNOWN').trim().toUpperCase();
+  const normalized=['GREEN','YELLOW','RED'].includes(status)?status:'UNKNOWN';
+  const shortLabel={GREEN:'GOOD',YELLOW:'WATCH',RED:'OUT',UNKNOWN:'NO UPDATE'}[normalized];
+  const detail=[player?.liveStatusLabel,player?.liveStatusReason,player?.liveStatusSummary].filter(Boolean).join(' · ')||'No current status report is listed for this player.';
+  return {status:normalized,className:`status-${normalized.toLowerCase()}`,shortLabel,detail};
+}
+function playerLiveStatusBadgeHtml(player){
+  const view=playerLiveStatusView(player);
+  return `<span class="player-live-status ${view.className}" title="${escapeHtml(view.detail)}" aria-label="${escapeHtml(`Status: ${view.shortLabel}. ${view.detail}`)}">${escapeHtml(view.shortLabel)}</span>`;
+}
+
 function renderPlayers(){
   $('#availableCount').textContent=`${available().length} available`;
   const list=filteredPlayers(),tbody=$('#playerRows');tbody.innerHTML='';
   const clashRoster=state.started?rosterFor(state.userSlot):[];
-  list.forEach(p=>{const clash=byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div><div class="team-text">${p.team} · ${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
+  list.forEach(p=>{const clash=byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name-line"><div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div>${playerLiveStatusBadgeHtml(p)}</div><div class="team-text">${p.team} · ${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
 
   const guide=$('#rosterGuidance'),rec=$('#recommendations');rec.innerHTML='';
   if(!isUserTurn()){rec.classList.add('hidden');guide.classList.add('hidden')}
@@ -5045,7 +5071,7 @@ function renderPlayers(){
       const fitText=fills?'Fills a required starter/FLEX need':assessment.marginalLineup>0.5?'Improves the projected starting lineup':assessment.adjustedADP>=5?'Strong ADP and turn value':status.complete?'Best-value depth pick':'Best composite roster value';
       const byeText=clash.level?` · ⚠ ${clash.text}`:` · Bye ${p.bye??'—'} clear`;
       const strategyText=i===0?bestPickStrategyText(p,activeDraftSlot(),state.currentPick):'';
-      d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name profile-trigger" data-profile="${p.rank}">${i===0?'★ ':''}${escapeHtml(p.name)}</div><div class="rec-meta">${fitText} · ADP ${p.rank} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div>${i===0?`<div class="rec-strategy"><strong>Draft Strategy:</strong> ${escapeHtml(strategyText)}</div>`:''}</div><button type="button" class="btn small primary draft-rec-btn" data-rec="${p.rank}" aria-label="Pick ${escapeHtml(p.name)}">PICK</button>`;
+      d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name-line"><div class="rec-name profile-trigger" data-profile="${p.rank}">${i===0?'★ ':''}${escapeHtml(p.name)}</div>${playerLiveStatusBadgeHtml(p)}</div><div class="rec-meta">${fitText} · ADP ${p.rank} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div>${i===0?`<div class="rec-strategy"><strong>Draft Strategy:</strong> ${escapeHtml(strategyText)}</div>`:''}</div><button type="button" class="btn small primary draft-rec-btn" data-rec="${p.rank}" aria-label="Pick ${escapeHtml(p.name)}">PICK</button>`;
       rec.appendChild(d)
     });
   }
@@ -5635,13 +5661,24 @@ function dukesOffensiveCoreUrgency(roster=[],round){const status=dukesOffensiveC
 function dukesSkillDepthSecure(roster=[]){return DUKES_STRATEGY_V3.skillDepthSecure(roster.map(player=>strategyPlayerFromApp(player)).filter(Boolean))}
 function dukesPlayerFillsNeed(player,roster=[],includeSpecialTeams=true){return DUKES_STRATEGY_V3.fillsNeed(strategyPlayerFromApp(player),roster.map(item=>strategyPlayerFromApp(item)).filter(Boolean),includeSpecialTeams)}
 function dukesCanStillCompleteRoster(roster=[],candidate){return DUKES_STRATEGY_V3.canCompleteRoster(roster.map(item=>strategyPlayerFromApp(item)).filter(Boolean),strategyPlayerFromApp(candidate))}
+/*
+ * Manual user picks are intentionally more flexible than Duke's recommendation pool.
+ * Strategy timing still controls Best Pick / CPU behavior, but the user may override it
+ * for offensive skill positions. Extra QB/TE choices remain visible to the grading model.
+ */
+const DUKES_USER_POSITION_MAX=Object.freeze({QB:3,RB:7,WR:8,TE:3});
 function dukesIsEligiblePick(player,roster=[],pickIndex){
   const mappedPlayer=strategyPlayerFromApp(player,pickIndex);
   const mappedRoster=roster.map(item=>strategyPlayerFromApp(item)).filter(Boolean);
-  const round=DUKES_STRATEGY_V3.roundFromPickIndex(pickIndex);
   const position=DUKES_STRATEGY_V3.normalizePosition(mappedPlayer?.position||mappedPlayer?.pos);
   const counts=DUKES_STRATEGY_V3.countRoster(mappedRoster);
-  if(position==='QB'&&counts.QB===0&&round<=DUKES_STRATEGY_V3.LEAGUE.timing.earlyCoreEnd)return false;
+
+  if(Object.prototype.hasOwnProperty.call(DUKES_USER_POSITION_MAX,position)){
+    if(counts[position]>=DUKES_USER_POSITION_MAX[position])return false;
+    return DUKES_STRATEGY_V3.canCompleteRoster(mappedRoster,mappedPlayer);
+  }
+
+  // K/DST retain the established timing and roster-completion rules.
   return DUKES_STRATEGY_V3.isEligible(mappedPlayer,mappedRoster,pickIndex,{pickIndex,requireConfirmedStarter:true});
 }
 function dukesLeagueScoringAdjustment(player){const evaluation=DUKES_STRATEGY_V3.scorePlayer(strategyPlayerFromApp(player),{roster:[],availablePlayers:[strategyPlayerFromApp(player)],pickIndex:0,requireConfirmedStarter:false});return Number(evaluation.components?.ppr||0)}
