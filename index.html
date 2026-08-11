@@ -5323,6 +5323,406 @@ window.DukesFF26WRAnalytics=Object.freeze({
 });
 /* === END WR ROLE & OPPORTUNITY ANALYTICS === */
 
+/* === RB OPPORTUNITY + DRAFT VALUE ENGINE — PHASE 1 ===
+ * Source model: Duke's FF26 2026 Full-PPR Running Back Strategy Engine v2.0.
+ * Phase 1 intentionally excludes weekly opponent/defensive matchup behavior.
+ * Missing advanced RB data remains missing and does not become a fake zero.
+ */
+const FF26_RB_SETTINGS=Object.freeze({
+  leagueType:"FULL_PPR",
+  teams:12,
+  starters:Object.freeze({RB:2,FLEX:1}),
+  opportunityWeights:Object.freeze({
+    receivingPPR:25,
+    totalWorkload:25,
+    redZoneScoring:20,
+    roleSecurity:12,
+    efficiencyExplosiveness:8,
+    offensiveEnvironment:5,
+    riskAdjustment:5
+  }),
+  pprReceiving:Object.freeze({
+    targetMultiplier:1.75,
+    receptionMultiplier:2.00,
+    heavyReceivingTargetsPerGame:6,
+    strongReceivingTargetsPerGame:4,
+    eliteReceivingTargetsPerGame:7,
+    eliteReceptionsPerGame:5,
+    thirdDownBonus:3,
+    twoMinuteBonus:3,
+    passingDownBonus:3
+  }),
+  workload:Object.freeze({
+    eliteTouchesPerGame:22,
+    strongTouchesPerGame:18,
+    acceptableTouchesPerGame:15,
+    committeeWarningTouches:12,
+    eliteBackfieldShare:.75,
+    strongBackfieldShare:.65,
+    committeeShare:.50
+  }),
+  redZone:Object.freeze({
+    eliteRedZoneOpportunitiesPerGame:4,
+    strongRedZoneOpportunitiesPerGame:3,
+    goalLineCarryBonus:4,
+    redZoneTargetBonus:3,
+    insideFiveCarryBonus:5,
+    offenseScoringBonusMax:5
+  }),
+  modeWeights:Object.freeze({
+    DRAFT:Object.freeze({
+      playerQuality:.32,
+      opportunity:.32,
+      matchupSchedule:.10,
+      rosterFit:.10,
+      adpValue:.16
+    }),
+    WEEKLY:Object.freeze({
+      playerQuality:.24,
+      opportunity:.28,
+      matchup:.24,
+      gameScript:.14,
+      offensiveLineMatchup:.10
+    })
+  }),
+  maxStrategyAdjustment:5
+});
+
+const FF26_RB_PLAYER_FIELDS=Object.freeze({
+  carriesPerGame:null,
+  rushYardsPerGame:null,
+  rushingFirstDowns:null,
+  backfieldCarryShare:null,
+  targetsPerGame:null,
+  receptionsPerGame:null,
+  receivingYardsPerGame:null,
+  targetShare:null,
+  routesPerGame:null,
+  routeParticipation:null,
+  thirdDownUsage:null,
+  twoMinuteUsage:null,
+  passingDownShare:null,
+  touchesPerGame:null,
+  snapShare:null,
+  backfieldOpportunityShare:null,
+  redZoneCarriesPerGame:null,
+  carriesInside10PerGame:null,
+  carriesInside5PerGame:null,
+  redZoneTargetsPerGame:null,
+  goalLineShare:null,
+  yardsPerCarry:null,
+  yardsPerTouch:null,
+  yardsAfterContact:null,
+  missedTacklesForced:null,
+  explosiveRunRate:null,
+  receivingYAC:null,
+  depthChartRole:null,
+  threeDownRole:null,
+  committeeRisk:null,
+  goalLineRole:null,
+  passingDownRole:null,
+  teamProjectedPoints:null,
+  offenseQuality:null,
+  offensiveLineGrade:null,
+  injuryRisk:null,
+  rookieUncertainty:null,
+  contractRisk:null,
+  roleCompetitionRisk:null
+});
+
+const FF26_RB_STRATEGY_RULES=Object.freeze([
+  "Never rank running backs using ADP alone.",
+  "Full-PPR receiving opportunity must receive significant weight.",
+  "Targets and receptions are more valuable than ordinary rushing attempts in full PPR.",
+  "Total touches remain one of the strongest indicators of RB reliability.",
+  "Red-zone carries and goal-line usage must be evaluated separately from total rushing volume.",
+  "Do not use previous touchdown totals alone to project future touchdowns.",
+  "Evaluate future touchdown opportunity using red-zone role, inside-10 usage, inside-5 usage, goal-line share and offensive environment.",
+  "Three-down running backs receive a role-security advantage.",
+  "Committee backs receive an opportunity-cost penalty when comparable workhorse backs are available.",
+  "Receiving specialists can outrank higher-carry backs when PPR receiving volume meaningfully improves floor and ceiling.",
+  "An RB with fewer carries but heavy receiving usage can be more valuable than an RB with more carries and little receiving work.",
+  "During the draft, schedule is a secondary factor because defensive quality can change during the season.",
+  "Keep player quality, opportunity quality, matchup quality and draft cost as separate values.",
+  "Use ADP primarily to estimate acquisition cost and the probability that the player will remain available.",
+  "Handcuff RBs require separate contingent-value logic because current workload does not represent contingent workload."
+]);
+
+function rbFinite(value){
+  if(value===null||value===undefined||value==='')return null;
+  const number=Number(value);
+  return Number.isFinite(number)?number:null;
+}
+function rbClamp(value,min=0,max=100){return Math.max(min,Math.min(max,value))}
+function rbBoolean(value){
+  if(value===true||value===false)return value;
+  if(value===1||value==='1'||String(value).toLowerCase()==='true')return true;
+  if(value===0||value==='0'||String(value).toLowerCase()==='false')return false;
+  return null;
+}
+function rbFirstKnown(player,keys){
+  for(const key of keys){
+    const value=rbFinite(player?.[key]);
+    if(value!==null)return value;
+  }
+  return null;
+}
+function rbAllKnown(player,keys){return keys.every(key=>rbFinite(player?.[key])!==null)}
+function createRBProfile(data={}){
+  const profile={name:data.name??null,team:data.team??null,byeWeek:data.byeWeek??data.bye??null};
+  Object.keys(FF26_RB_PLAYER_FIELDS).forEach(key=>{
+    profile[key]=data[key]??FF26_RB_PLAYER_FIELDS[key];
+  });
+  return profile;
+}
+
+function calculatePPRWeightedOpportunity(rb){
+  if(!rbAllKnown(rb,['carriesPerGame','targetsPerGame','receptionsPerGame']))return null;
+  return (
+    rbFinite(rb.carriesPerGame) +
+    rbFinite(rb.targetsPerGame)*FF26_RB_SETTINGS.pprReceiving.targetMultiplier +
+    rbFinite(rb.receptionsPerGame)*FF26_RB_SETTINGS.pprReceiving.receptionMultiplier
+  );
+}
+
+function calculateRBReceivingScore(rb){
+  const direct=rbFirstKnown(rb,['rbReceivingScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAllKnown(rb,['targetsPerGame','receptionsPerGame','targetShare']))return null;
+  let score=0;
+  score+=rbClamp(rbFinite(rb.targetsPerGame)/8*35,0,35);
+  score+=rbClamp(rbFinite(rb.receptionsPerGame)/6*30,0,30);
+  score+=rbClamp(rbFinite(rb.targetShare)/.20*15,0,15);
+  if(rbBoolean(rb.passingDownRole)===true)score+=7;
+  const thirdDown=rbFinite(rb.thirdDownUsage);if(thirdDown!==null&&thirdDown>=.60)score+=5;
+  const twoMinute=rbFinite(rb.twoMinuteUsage);if(twoMinute!==null&&twoMinute>=.60)score+=5;
+  const routes=rbFinite(rb.routeParticipation);if(routes!==null&&routes>=.65)score+=3;
+  return rbClamp(score);
+}
+function calculateRBWorkloadScore(rb){
+  const direct=rbFirstKnown(rb,['rbWorkloadScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAllKnown(rb,['touchesPerGame','backfieldOpportunityShare','snapShare']))return null;
+  let score=0;
+  score+=rbClamp(rbFinite(rb.touchesPerGame)/FF26_RB_SETTINGS.workload.eliteTouchesPerGame*55,0,55);
+  score+=rbClamp(rbFinite(rb.backfieldOpportunityShare)/FF26_RB_SETTINGS.workload.eliteBackfieldShare*30,0,30);
+  score+=rbClamp(rbFinite(rb.snapShare)/.80*15,0,15);
+  return rbClamp(score);
+}
+function calculateRBRedZoneScore(rb){
+  const direct=rbFirstKnown(rb,['rbRedZoneScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAllKnown(rb,['redZoneCarriesPerGame','carriesInside10PerGame','carriesInside5PerGame','redZoneTargetsPerGame','goalLineShare']))return null;
+  let score=0;
+  score+=rbClamp(rbFinite(rb.redZoneCarriesPerGame)/5*30,0,30);
+  score+=rbClamp(rbFinite(rb.carriesInside10PerGame)/3*20,0,20);
+  score+=rbClamp(rbFinite(rb.carriesInside5PerGame)/2*25,0,25);
+  score+=rbClamp(rbFinite(rb.redZoneTargetsPerGame)/2*10,0,10);
+  score+=rbClamp(rbFinite(rb.goalLineShare)/.75*15,0,15);
+  return rbClamp(score);
+}
+function calculateRBRoleSecurity(rb){
+  const direct=rbFirstKnown(rb,['rbRoleSecurityScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAllKnown(rb,['committeeRisk','roleCompetitionRisk']))return null;
+  let score=50;
+  if(rbBoolean(rb.threeDownRole)===true)score+=20;
+  if(rbBoolean(rb.passingDownRole)===true)score+=10;
+  if(rbBoolean(rb.goalLineRole)===true)score+=10;
+  score-=rbFinite(rb.committeeRisk)*20;
+  score-=rbFinite(rb.roleCompetitionRisk)*15;
+  return rbClamp(score);
+}
+function calculateRBEfficiencyScore(rb){
+  const direct=rbFirstKnown(rb,['rbEfficiencyScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAllKnown(rb,['yardsPerCarry','explosiveRunRate','missedTacklesForced','receivingYAC']))return null;
+  let score=50;
+  score+=rbClamp((rbFinite(rb.yardsPerCarry)-4)*10,-15,15);
+  score+=rbClamp(rbFinite(rb.explosiveRunRate)*30,0,15);
+  score+=rbClamp(rbFinite(rb.missedTacklesForced)/60*10,0,10);
+  score+=rbClamp(rbFinite(rb.receivingYAC)/400*10,0,10);
+  return rbClamp(score);
+}
+function calculateRBOffensiveEnvironment(rb){
+  const direct=rbFirstKnown(rb,['rbOffensiveEnvironmentScore']);
+  if(direct!==null)return rbClamp(direct);
+  const quality=String(rb?.offenseQuality??rb?.teamOffenseQuality??'').trim().toUpperCase();
+  const teamPoints=rbFinite(rb?.teamProjectedPoints);
+  if(!quality&&teamPoints===null)return null;
+  let score=50;
+  if(quality==='ELITE')score+=20;
+  else if(quality==='GOOD')score+=10;
+  else if(quality==='POOR')score-=10;
+  if(teamPoints!==null){
+    if(teamPoints>=27)score+=15;
+    else if(teamPoints>=24)score+=8;
+    else if(teamPoints<20&&teamPoints>0)score-=10;
+  }
+  return rbClamp(score);
+}
+function calculateRBRiskScore(rb){
+  const direct=rbFirstKnown(rb,['rbRiskScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAllKnown(rb,['injuryRisk','committeeRisk','rookieUncertainty','contractRisk','roleCompetitionRisk']))return null;
+  let score=100;
+  score-=rbFinite(rb.injuryRisk)*30;
+  score-=rbFinite(rb.committeeRisk)*25;
+  score-=rbFinite(rb.rookieUncertainty)*15;
+  score-=rbFinite(rb.contractRisk)*15;
+  score-=rbFinite(rb.roleCompetitionRisk)*20;
+  return rbClamp(score);
+}
+function calculateRBOpportunityComponents(rb){
+  return {
+    receivingPPR:calculateRBReceivingScore(rb),
+    totalWorkload:calculateRBWorkloadScore(rb),
+    redZoneScoring:calculateRBRedZoneScore(rb),
+    roleSecurity:calculateRBRoleSecurity(rb),
+    efficiencyExplosiveness:calculateRBEfficiencyScore(rb),
+    offensiveEnvironment:calculateRBOffensiveEnvironment(rb),
+    riskAdjustment:calculateRBRiskScore(rb)
+  };
+}
+function calculateRBOpportunityScore(rb){
+  const direct=rbFirstKnown(rb,['rbOpportunityScore','runningBackOpportunityScore']);
+  if(direct!==null)return rbClamp(direct);
+  const components=calculateRBOpportunityComponents(rb);
+  if(Object.values(components).some(value=>value===null))return null;
+  const w=FF26_RB_SETTINGS.opportunityWeights;
+  return rbClamp(
+    components.receivingPPR*(w.receivingPPR/100)+
+    components.totalWorkload*(w.totalWorkload/100)+
+    components.redZoneScoring*(w.redZoneScoring/100)+
+    components.roleSecurity*(w.roleSecurity/100)+
+    components.efficiencyExplosiveness*(w.efficiencyExplosiveness/100)+
+    components.offensiveEnvironment*(w.offensiveEnvironment/100)+
+    components.riskAdjustment*(w.riskAdjustment/100)
+  );
+}
+function classifyRBArchetype(rb){
+  const receiving=calculateRBReceivingScore(rb),workload=calculateRBWorkloadScore(rb),redZone=calculateRBRedZoneScore(rb);
+  if(receiving===null||workload===null||redZone===null)return null;
+  if(receiving>=75&&workload>=75&&redZone>=65)return "PPR_WORKHORSE";
+  if(workload>=80&&receiving<65)return "VOLUME_WORKHORSE";
+  const receptions=rbFinite(rb.receptionsPerGame);
+  if(receiving>=75&&receptions!==null&&receptions>=4)return "RECEIVING_WEAPON";
+  if(redZone>=75&&receiving<55)return "TD_GOAL_LINE_BACK";
+  const explosive=rbFinite(rb.explosiveRunRate);
+  if(explosive!==null&&explosive>=.10&&workload<70)return "EXPLOSIVE_COMMITTEE_BACK";
+  const share=rbFinite(rb.backfieldOpportunityShare);
+  if(share!==null&&share<.40)return "HANDCUFF_CONTINGENT_BACK";
+  return "BALANCED_RB";
+}
+function calculateRBDraftValue({
+  playerQuality,
+  opportunityScore,
+  scheduleScore=50,
+  rosterFitScore=50,
+  adpValueScore=50
+}={}){
+  const quality=rbFinite(playerQuality),opportunity=rbFinite(opportunityScore);
+  if(quality===null||opportunity===null)return null;
+  const schedule=rbFinite(scheduleScore)??50,rosterFit=rbFinite(rosterFitScore)??50,adp=rbFinite(adpValueScore)??50;
+  const w=FF26_RB_SETTINGS.modeWeights.DRAFT;
+  return rbClamp(
+    quality*w.playerQuality+
+    opportunity*w.opportunity+
+    schedule*w.matchupSchedule+
+    rosterFit*w.rosterFit+
+    adp*w.adpValue
+  );
+}
+function compareRBDraftCandidates(rbA,rbB){
+  const scoreA=calculateRBOpportunityScore(rbA),scoreB=calculateRBOpportunityScore(rbB);
+  if(scoreA===null||scoreB===null)return null;
+  if(Math.abs(scoreA-scoreB)<=5){
+    const receivingA=calculateRBReceivingScore(rbA),receivingB=calculateRBReceivingScore(rbB);
+    if(receivingA!==null&&receivingB!==null&&Math.abs(receivingA-receivingB)>=10)return receivingA>receivingB?rbA:rbB;
+  }
+  return scoreA>=scoreB?rbA:rbB;
+}
+function evaluateRBAnalytics(player){
+  if(!player||String(player.pos||player.position).toUpperCase()!=='RB'){
+    return {applicable:false,opportunityScore:null,draftValue:null,dataConfidence:0,strategyAdjustment:0,archetype:null,components:{}};
+  }
+  const rb=createRBProfile(player);
+  // Preserve app-level future fields that are intentionally outside the base package profile.
+  ['teamOffenseQuality','rbReceivingScore','rbWorkloadScore','rbRedZoneScore','rbRoleSecurityScore','rbEfficiencyScore','rbOffensiveEnvironmentScore','rbRiskScore','rbOpportunityScore','runningBackOpportunityScore','rbPlayerQualityScore','ff26DraftScore','rbDraftScheduleScore','rbRosterFitScore','rbAdpValueScore','rbDraftValueScore'].forEach(key=>{
+    if(player?.[key]!==undefined)rb[key]=player[key];
+  });
+  const components=calculateRBOpportunityComponents(rb);
+  const knownComponents=Object.values(components).filter(value=>value!==null).length;
+  const directOpportunity=rbFirstKnown(rb,['rbOpportunityScore','runningBackOpportunityScore']);
+  const opportunityScore=calculateRBOpportunityScore(rb);
+  const playerQuality=rbFirstKnown(rb,['rbPlayerQualityScore','ff26DraftScore']);
+  const directDraftValue=rbFirstKnown(rb,['rbDraftValueScore']);
+  const draftValue=directDraftValue!==null
+    ?rbClamp(directDraftValue)
+    :calculateRBDraftValue({
+      playerQuality,
+      opportunityScore,
+      scheduleScore:rbFirstKnown(rb,['rbDraftScheduleScore'])??50,
+      rosterFitScore:rbFirstKnown(rb,['rbRosterFitScore'])??50,
+      adpValueScore:rbFirstKnown(rb,['rbAdpValueScore'])??50
+    });
+  const dataConfidence=directDraftValue!==null||directOpportunity!==null
+    ?1
+    :Number((knownComponents/7).toFixed(3));
+  const rawAdjustment=draftValue===null?0:rbClamp((draftValue-50)/10,-FF26_RB_SETTINGS.maxStrategyAdjustment,FF26_RB_SETTINGS.maxStrategyAdjustment);
+  const strategyAdjustment=Number((rawAdjustment*dataConfidence).toFixed(3));
+  return {
+    applicable:true,
+    opportunityScore:opportunityScore===null?null:Number(opportunityScore.toFixed(2)),
+    draftValue:draftValue===null?null:Number(draftValue.toFixed(2)),
+    playerQuality:playerQuality===null?null:Number(playerQuality.toFixed(2)),
+    dataConfidence,
+    strategyAdjustment,
+    archetype:classifyRBArchetype(rb),
+    components
+  };
+}
+function applyRBAnalyticsToStrategyEvaluation(player,evaluation){
+  const analytics=evaluateRBAnalytics(player);
+  if(!analytics.applicable||!analytics.strategyAdjustment)return {...evaluation,rbAnalytics:analytics};
+  const nextScore=Number((Number(evaluation.score||0)+analytics.strategyAdjustment).toFixed(3));
+  const reasons=Array.isArray(evaluation.reasons)?[...evaluation.reasons]:[];
+  if(analytics.dataConfidence>=.75){
+    if(analytics.archetype)reasons.push(`RB role profile: ${analytics.archetype.replaceAll('_',' ').toLowerCase()}.`);
+    if(analytics.opportunityScore!==null&&analytics.opportunityScore>=70)reasons.push('RB opportunity profile strengthens this draft value.');
+    else if(analytics.opportunityScore!==null&&analytics.opportunityScore<=38)reasons.push('RB workload/opportunity profile adds caution at this draft price.');
+  }
+  return {
+    ...evaluation,
+    score:nextScore,
+    reasons:reasons.slice(0,7),
+    components:{...(evaluation.components||{}),rbDraftOpportunity:analytics.strategyAdjustment},
+    rbAnalytics:analytics
+  };
+}
+window.DukesFF26RBAnalytics=Object.freeze({
+  version:"2026-RB-OPPORTUNITY-v2.0-PHASE1",
+  settings:FF26_RB_SETTINGS,
+  playerFields:FF26_RB_PLAYER_FIELDS,
+  rules:FF26_RB_STRATEGY_RULES,
+  createPlayer:createRBProfile,
+  calculatePPRWeightedOpportunity,
+  calculateReceivingScore:calculateRBReceivingScore,
+  calculateWorkloadScore:calculateRBWorkloadScore,
+  calculateRedZoneScore:calculateRBRedZoneScore,
+  calculateRoleSecurity:calculateRBRoleSecurity,
+  calculateEfficiency:calculateRBEfficiencyScore,
+  calculateOffensiveEnvironment:calculateRBOffensiveEnvironment,
+  calculateRisk:calculateRBRiskScore,
+  calculateOpportunityScore:calculateRBOpportunityScore,
+  calculateDraftValue:calculateRBDraftValue,
+  compareDraftCandidates:compareRBDraftCandidates,
+  classifyArchetype:classifyRBArchetype,
+  evaluate:evaluateRBAnalytics
+});
+/* === END RB OPPORTUNITY + DRAFT VALUE ENGINE — PHASE 1 === */
+
+
 function strategyPlayerFromApp(player,pickIndex=null){
   const mapped=DraftIntelligence.mapPlayer(player,pickIndex===null?null:{overall:pickIndex+1});
   const pool=PLAYERS.filter(x=>x.pos===player.pos).map(x=>DraftIntelligence.mapPlayer(x));
@@ -5362,7 +5762,8 @@ function strategyEvaluation(p,slot,pickIndex,context=null){
     strategyPlayerFromApp(p,pickIndex),
     context||buildStrategyContext(slot,pickIndex)
   );
-  return applyWRAnalyticsToStrategyEvaluation(p,baseEvaluation);
+  const wrEvaluation=applyWRAnalyticsToStrategyEvaluation(p,baseEvaluation);
+  return applyRBAnalyticsToStrategyEvaluation(p,wrEvaluation);
 }
 function scoreCandidate(p,slot,pickIndex,context=null){
   const strategy=strategyEvaluation(p,slot,pickIndex,context);
@@ -6218,7 +6619,8 @@ function dukesV3Context(slot,pickIndex){
 buildStrategyContext=function(slot,pickIndex){return dukesV3Context(slot,pickIndex)};
 strategyEvaluation=function(player,slot,pickIndex,context=null){
   const baseEvaluation=DUKES_STRATEGY_V3.scorePlayer(strategyPlayerFromApp(player,pickIndex),context||dukesV3Context(slot,pickIndex));
-  return applyWRAnalyticsToStrategyEvaluation(player,baseEvaluation);
+  const wrEvaluation=applyWRAnalyticsToStrategyEvaluation(player,baseEvaluation);
+  return applyRBAnalyticsToStrategyEvaluation(player,wrEvaluation);
 };
 scoreCandidate=function(player,slot,pickIndex,context=null){return strategyEvaluation(player,slot,pickIndex,context).score};
 
