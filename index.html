@@ -5369,6 +5369,15 @@ const FF26_RB_SETTINGS=Object.freeze({
     insideFiveCarryBonus:5,
     offenseScoringBonusMax:5
   }),
+  matchupModifier:Object.freeze({
+    elite:.12,
+    strong:.07,
+    favorable:.04,
+    neutralMax:.03,
+    difficult:-.04,
+    poor:-.07,
+    eliteDefense:-.12
+  }),
   modeWeights:Object.freeze({
     DRAFT:Object.freeze({
       playerQuality:.32,
@@ -5428,6 +5437,44 @@ const FF26_RB_PLAYER_FIELDS=Object.freeze({
   rookieUncertainty:null,
   contractRisk:null,
   roleCompetitionRisk:null
+});
+
+const FF26_RB_DEFENSE_FIELDS=Object.freeze({
+  rbCarriesAllowedPerGame:null,
+  rbRushYardsAllowedPerGame:null,
+  yardsPerCarryAllowed:null,
+  rushingFirstDownsAllowed:null,
+  stuffRate:null,
+  runs10PlusAllowed:null,
+  runs20PlusAllowed:null,
+  rbTargetsAllowedPerGame:null,
+  rbReceptionsAllowedPerGame:null,
+  rbReceivingYardsAllowedPerGame:null,
+  rbReceivingTDAllowed:null,
+  rbYardsPerReceptionAllowed:null,
+  rbRedZoneCarriesAllowed:null,
+  rbCarriesInside10Allowed:null,
+  rbCarriesInside5Allowed:null,
+  rbRushingTDAllowed:null,
+  rbRedZoneTargetsAllowed:null,
+  goalLineConversionRateAllowed:null,
+  rbTouchesAllowedPerGame:null,
+  opponentRushAttemptsPerGame:null,
+  playsAllowedPerGame:null,
+  opponentTimeOfPossession:null,
+  explosiveRunsAllowed:null,
+  missedTackles:null,
+  yardsAfterContactAllowed:null,
+  defensiveLineGrade:null,
+  linebackerGrade:null,
+  shortYardageDefenseGrade:null,
+  defensiveInjuries:null,
+  homeDefense:null
+});
+
+const FF26_RB_GAME_FIELDS=Object.freeze({
+  teamSpread:null,
+  teamProjectedPoints:null
 });
 
 const FF26_RB_STRATEGY_RULES=Object.freeze([
@@ -5614,6 +5661,233 @@ function classifyRBArchetype(rb){
   if(share!==null&&share<.40)return "HANDCUFF_CONTINGENT_BACK";
   return "BALANCED_RB";
 }
+
+function createRBDefenseProfile(data={}){
+  const profile={team:data.team??null};
+  Object.keys(FF26_RB_DEFENSE_FIELDS).forEach(key=>{
+    profile[key]=data[key]??FF26_RB_DEFENSE_FIELDS[key];
+  });
+  return profile;
+}
+function createRBGameProfile(data={}){
+  const profile={};
+  Object.keys(FF26_RB_GAME_FIELDS).forEach(key=>{
+    profile[key]=data[key]??FF26_RB_GAME_FIELDS[key];
+  });
+  return profile;
+}
+function rbAnyKnown(object,keys){
+  return keys.some(key=>rbFinite(object?.[key])!==null);
+}
+function calculateRushDefenseMatchup(rb,defense){
+  const direct=rbFirstKnown(defense,['rbRushMatchupScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAnyKnown(defense,['yardsPerCarryAllowed','rbCarriesAllowedPerGame','explosiveRunsAllowed']))return null;
+
+  let score=50;
+  const ypcAllowed=rbFinite(defense?.yardsPerCarryAllowed);
+  if(ypcAllowed!==null){
+    if(ypcAllowed>=4.8)score+=20;
+    else if(ypcAllowed>=4.5)score+=12;
+    else if(ypcAllowed<=3.8)score-=20;
+    else if(ypcAllowed<=4.1)score-=10;
+  }
+
+  const carriesAllowed=rbFinite(defense?.rbCarriesAllowedPerGame);
+  if(carriesAllowed!==null){
+    if(carriesAllowed>=25)score+=15;
+    else if(carriesAllowed<=18&&carriesAllowed>0)score-=12;
+  }
+
+  const explosiveAllowed=rbFinite(defense?.explosiveRunsAllowed);
+  const playerExplosiveRate=rbFinite(rb?.explosiveRunRate);
+  if(explosiveAllowed!==null&&explosiveAllowed>0&&playerExplosiveRate!==null&&playerExplosiveRate>=.08)score+=10;
+
+  return rbClamp(score);
+}
+function calculateReceivingDefenseMatchup(rb,defense){
+  const direct=rbFirstKnown(defense,['rbReceivingMatchupScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAnyKnown(defense,['rbTargetsAllowedPerGame','rbReceptionsAllowedPerGame']))return null;
+
+  let score=50;
+  const targetsAllowed=rbFinite(defense?.rbTargetsAllowedPerGame);
+  const receptionsAllowed=rbFinite(defense?.rbReceptionsAllowedPerGame);
+
+  if(targetsAllowed!==null){
+    if(targetsAllowed>=8)score+=20;
+    else if(targetsAllowed>=6)score+=10;
+    else if(targetsAllowed<=4&&targetsAllowed>0)score-=15;
+  }
+
+  if(receptionsAllowed!==null){
+    if(receptionsAllowed>=6)score+=15;
+    else if(receptionsAllowed<=3&&receptionsAllowed>0)score-=10;
+  }
+
+  const receivingStrength=calculateRBReceivingScore(rb);
+  if(receivingStrength!==null&&receivingStrength>=75)score+=10;
+
+  return rbClamp(score);
+}
+function calculateRedZoneDefenseMatchup(rb,defense){
+  const direct=rbFirstKnown(defense,['rbRedZoneMatchupScore']);
+  if(direct!==null)return rbClamp(direct);
+  if(!rbAnyKnown(defense,['goalLineConversionRateAllowed','rbCarriesInside5Allowed']))return null;
+
+  let score=50;
+  const goalLineAllowed=rbFinite(defense?.goalLineConversionRateAllowed);
+  const inside5=rbFinite(defense?.rbCarriesInside5Allowed);
+
+  if(goalLineAllowed!==null){
+    if(goalLineAllowed>=.65)score+=20;
+    else if(goalLineAllowed<=.40&&goalLineAllowed>0)score-=20;
+  }
+
+  if(inside5!==null&&inside5>=2)score+=10;
+  if(rbBoolean(rb?.goalLineRole)===true&&goalLineAllowed!==null&&goalLineAllowed>=.60)score+=10;
+
+  return rbClamp(score);
+}
+function calculateTrenchMatchup(rb,defense){
+  const direct=rbFirstKnown(defense,['rbTrenchMatchupScore']);
+  if(direct!==null)return rbClamp(direct);
+  const offense=rbFinite(rb?.offensiveLineGrade);
+  const defenseGrade=rbFinite(defense?.defensiveLineGrade);
+  if(offense===null||defenseGrade===null)return null;
+  return rbClamp(50+(offense-defenseGrade));
+}
+function rbMatchupWeights(archetype){
+  if(archetype==="RECEIVING_WEAPON")return {rush:.20,receiving:.50,redZone:.15,trenches:.15};
+  if(archetype==="TD_GOAL_LINE_BACK")return {rush:.30,receiving:.10,redZone:.40,trenches:.20};
+  if(archetype==="VOLUME_WORKHORSE")return {rush:.40,receiving:.15,redZone:.25,trenches:.20};
+  if(archetype==="PPR_WORKHORSE")return {rush:.30,receiving:.35,redZone:.20,trenches:.15};
+  return {rush:.35,receiving:.30,redZone:.20,trenches:.15};
+}
+function calculateRBMatchupComponents(rb,defense){
+  return {
+    rush:calculateRushDefenseMatchup(rb,defense),
+    receiving:calculateReceivingDefenseMatchup(rb,defense),
+    redZone:calculateRedZoneDefenseMatchup(rb,defense),
+    trenches:calculateTrenchMatchup(rb,defense)
+  };
+}
+function calculateRBMatchupScore(rb,defense){
+  const direct=rbFirstKnown(defense,['rbMatchupScore']);
+  if(direct!==null)return rbClamp(direct);
+
+  const archetype=classifyRBArchetype(rb);
+  if(!archetype)return null;
+
+  const components=calculateRBMatchupComponents(rb,defense);
+  if(Object.values(components).some(value=>value===null))return null;
+
+  const weights=rbMatchupWeights(archetype);
+  return rbClamp(
+    components.rush*weights.rush+
+    components.receiving*weights.receiving+
+    components.redZone*weights.redZone+
+    components.trenches*weights.trenches
+  );
+}
+function convertRBMatchupToModifier(matchupScore){
+  const score=rbFinite(matchupScore);
+  if(score===null)return null;
+  const m=FF26_RB_SETTINGS.matchupModifier;
+  if(score>=90)return m.elite;
+  if(score>=80)return m.strong;
+  if(score>=70)return m.favorable;
+  if(score>=40)return 0;
+  if(score>=30)return m.difficult;
+  if(score>=20)return m.poor;
+  return m.eliteDefense;
+}
+function calculateRBGameScriptScore(game={},rb={}){
+  const direct=rbFirstKnown(game,['rbGameScriptScore']);
+  if(direct!==null)return rbClamp(direct);
+
+  const spread=rbFinite(game?.teamSpread);
+  const projectedPoints=rbFinite(game?.teamProjectedPoints);
+  if(spread===null&&projectedPoints===null)return null;
+
+  let score=50;
+  if(spread!==null){
+    if(spread<=-7)score+=15;
+    else if(spread<=-3)score+=8;
+    else if(spread>=7)score-=10;
+
+    const receiving=calculateRBReceivingScore(rb);
+    if(spread>=5&&receiving!==null&&receiving>=75)score+=10;
+  }
+
+  if(projectedPoints!==null){
+    if(projectedPoints>=27)score+=10;
+    else if(projectedPoints<20&&projectedPoints>0)score-=10;
+  }
+
+  return rbClamp(score);
+}
+function calculateRBWeeklyScore({rb,defense,game,playerQuality=75}={}){
+  const quality=rbFinite(playerQuality);
+  const opportunity=calculateRBOpportunityScore(rb);
+  const matchup=calculateRBMatchupScore(rb,defense);
+  const gameScript=calculateRBGameScriptScore(game,rb);
+  const trenches=calculateTrenchMatchup(rb,defense);
+  if([quality,opportunity,matchup,gameScript,trenches].some(value=>value===null))return null;
+
+  const w=FF26_RB_SETTINGS.modeWeights.WEEKLY;
+  return rbClamp(
+    quality*w.playerQuality+
+    opportunity*w.opportunity+
+    matchup*w.matchup+
+    gameScript*w.gameScript+
+    trenches*w.offensiveLineMatchup
+  );
+}
+function adjustRBWeeklyProjection({baseProjectedPoints,rb,defense,game}={}){
+  const base=rbFinite(baseProjectedPoints);
+  const matchupScore=calculateRBMatchupScore(rb,defense);
+  if(base===null||matchupScore===null){
+    return {
+      baseProjectedPoints:base,
+      matchupScore,
+      matchupModifier:null,
+      adjustedProjectedPoints:null,
+      archetype:classifyRBArchetype(rb)
+    };
+  }
+
+  let modifier=convertRBMatchupToModifier(matchupScore);
+  const opportunity=calculateRBOpportunityScore(rb);
+  if(opportunity!==null&&opportunity>=85&&modifier!==null&&modifier<-.07)modifier=-.07;
+
+  return {
+    baseProjectedPoints:base,
+    matchupScore,
+    matchupModifier:modifier,
+    adjustedProjectedPoints:modifier===null?null:base*(1+modifier),
+    archetype:classifyRBArchetype(rb),
+    gameScriptScore:calculateRBGameScriptScore(game,rb)
+  };
+}
+function generateRBMatchupExplanation(rb,defense){
+  const matchup=calculateRBMatchupScore(rb,defense);
+  const archetype=classifyRBArchetype(rb);
+  if(matchup===null)return {matchupScore:null,archetype,reasons:[]};
+
+  const rush=calculateRushDefenseMatchup(rb,defense);
+  const receiving=calculateReceivingDefenseMatchup(rb,defense);
+  const redZone=calculateRedZoneDefenseMatchup(rb,defense);
+  const reasons=[];
+
+  if(rush!==null&&rush>=70)reasons.push("Opponent presents a favorable traditional rushing matchup.");
+  if(rush!==null&&rush<=35)reasons.push("Opponent has a difficult traditional run defense.");
+  if(redZone!==null&&redZone>=70)reasons.push("Strong red-zone and goal-line scoring opportunity.");
+  if(archetype==="RECEIVING_WEAPON"&&receiving!==null&&receiving>=65)reasons.push("Full-PPR receiving usage gives this RB additional matchup value.");
+  if(archetype==="PPR_WORKHORSE")reasons.push("Three-down workload provides both rushing and receiving paths to fantasy production.");
+
+  return {matchupScore:matchup,archetype,reasons};
+}
 function calculateRBDraftValue({
   playerQuality,
   opportunityScore,
@@ -5701,11 +5975,15 @@ function applyRBAnalyticsToStrategyEvaluation(player,evaluation){
   };
 }
 window.DukesFF26RBAnalytics=Object.freeze({
-  version:"2026-RB-OPPORTUNITY-v2.0-PHASE1",
+  version:"2026-RB-OPPORTUNITY-v2.0-PHASE2",
   settings:FF26_RB_SETTINGS,
   playerFields:FF26_RB_PLAYER_FIELDS,
+  defenseFields:FF26_RB_DEFENSE_FIELDS,
+  gameFields:FF26_RB_GAME_FIELDS,
   rules:FF26_RB_STRATEGY_RULES,
   createPlayer:createRBProfile,
+  createDefense:createRBDefenseProfile,
+  createGame:createRBGameProfile,
   calculatePPRWeightedOpportunity,
   calculateReceivingScore:calculateRBReceivingScore,
   calculateWorkloadScore:calculateRBWorkloadScore,
@@ -5715,12 +5993,22 @@ window.DukesFF26RBAnalytics=Object.freeze({
   calculateOffensiveEnvironment:calculateRBOffensiveEnvironment,
   calculateRisk:calculateRBRiskScore,
   calculateOpportunityScore:calculateRBOpportunityScore,
+  classifyArchetype:classifyRBArchetype,
+  calculateRushMatchup:calculateRushDefenseMatchup,
+  calculateReceivingMatchup:calculateReceivingDefenseMatchup,
+  calculateRedZoneMatchup:calculateRedZoneDefenseMatchup,
+  calculateTrenchMatchup,
+  calculateMatchupScore:calculateRBMatchupScore,
+  matchupToModifier:convertRBMatchupToModifier,
+  calculateGameScriptScore:calculateRBGameScriptScore,
+  calculateWeeklyScore:calculateRBWeeklyScore,
+  adjustWeeklyProjection:adjustRBWeeklyProjection,
+  generateMatchupExplanation:generateRBMatchupExplanation,
   calculateDraftValue:calculateRBDraftValue,
   compareDraftCandidates:compareRBDraftCandidates,
-  classifyArchetype:classifyRBArchetype,
   evaluate:evaluateRBAnalytics
 });
-/* === END RB OPPORTUNITY + DRAFT VALUE ENGINE — PHASE 1 === */
+/* === END RB OPPORTUNITY + DRAFT VALUE ENGINE — PHASE 2 === */
 
 
 function strategyPlayerFromApp(player,pickIndex=null){
