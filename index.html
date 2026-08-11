@@ -6783,6 +6783,96 @@ const DUKES_BEST_FIT_CONSENSUS_WINDOW = 5;
 const DUKES_ROUND_ONE_ADP_MAX_GAP = 1.5;
 const DUKES_OPENING_PICK_ELITE_RB_LIMIT = 2;
 
+/* =====================================================================
+ * DUKE'S FF26 — 2026 QUARTERBACK ORDER + VALUE INTELLIGENCE — PHASE 1
+ * Source: Duke's FF26 2026 Full-PPR Quarterback Order, Aug. 6, 2026.
+ *
+ * IMPORTANT:
+ * - This is a QB-only positional intelligence layer.
+ * - It does NOT replace overall ADP.
+ * - It does NOT replace projections.
+ * - It does NOT change manual QB roster flexibility.
+ * - Existing roster construction, ADP value, rushing upside, stack,
+ *   confirmed-starter, and cross-position BEST PICK logic remain primary.
+ * ===================================================================== */
+const FF26_QB_ORDER_2026=Object.freeze([
+  Object.freeze({name:"Josh Allen",rank:1,tier:1,positionAdp:Object.freeze({espn:1,sleeper:1,fantasypros:1,cbs:1,consensus:1.0})}),
+  Object.freeze({name:"Lamar Jackson",rank:2,tier:1,positionAdp:Object.freeze({espn:2,sleeper:2,fantasypros:2,cbs:2,consensus:2.0})}),
+  Object.freeze({name:"Drake Maye",rank:3,tier:1,positionAdp:Object.freeze({espn:3,sleeper:3,fantasypros:3,cbs:3,consensus:3.0})}),
+  Object.freeze({name:"Joe Burrow",rank:4,tier:2,positionAdp:Object.freeze({espn:6,sleeper:4,fantasypros:4,cbs:4,consensus:4.5})}),
+  Object.freeze({name:"Jayden Daniels",rank:5,tier:2,positionAdp:Object.freeze({espn:4,sleeper:5,fantasypros:5,cbs:5,consensus:4.8})}),
+  Object.freeze({name:"Jalen Hurts",rank:6,tier:2,positionAdp:Object.freeze({espn:5,sleeper:6,fantasypros:6,cbs:7,consensus:6.0})}),
+  Object.freeze({name:"Jaxson Dart",rank:7,tier:3,positionAdp:Object.freeze({espn:7,sleeper:7,fantasypros:9,cbs:8,consensus:7.8})}),
+  Object.freeze({name:"Dak Prescott",rank:8,tier:3,positionAdp:Object.freeze({espn:9,sleeper:11,fantasypros:8,cbs:6,consensus:8.5})}),
+  Object.freeze({name:"Caleb Williams",rank:9,tier:3,positionAdp:Object.freeze({espn:11,sleeper:9,fantasypros:7,cbs:10,consensus:9.3})}),
+  Object.freeze({name:"Justin Herbert",rank:10,tier:3,positionAdp:Object.freeze({espn:15,sleeper:8,fantasypros:10,cbs:9,consensus:10.5})}),
+  Object.freeze({name:"Trevor Lawrence",rank:11,tier:3,positionAdp:Object.freeze({espn:12,sleeper:10,fantasypros:11,cbs:12,consensus:11.3})}),
+  Object.freeze({name:"Matthew Stafford",rank:12,tier:4,positionAdp:Object.freeze({espn:8,sleeper:14,fantasypros:12,cbs:14,consensus:12.0})}),
+  Object.freeze({name:"Brock Purdy",rank:13,tier:4,positionAdp:Object.freeze({espn:13,sleeper:13,fantasypros:13,cbs:11,consensus:12.5})}),
+  Object.freeze({name:"Patrick Mahomes",rank:14,tier:4,positionAdp:Object.freeze({espn:14,sleeper:12,fantasypros:14,cbs:13,consensus:13.3})}),
+  Object.freeze({name:"Bo Nix",rank:15,tier:4,positionAdp:Object.freeze({espn:10,sleeper:15,fantasypros:15,cbs:16,consensus:14.0})}),
+  Object.freeze({name:"Jared Goff",rank:16,tier:5,positionAdp:Object.freeze({espn:16,sleeper:17,fantasypros:16,cbs:15,consensus:16.0})}),
+  Object.freeze({name:"Baker Mayfield",rank:17,tier:5,positionAdp:Object.freeze({espn:17,sleeper:19,fantasypros:18,cbs:17,consensus:17.8})}),
+  Object.freeze({name:"Kyler Murray",rank:18,tier:5,positionAdp:Object.freeze({espn:18,sleeper:21,fantasypros:17,cbs:18,consensus:18.5})}),
+  Object.freeze({name:"Jordan Love",rank:19,tier:5,positionAdp:Object.freeze({espn:20,sleeper:16,fantasypros:19,cbs:23,consensus:19.5})}),
+  Object.freeze({name:"Tyler Shough",rank:20,tier:5,positionAdp:Object.freeze({espn:19,sleeper:20,fantasypros:20,cbs:20,consensus:19.8})}),
+  Object.freeze({name:"Malik Willis",rank:21,tier:6,positionAdp:Object.freeze({espn:24,sleeper:18,fantasypros:21,cbs:22,consensus:21.3})}),
+  Object.freeze({name:"Sam Darnold",rank:22,tier:6,positionAdp:Object.freeze({espn:22,sleeper:23,fantasypros:23,cbs:21,consensus:22.3})}),
+  Object.freeze({name:"Daniel Jones",rank:23,tier:6,positionAdp:Object.freeze({espn:21,sleeper:26,fantasypros:24,cbs:19,consensus:22.5})}),
+  Object.freeze({name:"C.J. Stroud",rank:24,tier:6,positionAdp:Object.freeze({espn:23,sleeper:22,fantasypros:22,cbs:25,consensus:23.0})}),
+  Object.freeze({name:"Cam Ward",rank:25,tier:6,positionAdp:Object.freeze({espn:26,sleeper:25,fantasypros:25,cbs:24,consensus:25.0})})
+]);
+
+const FF26_QB_PLATFORM_VALUE_TARGETS=Object.freeze({
+  espn:Object.freeze({
+    value:Object.freeze(["Justin Herbert","Jordan Love","Malik Willis","Cam Ward"]),
+    caution:Object.freeze(["Matthew Stafford","Bo Nix"])
+  }),
+  sleeper:Object.freeze({
+    value:Object.freeze(["Dak Prescott","Matthew Stafford","Baker Mayfield","Kyler Murray","Daniel Jones"]),
+    caution:Object.freeze(["Justin Herbert","Jordan Love","Malik Willis"])
+  }),
+  cbs:Object.freeze({
+    value:Object.freeze(["Jalen Hurts","Matthew Stafford","Bo Nix","Jordan Love","C.J. Stroud"]),
+    caution:Object.freeze(["Dak Prescott","Brock Purdy","Daniel Jones"])
+  })
+});
+
+const FF26_QB_DRAFT_RULES=Object.freeze([
+  "Do not force an early quarterback when stronger RB, WR or TE value is available.",
+  "Use overall ADP, not positional QB rank, to determine the appropriate draft round.",
+  "Elite quarterbacks may be selected earlier because of positional advantage, but draft cost must remain reasonable.",
+  "In a one-QB league, the preferred waiting range is generally QB7 through QB15.",
+  "Do not draft a second quarterback before the core starting lineup is substantially complete.",
+  "Do not recommend a backup quarterback solely for bye-week coverage when the player could be replaced through waivers.",
+  "Favor rushing production, goal-line rushing roles, passing volume, strong offensive lines, quality receiving weapons, stable starting jobs and favorable offensive systems.",
+  "Penalize uncertain starting roles, serious injury concerns, poor offensive lines, low passing volume, weak receiving groups, coaching instability and limited rushing production.",
+  "Treat quarterback stacking as a tiebreaker, not a reason to make a major reach.",
+  "Do not pass on clearly superior value simply to complete a stack.",
+  "Quarterbacks ranked QB16 through QB25 are primarily streaming, backup or final-round upside options."
+]);
+
+function ff26QBNameKey(value){
+  return String(value||"").trim().toLowerCase().replace(/\s+/g," ");
+}
+const FF26_QB_PRIORITY_BY_NAME=new Map(
+  FF26_QB_ORDER_2026.map(profile=>[ff26QBNameKey(profile.name),profile])
+);
+function ff26QBSourceProfile(player){
+  const pos=DUKES_STRATEGY_V3.normalizePosition(player?.pos||player?.position);
+  if(pos!=="QB")return null;
+  return FF26_QB_PRIORITY_BY_NAME.get(ff26QBNameKey(player?.name))||null;
+}
+window.DukesFF26QBIntelligence=Object.freeze({
+  version:"2026-QB-ORDER-AUG06-PHASE1",
+  order:FF26_QB_ORDER_2026,
+  platformValueTargets:FF26_QB_PLATFORM_VALUE_TARGETS,
+  rules:FF26_QB_DRAFT_RULES,
+  getProfile:ff26QBSourceProfile
+});
+/* === END QB ORDER + VALUE INTELLIGENCE — PHASE 1 === */
+
+
 function dukesV3RiskScale(value){
   return Math.max(0,Math.min(10,(Number(value)||50)/10));
 }
@@ -6836,6 +6926,7 @@ function dukesV3PreparePlayers(){
 
   for(const {player,mapped} of mappedPlayers){
     const pos=DUKES_STRATEGY_V3.normalizePosition(player.pos);
+    const qbProfile=ff26QBSourceProfile(player);
     const projection=dukesV3ProjectedPoints(player,mapped);
     const group=byPosition[pos]||[];
     const replacementItem=group[replacementIndexes[pos]??11];
@@ -6846,8 +6937,12 @@ function dukesV3PreparePlayers(){
       position:pos,
       nflTeam:player.team,
       byeWeek:player.bye,
-      dukePositionRank:Number(player.posRank)||999,
-      dukeTier:Number(player.tier)||99,
+      dukePositionRank:qbProfile?.rank??(Number(player.posRank)||999),
+      dukeTier:qbProfile?.tier??(Number(player.tier)||99),
+      ff26QbRank:qbProfile?.rank??null,
+      ff26QbTier:qbProfile?.tier??null,
+      positionAdp:qbProfile?.positionAdp??player.positionAdp,
+      livePositionAdp:qbProfile?.positionAdp?.consensus??player.livePositionAdp??null,
       consensusAdp:Number(player.consensus??player.rank)||player.rank,
       espnAdp:Number(player.espnRank??player.consensus??player.rank)||player.rank,
       liveOverallAdp:Number(player.consensus??player.rank)||player.rank,
