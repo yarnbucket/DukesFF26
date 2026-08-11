@@ -3436,6 +3436,29 @@ const FF26_NFL_TEAMS=[
   "NYJ","PHI","PIT","SEA","SF","TB","TEN","WAS"
 ];
 
+const FF26_TEAM_PLAYER_FIELDS={
+  teamFantasyRank:null,
+  teamTargetRank:null,
+  teamTouchRank:null,
+  teamRedZoneRank:null,
+  teamOpportunityShare:null,
+  roleSecurity:null,
+  teamPassingVolume:null,
+  teamRushingVolume:null,
+  teamScoringEnvironment:null,
+  teamOffenseQuality:null,
+  expectedTeamPlaymakers:null,
+  playmakerConcentrationScore:null
+};
+
+const FF26_PLAYMAKER_SCORE_WEIGHTS={
+  targetShareScore:.25,
+  touchShareScore:.25,
+  redZoneScore:.20,
+  roleSecurityScore:.15,
+  offenseQualityScore:.15
+};
+
 function playerId(p){return p.rank}
 function byId(id){return PLAYERS.find(p=>p.rank===Number(id))}
 function isDraftPoolEligible(player){return String(player?.livePoolStatus||'ACTIVE').trim().toUpperCase()!=='INACTIVE'}
@@ -3448,10 +3471,35 @@ const av=aKnown?Number(rawA):null,bv=bKnown?Number(rawB):null;
   if(aKnown!==bKnown)return aKnown?-1:1;
   return 0;
 }
+function knownNumericValue(raw){
+  if(raw===null||raw===undefined||raw==='')return null;
+  const value=Number(raw);
+  return Number.isFinite(value)?value:null;
+}
+function compareKnownNumericValues(aValue,bValue,direction='asc'){
+  const av=knownNumericValue(aValue),bv=knownNumericValue(bValue);
+  const aKnown=av!==null,bKnown=bv!==null;
+  if(aKnown&&bKnown&&av!==bv)return direction==='desc'?bv-av:av-bv;
+  if(aKnown!==bKnown)return aKnown?-1:1;
+  return 0;
+}
+function calculatePlaymakerConcentration(player){
+  const direct=knownNumericValue(player?.playmakerConcentrationScore);
+  if(direct!==null)return direct;
+
+  const weightedInputs=Object.entries(FF26_PLAYMAKER_SCORE_WEIGHTS).map(([key,weight])=>[
+    knownNumericValue(player?.[key]),
+    weight
+  ]);
+
+  if(weightedInputs.some(([value])=>value===null))return null;
+
+  return weightedInputs.reduce((score,[value,weight])=>score+(value*weight),0);
+}
 function sortTeamPlayers(a,b){
   return (
     compareKnownNumeric(a,b,'ff26DraftScore','desc') ||
-    compareKnownNumeric(a,b,'playmakerConcentrationScore','desc') ||
+    compareKnownNumericValues(calculatePlaymakerConcentration(a),calculatePlaymakerConcentration(b),'desc') ||
     compareKnownNumeric(a,b,'projectedFantasyPoints','desc') ||
     compareKnownNumeric(a,b,'liveADP','asc') ||
     compareKnownNumeric(a,b,'rank','asc') ||
