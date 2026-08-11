@@ -3440,8 +3440,9 @@ function byId(id){return PLAYERS.find(p=>p.rank===Number(id))}
 function isDraftPoolEligible(player){return String(player?.livePoolStatus||'ACTIVE').trim().toUpperCase()!=='INACTIVE'}
 
 function compareKnownNumeric(a,b,key,direction='asc'){
-  const av=Number(a?.[key]),bv=Number(b?.[key]);
-  const aKnown=Number.isFinite(av),bKnown=Number.isFinite(bv);
+  const rawA=a?.[key],rawB=b?.[key];
+const aKnown=rawA!==null&&rawA!==undefined&&rawA!==''&&Number.isFinite(Number(rawA)),bKnown=rawB!==null&&rawB!==undefined&&rawB!==''&&Number.isFinite(Number(rawB));
+const av=aKnown?Number(rawA):null,bv=bKnown?Number(rawB):null;
   if(aKnown&&bKnown&&av!==bv)return direction==='desc'?bv-av:av-bv;
   if(aKnown!==bKnown)return aKnown?-1:1;
   return 0;
