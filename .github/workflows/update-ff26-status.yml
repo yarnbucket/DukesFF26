@@ -1,0 +1,51 @@
+name: Update FF26 Player Status
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Sleeper asks clients not to fetch the full NFL player feed more than once/day.
+    # 06:17 America/New_York avoids the heavy traffic at the top of the hour.
+    - cron: '17 6 * * *'
+      timezone: 'America/New_York'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ff26-status-updater
+  cancel-in-progress: false
+
+jobs:
+  refresh-status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Refresh ff26-status.json
+        run: python scripts/update_ff26_status.py
+
+      - name: Validate generated JSON
+        run: python -m json.tool ff26-status.json > /dev/null
+
+      - name: Commit status changes
+        shell: bash
+        run: |
+          if git diff --quiet -- ff26-status.json; then
+            echo "No status changes to commit."
+            exit 0
+          fi
+          git config user.name "dukes-ff26-updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add ff26-status.json
+          git commit -m "Refresh FF26 player status"
+          git push
