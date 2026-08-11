@@ -3304,6 +3304,9 @@ function applyLiveStatuses(payload){
     player.liveNewsNotes=record?.notes||'';
     player.liveStatusUpdatedAt=record?.updatedAt||payload?.updatedAt||null;
     player.liveStatusSourceUrl=record?.newsSourceUrl||record?.sourceUrl||'';
+    player.livePoolStatus=String(record?.poolStatus||'ACTIVE').trim().toUpperCase();
+    player.liveUnmatchedStreak=Number(record?.unmatchedStreak)||0;
+    player.livePoolCheckDate=record?.poolCheckDate||null;
   }
 }
 async function loadLiveDraftData(){
@@ -3426,6 +3429,7 @@ let selectedPlayerId=null, simToken=0, draftActionLocked=false;
 
 function playerId(p){return p.rank}
 function byId(id){return PLAYERS.find(p=>p.rank===Number(id))}
+function isDraftPoolEligible(player){return String(player?.livePoolStatus||'ACTIVE').trim().toUpperCase()!=='INACTIVE'}
 function teamName(slot){return state.teamNames?.[slot-1]||`Team ${slot}`}
 function pickTeamSlot(pickIndex){
   const r=Math.floor(pickIndex/TOTAL_TEAMS)+1;
@@ -3433,7 +3437,7 @@ function pickTeamSlot(pickIndex){
   return r%2?inRound:TOTAL_TEAMS+1-inRound
 }
 function pickLabel(idx){return `${Math.floor(idx/TOTAL_TEAMS)+1}.${String(idx%TOTAL_TEAMS+1).padStart(2,'0')}`}
-function available(){const used=new Set(state.picks.map(x=>x.playerId));return PLAYERS.filter(p=>!used.has(p.rank))}
+function available(){const used=new Set(state.picks.map(x=>x.playerId));return PLAYERS.filter(p=>!used.has(p.rank)&&isDraftPoolEligible(p))}
 function rosterFor(slot){return state.picks.filter(x=>x.teamSlot===slot).map(x=>byId(x.playerId)).filter(Boolean)}
 function posCounts(roster){return dukesCountRoster(roster)}
 
