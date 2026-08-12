@@ -1548,17 +1548,42 @@ function statusDotMarkup(player){
   const label=info.label||info.status||'STATUS';
   return `<i class="status-dot ${info.status}" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"></i>`;
 }
-function validateFF26StatusPayload(payload){
-  if(!payload||typeof payload!=='object')throw new Error('Status payload is not an object.');
-  if(payload.schemaVersion!==1)throw new Error('Unsupported FF26 status schema.');
-  if(payload.season!==2026)throw new Error('Status file season does not match 2026.');
-  if(!payload.players||typeof payload.players!=='object'||Array.isArray(payload.players))throw new Error('Status file players object is missing.');
-  if(!payload.dst||typeof payload.dst!=='object'||Array.isArray(payload.dst))throw new Error('Status file DST object is missing.');
+function sanitizeFF26StatusMap(map,label){
   const allowed=new Set(['GREEN','YELLOW','RED']);
-  for(const [name,entry] of [...Object.entries(payload.players),...Object.entries(payload.dst)]){
-    if(!entry||typeof entry!=='object'||!allowed.has(entry.status))throw new Error(`Invalid status entry: ${name}`);
+  const clean={};
+  if(!map||typeof map!=='object'||Array.isArray(map))return clean;
+  for(const [name,raw] of Object.entries(map)){
+    if(!raw||typeof raw!=='object'||Array.isArray(raw)){
+      console.warn(`FF26 skipped malformed ${label} status entry:`,name);
+      continue;
+    }
+    const status=String(raw.status||'').trim().toUpperCase();
+    if(!allowed.has(status)){
+      console.warn(`FF26 skipped unsupported ${label} status entry:`,name,raw.status);
+      continue;
+    }
+    clean[name]={...raw,status};
   }
-  return payload;
+  return clean;
+}
+function validateFF26StatusPayload(payload){
+  if(!payload||typeof payload!=='object'||Array.isArray(payload))throw new Error('Status payload is not an object.');
+  const schema=Number(payload.schemaVersion);
+  if(schema!==1&&schema!==2)throw new Error(`Unsupported FF26 status schema: ${payload.schemaVersion}`);
+  if(Number(payload.season)!==2026)throw new Error('Status file season does not match 2026.');
+  if(!payload.players||typeof payload.players!=='object'||Array.isArray(payload.players))throw new Error('Status file players object is missing.');
+
+  const players=sanitizeFF26StatusMap(payload.players,'player');
+  const dst=sanitizeFF26StatusMap(payload.dst||{},'DST');
+  const rawPlayerCount=Object.keys(payload.players).length;
+  const validPlayerCount=Object.keys(players).length;
+
+  // A partial/malformed record should never invalidate the other 499 players.
+  // But reject a clearly empty/broken live file so the embedded fallback remains available.
+  if(rawPlayerCount>=50&&validPlayerCount<50)throw new Error(`Too few valid FF26 player statuses (${validPlayerCount}/${rawPlayerCount}).`);
+  if(rawPlayerCount>0&&validPlayerCount===0)throw new Error('Status file contains no valid player statuses.');
+
+  return {...payload,schemaVersion:schema,players,dst};
 }
 function replaceStatusMap(target,next){
   Object.keys(target).forEach(key=>delete target[key]);
@@ -1574,6 +1599,7 @@ function liveStatusIsFreshEnough(updatedAt){
 function refreshFF26StatusUI(){
   try{
     if(typeof renderPlayers==='function')renderPlayers();
+    if(typeof renderRoster==='function')renderRoster();
     const overlay=document.getElementById('playerProfileOverlay');
     if(overlay&&!overlay.classList.contains('hidden')){
       const currentName=document.getElementById('playerProfileName')?.textContent;
@@ -1582,35 +1608,80 @@ function refreshFF26StatusUI(){
     }
   }catch(error){console.warn('FF26 status UI refresh skipped:',error)}
 }
-async function loadFF26Status(){
+let FF26_STATUS_LAST_CHECK_AT=0;
+let FF26_STATUS_LAST_ERROR=null;
+function updateFF26StatusDiagnostics(extra={}){
+  window.FF26_STATUS_DIAGNOSTICS={
+    source:FF26_STATUS_DATA_SOURCE,
+    liveUpdatedAt:FF26_LIVE_STATUS_UPDATED_AT,
+    lastCheckAt:FF26_STATUS_LAST_CHECK_AT?new Date(FF26_STATUS_LAST_CHECK_AT).toISOString():null,
+    lastError:FF26_STATUS_LAST_ERROR,
+    playerCount:Object.keys(FF26_PLAYER_STATUS).length,
+    dstCount:Object.keys(FF26_DST_STATUS).length,
+    ...extra
+  };
+}
+async function loadFF26Status(options={}){
+  const hadLiveData=String(FF26_STATUS_DATA_SOURCE).startsWith('LIVE JSON');
+  FF26_STATUS_LAST_CHECK_AT=Date.now();
   try{
-    const separator=FF26_STATUS_FILE.includes('?')?'&':'?';
-    const url=`${FF26_STATUS_FILE}${separator}v=${Date.now()}`;
-    const response=await fetch(url,{cache:'no-store'});
-    if(!response.ok)throw new Error(`HTTP ${response.status}`);
-    const payload=validateFF26StatusPayload(await response.json());
+    const baseUrl=new URL(FF26_STATUS_FILE,document.baseURI);
+    baseUrl.searchParams.set('v',String(Date.now()));
+    const response=await fetch(baseUrl.href,{
+      cache:'no-store',
+      credentials:'same-origin',
+      headers:{'Accept':'application/json'}
+    });
+    if(!response.ok)throw new Error(`HTTP ${response.status} loading ${baseUrl.pathname}`);
+    const raw=await response.json();
+    const payload=validateFF26StatusPayload(raw);
     if(!liveStatusIsFreshEnough(payload.updatedAt))throw new Error('Live status file is older than the embedded fallback.');
 
-    // The JSON file is authoritative. An entry omitted from a newer file
-    // becomes GREEN automatically through the default status behavior.
     replaceStatusMap(FF26_PLAYER_STATUS,payload.players);
     replaceStatusMap(FF26_DST_STATUS,payload.dst);
     FF26_LIVE_STATUS_UPDATED_AT=payload.updatedAt||null;
     FF26_STATUS_DATA_SOURCE='LIVE JSON';
+    FF26_STATUS_LAST_ERROR=null;
     refreshFF26StatusUI();
-    console.info('FF26 live status loaded',payload.updatedAt||'(no timestamp)');
+    updateFF26StatusDiagnostics({
+      schemaVersion:payload.schemaVersion,
+      rawPlayerCount:Object.keys(raw.players||{}).length,
+      loadedPlayerCount:Object.keys(payload.players).length,
+      refreshStats:payload.refreshStats||null
+    });
+    console.info('FF26 live status loaded',window.FF26_STATUS_DIAGNOSTICS);
     return true;
   }catch(error){
+    FF26_STATUS_LAST_ERROR=String(error?.message||error);
+    // Once live data has loaded successfully, a temporary network failure should not
+    // replace it with the older embedded snapshot. Keep the last-known live map.
+    if(hadLiveData){
+      FF26_STATUS_DATA_SOURCE='LIVE JSON (STALE)';
+      updateFF26StatusDiagnostics();
+      console.warn('FF26 live status refresh failed; keeping last-known live data.',error);
+      return false;
+    }
     replaceStatusMap(FF26_PLAYER_STATUS,FF26_EMBEDDED_PLAYER_STATUS);
     replaceStatusMap(FF26_DST_STATUS,FF26_EMBEDDED_DST_STATUS);
     FF26_LIVE_STATUS_UPDATED_AT=null;
     FF26_STATUS_DATA_SOURCE='EMBEDDED';
     refreshFF26StatusUI();
+    updateFF26StatusDiagnostics();
     console.warn('FF26 live status unavailable; using embedded fallback.',error);
     return false;
   }
 }
 window.reloadFF26Status=loadFF26Status;
+window.getFF26StatusDiagnostics=()=>({...window.FF26_STATUS_DIAGNOSTICS});
+
+// Recheck the lightweight GitHub JSON while the app remains open. This does not
+// call Sleeper directly; the scheduled GitHub Action remains responsible for that.
+setInterval(()=>loadFF26Status({reason:'interval'}),15*60*1000);
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible'&&Date.now()-FF26_STATUS_LAST_CHECK_AT>5*60*1000){
+    loadFF26Status({reason:'resume'});
+  }
+});
 
 /* =====================================================================
  * DUKE'S FF26 STRATEGY RELEASE v3.0.0 — supplied release, inlined
