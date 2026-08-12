@@ -1204,6 +1204,73 @@ body.theme-launch{--ff26-theme-bg:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ
   .turn-banner{padding:22px 24px 18px!important;border-radius:48% / 36%!important}
 }
 
+
+/* =========================================================
+   FF26 HELMET FACELIFT — visual-only revision
+   Current Pick + Your Next Pick only. Live IDs unchanged.
+   ========================================================= */
+.status-strip .stat.ff26-helmet-card::before,
+.status-strip .stat.ff26-helmet-card::after{display:none!important}
+.status-strip .stat.ff26-helmet-card{
+  display:grid!important;
+  grid-template-columns:minmax(72px,36%) 1fr;
+  grid-template-rows:auto 1fr;
+  align-items:center;
+  column-gap:8px;
+  min-height:132px;
+  padding:9px 12px 12px!important;
+  background:linear-gradient(180deg,#0b0b0b,#030303)!important;
+  border:2px solid #a30d15!important;
+  border-radius:36px!important;
+  box-shadow:inset 0 0 18px rgba(255,0,20,.04),0 8px 18px rgba(0,0,0,.28)!important;
+}
+.status-strip .stat.ff26-helmet-card .stat-label{
+  grid-column:1/-1;
+  grid-row:1;
+  text-align:center;
+  padding:3px 4px 2px!important;
+  margin:0;
+  letter-spacing:.085em;
+}
+.status-strip .stat.ff26-helmet-card .helmet-graphic{
+  grid-column:1;
+  grid-row:2;
+  width:100%;
+  max-width:118px;
+  justify-self:center;
+  align-self:center;
+  filter:drop-shadow(0 5px 5px rgba(0,0,0,.5));
+}
+.status-strip .stat.ff26-helmet-card .helmet-graphic svg{display:block;width:100%;height:auto;overflow:visible}
+.status-strip .stat.ff26-helmet-card .stat-value{
+  grid-column:2;
+  grid-row:2;
+  align-self:center;
+  justify-self:center;
+  padding:0!important;
+  margin:0;
+  font-size:clamp(27px,3.1vw,44px)!important;
+  font-weight:1000;
+  letter-spacing:.02em;
+  color:#f5f3ed;
+  text-shadow:0 2px 2px #000,0 0 1px #fff;
+}
+.status-strip .stat.ff26-helmet-card.current-pick-card{
+  box-shadow:inset 0 0 18px rgba(255,0,20,.05),0 8px 18px rgba(0,0,0,.28),0 0 10px rgba(179,11,21,.18)!important;
+}
+@media(max-width:720px){
+  .status-strip .stat.ff26-helmet-card{
+    min-height:112px;
+    grid-template-columns:minmax(56px,38%) 1fr;
+    column-gap:3px;
+    padding:7px 8px 9px!important;
+    border-radius:28px!important;
+  }
+  .status-strip .stat.ff26-helmet-card .helmet-graphic{max-width:88px}
+  .status-strip .stat.ff26-helmet-card .stat-value{font-size:clamp(24px,8vw,36px)!important}
+  .status-strip .stat.ff26-helmet-card .stat-label{font-size:clamp(9px,2.7vw,12px)!important}
+}
+
 </style>
 </head>
 <body>
@@ -1242,8 +1309,52 @@ body.theme-launch{--ff26-theme-bg:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ
   <section class="status-strip">
     <div class="stat"><div class="stat-label">Your Team</div><div class="stat-value" id="teamNameStat">Duke's Ribbers</div></div>
     <div class="stat"><div class="stat-label">Draft Slot</div><div class="stat-value gold" id="slotStat">—</div></div>
-    <div class="stat"><div class="stat-label">Current Pick</div><div class="stat-value" id="pickStat">1.01</div></div>
-    <div class="stat"><div class="stat-label">Your Next Pick</div><div class="stat-value" id="nextPickStat">—</div></div>
+    <div class="stat ff26-helmet-card current-pick-card"><div class="stat-label">Current Pick</div><div class="helmet-graphic" aria-hidden="true">
+<svg viewBox="0 0 150 112" role="img">
+  <defs>
+    <linearGradient id="helmetShell" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#323232"/><stop offset="0.45" stop-color="#151515"/><stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="helmetEdge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8d8d8"/><stop offset="1" stop-color="#696969"/>
+    </linearGradient>
+  </defs>
+  <path d="M18 62C18 27 43 11 73 11c31 0 55 15 60 41l-17 8c-7-14-19-22-34-22-18 0-31 11-34 28-2 13 2 25 12 34H36C24 90 18 78 18 62Z" fill="url(#helmetShell)" stroke="#777" stroke-width="2"/>
+  <path d="M38 90h29c10 0 16-4 20-11" fill="none" stroke="url(#helmetEdge)" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="70" cy="69" r="9" fill="#080808" stroke="#787878" stroke-width="3"/>
+  <circle cx="70" cy="69" r="3" fill="#b20f18"/>
+  <text x="47" y="59" font-size="25" text-anchor="middle" fill="#f2eee4" font-family="Arial, sans-serif" font-weight="900">✊</text>
+  <path d="M95 54c17 1 28 5 38 13" fill="none" stroke="#c8101e" stroke-width="6" stroke-linecap="round"/>
+  <path d="M99 62h31c8 0 12 4 12 10v16" fill="none" stroke="#e21a28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M97 69h29c7 0 10 4 10 9v16" fill="none" stroke="#e21a28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M103 80h34" fill="none" stroke="#e21a28" stroke-width="5" stroke-linecap="round"/>
+  <path d="M88 53l10 2-3 17-10-2z" fill="#bcbcbc" stroke="#575757" stroke-width="2"/>
+  <circle cx="92" cy="62" r="2.5" fill="#333"/>
+</svg>
+</div><div class="stat-value" id="pickStat">1.01</div></div>
+    <div class="stat ff26-helmet-card next-pick-card"><div class="stat-label">Your Next Pick</div><div class="helmet-graphic" aria-hidden="true">
+<svg viewBox="0 0 150 112" role="img">
+  <defs>
+    <linearGradient id="helmetShellNext" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#323232"/><stop offset="0.45" stop-color="#151515"/><stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="helmetEdgeNext" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8d8d8"/><stop offset="1" stop-color="#696969"/>
+    </linearGradient>
+  </defs>
+  <path d="M18 62C18 27 43 11 73 11c31 0 55 15 60 41l-17 8c-7-14-19-22-34-22-18 0-31 11-34 28-2 13 2 25 12 34H36C24 90 18 78 18 62Z" fill="url(#helmetShellNext)" stroke="#777" stroke-width="2"/>
+  <path d="M38 90h29c10 0 16-4 20-11" fill="none" stroke="url(#helmetEdgeNext)" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="70" cy="69" r="9" fill="#080808" stroke="#787878" stroke-width="3"/>
+  <circle cx="70" cy="69" r="3" fill="#b20f18"/>
+  <text x="47" y="59" font-size="25" text-anchor="middle" fill="#f2eee4" font-family="Arial, sans-serif" font-weight="900">✊</text>
+  <path d="M95 54c17 1 28 5 38 13" fill="none" stroke="#c8101e" stroke-width="6" stroke-linecap="round"/>
+  <path d="M99 62h31c8 0 12 4 12 10v16" fill="none" stroke="#e21a28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M97 69h29c7 0 10 4 10 9v16" fill="none" stroke="#e21a28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M103 80h34" fill="none" stroke="#e21a28" stroke-width="5" stroke-linecap="round"/>
+  <path d="M88 53l10 2-3 17-10-2z" fill="#bcbcbc" stroke="#575757" stroke-width="2"/>
+  <circle cx="92" cy="62" r="2.5" fill="#333"/>
+</svg>
+</div><div class="stat-value" id="nextPickStat">—</div></div>
     <div class="progress-card">
       <div class="progress-head"><span class="progress-label">Draft Progress</span><strong id="progressStat">0%</strong></div>
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
