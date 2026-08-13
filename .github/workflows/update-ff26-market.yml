@@ -31,12 +31,12 @@ jobs:
           python-version: '3.12'
 
       - name: Self-test market updater
-        run: python scripts/update_ff26_market.py --self-test
+        run: python scripts/update_ff26_market_v2.py --self-test
 
       - name: Refresh ff26-market.json
         env:
           FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
-        run: python scripts/update_ff26_market.py
+        run: python scripts/update_ff26_market_v2.py
 
       - name: Validate generated JSON
         run: python -m json.tool ff26-market.json > /dev/null
