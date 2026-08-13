@@ -1,0 +1,55 @@
+name: Update FF26 Market Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Runs after the morning status refresh.
+    - cron: '47 6 * * *'
+      timezone: 'America/New_York'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ff26-market-updater
+  cancel-in-progress: false
+
+jobs:
+  refresh-market:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Self-test market updater
+        run: python scripts/update_ff26_market.py --self-test
+
+      - name: Refresh ff26-market.json
+        env:
+          FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
+        run: python scripts/update_ff26_market.py
+
+      - name: Validate generated JSON
+        run: python -m json.tool ff26-market.json > /dev/null
+
+      - name: Commit market changes
+        shell: bash
+        run: |
+          if git diff --quiet -- ff26-market.json; then
+            echo "No market changes to commit."
+            exit 0
+          fi
+          git config user.name "dukes-ff26-updater"
+          git config user.email "actions@users.noreply.github.com"
+          git add ff26-market.json
+          git commit -m "Refresh FF26 market data"
+          git push
