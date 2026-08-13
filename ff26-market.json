@@ -1,0 +1,5037 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "scoring": "PPR",
+  "updatedAt": null,
+  "source": {
+    "tier": {
+      "authority": "FantasyPros PPR overall consensus tiers",
+      "mode": "PENDING_API_REFRESH",
+      "note": "Initial values preserve the current FF26 baseline until the FantasyPros API updater runs."
+    },
+    "trend": {
+      "method": "PPG delta between the latest season with games and the immediately previous season",
+      "preseasonFallback": "2025 PPG - 2024 PPG"
+    }
+  },
+  "refreshStats": {
+    "draftPlayers": 501,
+    "tierSource": "FF26_BASELINE_PENDING_API",
+    "tierMatches": 0,
+    "tierFallbacks": 501,
+    "trendCalculated": 326,
+    "trendUnavailable": 175
+  },
+  "players": {
+    "Ja'Marr Chase": {
+      "tier": 1,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 19.6,
+      "previousPpg": 23.7
+    },
+    "Puka Nacua": {
+      "tier": 1,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 23.4,
+      "previousPpg": 18.8
+    },
+    "Jahmyr Gibbs": {
+      "tier": 1,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 21.6,
+      "previousPpg": 21.3
+    },
+    "Bijan Robinson": {
+      "tier": 1,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 21.8,
+      "previousPpg": 20.1
+    },
+    "Jaxon Smith-Njigba": {
+      "tier": 1,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 6.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 21.2,
+      "previousPpg": 14.9
+    },
+    "Amon-Ra St. Brown": {
+      "tier": 1,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 19.1,
+      "previousPpg": 18.6
+    },
+    "CeeDee Lamb": {
+      "tier": 2,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.3,
+      "previousPpg": 17.6
+    },
+    "Christian McCaffrey": {
+      "tier": 2,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 12.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 24.5,
+      "previousPpg": 12
+    },
+    "Justin Jefferson": {
+      "tier": 2,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.9,
+      "previousPpg": 18.7
+    },
+    "Jonathan Taylor": {
+      "tier": 2,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 21.3,
+      "previousPpg": 17.5
+    },
+    "Drake London": {
+      "tier": 2,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.8,
+      "previousPpg": 16.5
+    },
+    "A.J. Brown": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.7,
+      "previousPpg": 16.7
+    },
+    "Nico Collins": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 15.1,
+      "previousPpg": 17.6
+    },
+    "Ashton Jeanty": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 14.4,
+      "previousPpg": null
+    },
+    "James Cook III": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 17.8,
+      "previousPpg": 16.7
+    },
+    "Chase Brown": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.6,
+      "previousPpg": 15.9
+    },
+    "George Pickens": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 17.2,
+      "previousPpg": 11.7
+    },
+    "Trey McBride": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 18.6,
+      "previousPpg": 15.6
+    },
+    "Rashee Rice": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 18.8,
+      "previousPpg": 16.2
+    },
+    "Brock Bowers": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.7,
+      "previousPpg": 15.5
+    },
+    "De'Von Achane": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 20.2,
+      "previousPpg": 17.6
+    },
+    "Chris Olave": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 7.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.8,
+      "previousPpg": 9.6
+    },
+    "DeVonta Smith": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.9,
+      "previousPpg": 15.3
+    },
+    "Omarion Hampton": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 15.1,
+      "previousPpg": null
+    },
+    "Saquon Barkley": {
+      "tier": 3,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -7.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.5,
+      "previousPpg": 22.2
+    },
+    "Josh Allen": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 22,
+      "previousPpg": 22.6
+    },
+    "Zay Flowers": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.3,
+      "previousPpg": 12.3
+    },
+    "Kenneth Walker III": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -5.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.3,
+      "previousPpg": 16.5
+    },
+    "Garrett Wilson": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.2,
+      "previousPpg": 14.8
+    },
+    "Lamar Jackson": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -8.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 17.1,
+      "previousPpg": 25.6
+    },
+    "Tetairoa McMillan": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 12.4,
+      "previousPpg": null
+    },
+    "Tee Higgins": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.1,
+      "previousPpg": 18.5
+    },
+    "Ladd McConkey": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.3,
+      "previousPpg": 15.1
+    },
+    "Malik Nabers": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.3,
+      "previousPpg": 18.2
+    },
+    "Emeka Egbuka": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 11.5,
+      "previousPpg": null
+    },
+    "Colston Loveland": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 10.3,
+      "previousPpg": null
+    },
+    "Jeremiyah Love": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Drake Maye": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 7.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 21.2,
+      "previousPpg": 13.4
+    },
+    "Jaylen Waddle": {
+      "tier": 4,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.1,
+      "previousPpg": 9.4
+    },
+    "Derrick Henry": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.4,
+      "previousPpg": 19.8
+    },
+    "Breece Hall": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13,
+      "previousPpg": 15.1
+    },
+    "Kyren Williams": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 15.5,
+      "previousPpg": 17
+    },
+    "Terry McLaurin": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.4,
+      "previousPpg": 15.8
+    },
+    "Josh Jacobs": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 15.8,
+      "previousPpg": 17.2
+    },
+    "Joe Burrow": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -5.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 17.4,
+      "previousPpg": 22.5
+    },
+    "Javonte Williams": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 15.2,
+      "previousPpg": 9.3
+    },
+    "Luther Burden III": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 8.5,
+      "previousPpg": null
+    },
+    "Davante Adams": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 15.9,
+      "previousPpg": 17.2
+    },
+    "Mike Evans": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.6,
+      "previousPpg": 17.2
+    },
+    "Travis Etienne Jr.": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jayden Daniels": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.8,
+      "previousPpg": 21.5
+    },
+    "Cam Skattebo": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 16,
+      "previousPpg": null
+    },
+    "Tyler Warren": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 11.1,
+      "previousPpg": null
+    },
+    "DJ Moore": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10,
+      "previousPpg": 14
+    },
+    "Jameson Williams": {
+      "tier": 5,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.9,
+      "previousPpg": 14.1
+    },
+    "Christian Watson": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 6.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13.2,
+      "previousPpg": 7
+    },
+    "Jalen Hurts": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 19.1,
+      "previousPpg": 21.3
+    },
+    "Rome Odunze": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.2,
+      "previousPpg": 8.5
+    },
+    "Bucky Irving": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13.8,
+      "previousPpg": 14.4
+    },
+    "Quinshon Judkins": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 12.1,
+      "previousPpg": null
+    },
+    "D'Andre Swift": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.3,
+      "previousPpg": 12.6
+    },
+    "David Montgomery": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.8,
+      "previousPpg": 15.8
+    },
+    "TreVeyon Henderson": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 12.1,
+      "previousPpg": null
+    },
+    "Carnell Tate": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Caleb Williams": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 19.1,
+      "previousPpg": 15.3
+    },
+    "Justin Herbert": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 18.7,
+      "previousPpg": 17
+    },
+    "Marvin Harrison Jr.": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.7,
+      "previousPpg": 11.6
+    },
+    "Bhayshul Tuten": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Harold Fannin Jr.": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 11.7,
+      "previousPpg": null
+    },
+    "Tucker Kraft": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.6,
+      "previousPpg": 9.6
+    },
+    "Jaylen Warren": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13.6,
+      "previousPpg": 8.3
+    },
+    "Trevor Lawrence": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jadarian Price": {
+      "tier": 6,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Brian Thomas Jr.": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "DK Metcalf": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.5,
+      "previousPpg": 12.7
+    },
+    "Dak Prescott": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 19,
+      "previousPpg": 15.6
+    },
+    "Chris Godwin Jr.": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -10.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.2,
+      "previousPpg": 19.7
+    },
+    "Kyle Pitts Sr.": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.4,
+      "previousPpg": 7.7
+    },
+    "Alec Pierce": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.2,
+      "previousPpg": 10.1
+    },
+    "Parker Washington": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Courtland Sutton": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.9,
+      "previousPpg": 14.1
+    },
+    "Michael Pittman Jr.": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.9,
+      "previousPpg": 10.4
+    },
+    "Rhamondre Stevenson": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.8,
+      "previousPpg": 11.7
+    },
+    "Tony Pollard": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.9,
+      "previousPpg": 12.5
+    },
+    "Sam LaPorta": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.9,
+      "previousPpg": 10.9
+    },
+    "Chuba Hubbard": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -7.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.4,
+      "previousPpg": 16.1
+    },
+    "Michael Wilson": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13,
+      "previousPpg": 7.8
+    },
+    "Rico Dowdle": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.7,
+      "previousPpg": 12.4
+    },
+    "Jordyn Tyson": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Wan'Dale Robinson": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13.6,
+      "previousPpg": 10.7
+    },
+    "Josh Downs": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.5,
+      "previousPpg": 13.1
+    },
+    "Jaxson Dart": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 17.6,
+      "previousPpg": null
+    },
+    "Brock Purdy": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 20.8,
+      "previousPpg": 18.6
+    },
+    "RJ Harvey": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 12.2,
+      "previousPpg": null
+    },
+    "Jakobi Meyers": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 14.5
+    },
+    "Travis Kelce": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.4,
+      "previousPpg": 12.2
+    },
+    "Quentin Johnston": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.2,
+      "previousPpg": 11.6
+    },
+    "Kenny Gainwell": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 9.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13,
+      "previousPpg": 3.7
+    },
+    "Patrick Mahomes II": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 21.2,
+      "previousPpg": 18.4
+    },
+    "Makai Lemon": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Bo Nix": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 18.6,
+      "previousPpg": 19.4
+    },
+    "J.K. Dobbins": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.6,
+      "previousPpg": 14.8
+    },
+    "Kyle Monangai": {
+      "tier": 7,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 8.6,
+      "previousPpg": null
+    },
+    "Matthew Stafford": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 7.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 21.1,
+      "previousPpg": 13.9
+    },
+    "Jordan Addison": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.7,
+      "previousPpg": 14.2
+    },
+    "George Kittle": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.7,
+      "previousPpg": 15.8
+    },
+    "Rachaad White": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.4,
+      "previousPpg": 12.5
+    },
+    "Jared Goff": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 17.9,
+      "previousPpg": 19.8
+    },
+    "Blake Corum": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.2,
+      "previousPpg": 2.2
+    },
+    "Jake Ferguson": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.1,
+      "previousPpg": 7.5
+    },
+    "Jayden Reed": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.9,
+      "previousPpg": 11.6
+    },
+    "Aaron Jones Sr.": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.9,
+      "previousPpg": 14.2
+    },
+    "Kyler Murray": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.2,
+      "previousPpg": 18.1
+    },
+    "Dalton Kincaid": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.5,
+      "previousPpg": 7.8
+    },
+    "Baker Mayfield": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -5.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.6,
+      "previousPpg": 22.5
+    },
+    "Dallas Goedert": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.3,
+      "previousPpg": 10.4
+    },
+    "Jordan Love": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.1,
+      "previousPpg": 16.3
+    },
+    "Jonathon Brooks": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 2.5
+    },
+    "Tyler Shough": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 14.9,
+      "previousPpg": null
+    },
+    "Khalil Shakir": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.4,
+      "previousPpg": 12.2
+    },
+    "Jayden Higgins": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 7.6,
+      "previousPpg": null
+    },
+    "Xavier Worthy": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.9,
+      "previousPpg": 11
+    },
+    "Isaiah Likely": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.4,
+      "previousPpg": 7.7
+    },
+    "Jordan Mason": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.1,
+      "previousPpg": 9.6
+    },
+    "Jacory Croskey-Merritt": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 8.3,
+      "previousPpg": null
+    },
+    "Mark Andrews": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.7,
+      "previousPpg": 11.1
+    },
+    "Jalen Coker": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.2,
+      "previousPpg": 8.4
+    },
+    "Romeo Doubs": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.3,
+      "previousPpg": 10.2
+    },
+    "Malik Willis": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.8,
+      "previousPpg": 7.4
+    },
+    "KC Concepcion": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Tyrone Tracy Jr.": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.7,
+      "previousPpg": 10.7
+    },
+    "Matthew Golden": {
+      "tier": 8,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 5,
+      "previousPpg": null
+    },
+    "Woody Marks": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 9.4,
+      "previousPpg": null
+    },
+    "Sam Darnold": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.7,
+      "previousPpg": 18.8
+    },
+    "C.J. Stroud": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 15.5,
+      "previousPpg": 13.7
+    },
+    "Tyler Allgeier": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.2,
+      "previousPpg": 6.2
+    },
+    "Tyjae Spears": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.6,
+      "previousPpg": 9.5
+    },
+    "Chris Rodriguez Jr.": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.1,
+      "previousPpg": 3.9
+    },
+    "Alvin Kamara": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -9.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.2,
+      "previousPpg": 19
+    },
+    "Dylan Sampson": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 5.8,
+      "previousPpg": null
+    },
+    "Rashid Shaheed": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.7,
+      "previousPpg": 13.3
+    },
+    "Juwan Johnson": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.6,
+      "previousPpg": 7.2
+    },
+    "Zach Charbonnet": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.3,
+      "previousPpg": 11
+    },
+    "Cam Ward": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 11.4,
+      "previousPpg": null
+    },
+    "Chig Okonkwo": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.3,
+      "previousPpg": 6.7
+    },
+    "Isiah Pacheco": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.7,
+      "previousPpg": 8.1
+    },
+    "Jauan Jennings": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.6,
+      "previousPpg": 14
+    },
+    "Brenton Strange": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jerry Jeudy": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -7.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.1,
+      "previousPpg": 14.2
+    },
+    "Daniel Jones": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 18,
+      "previousPpg": 14.2
+    },
+    "Hunter Henry": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.5,
+      "previousPpg": 9.1
+    },
+    "Bryce Young": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.3,
+      "previousPpg": 14.6
+    },
+    "Adonai Mitchell": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.5,
+      "previousPpg": 3.2
+    },
+    "Houston Texans": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.6,
+      "previousPpg": 8.2
+    },
+    "Denzel Boston": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Omar Cooper Jr.": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Keaton Mitchell": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.3,
+      "previousPpg": 1.7
+    },
+    "Oronde Gadsden II": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 8.8,
+      "previousPpg": null
+    },
+    "Jonah Coleman": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Brian Robinson Jr.": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -7.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.7,
+      "previousPpg": 11.4
+    },
+    "Tank Bigsby": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.4,
+      "previousPpg": null
+    },
+    "Jalen McMillan": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.5,
+      "previousPpg": 10.4
+    },
+    "Tre Tucker": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.5,
+      "previousPpg": 7.6
+    },
+    "Denver Broncos": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.4,
+      "previousPpg": 10.5
+    },
+    "Dalton Schultz": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.5,
+      "previousPpg": 7
+    },
+    "Travis Hunter": {
+      "tier": 9,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Seattle Seahawks": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.5,
+      "previousPpg": 8
+    },
+    "Deebo Samuel Sr.": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.8,
+      "previousPpg": 10.2
+    },
+    "Tre' Harris": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4.1,
+      "previousPpg": null
+    },
+    "Los Angeles Rams": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8,
+      "previousPpg": 6.9
+    },
+    "Philadelphia Eagles": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.9,
+      "previousPpg": 7.9
+    },
+    "Braelon Allen": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.8,
+      "previousPpg": 5
+    },
+    "T.J. Hockenson": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.5,
+      "previousPpg": 8.7
+    },
+    "Ryan Flournoy": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.6,
+      "previousPpg": 1.7
+    },
+    "Jacoby Brissett": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 11.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16.8,
+      "previousPpg": 5.8
+    },
+    "James Conner": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -7.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.3,
+      "previousPpg": 15.9
+    },
+    "Stefon Diggs": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.4,
+      "previousPpg": 15.2
+    },
+    "Brandon Aubrey": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11,
+      "previousPpg": 11.3
+    },
+    "Pittsburgh Steelers": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.6,
+      "previousPpg": 8.6
+    },
+    "Kayshon Boutte": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.9,
+      "previousPpg": 8.1
+    },
+    "Minnesota Vikings": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8,
+      "previousPpg": 9.5
+    },
+    "Jacksonville Jaguars": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Troy Franklin": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 6.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.4,
+      "previousPpg": 4.2
+    },
+    "New England Patriots": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.5,
+      "previousPpg": 3.7
+    },
+    "Calvin Ridley": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.8,
+      "previousPpg": 11.7
+    },
+    "Kimani Vidal": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.1,
+      "previousPpg": 3.3
+    },
+    "Los Angeles Chargers": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.5,
+      "previousPpg": 7.5
+    },
+    "Ray Davis": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.8,
+      "previousPpg": 6.8
+    },
+    "Jaylin Noel": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4,
+      "previousPpg": null
+    },
+    "AJ Barner": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.7,
+      "previousPpg": 4.6
+    },
+    "De'Zhaun Stribling": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Cameron Dicker": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10,
+      "previousPpg": 10.5
+    },
+    "Ka'imi Fairbairn": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.9,
+      "previousPpg": 10.1
+    },
+    "Jalen Nailor": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.9,
+      "previousPpg": 6.1
+    },
+    "Cam Little": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Dontayvion Wicks": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.4,
+      "previousPpg": 6.5
+    },
+    "Emmett Johnson": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jason Myers": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.9,
+      "previousPpg": 8.2
+    },
+    "Kenyon Sadiq": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Darnell Mooney": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.5,
+      "previousPpg": 12.1
+    },
+    "Baltimore Ravens": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.7,
+      "previousPpg": 7.1
+    },
+    "Sean Tucker": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.4,
+      "previousPpg": 4
+    },
+    "Isaac TeSlaa": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4.5,
+      "previousPpg": null
+    },
+    "Malik Washington": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.9,
+      "previousPpg": 3.9
+    },
+    "Gunnar Helm": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 5.7,
+      "previousPpg": null
+    },
+    "Green Bay Packers": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.6,
+      "previousPpg": 8.7
+    },
+    "Antonio Williams": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Eddy Pineiro": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10,
+      "previousPpg": 6.3
+    },
+    "Pat Bryant": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 5,
+      "previousPpg": null
+    },
+    "Emanuel Wilson": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.6,
+      "previousPpg": 5.6
+    },
+    "Tyler Loop": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 8.5,
+      "previousPpg": null
+    },
+    "Kansas City Chiefs": {
+      "tier": 10,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.4,
+      "previousPpg": 6.2
+    },
+    "Nicholas Singleton": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Geno Smith": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.7,
+      "previousPpg": 16.5
+    },
+    "Cairo Santos": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.8,
+      "previousPpg": 6.4
+    },
+    "Detroit Lions": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.7,
+      "previousPpg": 7.2
+    },
+    "Rashod Bateman": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.3,
+      "previousPpg": 10.3
+    },
+    "Aaron Rodgers": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 14.6,
+      "previousPpg": 15.7
+    },
+    "Mike Washington Jr.": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Evan McPherson": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8,
+      "previousPpg": 7.8
+    },
+    "Cooper Kupp": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -7.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.3,
+      "previousPpg": 14.6
+    },
+    "Jake Bates": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.9,
+      "previousPpg": 9.5
+    },
+    "Andy Borregales": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 8.8,
+      "previousPpg": null
+    },
+    "Tank Dell": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 10
+    },
+    "Buffalo Bills": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.5,
+      "previousPpg": 7.8
+    },
+    "Cleveland Browns": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.8,
+      "previousPpg": 4.8
+    },
+    "Kaytron Allen": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Chase McLaughlin": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.2,
+      "previousPpg": 9.6
+    },
+    "Pat Freiermuth": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.7,
+      "previousPpg": 9.9
+    },
+    "MarShawn Lloyd": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 2.8
+    },
+    "Cade Otton": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.6,
+      "previousPpg": 10
+    },
+    "Chimere Dike": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 7.4,
+      "previousPpg": null
+    },
+    "Harrison Mevis": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 9.1,
+      "previousPpg": null
+    },
+    "Zachariah Branch": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jaylen Wright": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.4,
+      "previousPpg": 1.8
+    },
+    "Terrance Ferguson": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4,
+      "previousPpg": null
+    },
+    "Germie Bernard": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jack Bech": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 2.7,
+      "previousPpg": null
+    },
+    "Ted Hurst III": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jaydon Blue": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4.1,
+      "previousPpg": null
+    },
+    "Harrison Butker": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.8,
+      "previousPpg": 7.7
+    },
+    "Ollie Gordon II": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.2,
+      "previousPpg": null
+    },
+    "Evan Engram": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 6.4,
+      "previousPpg": null
+    },
+    "David Njoku": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.2,
+      "previousPpg": 13.5
+    },
+    "Chris Boswell": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.9,
+      "previousPpg": 11.2
+    },
+    "Elic Ayomanor": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 7.3,
+      "previousPpg": null
+    },
+    "Keon Coleman": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.9,
+      "previousPpg": 8.6
+    },
+    "Justice Hill": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.5,
+      "previousPpg": 8.5
+    },
+    "Brandon Aiyuk": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 8.9
+    },
+    "Colby Parkinson": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.7,
+      "previousPpg": 3.8
+    },
+    "Fernando Mendoza": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Greg Dulcich": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.3,
+      "previousPpg": 0.9
+    },
+    "Isaiah Davis": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.5,
+      "previousPpg": 3.3
+    },
+    "Tua Tagovailoa": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.6,
+      "previousPpg": 17.1
+    },
+    "George Holani": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.1,
+      "previousPpg": 0.6
+    },
+    "Tory Horton": {
+      "tier": 11,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 8.1,
+      "previousPpg": null
+    },
+    "Chris Bell": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Wil Lutz": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.9,
+      "previousPpg": 9.4
+    },
+    "Elijah Sarratt": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Demond Claiborne": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Malachi Fields": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Ty Johnson": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.9,
+      "previousPpg": 5.4
+    },
+    "Eli Stowers": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Christian Kirk": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4.5,
+      "previousPpg": null
+    },
+    "DJ Giddens": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 1.1,
+      "previousPpg": null
+    },
+    "Tyquan Thornton": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.8,
+      "previousPpg": 1.5
+    },
+    "Trey Benson": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.1,
+      "previousPpg": 3.6
+    },
+    "Darius Slayton": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.1,
+      "previousPpg": 6.9
+    },
+    "Theo Johnson": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.5,
+      "previousPpg": 5.7
+    },
+    "Jordan James": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 0,
+      "previousPpg": null
+    },
+    "Mason Taylor": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 6.8,
+      "previousPpg": null
+    },
+    "Chris Brooks": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.9,
+      "previousPpg": 3.2
+    },
+    "Xavier Legette": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6,
+      "previousPpg": 7.8
+    },
+    "Devin Neal": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 6.7,
+      "previousPpg": null
+    },
+    "San Francisco 49ers": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.6,
+      "previousPpg": 4.9
+    },
+    "Atlanta Falcons": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.2,
+      "previousPpg": 5.7
+    },
+    "Marvin Mims Jr.": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.8,
+      "previousPpg": 7.6
+    },
+    "LeQuint Allen Jr.": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Samaje Perine": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.2,
+      "previousPpg": 4.8
+    },
+    "Will Reichard": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.4,
+      "previousPpg": 10.1
+    },
+    "Devaughn Vele": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.1,
+      "previousPpg": 8.2
+    },
+    "Michael Penix Jr.": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13.7,
+      "previousPpg": 9.4
+    },
+    "Oscar Delp": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Tyreek Hill": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 13.4,
+      "previousPpg": 12.8
+    },
+    "Malik Davis": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4.1,
+      "previousPpg": null
+    },
+    "Deshaun Watson": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 11.4
+    },
+    "Kendre Miller": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.8,
+      "previousPpg": 4.2
+    },
+    "Kirk Cousins": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.9,
+      "previousPpg": 13.7
+    },
+    "Kaelon Black": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Kaleb Johnson": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 0.9,
+      "previousPpg": null
+    },
+    "Hollywood Brown": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.6,
+      "previousPpg": 9.1
+    },
+    "Keenan Allen": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.7,
+      "previousPpg": 12.4
+    },
+    "Emari Demercado": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.5,
+      "previousPpg": 4.2
+    },
+    "Shedeur Sanders": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 11.9,
+      "previousPpg": null
+    },
+    "Mack Hollins": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.6,
+      "previousPpg": 5.8
+    },
+    "Devin Singletary": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.4,
+      "previousPpg": 6
+    },
+    "Kyle Williams": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 2.9,
+      "previousPpg": null
+    },
+    "Brashard Smith": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.7,
+      "previousPpg": null
+    },
+    "Mike Gesicki": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.4,
+      "previousPpg": 8.3
+    },
+    "Jerome Ford": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.4,
+      "previousPpg": 9.6
+    },
+    "New Orleans Saints": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.9,
+      "previousPpg": 5.8
+    },
+    "Adam Randall": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Najee Harris": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -8.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.9,
+      "previousPpg": 12
+    },
+    "Isaiah Bond": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.4,
+      "previousPpg": null
+    },
+    "Skyler Bell": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Chris Brazzell II": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Tahj Brooks": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 0.5,
+      "previousPpg": null
+    },
+    "Seth McGowan": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Charlie Smyth": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 10,
+      "previousPpg": null
+    },
+    "Trevor Etienne": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 0.7,
+      "previousPpg": null
+    },
+    "Jaleel McLaughlin": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.9,
+      "previousPpg": 6.1
+    },
+    "Isaac Guerendo": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -5.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0,
+      "previousPpg": 5.9
+    },
+    "Jake Tonges": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 5.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.8,
+      "previousPpg": 0
+    },
+    "Indianapolis Colts": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.8,
+      "previousPpg": 5.4
+    },
+    "Ja'Kobi Lane": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jarquez Hunter": {
+      "tier": 12,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Chicago Bears": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.8,
+      "previousPpg": 7.1
+    },
+    "Andrei Iosivas": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.3,
+      "previousPpg": 7.1
+    },
+    "Audric Estime": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.9,
+      "previousPpg": 3.7
+    },
+    "Darnell Washington": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.6,
+      "previousPpg": 2.6
+    },
+    "Will Shipley": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.2,
+      "previousPpg": 1.2
+    },
+    "Joe Mixon": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 17.2
+    },
+    "Kareem Hunt": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.6,
+      "previousPpg": 12
+    },
+    "Cedric Tillman": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.6,
+      "previousPpg": 7.3
+    },
+    "J.J. McCarthy": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 13.7,
+      "previousPpg": null
+    },
+    "Konata Mumpfield": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 1.5,
+      "previousPpg": null
+    },
+    "Jalen Royals": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 0.3,
+      "previousPpg": null
+    },
+    "Luke McCaffrey": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.7,
+      "previousPpg": 2
+    },
+    "Tez Johnson": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 5.8,
+      "previousPpg": null
+    },
+    "Caleb Douglas": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Jalen Tolbert": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -5.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.6,
+      "previousPpg": 8.9
+    },
+    "Carolina Panthers": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.1,
+      "previousPpg": 2.4
+    },
+    "Elijah Arroyo": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 2.8,
+      "previousPpg": null
+    },
+    "Tyler Higbee": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.1,
+      "previousPpg": 8.9
+    },
+    "Jahan Dotson": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3,
+      "previousPpg": 2.5
+    },
+    "Max Klare": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Olamide Zaccheaus": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.3,
+      "previousPpg": 6.6
+    },
+    "Calvin Austin III": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.2,
+      "previousPpg": 7
+    },
+    "Bam Knight": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 7.7,
+      "previousPpg": null
+    },
+    "Michael Mayer": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.7,
+      "previousPpg": 3.3
+    },
+    "Ja'Tavion Sanders": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.2,
+      "previousPpg": 4.6
+    },
+    "Noah Gray": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.4,
+      "previousPpg": 6.7
+    },
+    "Jake Elliott": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.8,
+      "previousPpg": 8.3
+    },
+    "Joshua Palmer": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.4,
+      "previousPpg": 7.2
+    },
+    "DeMario Douglas": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.6,
+      "previousPpg": 8.7
+    },
+    "Cole Kmet": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.9,
+      "previousPpg": 7.1
+    },
+    "Treylon Burks": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.6,
+      "previousPpg": 1.5
+    },
+    "Mac Jones": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 12.4,
+      "previousPpg": null
+    },
+    "Eli Heidenreich": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Kendrick Bourne": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.8,
+      "previousPpg": 5.4
+    },
+    "Michael Carter": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.6,
+      "previousPpg": 9
+    },
+    "New York Giants": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.5,
+      "previousPpg": 5.4
+    },
+    "Dawson Knox": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.1,
+      "previousPpg": 3.7
+    },
+    "Dallas Cowboys": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.5,
+      "previousPpg": 6.5
+    },
+    "Jawhar Jordan": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 7.4,
+      "previousPpg": null
+    },
+    "Dont'e Thornton Jr.": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 1.6,
+      "previousPpg": null
+    },
+    "Nick Chubb": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.9,
+      "previousPpg": 7.9
+    },
+    "Raheim Sanders": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4.1,
+      "previousPpg": null
+    },
+    "Justin Fields": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 16,
+      "previousPpg": 12
+    },
+    "Tyler Bass": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 8.6
+    },
+    "Carson Beck": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Anthony Richardson Sr.": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -14.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.1,
+      "previousPpg": 15.9
+    },
+    "J'Mari Taylor": {
+      "tier": 13,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Justin Joly": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Zane Gonzalez": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 10.7,
+      "previousPpg": 6.3
+    },
+    "Erick All Jr.": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 4
+    },
+    "Tampa Bay Buccaneers": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.8,
+      "previousPpg": 6.1
+    },
+    "Xavier Hutchinson": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.8,
+      "previousPpg": 1.5
+    },
+    "John Metchie III": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.5,
+      "previousPpg": 4.3
+    },
+    "Bryce Lance": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Ty Simpson": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Brenen Thompson": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Noah Fant": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5,
+      "previousPpg": 7.4
+    },
+    "Cyrus Allen": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Eli Raridon": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Tutu Atwell": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.1,
+      "previousPpg": 5.8
+    },
+    "Nick Folk": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.9,
+      "previousPpg": 7.7
+    },
+    "Tennessee Titans": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.1,
+      "previousPpg": 4.2
+    },
+    "Jaylin Lane": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.3,
+      "previousPpg": null
+    },
+    "Luke Musgrave": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.9,
+      "previousPpg": 1.6
+    },
+    "Trey Smack": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Kalif Raymond": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.5,
+      "previousPpg": 4.7
+    },
+    "Phil Mafah": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 10.9,
+      "previousPpg": null
+    },
+    "Kevin Coleman Jr.": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Austin Ekeler": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.4,
+      "previousPpg": 11
+    },
+    "Miami Dolphins": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.6,
+      "previousPpg": 4.9
+    },
+    "John Bates": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.8,
+      "previousPpg": 0.8
+    },
+    "Blake Grupe": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.1,
+      "previousPpg": 7.7
+    },
+    "Washington Commanders": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.5,
+      "previousPpg": 5.3
+    },
+    "Kyle Juszczyk": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.4,
+      "previousPpg": 3.4
+    },
+    "Nick Westbrook-Ikhine": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -6.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.3,
+      "previousPpg": 8
+    },
+    "Cincinnati Bengals": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.6,
+      "previousPpg": 6.1
+    },
+    "Savion Williams": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 2.1,
+      "previousPpg": null
+    },
+    "Ben Sinnott": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.8,
+      "previousPpg": 0.8
+    },
+    "Tommy Tremble": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.8,
+      "previousPpg": 4.7
+    },
+    "Ryan Fitzgerald": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 6.5,
+      "previousPpg": null
+    },
+    "KaVontae Turpin": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5.6,
+      "previousPpg": 6.1
+    },
+    "Dameon Pierce": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.7,
+      "previousPpg": 4
+    },
+    "Jordan Whittington": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.1,
+      "previousPpg": 3.5
+    },
+    "Ben Sauls": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 10.7,
+      "previousPpg": null
+    },
+    "Devontez Walker": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.4,
+      "previousPpg": 1.3
+    },
+    "Chad Ryland": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 7.6,
+      "previousPpg": 9.6
+    },
+    "Spencer Shrader": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 4.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.4,
+      "previousPpg": 6.5
+    },
+    "Antonio Gibson": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.6,
+      "previousPpg": 6.1
+    },
+    "Jam Miller": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Deion Burks": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Marcus Mariota": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -4.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11,
+      "previousPpg": 15.3
+    },
+    "Joe Milton III": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -16.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.1,
+      "previousPpg": 19.2
+    },
+    "Daniel Carlson": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.1,
+      "previousPpg": 8.5
+    },
+    "Dyami Brown": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 4.2
+    },
+    "Darren Waller": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 9.9,
+      "previousPpg": null
+    },
+    "Joe Flacco": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 12.1,
+      "previousPpg": 13.3
+    },
+    "Joey Slye": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.4,
+      "previousPpg": 7.1
+    },
+    "Brandon McManus": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 8.1,
+      "previousPpg": 9
+    },
+    "Jameis Winston": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 3.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 15.1,
+      "previousPpg": 11.9
+    },
+    "Austin Hooper": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.7,
+      "previousPpg": 6.4
+    },
+    "Jake Moody": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9,
+      "previousPpg": 8.4
+    },
+    "Terrell Jennings": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.5,
+      "previousPpg": 1.7
+    },
+    "Sione Vaki": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.1,
+      "previousPpg": 0.7
+    },
+    "Roschon Johnson": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -5.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.3,
+      "previousPpg": 6
+    },
+    "Zavion Thomas": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Mitchell Evans": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 2.8,
+      "previousPpg": null
+    },
+    "Ashton Dulin": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.7,
+      "previousPpg": 1.3
+    },
+    "Zach Ertz": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 9.7,
+      "previousPpg": 10.4
+    },
+    "Rasheen Ali": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.6,
+      "previousPpg": 0.6
+    },
+    "Miles Sanders": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.7,
+      "previousPpg": 7
+    },
+    "Jeremy McNichols": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.3,
+      "previousPpg": 3.8
+    },
+    "Tyler Lockett": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.3,
+      "previousPpg": 7.1
+    },
+    "Jonnu Smith": {
+      "tier": 14,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -8.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 5,
+      "previousPpg": 13.1
+    },
+    "Colbie Young": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Daniel Bellinger": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.7,
+      "previousPpg": 1.6
+    },
+    "Jaydn Ott": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Elijah Mitchell": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 0,
+      "previousPpg": null
+    },
+    "Mitch Tinsley": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 2.4,
+      "previousPpg": null
+    },
+    "Ty Chandler": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.9,
+      "previousPpg": 1.9
+    },
+    "Elijah Higgins": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.4,
+      "previousPpg": 2.9
+    },
+    "Jahdae Walker": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.8,
+      "previousPpg": null
+    },
+    "Zavier Scott": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.6,
+      "previousPpg": null
+    },
+    "Jaret Patterson": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 4.3,
+      "previousPpg": null
+    },
+    "Charlie Kolar": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.1,
+      "previousPpg": 2.2
+    },
+    "Hunter Luepke": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.2,
+      "previousPpg": 1.7
+    },
+    "Cash Jones": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Greg Dortch": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 1.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 6.3,
+      "previousPpg": 5.3
+    },
+    "Marlin Klein": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Dylan Laube": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.5,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.2,
+      "previousPpg": -0.3
+    },
+    "Tommy Myers": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Xavier Restrepo": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.6,
+      "previousPpg": null
+    },
+    "Mo Alie-Cox": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.8,
+      "previousPpg": 1.9
+    },
+    "Tyler Goodson": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.5,
+      "previousPpg": 2.8
+    },
+    "CJ Daniels": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Drew Sample": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.9,
+      "previousPpg": 2.1
+    },
+    "Malik Benson": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Josh Oliver": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.7,
+      "previousPpg": 4.4
+    },
+    "Kevin Austin Jr.": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.1,
+      "previousPpg": 3.4
+    },
+    "Jakobie Keeney-James": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 3.5,
+      "previousPpg": null
+    },
+    "Theo Wease Jr.": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 8.6,
+      "previousPpg": null
+    },
+    "Derius Davis": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.1,
+      "previousPpg": 2.7
+    },
+    "DeAndre Hopkins": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -5.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.9,
+      "previousPpg": 9.2
+    },
+    "Jacob Saylors": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 0.1,
+      "previousPpg": null
+    },
+    "Ronnie Rivers": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.7,
+      "previousPpg": 2.6
+    },
+    "Jake Bobo": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.4,
+      "previousPpg": 1.7
+    },
+    "Scotty Miller": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.2,
+      "previousPpg": 0.9
+    },
+    "Alexander Mattison": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -9.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0,
+      "previousPpg": 9.8
+    },
+    "New York Jets": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.8,
+      "previousPpg": 5.6
+    },
+    "Las Vegas Raiders": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.4,
+      "previousPpg": 4.2
+    },
+    "Elijah Tau-Tolliver": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Taysom Hill": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -9.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.2,
+      "previousPpg": 12.9
+    },
+    "Damien Martinez": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Michael Trigg": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Myles Montgomery": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Donovan Edwards": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Roman Hemby": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Frank Gore Jr.": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Adam Trautman": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.7,
+      "previousPpg": 2.6
+    },
+    "Khalil Herbert": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.3,
+      "previousPpg": 2.4
+    },
+    "Jordan Waters": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Xavier Smith": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 2.6,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3,
+      "previousPpg": 0.4
+    },
+    "Odell Beckham Jr.": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 1.6
+    },
+    "Luke Schoonmaker": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -1.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 1.6,
+      "previousPpg": 3.4
+    },
+    "Michael Woods II": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 2.7
+    },
+    "Kendric Pryor": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": 1
+    },
+    "Robert Henry Jr.": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Will Dissly": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -5.0,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.3,
+      "previousPpg": 7.3
+    },
+    "Raheem Mostert": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.4,
+      "previousPpg": 5.5
+    },
+    "Jake Browning": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 11.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 11.3,
+      "previousPpg": -0.1
+    },
+    "Sam Roush": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Demarcus Robinson": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.2,
+      "previousPpg": 7.3
+    },
+    "Cade Klubnik": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "Reggie Gilliam": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.3,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.3,
+      "previousPpg": 0
+    },
+    "Elijah Moore": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -3.9,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.2,
+      "previousPpg": 7.1
+    },
+    "Gardner Minshew II": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -10.4,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 0.2,
+      "previousPpg": 10.6
+    },
+    "Riley Leonard": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 6.4,
+      "previousPpg": null
+    },
+    "Cade Stover": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -0.1,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 2.2,
+      "previousPpg": 2.3
+    },
+    "Jeshaun Jones": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 0,
+      "previousPpg": null
+    },
+    "Reggie Virgil": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    },
+    "David Sills V": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 2.9,
+      "previousPpg": null
+    },
+    "Marquez Valdes-Scantling": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": -2.8,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.2,
+      "previousPpg": 6
+    },
+    "Tanner Hudson": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.2,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 3.7,
+      "previousPpg": 3.5
+    },
+    "Van Jefferson": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": 0.7,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": 2025,
+      "previousSeason": 2024,
+      "currentPpg": 4.4,
+      "previousPpg": 3.7
+    },
+    "Jacardia Wright": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": 2,
+      "previousPpg": null
+    },
+    "Arizona Cardinals": {
+      "tier": 15,
+      "tierSource": "FF26_BASELINE_PENDING_FANTASYPROS_API",
+      "trend": null,
+      "trendSource": "FF26_BASELINE_2025_VS_2024",
+      "currentSeason": null,
+      "previousSeason": null,
+      "currentPpg": null,
+      "previousPpg": null
+    }
+  }
+}
