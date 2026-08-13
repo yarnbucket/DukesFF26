@@ -1,22 +1,21 @@
-name: Update FF26 Player Status
+name: Update FF26 Market Data
 
 on:
   workflow_dispatch:
   schedule:
-    # Sleeper asks clients not to fetch the full NFL player feed more than once/day.
-    # 06:17 America/New_York avoids the heavy traffic at the top of the hour.
-    - cron: '17 6 * * *'
+    # Runs after the morning status refresh.
+    - cron: '47 6 * * *'
       timezone: 'America/New_York'
 
 permissions:
   contents: write
 
 concurrency:
-  group: ff26-status-updater
+  group: ff26-market-updater
   cancel-in-progress: false
 
 jobs:
-  refresh-status:
+  refresh-market:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -31,21 +30,26 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Refresh ff26-status.json
-        run: python scripts/update_ff26_status.py
+      - name: Self-test market updater
+        run: python scripts/update_ff26_market.py --self-test
+
+      - name: Refresh ff26-market.json
+        env:
+          FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
+        run: python scripts/update_ff26_market.py
 
       - name: Validate generated JSON
-        run: python -m json.tool ff26-status.json > /dev/null
+        run: python -m json.tool ff26-market.json > /dev/null
 
-      - name: Commit status changes
+      - name: Commit market changes
         shell: bash
         run: |
-          if git diff --quiet -- ff26-status.json; then
-            echo "No status changes to commit."
+          if git diff --quiet -- ff26-market.json; then
+            echo "No market changes to commit."
             exit 0
           fi
           git config user.name "dukes-ff26-updater"
           git config user.email "actions@users.noreply.github.com"
-          git add ff26-status.json
-          git commit -m "Refresh FF26 player status"
+          git add ff26-market.json
+          git commit -m "Refresh FF26 market data"
           git push
