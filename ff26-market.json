@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "season": 2026,
   "scoring": "PPR",
-  "updatedAt": "2026-08-14T11:26:06+00:00",
+  "updatedAt": "2026-08-15T10:57:06+00:00",
   "source": {
     "tier": {
       "authority": "FantasyPros",
@@ -148,8 +148,8 @@
     },
     "Jonathan Taylor": {
       "tier": 2,
-      "tierSource": "FANTASYPROS_PPR_PRESEASON",
-      "tierMatchType": "name+team",
+      "tierSource": "FF26_FALLBACK_UNMATCHED_FANTASYPROS",
+      "tierMatchType": "unmatched",
       "trend": 3.8,
       "trendSource": "FF26_FALLBACK_UNMATCHED_FANTASYPROS",
       "currentSeason": 2025,
@@ -161,8 +161,8 @@
     },
     "Drake London": {
       "tier": 2,
-      "tierSource": "FF26_FALLBACK_UNMATCHED_FANTASYPROS",
-      "tierMatchType": "unmatched",
+      "tierSource": "FANTASYPROS_PPR_PRESEASON",
+      "tierMatchType": "name+team",
       "trend": 0.3,
       "trendSource": "FF26_FALLBACK_UNMATCHED_FANTASYPROS",
       "currentSeason": 2025,
