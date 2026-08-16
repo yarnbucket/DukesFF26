@@ -1276,7 +1276,7 @@ body.theme-launch{--ff26-theme-bg:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ
           <select class="field" id="positionFilter"><option value="ALL">All positions</option><option>QB</option><option>RB</option><option>WR</option><option>TE</option><option>DST</option><option>K</option></select>
           <select class="field" id="sortSelect"><option value="rank">Sort: Overall Rank / ADP</option><option value="consensus">Consensus</option><option value="ppg25">2025 PPG</option><option value="trend">PPG Trend</option><option value="nflTeam">NFL Team</option></select>
           <select class="field team-filter hidden" id="teamFilter" aria-label="NFL team filter"><option value="ALL">Team: All</option></select>
-          <select class="field" id="tierFilter"><option value="ALL">All tiers</option></select>
+          
         </div>
         <div class="availability-legend" aria-label="Player availability status legend">
           <strong>STATUS</strong>
@@ -5722,11 +5722,76 @@ function ff26UpdateSortHeaderUI(){document.querySelectorAll('[data-column-sort]'
 function ff26ToggleColumnSort(key){if(ff26ColumnSort.key===key)ff26ColumnSort.direction*=-1;else ff26ColumnSort={key,direction:1};ff26UpdateSortHeaderUI();renderPlayers()}
 function ff26UpdateTeamMode(){const isTeam=$('#sortSelect')?.value==='nflTeam',team=$('#teamFilter');if(team)team.classList.toggle('hidden',!isTeam);if(isTeam&&!ff26TeamModeSeen){ff26TeamModeSeen=true;ff26ColumnSort={key:null,direction:1};ff26UpdateSortHeaderUI()}}
 
+
+/* FF26 v1.2 supplemental complete-roster search layer.
+   roster26.json expands SEARCH only; it does not alter the approved draft pool. */
+let ROSTER26_PLAYERS=[];
+let FF26_ROSTER26_LOAD_STATE='NOT LOADED';
+
+function ff26CanonicalPlayerName(name){
+  return String(name||'')
+    .toLowerCase()
+    .replace(/[’']/g,'')
+    .replace(/\b(jr|sr|ii|iii|iv|v)\b\.?/g,'')
+    .replace(/[^a-z0-9]+/g,' ')
+    .trim();
+}
+function ff26NormalizeRosterTeam(team){
+  return ({JAX:'JAX',LA:'LAR'})[String(team||'').toUpperCase()]||String(team||'').toUpperCase();
+}
+function ff26ByeForTeam(team){
+  const normalized=ff26NormalizeRosterTeam(team);
+  for(const [week,teams] of Object.entries(NFL_2026_BYE_WEEKS)){
+    if(teams.includes(normalized))return Number(week);
+  }
+  return null;
+}
+async function loadRoster26SearchData(){
+  try{
+    const url=new URL('./roster26.json',document.baseURI);
+    url.searchParams.set('v',String(Date.now()));
+    const response=await fetch(url,{cache:'no-store'});
+    if(!response.ok)throw new Error(`HTTP ${response.status}`);
+    const data=await response.json();
+    const teams=data&&data.teams&&typeof data.teams==='object'?data.teams:{};
+    const seen=new Set(PLAYERS.map(p=>ff26CanonicalPlayerName(p.name)));
+    const supplements=[];
+    Object.entries(teams).forEach(([rawTeam,players])=>{
+      const team=ff26NormalizeRosterTeam(rawTeam);
+      (Array.isArray(players)?players:[]).forEach(record=>{
+        const name=String(record?.name||'').trim();
+        const pos=String(record?.position||'').toUpperCase();
+        const key=ff26CanonicalPlayerName(name);
+        if(!name||!['QB','RB','WR','TE','K'].includes(pos)||seen.has(key))return;
+        seen.add(key);
+        supplements.push({
+          rank:`R26-${team}-${supplements.length+1}`,
+          name,team,pos,posRank:null,bye:ff26ByeForTeam(team),
+          tier:null,sos:null,ecrDiff:null,espnRank:null,consensus:null,
+          ppg25:null,ppg24:null,trend:null,
+          rosterOnly:true,draftEligible:false,
+          age:record?.age??null,experience:record?.experience??null,college:record?.college??''
+        });
+      });
+    });
+    ROSTER26_PLAYERS=supplements;
+    FF26_ROSTER26_LOAD_STATE=`LIVE JSON · ${supplements.length} supplemental`;
+    if(typeof renderPlayers==='function')renderPlayers();
+  }catch(error){
+    ROSTER26_PLAYERS=[];
+    FF26_ROSTER26_LOAD_STATE=`UNAVAILABLE · ${error?.message||error}`;
+    console.warn('roster26.json search layer unavailable:',error);
+  }
+}
+
 function filteredPlayers(){
-  const q=$('#searchInput').value.trim().toLowerCase(),pos=$('#positionFilter').value,tier=$('#tierFilter').value,sort=$('#sortSelect').value,selectedTeam=$('#teamFilter')?.value||'ALL';
-  let list=available().filter(p=>(pos==='ALL'||p.pos===pos)&&(tier==='ALL'||String(p.tier)===tier)&&(!q||`${p.name} ${p.team}`.toLowerCase().includes(q))&&(sort!=='nflTeam'||selectedTeam==='ALL'||p.team===selectedTeam));
+  const q=$('#searchInput').value.trim().toLowerCase(),pos=$('#positionFilter').value,sort=$('#sortSelect').value,selectedTeam=$('#teamFilter')?.value||'ALL';
+  const ranked=available();
+  const includeRoster=Boolean(q)||(sort==='nflTeam'&&selectedTeam!=='ALL');
+  const source=includeRoster?[...ranked,...ROSTER26_PLAYERS]:ranked;
+  let list=source.filter(p=>(pos==='ALL'||p.pos===pos)&&(!q||`${p.name} ${p.team}`.toLowerCase().includes(q))&&(sort!=='nflTeam'||selectedTeam==='ALL'||p.team===selectedTeam));
   const manuallySorted=ff26ApplyColumnSort(list);
-  if(!manuallySorted){if(sort==='nflTeam')list.sort(ff26TeamFantasyComparator);else list.sort((a,b)=>{if(sort==='ppg25')return (b.ppg25??-99)-(a.ppg25??-99);if(sort==='trend')return (b.trend??-99)-(a.trend??-99);if(sort==='consensus')return (a.consensus??999)-(b.consensus??999);return a.rank-b.rank})}
+  if(!manuallySorted){if(sort==='nflTeam')list.sort((a,b)=>{if(a.rosterOnly!==b.rosterOnly)return a.rosterOnly?1:-1;return ff26TeamFantasyComparator(a,b)});else list.sort((a,b)=>{if(a.rosterOnly!==b.rosterOnly)return a.rosterOnly?1:-1;if(sort==='ppg25')return (b.ppg25??-99)-(a.ppg25??-99);if(sort==='trend')return (b.trend??-99)-(a.trend??-99);if(sort==='consensus')return (a.consensus??999)-(b.consensus??999);return (Number(a.rank)||9999)-(Number(b.rank)||9999)})}
   return list
 }
 function bestPickStrategyText(player,slot,pickIndex){
@@ -5794,8 +5859,8 @@ function renderPlayers(){
   const list=filteredPlayers(),tbody=$('#playerRows');tbody.innerHTML='';
   const clashRoster=state.started?rosterFor(state.userSlot):[];
   const teamMode=$('#sortSelect')?.value==='nflTeam',selectedTeam=$('#teamFilter')?.value||'ALL';
-  const bestTeamPlayer=teamMode&&selectedTeam!=='ALL'?[...list].sort(ff26TeamFantasyComparator)[0]:null;
-  list.forEach(p=>{const clash=byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);const bestMarker=bestTeamPlayer?.rank===p.rank?'<span class="team-best-marker">★ Best Available on Team</span>':'';const valueFlags=marketFlagMarkup(p);tr.innerHTML=`<td class="rank">${p.rank}</td><td><div class="player-name-line">${statusDotMarkup(p)}<div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div></div><div class="team-text">${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div>${valueFlags}${bestMarker}</td><td><span class="pos ${p.pos}">${p.pos}</span></td><td class="metric">${escapeHtml(p.team)}</td><td><span class="tier-pill">T${p.tier??'—'}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`}</td><td><button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button></td>`;tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
+  const bestTeamPlayer=teamMode&&selectedTeam!=='ALL'?[...list].filter(p=>!p.rosterOnly).sort(ff26TeamFantasyComparator)[0]:null;
+  list.forEach(p=>{const clash=p.rosterOnly?{level:0,text:''}:byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);const bestMarker=!p.rosterOnly&&bestTeamPlayer?.rank===p.rank?'<span class="team-best-marker">★ Best Available on Team</span>':'';const valueFlags=p.rosterOnly?'':marketFlagMarkup(p);const rosterMeta=p.rosterOnly?`<div class="team-text">FULL 2026 ROSTER${p.college?` · ${escapeHtml(p.college)}`:''}</div>`:`<div class="team-text">${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div>`;const action=p.rosterOnly?'<span class="tier-pill">ROSTER</span>':`<button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button>`;tr.innerHTML=`<td class="rank">${p.rosterOnly?'—':p.rank}</td><td><div class="player-name-line">${p.rosterOnly?'':statusDotMarkup(p)}<div class="player-name ${p.rosterOnly?'':'profile-trigger'}" ${p.rosterOnly?'':`data-profile="${p.rank}"`}>${escapeHtml(p.name)}</div></div>${rosterMeta}${valueFlags}${bestMarker}</td><td><span class="pos ${p.pos}">${p.pos}</span></td><td class="metric">${escapeHtml(p.team)}</td><td><span class="tier-pill">${p.rosterOnly?'ROSTER':`T${p.tier??'—'}`}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${p.rosterOnly?'—':fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.rosterOnly?'—':(p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`)}</td><td>${action}</td>`;if(!p.rosterOnly)tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
 
   const guide=$('#rosterGuidance'),rec=$('#recommendations');rec.innerHTML='';
   if(!isUserTurn()){rec.classList.add('hidden');guide.classList.add('hidden')}
@@ -6527,7 +6592,7 @@ if(FF26_BUILD_MODE==='development'){
 /* @DEV_EXPORTS_END */
 FF26_DIAG.info("Duke's FF26 strategy release v3.1.0 WR stopping-point build integrated.",DUKES_STRATEGY_V3_VALIDATION);
 
-function buildFilters(){const tiers=[...new Set(PLAYERS.map(p=>p.tier).filter(Boolean))].sort((a,b)=>a-b);tiers.forEach(t=>$('#tierFilter').insertAdjacentHTML('beforeend',`<option value="${t}">Tier ${t}</option>`));ff26PopulateTeamFilter();$('#searchInput').addEventListener('input',renderPlayers);$('#positionFilter').addEventListener('change',renderPlayers);$('#tierFilter').addEventListener('change',renderPlayers);$('#sortSelect').addEventListener('change',()=>{ff26UpdateTeamMode();renderPlayers()});$('#teamFilter').addEventListener('change',renderPlayers);document.querySelectorAll('[data-column-sort]').forEach(button=>button.addEventListener('click',()=>ff26ToggleColumnSort(button.dataset.columnSort)));ff26UpdateTeamMode();ff26UpdateSortHeaderUI();}
+function buildFilters(){ff26PopulateTeamFilter();$('#searchInput').addEventListener('input',renderPlayers);$('#positionFilter').addEventListener('change',renderPlayers);$('#sortSelect').addEventListener('change',()=>{ff26UpdateTeamMode();renderPlayers()});$('#teamFilter').addEventListener('change',renderPlayers);document.querySelectorAll('[data-column-sort]').forEach(button=>button.addEventListener('click',()=>ff26ToggleColumnSort(button.dataset.columnSort)));ff26UpdateTeamMode();ff26UpdateSortHeaderUI();}
 
 document.querySelectorAll('[data-sound-toggle]').forEach(button=>button.addEventListener('click',()=>setSoundEnabled(!soundEnabled,{confirmWithSound:!soundEnabled})));
 document.addEventListener('click',event=>{
@@ -6626,7 +6691,7 @@ window.addEventListener('orientationchange',scheduleMobileViewportUpdate,{passiv
 window.visualViewport?.addEventListener('resize',scheduleMobileViewportUpdate,{passive:true});
 window.addEventListener('pageshow',()=>{updateMobileViewportHeight();scrollPageToTop()});
 window.addEventListener('load',()=>{updateMobileViewportHeight();scrollPageToTop()});
-buildFilters();initializeSetup();renderAll();scrollPageToTop();loadFF26Status();loadFF26Market();ff26StartMarketRefresh();
+buildFilters();initializeSetup();renderAll();scrollPageToTop();loadFF26Status();loadFF26Market();loadRoster26SearchData();ff26StartMarketRefresh();
 })();
 </script>
 
