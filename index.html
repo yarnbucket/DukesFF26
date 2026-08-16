@@ -1204,6 +1204,45 @@ body.theme-launch{--ff26-theme-bg:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ
   .turn-banner{padding:22px 24px 18px!important;border-radius:48% / 36%!important}
 }
 
+
+/* Slot selection contrast refinement — visual only */
+.slot-btn{
+  background:#111;
+  color:#fff;
+  border-color:#5b5b5b;
+}
+.slot-btn:hover{
+  border-color:var(--gold);
+  color:#fff;
+}
+.slot-btn.active,
+.slot-btn.active:hover,
+.slot-btn.active:focus-visible{
+  background:var(--gold);
+  color:#080808;
+  border-color:var(--gold);
+  text-shadow:none;
+}
+
+
+/* Draft-slot native dropdown readability fix.
+   Closed control stays dark/white; opened option list uses white/black for reliable browser contrast. */
+#userSlot,
+select.setup-input{
+  color:#f7f7f5;
+  background:#0b0d12;
+}
+#userSlot option,
+select.setup-input option{
+  color:#111 !important;
+  background:#fff !important;
+}
+#userSlot option:checked,
+select.setup-input option:checked{
+  color:#111 !important;
+  background:#8fbcf4 !important;
+}
+
 </style>
 </head>
 <body>
@@ -5674,14 +5713,40 @@ function playerInfoUrl(player){
 }
 
 function openPlayerProfile(playerOrId){
-  const p=typeof playerOrId==='object'?playerOrId:byId(playerOrId);if(!p)return;
+  const p=typeof playerOrId==='object'
+    ? playerOrId
+    : (byId(playerOrId)||ROSTER26_PLAYERS.find(player=>String(player.rank)===String(playerOrId)));
+  if(!p)return;
   $('#playerProfileName').textContent=p.name;
   $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''} · Bye ${p.bye??'—'}`;
   $('#playerProfileAvatar').textContent=p.pos;
   $('#playerProfileAvatar').className=`player-profile-avatar pos-${p.pos}`;
+  const statusBox=$('#playerProfileStatus');
+  if(p.rosterOnly){
+    const exp=p.experience==null?'—':p.experience;
+    const age=p.age==null?'—':p.age;
+    $('#playerProfileStats').innerHTML=`<div class="profile-stat"><b>${escapeHtml(p.team)}</b><span>Team</span></div><div class="profile-stat"><b>${escapeHtml(p.pos)}</b><span>Position</span></div><div class="profile-stat"><b>${p.bye??'—'}</b><span>Bye</span></div><div class="profile-stat"><b>${escapeHtml(String(exp))}</b><span>Experience</span></div>`;
+    statusBox.classList.add('hidden');
+    $('#playerProfileHonor').textContent=`FULL 2026 ROSTER · ${p.college?`${p.college} · `:''}Age ${age} · Search/reference player only — not draft eligible.`;
+    const safeInfo=safeHttpsUrl(playerInfoUrl(p));
+    if(safeInfo){
+      $('#playerMoreInfo').href=safeInfo;
+      $('#playerMoreInfo').target='_blank';
+      $('#playerMoreInfo').rel='noopener noreferrer';
+      $('#playerMoreInfo').setAttribute('aria-label',`Search NFL information for ${p.name}`);
+    }else{
+      $('#playerMoreInfo').removeAttribute('href');
+    }
+    const overlay=$('#playerProfileOverlay');
+    if(overlay.classList.contains('hidden'))lockMobilePageScroll();
+    overlay.classList.remove('hidden');
+    setScrollTop(overlay);
+    focusWithoutScroll($('#playerProfileClose'));
+    return;
+  }
+  statusBox.classList.remove('hidden');
   $('#playerProfileStats').innerHTML=`<div class="profile-stat"><b>${p.rank}</b><span>ADP Rank</span></div><div class="profile-stat"><b>T${p.tier??'—'}</b><span>Tier</span></div><div class="profile-stat"><b>${fmt(p.ppg25)}</b><span>2025 PPG</span></div><div class="profile-stat"><b>${p.espnRank??'—'}</b><span>ESPN Rank</span></div>`;
   const availability=getPlayerStatus(p);
-  const statusBox=$('#playerProfileStatus');
   statusBox.className=`profile-status ${availability.status}`;
   $('#playerProfileStatusDot').className=`status-dot ${availability.status}`;
   $('#playerProfileStatusLabel').textContent=availability.label;
@@ -5692,7 +5757,8 @@ function openPlayerProfile(playerOrId){
   const statusSource=$('#playerProfileStatusSource');
   const safeStatusSource=safeHttpsUrl(availability.sourceUrl);if(safeStatusSource){statusSource.href=safeStatusSource;statusSource.target='_blank';statusSource.rel='noopener noreferrer';statusSource.classList.remove('hidden')}else{statusSource.removeAttribute('href');statusSource.target='_blank';statusSource.rel='noopener noreferrer';statusSource.classList.add('hidden')}
   $('#playerProfileHonor').textContent=p.pos==='DST'?`DST PROFILE · Personnel/readiness status is separate from weekly matchup and schedule grade.`:(p.rank<=150?`NFL TOP 150 HONOREE · Ranked No. ${p.rank} in this draft database.`:`PLAYER PROFILE · Ranked No. ${p.rank} in this draft database.`);
-  $('#playerMoreInfo').href=playerInfoUrl(p);
+  const safePlayerInfo=safeHttpsUrl(playerInfoUrl(p));
+  if(safePlayerInfo)$('#playerMoreInfo').href=safePlayerInfo;else $('#playerMoreInfo').removeAttribute('href');
   $('#playerMoreInfo').target='_blank';
   $('#playerMoreInfo').rel='noopener noreferrer';
   $('#playerMoreInfo').setAttribute('aria-label',`More information about ${p.name}`);
@@ -5787,7 +5853,7 @@ async function loadRoster26SearchData(){
 function filteredPlayers(){
   const q=$('#searchInput').value.trim().toLowerCase(),pos=$('#positionFilter').value,sort=$('#sortSelect').value,selectedTeam=$('#teamFilter')?.value||'ALL';
   const ranked=available();
-  const includeRoster=Boolean(q)||(sort==='nflTeam'&&selectedTeam!=='ALL');
+  const includeRoster=Boolean(q)||sort==='nflTeam';
   const source=includeRoster?[...ranked,...ROSTER26_PLAYERS]:ranked;
   let list=source.filter(p=>(pos==='ALL'||p.pos===pos)&&(!q||`${p.name} ${p.team}`.toLowerCase().includes(q))&&(sort!=='nflTeam'||selectedTeam==='ALL'||p.team===selectedTeam));
   const manuallySorted=ff26ApplyColumnSort(list);
@@ -5860,7 +5926,7 @@ function renderPlayers(){
   const clashRoster=state.started?rosterFor(state.userSlot):[];
   const teamMode=$('#sortSelect')?.value==='nflTeam',selectedTeam=$('#teamFilter')?.value||'ALL';
   const bestTeamPlayer=teamMode&&selectedTeam!=='ALL'?[...list].filter(p=>!p.rosterOnly).sort(ff26TeamFantasyComparator)[0]:null;
-  list.forEach(p=>{const clash=p.rosterOnly?{level:0,text:''}:byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);const bestMarker=!p.rosterOnly&&bestTeamPlayer?.rank===p.rank?'<span class="team-best-marker">★ Best Available on Team</span>':'';const valueFlags=p.rosterOnly?'':marketFlagMarkup(p);const rosterMeta=p.rosterOnly?`<div class="team-text">FULL 2026 ROSTER${p.college?` · ${escapeHtml(p.college)}`:''}</div>`:`<div class="team-text">${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div>`;const action=p.rosterOnly?'<span class="tier-pill">ROSTER</span>':`<button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button>`;tr.innerHTML=`<td class="rank">${p.rosterOnly?'—':p.rank}</td><td><div class="player-name-line">${p.rosterOnly?'':statusDotMarkup(p)}<div class="player-name ${p.rosterOnly?'':'profile-trigger'}" ${p.rosterOnly?'':`data-profile="${p.rank}"`}>${escapeHtml(p.name)}</div></div>${rosterMeta}${valueFlags}${bestMarker}</td><td><span class="pos ${p.pos}">${p.pos}</span></td><td class="metric">${escapeHtml(p.team)}</td><td><span class="tier-pill">${p.rosterOnly?'ROSTER':`T${p.tier??'—'}`}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${p.rosterOnly?'—':fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.rosterOnly?'—':(p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`)}</td><td>${action}</td>`;if(!p.rosterOnly)tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
+  list.forEach(p=>{const clash=p.rosterOnly?{level:0,text:''}:byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);const bestMarker=!p.rosterOnly&&bestTeamPlayer?.rank===p.rank?'<span class="team-best-marker">★ Best Available on Team</span>':'';const valueFlags=p.rosterOnly?'':marketFlagMarkup(p);const rosterMeta=p.rosterOnly?`<div class="team-text">FULL 2026 ROSTER${p.college?` · ${escapeHtml(p.college)}`:''}</div>`:`<div class="team-text">${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div>`;const action=p.rosterOnly?'<span class="tier-pill">ROSTER</span>':`<button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button>`;tr.innerHTML=`<td class="rank">${p.rosterOnly?'—':p.rank}</td><td><div class="player-name-line">${p.rosterOnly?'':statusDotMarkup(p)}<div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div></div>${rosterMeta}${valueFlags}${bestMarker}</td><td><span class="pos ${p.pos}">${p.pos}</span></td><td class="metric">${escapeHtml(p.team)}</td><td><span class="tier-pill">${p.rosterOnly?'ROSTER':`T${p.tier??'—'}`}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${p.rosterOnly?'—':fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.rosterOnly?'—':(p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`)}</td><td>${action}</td>`;if(!p.rosterOnly)tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
 
   const guide=$('#rosterGuidance'),rec=$('#recommendations');rec.innerHTML='';
   if(!isUserTurn()){rec.classList.add('hidden');guide.classList.add('hidden')}
