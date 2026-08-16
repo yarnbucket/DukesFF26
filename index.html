@@ -1748,6 +1748,29 @@ select.setup-input option:checked{
   .hud-crest{width:54px;height:76px}
 }
 
+
+/* Setup Auto-Pick switch — same geometry as Sound switch. */
+.setup-autopick-toggle{margin-top:12px!important}
+.setup-autopick-icon{
+  width:31px;
+  height:31px;
+  display:block;
+  color:#ef2637;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.1;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.setup-autopick-label{
+  color:#f3f3f1;
+  font-family:"Arial Narrow",Impact,Haettenschweiler,sans-serif;
+  font-size:clamp(18px,4.8vw,23px);
+  font-weight:900;
+  letter-spacing:.09em;
+}
+.setup-autopick-toggle[aria-pressed="false"] .setup-autopick-icon{color:#8f949c}
+
 </style>
 </head>
 <body>
@@ -1773,7 +1796,7 @@ select.setup-input option:checked{
 
   <section class="draft-hud" aria-label="Draft status">
     <div class="hud-team-panel">
-      <div class="hud-crest" aria-hidden="true">D</div>
+      <div class="hud-crest" id="hudTeamInitial" aria-hidden="true">D</div>
       <div class="hud-team-name" id="teamNameStat">Duke's Ribbers</div>
     </div>
 
@@ -2019,6 +2042,18 @@ select.setup-input option:checked{
       <span class="setup-sound-copy">
         <svg class="setup-speaker" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 12h6l7-6v20l-7-6H5z"></path><path d="M22 11c2.1 1.4 3.2 3.1 3.2 5S24.1 19.6 22 21"></path><path d="M25 7c3.3 2.5 5 5.5 5 9s-1.7 6.5-5 9"></path></svg>
         <span class="sound-label">SOUND ON</span>
+      </span>
+      <span class="setup-switch" aria-hidden="true"></span>
+    </button>
+
+    <button class="setup-sound-toggle setup-autopick-toggle" id="setupAutoPickToggle" type="button" aria-pressed="false" title="Turn Auto-Pick on">
+      <span class="setup-sound-copy">
+        <svg class="setup-autopick-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M8 32C13 13 27 5 48 9c9 2 10 7 8 16-5 19-19 27-40 23-9-2-10-7-8-16z"></path>
+          <path d="M19 43L45 17"></path>
+          <path d="M25 25l14 14M29 21l14 14M21 29l14 14"></path>
+        </svg>
+        <span class="setup-autopick-label">AUTO-PICK OFF</span>
       </span>
       <span class="setup-switch" aria-hidden="true"></span>
     </button>
@@ -4583,16 +4618,79 @@ function scrollPageToTop(resetInner=true){
 
 function initializeSetup(){
   const slotSelect=$('#draftSlotSelect');
+  const setupAutoPick=$('#setupAutoPickToggle');
+  let setupAutoPickTouched=false;
+
+  function setSetupAutoPick(enabled,{userAction=false}={}){
+    const on=Boolean(enabled);
+    if(setupAutoPick){
+      setupAutoPick.setAttribute('aria-pressed',String(on));
+      setupAutoPick.title=on?'Turn Auto-Pick off':'Turn Auto-Pick on';
+      const label=setupAutoPick.querySelector('.setup-autopick-label');
+      if(label)label.textContent=on?'AUTO-PICK ON':'AUTO-PICK OFF';
+    }
+    if(userAction)setupAutoPickTouched=true;
+  }
+
+  function applySlotAutoPickDefault(){
+    const slot=Number(slotSelect.value)||1;
+    if(!setupAutoPickTouched)setSetupAutoPick(slot>=2);
+  }
+
   slotSelect.value=String(state.userSlot||1);
-  slotSelect.onchange=()=>{state.userSlot=Number(slotSelect.value)||1};
-  const saved=loadSaved(); if(saved){$('#resumeBtn').classList.remove('hidden');$('#resumeBtn').onclick=()=>{primeSounds();scrollPageToTop();state=saved;$('#setupOverlay').classList.add('hidden');renderAll();scrollPageToTop();if(state.currentPick<TOTAL_PICKS)playStartupSequence(5);if(!isBuildMode()&&!isUserTurn()&&state.currentPick<TOTAL_PICKS)runCpuUntilUser();};}
+  applySlotAutoPickDefault();
+
+  slotSelect.onchange=()=>{
+    state.userSlot=Number(slotSelect.value)||1;
+    setupAutoPickTouched=false;
+    applySlotAutoPickDefault();
+  };
+
+  if(setupAutoPick){
+    setupAutoPick.onclick=()=>{
+      const next=setupAutoPick.getAttribute('aria-pressed')!=='true';
+      setSetupAutoPick(next,{userAction:true});
+    };
+  }
+
+  const saved=loadSaved();
+  if(saved){
+    $('#resumeBtn').classList.remove('hidden');
+    $('#resumeBtn').onclick=()=>{
+      primeSounds();scrollPageToTop();state=saved;
+      const draftAutoBox=document.getElementById('autoPickEnabled');
+      if(draftAutoBox)draftAutoBox.checked=setupAutoPick?.getAttribute('aria-pressed')==='true';
+      $('#setupOverlay').classList.add('hidden');renderAll();scrollPageToTop();
+      if(state.currentPick<TOTAL_PICKS)playStartupSequence(5);
+      if(draftAutoBox?.checked&&!isUserTurn()&&state.currentPick<TOTAL_PICKS)runCpuUntilUser();
+    };
+  }
 }
 
 function startDraft(){
   primeSounds();playStartupSequence(5);
-  simToken++; const chosenName=$('#teamNameInput').value.trim()||"Duke's Ribbers"; const chosenSlot=Number($('#draftSlotSelect').value)||1; state=normalizeState({started:true,teamName:chosenName,teamNames:defaultTeamNames(chosenSlot,chosenName),userSlot:chosenSlot,cpuStyle:$('#cpuStyle').value,cpuSpeed:Number($('#cpuSpeed').value),currentPick:0,picks:[],history:[],view:'players'});
-  selectedPlayerId=null; save();scrollPageToTop();$('#setupOverlay').classList.add('hidden');renderAll();scrollPageToTop();const autoBoxAfter=document.getElementById('autoPickEnabled');
-    if(!autoBoxAfter||autoBoxAfter.checked)runCpuUntilUser();
+  simToken++;
+  const chosenName=$('#teamNameInput').value.trim()||"Duke's Ribbers";
+  const chosenSlot=Number($('#draftSlotSelect').value)||1;
+  const setupAutoPick=$('#setupAutoPickToggle');
+  const setupAutoPickEnabled=setupAutoPick?setupAutoPick.getAttribute('aria-pressed')==='true':chosenSlot>=2;
+
+  state=normalizeState({started:true,teamName:chosenName,teamNames:defaultTeamNames(chosenSlot,chosenName),userSlot:chosenSlot,cpuStyle:$('#cpuStyle').value,cpuSpeed:Number($('#cpuSpeed').value),currentPick:0,picks:[],history:[],view:'players'});
+  selectedPlayerId=null;
+  save();
+
+  const autoBoxAfter=document.getElementById('autoPickEnabled');
+  if(autoBoxAfter){
+    autoBoxAfter.checked=setupAutoPickEnabled;
+    autoBoxAfter.setAttribute('aria-checked',String(setupAutoPickEnabled));
+  }
+
+  scrollPageToTop();
+  $('#setupOverlay').classList.add('hidden');
+  renderAll();
+  scrollPageToTop();
+
+  if(setupAutoPickEnabled)runCpuUntilUser();
 }
 
 function snapshot(){state.history.push({currentPick:state.currentPick,picks:JSON.parse(JSON.stringify(state.picks))});if(state.history.length>8)state.history.shift()}
@@ -6308,9 +6406,15 @@ function renderLastPickHud(){
   }
 }
 
+function ff26TeamInitialFromName(name){
+  const match=String(name||'').trim().match(/[A-Za-z0-9]/);
+  return match?match[0].toUpperCase():'D';
+}
 function renderStatus(){
   renderLastPickHud();
   $('#teamNameStat').textContent=state.teamName;
+  const hudInitial=$('#hudTeamInitial');
+  if(hudInitial)hudInitial.textContent=ff26TeamInitialFromName(state.teamName);
   $('#slotStat').textContent=state.started?ordinal(state.userSlot):'—';
   $('#pickStat').textContent=state.currentPick<TOTAL_PICKS?pickLabel(state.currentPick):'Complete';
   const completedRounds=state.currentPick>=TOTAL_PICKS?TOTAL_ROUNDS:Math.floor(state.currentPick/TOTAL_TEAMS);
