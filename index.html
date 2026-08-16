@@ -1505,7 +1505,7 @@ async function loadRoster26(){
     }
 
     const allowedPositions=new Set(['QB','RB','WR','TE','K']);
-    const validTeams=new Set(Object.values(NFL_2026_BYE_WEEKS).flat().map(normalizeRosterTeam));
+    const validTeams=new Set(Object.keys(NFL_2026_BYE_WEEKS));
     const seenNames=new Set(PLAYERS.map(player=>canonicalRosterName(player.name)));
     const supplemental=[];
 
