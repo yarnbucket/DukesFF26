@@ -1,0 +1,5848 @@
+{
+  "season": 2026,
+  "version": "roster26-v1.0",
+  "generated": "2026-08-13",
+  "scope": "All 32 NFL teams; offensive fantasy roster positions QB, RB, WR, TE, K",
+  "team_abbreviation_notes": {
+    "LA": "Los Angeles Rams",
+    "JAX": "Jacksonville Jaguars"
+  },
+  "sources": {
+    "QB_RB_WR_TE": "2026_rosters.csv from lightningcookies/Custom-Fantasy-Projections (nflreadr/nflverse-derived roster snapshot)",
+    "K": "FantasyPros 2026 kicker rankings / team listings"
+  },
+  "validation": {
+    "team_count": 32,
+    "player_count": 822,
+    "positions": {
+      "QB": 117,
+      "RB": 189,
+      "WR": 312,
+      "TE": 171,
+      "K": 33
+    },
+    "missing_teams": [],
+    "teams_missing_position": {},
+    "duplicate_team_name_position": 0
+  },
+  "teams": {
+    "ARI": [
+      {
+        "name": "Carson Beck",
+        "position": "QB",
+        "age": 23,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Gardner Minshew",
+        "position": "QB",
+        "age": 29,
+        "experience": 7,
+        "college": "Washington State"
+      },
+      {
+        "name": "Jacoby Brissett",
+        "position": "QB",
+        "age": 33,
+        "experience": 10,
+        "college": "N.C. State; Florida"
+      },
+      {
+        "name": "Kedon Slovis",
+        "position": "QB",
+        "age": 25,
+        "experience": 2,
+        "college": "BYU; Pittsburgh; USC"
+      },
+      {
+        "name": "Bam Knight",
+        "position": "RB",
+        "age": 25,
+        "experience": 4,
+        "college": "N.C. State"
+      },
+      {
+        "name": "Corey Kiner",
+        "position": "RB",
+        "age": 24,
+        "experience": 1,
+        "college": "Cincinnati; LSU"
+      },
+      {
+        "name": "James Conner",
+        "position": "RB",
+        "age": 31,
+        "experience": 9,
+        "college": "Pittsburgh"
+      },
+      {
+        "name": "Trey Benson",
+        "position": "RB",
+        "age": 23,
+        "experience": 2,
+        "college": "Florida State; Oregon"
+      },
+      {
+        "name": "Tyler Allgeier",
+        "position": "RB",
+        "age": 26,
+        "experience": 4,
+        "college": "BYU"
+      },
+      {
+        "name": "Andre Baccellia",
+        "position": "WR",
+        "age": 29,
+        "experience": 5,
+        "college": "Washington"
+      },
+      {
+        "name": "Bryson Green",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Wisconsin; Oklahoma State"
+      },
+      {
+        "name": "Devin Duvernay",
+        "position": "WR",
+        "age": 28,
+        "experience": 6,
+        "college": "Texas"
+      },
+      {
+        "name": "Ihmir Smith-Marsette",
+        "position": "WR",
+        "age": 26,
+        "experience": 5,
+        "college": "Iowa"
+      },
+      {
+        "name": "Jalen Brooks",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "South Carolina; Tarleton State; Wingate"
+      },
+      {
+        "name": "Kendrick Bourne",
+        "position": "WR",
+        "age": 30,
+        "experience": 9,
+        "college": "Eastern Washington"
+      },
+      {
+        "name": "Marvin Harrison Jr.",
+        "position": "WR",
+        "age": 23,
+        "experience": 2,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Michael Wilson",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Stanford"
+      },
+      {
+        "name": "Simi Fehoko",
+        "position": "WR",
+        "age": 28,
+        "experience": 5,
+        "college": "Stanford"
+      },
+      {
+        "name": "Tejhaun Palmer",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "UAB"
+      },
+      {
+        "name": "Xavier Weaver",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Colorado; University of South Florida"
+      },
+      {
+        "name": "Zay Jones",
+        "position": "WR",
+        "age": 31,
+        "experience": 9,
+        "college": "East Carolina"
+      },
+      {
+        "name": "Elijah Higgins",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Stanford"
+      },
+      {
+        "name": "Josiah Deguara",
+        "position": "TE",
+        "age": 29,
+        "experience": 6,
+        "college": "Cincinnati"
+      },
+      {
+        "name": "Pharaoh Brown",
+        "position": "TE",
+        "age": 32,
+        "experience": 9,
+        "college": "Oregon"
+      },
+      {
+        "name": "Rivaldo Fairweather",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Auburn; Florida International"
+      },
+      {
+        "name": "Teagan Quitoriano",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "Oregon State"
+      },
+      {
+        "name": "Tip Reiman",
+        "position": "TE",
+        "age": 24,
+        "experience": 2,
+        "college": "Illinois"
+      },
+      {
+        "name": "Trey McBride",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "Colorado State"
+      },
+      {
+        "name": "Chad Ryland",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "ATL": [
+      {
+        "name": "Easton Stick",
+        "position": "QB",
+        "age": 30,
+        "experience": 7,
+        "college": "North Dakota State"
+      },
+      {
+        "name": "Emory Jones",
+        "position": "QB",
+        "age": 26,
+        "experience": 2,
+        "college": "Cincinnati; Arizona State; Florida"
+      },
+      {
+        "name": "Michael Penix Jr.",
+        "position": "QB",
+        "age": 26,
+        "experience": 2,
+        "college": "Washington; Indiana"
+      },
+      {
+        "name": "Trevor Siemian",
+        "position": "QB",
+        "age": 34,
+        "experience": 11,
+        "college": "Northwestern"
+      },
+      {
+        "name": "Tua Tagovailoa",
+        "position": "QB",
+        "age": 28,
+        "experience": 6,
+        "college": "Alabama"
+      },
+      {
+        "name": "Bijan Robinson",
+        "position": "RB",
+        "age": 24,
+        "experience": 3,
+        "college": "Texas"
+      },
+      {
+        "name": "Brian Robinson",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "Alabama"
+      },
+      {
+        "name": "Carlos Washington",
+        "position": "RB",
+        "age": 27,
+        "experience": 3,
+        "college": "Southeastern Louisiana"
+      },
+      {
+        "name": "Nate Carter",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Michigan State; Connecticut"
+      },
+      {
+        "name": "Tyler Goodson",
+        "position": "RB",
+        "age": 25,
+        "experience": 4,
+        "college": "Iowa"
+      },
+      {
+        "name": "Casey Washington",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Illinois"
+      },
+      {
+        "name": "Chris Blair",
+        "position": "WR",
+        "age": 28,
+        "experience": 5,
+        "college": "Alcorn State"
+      },
+      {
+        "name": "Deven Thompkins",
+        "position": "WR",
+        "age": 26,
+        "experience": 4,
+        "college": "Utah State"
+      },
+      {
+        "name": "Drake London",
+        "position": "WR",
+        "age": 24,
+        "experience": 4,
+        "college": "USC"
+      },
+      {
+        "name": "Dylan Drummond",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Eastern Michigan"
+      },
+      {
+        "name": "Jahan Dotson",
+        "position": "WR",
+        "age": 26,
+        "experience": 4,
+        "college": "Penn State"
+      },
+      {
+        "name": "KhaDarel Hodge",
+        "position": "WR",
+        "age": 32,
+        "experience": 8,
+        "college": "Prairie View A&M; Hinds CC; Alcorn State"
+      },
+      {
+        "name": "Malik Heath",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Mississippi; Mississippi State"
+      },
+      {
+        "name": "Olamide Zaccheaus",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Virginia"
+      },
+      {
+        "name": "Vinny Anthony II",
+        "position": "WR",
+        "age": 22,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Austin Hooper",
+        "position": "TE",
+        "age": 31,
+        "experience": 10,
+        "college": "Stanford"
+      },
+      {
+        "name": "Charlie Woerner",
+        "position": "TE",
+        "age": 28,
+        "experience": 6,
+        "college": "Georgia"
+      },
+      {
+        "name": "Joshua Simon",
+        "position": "TE",
+        "age": 25,
+        "experience": 1,
+        "college": "South Carolina; Western Kentucky"
+      },
+      {
+        "name": "Kyle Pitts",
+        "position": "TE",
+        "age": 25,
+        "experience": 5,
+        "college": "Florida"
+      },
+      {
+        "name": "Nick Folk",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "BAL": [
+      {
+        "name": "Cooper Rush",
+        "position": "QB",
+        "age": 32,
+        "experience": 9,
+        "college": "Central Michigan; Tarrant County JC"
+      },
+      {
+        "name": "Lamar Jackson",
+        "position": "QB",
+        "age": 29,
+        "experience": 8,
+        "college": "Louisville"
+      },
+      {
+        "name": "Skylar Thompson",
+        "position": "QB",
+        "age": 28,
+        "experience": 4,
+        "college": "Kansas State"
+      },
+      {
+        "name": "Tyler Huntley",
+        "position": "QB",
+        "age": 28,
+        "experience": 6,
+        "college": "Utah"
+      },
+      {
+        "name": "Derrick Henry",
+        "position": "RB",
+        "age": 32,
+        "experience": 10,
+        "college": "Alabama"
+      },
+      {
+        "name": "Justice Hill",
+        "position": "RB",
+        "age": 28,
+        "experience": 7,
+        "college": "Oklahoma State"
+      },
+      {
+        "name": "Lucas Scott",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Army"
+      },
+      {
+        "name": "Rasheen Ali",
+        "position": "RB",
+        "age": 25,
+        "experience": 2,
+        "college": "Marshall"
+      },
+      {
+        "name": "Cornelius Johnson",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Michigan"
+      },
+      {
+        "name": "Dayton Wade",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Mississippi; Western Kentucky"
+      },
+      {
+        "name": "DeAndre Hopkins",
+        "position": "WR",
+        "age": 33,
+        "experience": 13,
+        "college": "Clemson"
+      },
+      {
+        "name": "Devontez Walker",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "North Carolina; Kent State; North Carolina Central"
+      },
+      {
+        "name": "Ja'Kobi Lane",
+        "position": "WR",
+        "age": 21,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "LaJohntay Wester",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Colorado; Florida Atlantic"
+      },
+      {
+        "name": "Rashod Bateman",
+        "position": "WR",
+        "age": 26,
+        "experience": 5,
+        "college": "Minnesota"
+      },
+      {
+        "name": "Xavier Guillory",
+        "position": "WR",
+        "age": 24,
+        "experience": 0,
+        "college": "Arizona State; Idaho State"
+      },
+      {
+        "name": "Zay Flowers",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "Boston College"
+      },
+      {
+        "name": "Durham Smythe",
+        "position": "TE",
+        "age": 30,
+        "experience": 8,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Mark Andrews",
+        "position": "TE",
+        "age": 30,
+        "experience": 8,
+        "college": "Oklahoma"
+      },
+      {
+        "name": "Tyler Loop",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "BUF": [
+      {
+        "name": "Josh Allen",
+        "position": "QB",
+        "age": 29,
+        "experience": 8,
+        "college": "Wyoming; Reedley"
+      },
+      {
+        "name": "Kyle Allen",
+        "position": "QB",
+        "age": 30,
+        "experience": 8,
+        "college": "Houston; Texas A&M"
+      },
+      {
+        "name": "Shane Buechele",
+        "position": "QB",
+        "age": 28,
+        "experience": 5,
+        "college": "SMU"
+      },
+      {
+        "name": "Ben VanSumeren",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "Michigan State; Michigan"
+      },
+      {
+        "name": "Desmond Reid",
+        "position": "RB",
+        "age": 21,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Frank Gore Jr.",
+        "position": "RB",
+        "age": 24,
+        "experience": 2,
+        "college": "Southern Mississippi"
+      },
+      {
+        "name": "James Cook",
+        "position": "RB",
+        "age": 26,
+        "experience": 4,
+        "college": "Georgia"
+      },
+      {
+        "name": "Ray Davis",
+        "position": "RB",
+        "age": 26,
+        "experience": 2,
+        "college": "Kentucky; Vanderbilt; Temple"
+      },
+      {
+        "name": "Ty Johnson",
+        "position": "RB",
+        "age": 28,
+        "experience": 7,
+        "college": "Maryland"
+      },
+      {
+        "name": "Brandin Cooks",
+        "position": "WR",
+        "age": 32,
+        "experience": 12,
+        "college": "Oregon State"
+      },
+      {
+        "name": "Curtis Samuel",
+        "position": "WR",
+        "age": 29,
+        "experience": 9,
+        "college": "Ohio State"
+      },
+      {
+        "name": "DJ Moore",
+        "position": "WR",
+        "age": 29,
+        "experience": 8,
+        "college": "Maryland"
+      },
+      {
+        "name": "Gabe Davis",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "UCF"
+      },
+      {
+        "name": "Jalen Virgil",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "Appalachian State; UMass Amherst"
+      },
+      {
+        "name": "Josh Palmer",
+        "position": "WR",
+        "age": 26,
+        "experience": 5,
+        "college": "Tennessee"
+      },
+      {
+        "name": "Keon Coleman",
+        "position": "WR",
+        "age": 22,
+        "experience": 2,
+        "college": "Florida State; Michigan State"
+      },
+      {
+        "name": "Khalil Shakir",
+        "position": "WR",
+        "age": 26,
+        "experience": 4,
+        "college": "Boise State"
+      },
+      {
+        "name": "Mecole Hardman",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Georgia"
+      },
+      {
+        "name": "Stephen Gosnell",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Virginia Tech; North Carolina"
+      },
+      {
+        "name": "Trent Sherfield",
+        "position": "WR",
+        "age": 30,
+        "experience": 8,
+        "college": "Vanderbilt"
+      },
+      {
+        "name": "Tyrell Shavers",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "San Diego State; Mississippi State; Alabama"
+      },
+      {
+        "name": "Dalton Kincaid",
+        "position": "TE",
+        "age": 26,
+        "experience": 3,
+        "college": "Utah; Univ of California-San Diego"
+      },
+      {
+        "name": "Dawson Knox",
+        "position": "TE",
+        "age": 29,
+        "experience": 7,
+        "college": "Mississippi"
+      },
+      {
+        "name": "Jackson Hawes",
+        "position": "TE",
+        "age": 25,
+        "experience": 1,
+        "college": "Georgia Tech; Yale"
+      },
+      {
+        "name": "Keleki Latu",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Washington; Nevada"
+      },
+      {
+        "name": "Tyler Bass",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "CAR": [
+      {
+        "name": "Bryce Young",
+        "position": "QB",
+        "age": 24,
+        "experience": 3,
+        "college": "Alabama"
+      },
+      {
+        "name": "Haynes King",
+        "position": "QB",
+        "age": 25,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Kenny Pickett",
+        "position": "QB",
+        "age": 27,
+        "experience": 4,
+        "college": "Pittsburgh"
+      },
+      {
+        "name": "Will Grier",
+        "position": "QB",
+        "age": 31,
+        "experience": 7,
+        "college": "West Virginia; Florida State"
+      },
+      {
+        "name": "AJ Dillon",
+        "position": "RB",
+        "age": 28,
+        "experience": 6,
+        "college": "Boston College"
+      },
+      {
+        "name": "Anthony Tyus III",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Ohio"
+      },
+      {
+        "name": "Chuba Hubbard",
+        "position": "RB",
+        "age": 26,
+        "experience": 5,
+        "college": "Oklahoma State"
+      },
+      {
+        "name": "Jonathon Brooks",
+        "position": "RB",
+        "age": 22,
+        "experience": 2,
+        "college": "Texas"
+      },
+      {
+        "name": "Montrell Johnson Jr.",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Florida; Louisiana"
+      },
+      {
+        "name": "Trevor Etienne",
+        "position": "RB",
+        "age": 21,
+        "experience": 1,
+        "college": "Georgia; Florida"
+      },
+      {
+        "name": "Ainias Smith",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "Texas A&M"
+      },
+      {
+        "name": "Brycen Tremayne",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Stanford"
+      },
+      {
+        "name": "Dan Chisena",
+        "position": "WR",
+        "age": 29,
+        "experience": 6,
+        "college": "Penn State"
+      },
+      {
+        "name": "David Moore",
+        "position": "WR",
+        "age": 31,
+        "experience": 9,
+        "college": "East Central"
+      },
+      {
+        "name": "Ja'Seem Reed",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "San Diego"
+      },
+      {
+        "name": "Jalen Coker",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "Holy Cross"
+      },
+      {
+        "name": "Jimmy Horn Jr.",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Colorado; University of South Florida"
+      },
+      {
+        "name": "John Metchie III",
+        "position": "WR",
+        "age": 25,
+        "experience": 4,
+        "college": "Alabama"
+      },
+      {
+        "name": "Tetairoa McMillan",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Arizona"
+      },
+      {
+        "name": "Xavier Legette",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "South Carolina"
+      },
+      {
+        "name": "Bryce Pierre",
+        "position": "TE",
+        "age": 25,
+        "experience": 1,
+        "college": "UCLA; Arizona State"
+      },
+      {
+        "name": "Feleipe Franks",
+        "position": "TE",
+        "age": 28,
+        "experience": 5,
+        "college": "Arkansas"
+      },
+      {
+        "name": "Ja'Tavion Sanders",
+        "position": "TE",
+        "age": 23,
+        "experience": 2,
+        "college": "Texas"
+      },
+      {
+        "name": "James Mitchell",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "Virginia Tech"
+      },
+      {
+        "name": "Mitchell Evans",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Tommy Tremble",
+        "position": "TE",
+        "age": 25,
+        "experience": 5,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Ryan Fitzgerald",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "CHI": [
+      {
+        "name": "Caleb Williams",
+        "position": "QB",
+        "age": 24,
+        "experience": 2,
+        "college": "USC; Oklahoma"
+      },
+      {
+        "name": "Case Keenum",
+        "position": "QB",
+        "age": 38,
+        "experience": 14,
+        "college": "Houston"
+      },
+      {
+        "name": "Miller Moss",
+        "position": "QB",
+        "age": 24,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Tyson Bagent",
+        "position": "QB",
+        "age": 25,
+        "experience": 3,
+        "college": "Shepherd"
+      },
+      {
+        "name": "Brittain Brown",
+        "position": "RB",
+        "age": 28,
+        "experience": 4,
+        "college": "UCLA"
+      },
+      {
+        "name": "D'Andre Swift",
+        "position": "RB",
+        "age": 27,
+        "experience": 6,
+        "college": "Georgia"
+      },
+      {
+        "name": "Deion Hankins",
+        "position": "RB",
+        "age": 25,
+        "experience": 1,
+        "college": "Texas State-San Marcos"
+      },
+      {
+        "name": "Kyle Monangai",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Rutgers"
+      },
+      {
+        "name": "Roschon Johnson",
+        "position": "RB",
+        "age": 25,
+        "experience": 3,
+        "college": "Texas"
+      },
+      {
+        "name": "Jahdae Walker",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Texas A&M; Grand Valley"
+      },
+      {
+        "name": "JP Richardson",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "TCU; Oklahoma State"
+      },
+      {
+        "name": "Kalif Raymond",
+        "position": "WR",
+        "age": 31,
+        "experience": 10,
+        "college": "Holy Cross"
+      },
+      {
+        "name": "Luther Burden III",
+        "position": "WR",
+        "age": 22,
+        "experience": 1,
+        "college": "Missouri"
+      },
+      {
+        "name": "Maurice Alexander",
+        "position": "WR",
+        "age": 29,
+        "experience": 4,
+        "college": "Florida International"
+      },
+      {
+        "name": "Rome Odunze",
+        "position": "WR",
+        "age": 23,
+        "experience": 2,
+        "college": "Washington"
+      },
+      {
+        "name": "Cole Kmet",
+        "position": "TE",
+        "age": 27,
+        "experience": 6,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Colston Loveland",
+        "position": "TE",
+        "age": 22,
+        "experience": 1,
+        "college": "Michigan"
+      },
+      {
+        "name": "Nikola Kalinic",
+        "position": "TE",
+        "age": 29,
+        "experience": 4,
+        "college": "York (Canada)"
+      },
+      {
+        "name": "Qadir Ismail",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Samford; Villanova"
+      },
+      {
+        "name": "Stephen Carlson",
+        "position": "TE",
+        "age": 29,
+        "experience": 7,
+        "college": "Princeton"
+      },
+      {
+        "name": "Cairo Santos",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "CIN": [
+      {
+        "name": "Joe Burrow",
+        "position": "QB",
+        "age": 29,
+        "experience": 6,
+        "college": "LSU; Ohio State"
+      },
+      {
+        "name": "Joe Flacco",
+        "position": "QB",
+        "age": 41,
+        "experience": 18,
+        "college": "Delaware; Pittsburgh"
+      },
+      {
+        "name": "Josh Johnson",
+        "position": "QB",
+        "age": 39,
+        "experience": 18,
+        "college": "San Diego"
+      },
+      {
+        "name": "Sean Clifford",
+        "position": "QB",
+        "age": 27,
+        "experience": 3,
+        "college": "Penn State"
+      },
+      {
+        "name": "Chase Brown",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "Illinois; Western Michigan"
+      },
+      {
+        "name": "Gary Brightwell",
+        "position": "RB",
+        "age": 28,
+        "experience": 5,
+        "college": "Arizona"
+      },
+      {
+        "name": "Kendall Milton",
+        "position": "RB",
+        "age": 24,
+        "experience": 2,
+        "college": "Georgia"
+      },
+      {
+        "name": "Kentrel Bullock",
+        "position": "RB",
+        "age": 24,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Samaje Perine",
+        "position": "RB",
+        "age": 30,
+        "experience": 9,
+        "college": "Oklahoma"
+      },
+      {
+        "name": "Tahj Brooks",
+        "position": "RB",
+        "age": 24,
+        "experience": 1,
+        "college": "Texas Tech"
+      },
+      {
+        "name": "Andrei Iosivas",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Princeton"
+      },
+      {
+        "name": "Charlie Jones",
+        "position": "WR",
+        "age": 27,
+        "experience": 3,
+        "college": "Purdue; Iowa"
+      },
+      {
+        "name": "Ja'Marr Chase",
+        "position": "WR",
+        "age": 26,
+        "experience": 5,
+        "college": "LSU"
+      },
+      {
+        "name": "Jordan Moore",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Duke"
+      },
+      {
+        "name": "Ke'Shawn Williams",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Indiana; Wake Forest"
+      },
+      {
+        "name": "Kendric Pryor",
+        "position": "WR",
+        "age": 28,
+        "experience": 4,
+        "college": "Wisconsin"
+      },
+      {
+        "name": "Mitchell Tinsley",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Penn State; Western Kentucky"
+      },
+      {
+        "name": "Tee Higgins",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "Clemson"
+      },
+      {
+        "name": "Xavier Johnson",
+        "position": "WR",
+        "age": 27,
+        "experience": 2,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Cam Grandy",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Illinois State; Missouri Western"
+      },
+      {
+        "name": "Drew Sample",
+        "position": "TE",
+        "age": 30,
+        "experience": 7,
+        "college": "Washington"
+      },
+      {
+        "name": "Erick All",
+        "position": "TE",
+        "age": 25,
+        "experience": 2,
+        "college": "Iowa; Michigan"
+      },
+      {
+        "name": "Mike Gesicki",
+        "position": "TE",
+        "age": 30,
+        "experience": 8,
+        "college": "Penn State"
+      },
+      {
+        "name": "Tanner Hudson",
+        "position": "TE",
+        "age": 31,
+        "experience": 8,
+        "college": "Southern Arkansas; Memphis"
+      },
+      {
+        "name": "Evan McPherson",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "CLE": [
+      {
+        "name": "Deshaun Watson",
+        "position": "QB",
+        "age": 30,
+        "experience": 9,
+        "college": "Clemson"
+      },
+      {
+        "name": "Dillon Gabriel",
+        "position": "QB",
+        "age": 25,
+        "experience": 1,
+        "college": "Oregon; Oklahoma; UCF"
+      },
+      {
+        "name": "Shedeur Sanders",
+        "position": "QB",
+        "age": 24,
+        "experience": 1,
+        "college": "Colorado; Jackson State University"
+      },
+      {
+        "name": "Taylen Green",
+        "position": "QB",
+        "age": 23,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Ahmani Marshall",
+        "position": "RB",
+        "age": 24,
+        "experience": 1,
+        "college": "Appalachian State; Wake Forest"
+      },
+      {
+        "name": "Dylan Sampson",
+        "position": "RB",
+        "age": 21,
+        "experience": 1,
+        "college": "Tennessee"
+      },
+      {
+        "name": "Michael Burton",
+        "position": "RB",
+        "age": 34,
+        "experience": 11,
+        "college": "Rutgers"
+      },
+      {
+        "name": "Quinshon Judkins",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Ohio State; Mississippi"
+      },
+      {
+        "name": "Raheim Sanders",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "South Carolina; Arkansas"
+      },
+      {
+        "name": "Trayveon Williams",
+        "position": "RB",
+        "age": 28,
+        "experience": 7,
+        "college": "Texas A&M"
+      },
+      {
+        "name": "Cedric Tillman",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Tennessee"
+      },
+      {
+        "name": "DeAndre Carter",
+        "position": "WR",
+        "age": 33,
+        "experience": 11,
+        "college": "Sacramento State"
+      },
+      {
+        "name": "Gage Larvadain",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "South Carolina; Miami (Ohio)"
+      },
+      {
+        "name": "Isaiah Bond",
+        "position": "WR",
+        "age": 22,
+        "experience": 1,
+        "college": "Texas; Alabama"
+      },
+      {
+        "name": "Isaiah Wooden",
+        "position": "WR",
+        "age": 26,
+        "experience": 0,
+        "college": "Southern Utah State; Kent State"
+      },
+      {
+        "name": "Jamari Thrash",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Louisville; Georgia State"
+      },
+      {
+        "name": "Jerry Jeudy",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "Alabama"
+      },
+      {
+        "name": "Luke Floriea",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Kent State"
+      },
+      {
+        "name": "Malachi Corley",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "Western Kentucky"
+      },
+      {
+        "name": "Tylan Wallace",
+        "position": "WR",
+        "age": 27,
+        "experience": 5,
+        "college": "Oklahoma State"
+      },
+      {
+        "name": "Blake Whiteheart",
+        "position": "TE",
+        "age": 26,
+        "experience": 3,
+        "college": "Wake Forest"
+      },
+      {
+        "name": "Brenden Bates",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Kentucky"
+      },
+      {
+        "name": "Caden Prieskorn",
+        "position": "TE",
+        "age": 26,
+        "experience": 1,
+        "college": "Mississippi; Memphis"
+      },
+      {
+        "name": "David Njoku",
+        "position": "TE",
+        "age": 29,
+        "experience": 9,
+        "college": "Miami"
+      },
+      {
+        "name": "Harold Fannin Jr.",
+        "position": "TE",
+        "age": 21,
+        "experience": 1,
+        "college": "Bowling Green"
+      },
+      {
+        "name": "Jack Stoll",
+        "position": "TE",
+        "age": 28,
+        "experience": 5,
+        "college": "Nebraska"
+      },
+      {
+        "name": "Sal Cannella",
+        "position": "TE",
+        "age": 29,
+        "experience": 1,
+        "college": "Auburn"
+      },
+      {
+        "name": "Andre Szmyt",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "DAL": [
+      {
+        "name": "Dak Prescott",
+        "position": "QB",
+        "age": 32,
+        "experience": 10,
+        "college": "Mississippi State"
+      },
+      {
+        "name": "Joe Milton III",
+        "position": "QB",
+        "age": 26,
+        "experience": 2,
+        "college": "Tennessee; Michigan"
+      },
+      {
+        "name": "Sam Howell",
+        "position": "QB",
+        "age": 25,
+        "experience": 4,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Hunter Luepke",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "North Dakota State"
+      },
+      {
+        "name": "Israel Abanikanda",
+        "position": "RB",
+        "age": 23,
+        "experience": 3,
+        "college": "Pittsburgh"
+      },
+      {
+        "name": "Javonte Williams",
+        "position": "RB",
+        "age": 26,
+        "experience": 5,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Jaydon Blue",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Texas"
+      },
+      {
+        "name": "Malik Davis",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "Florida"
+      },
+      {
+        "name": "Miles Sanders",
+        "position": "RB",
+        "age": 29,
+        "experience": 7,
+        "college": "Penn State"
+      },
+      {
+        "name": "Phil Mafah",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Clemson"
+      },
+      {
+        "name": "CeeDee Lamb",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "Oklahoma"
+      },
+      {
+        "name": "George Pickens",
+        "position": "WR",
+        "age": 25,
+        "experience": 4,
+        "college": "Georgia"
+      },
+      {
+        "name": "Jonathan Mingo",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "Mississippi"
+      },
+      {
+        "name": "Jordan Hudson",
+        "position": "WR",
+        "age": 22,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "KaVontae Turpin",
+        "position": "WR",
+        "age": 29,
+        "experience": 4,
+        "college": "TCU"
+      },
+      {
+        "name": "Marquez Valdes-Scantling",
+        "position": "WR",
+        "age": 31,
+        "experience": 8,
+        "college": "University of South Florida; N.C. State"
+      },
+      {
+        "name": "Parris Campbell",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Ryan Flournoy",
+        "position": "WR",
+        "age": 26,
+        "experience": 2,
+        "college": "Southeast Missouri State; Iowa Western CC"
+      },
+      {
+        "name": "Traeshon Holden",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Oregon; Alabama"
+      },
+      {
+        "name": "Tyler Johnson",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "Minnesota"
+      },
+      {
+        "name": "Brevyn Spann-Ford",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Minnesota"
+      },
+      {
+        "name": "Jake Ferguson",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "Wisconsin"
+      },
+      {
+        "name": "Luke Schoonmaker",
+        "position": "TE",
+        "age": 27,
+        "experience": 3,
+        "college": "Michigan"
+      },
+      {
+        "name": "Princeton Fant",
+        "position": "TE",
+        "age": 27,
+        "experience": 3,
+        "college": "Tennessee"
+      },
+      {
+        "name": "Brandon Aubrey",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "DEN": [
+      {
+        "name": "Bo Nix",
+        "position": "QB",
+        "age": 26,
+        "experience": 2,
+        "college": "Oregon; Auburn"
+      },
+      {
+        "name": "Jarrett Stidham",
+        "position": "QB",
+        "age": 29,
+        "experience": 7,
+        "college": "Auburn; McLennan CC; Baylor"
+      },
+      {
+        "name": "Sam Ehlinger",
+        "position": "QB",
+        "age": 27,
+        "experience": 5,
+        "college": "Texas"
+      },
+      {
+        "name": "Adam Prentice",
+        "position": "RB",
+        "age": 29,
+        "experience": 5,
+        "college": "South Carolina"
+      },
+      {
+        "name": "Cody Schrader",
+        "position": "RB",
+        "age": 26,
+        "experience": 2,
+        "college": "Missouri; Truman State University"
+      },
+      {
+        "name": "Deuce Vaughn",
+        "position": "RB",
+        "age": 24,
+        "experience": 3,
+        "college": "Kansas State"
+      },
+      {
+        "name": "J.K. Dobbins",
+        "position": "RB",
+        "age": 27,
+        "experience": 6,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Jaleel McLaughlin",
+        "position": "RB",
+        "age": 25,
+        "experience": 3,
+        "college": "Youngstown State"
+      },
+      {
+        "name": "RJ Harvey",
+        "position": "RB",
+        "age": 25,
+        "experience": 1,
+        "college": "UCF; Virginia"
+      },
+      {
+        "name": "Tyler Badie",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "Missouri"
+      },
+      {
+        "name": "Courtland Sutton",
+        "position": "WR",
+        "age": 30,
+        "experience": 8,
+        "college": "SMU"
+      },
+      {
+        "name": "Jaylen Waddle",
+        "position": "WR",
+        "age": 27,
+        "experience": 5,
+        "college": "Alabama"
+      },
+      {
+        "name": "Kolbe Katsis",
+        "position": "WR",
+        "age": null,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Lil'Jordan Humphrey",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Texas"
+      },
+      {
+        "name": "Marvin Mims Jr.",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "Oklahoma"
+      },
+      {
+        "name": "Michael Bandy",
+        "position": "WR",
+        "age": 28,
+        "experience": 5,
+        "college": "San Diego"
+      },
+      {
+        "name": "Pat Bryant",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Illinois"
+      },
+      {
+        "name": "Troy Franklin",
+        "position": "WR",
+        "age": 23,
+        "experience": 2,
+        "college": "Oregon"
+      },
+      {
+        "name": "Adam Trautman",
+        "position": "TE",
+        "age": 29,
+        "experience": 6,
+        "college": "Dayton"
+      },
+      {
+        "name": "Caleb Lohner",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "Utah; Baylor"
+      },
+      {
+        "name": "Evan Engram",
+        "position": "TE",
+        "age": 31,
+        "experience": 9,
+        "college": "Mississippi"
+      },
+      {
+        "name": "Lucas Krull",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "Pittsburgh"
+      },
+      {
+        "name": "Nate Adkins",
+        "position": "TE",
+        "age": 26,
+        "experience": 3,
+        "college": "South Carolina"
+      },
+      {
+        "name": "Wil Lutz",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "DET": [
+      {
+        "name": "Jared Goff",
+        "position": "QB",
+        "age": 31,
+        "experience": 10,
+        "college": "California"
+      },
+      {
+        "name": "Malik Cunningham",
+        "position": "QB",
+        "age": 27,
+        "experience": 3,
+        "college": "Louisville"
+      },
+      {
+        "name": "Teddy Bridgewater",
+        "position": "QB",
+        "age": 33,
+        "experience": 12,
+        "college": "Louisville"
+      },
+      {
+        "name": "Isiah Pacheco",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "Rutgers"
+      },
+      {
+        "name": "Jabari Small",
+        "position": "RB",
+        "age": 24,
+        "experience": 2,
+        "college": "Tennessee"
+      },
+      {
+        "name": "Jacob Saylors",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "East Tennessee State"
+      },
+      {
+        "name": "Jahmyr Gibbs",
+        "position": "RB",
+        "age": 24,
+        "experience": 3,
+        "college": "Alabama; Georgia Tech"
+      },
+      {
+        "name": "Kye Robichaux",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Boston College; Western Kentucky"
+      },
+      {
+        "name": "Sione Vaki",
+        "position": "RB",
+        "age": 24,
+        "experience": 2,
+        "college": "Utah"
+      },
+      {
+        "name": "Amon-Ra St. Brown",
+        "position": "WR",
+        "age": 26,
+        "experience": 5,
+        "college": "USC"
+      },
+      {
+        "name": "Dominic Lovett",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Georgia; Missouri"
+      },
+      {
+        "name": "Greg Dortch",
+        "position": "WR",
+        "age": 27,
+        "experience": 7,
+        "college": "Wake Forest"
+      },
+      {
+        "name": "Isaac TeSlaa",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Arkansas; Hillsdale"
+      },
+      {
+        "name": "Jackson Meeks",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Syracuse"
+      },
+      {
+        "name": "Jameson Williams",
+        "position": "WR",
+        "age": 25,
+        "experience": 4,
+        "college": "Alabama; Ohio State"
+      },
+      {
+        "name": "Kendrick Law",
+        "position": "WR",
+        "age": 22,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Tom Kennedy",
+        "position": "WR",
+        "age": 29,
+        "experience": 7,
+        "college": "Bryant"
+      },
+      {
+        "name": "Anthony Firkser",
+        "position": "TE",
+        "age": 31,
+        "experience": 9,
+        "college": "Harvard"
+      },
+      {
+        "name": "Brock Wright",
+        "position": "TE",
+        "age": 27,
+        "experience": 5,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Sam LaPorta",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Iowa"
+      },
+      {
+        "name": "Shane Zylstra",
+        "position": "TE",
+        "age": 29,
+        "experience": 5,
+        "college": "Minnesota State"
+      },
+      {
+        "name": "Thomas Gordon",
+        "position": "TE",
+        "age": 25,
+        "experience": 1,
+        "college": "Northwestern"
+      },
+      {
+        "name": "Tyler Conklin",
+        "position": "TE",
+        "age": 30,
+        "experience": 8,
+        "college": "Central Michigan; Northwood"
+      },
+      {
+        "name": "Zach Horton",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Indiana; James Madison"
+      },
+      {
+        "name": "Jake Bates",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "GB": [
+      {
+        "name": "Desmond Ridder",
+        "position": "QB",
+        "age": 26,
+        "experience": 4,
+        "college": "Cincinnati"
+      },
+      {
+        "name": "Jordan Love",
+        "position": "QB",
+        "age": 27,
+        "experience": 6,
+        "college": "Utah State"
+      },
+      {
+        "name": "Kyle McCord",
+        "position": "QB",
+        "age": 23,
+        "experience": 1,
+        "college": "Syracuse; Ohio State"
+      },
+      {
+        "name": "Tyrod Taylor",
+        "position": "QB",
+        "age": 36,
+        "experience": 15,
+        "college": "Virginia Tech"
+      },
+      {
+        "name": "Chris Brooks",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "BYU; California"
+      },
+      {
+        "name": "Damien Martinez",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Miami; Oregon State"
+      },
+      {
+        "name": "Josh Jacobs",
+        "position": "RB",
+        "age": 28,
+        "experience": 7,
+        "college": "Alabama"
+      },
+      {
+        "name": "MarShawn Lloyd",
+        "position": "RB",
+        "age": 25,
+        "experience": 2,
+        "college": "USC; South Carolina"
+      },
+      {
+        "name": "Pierre Strong",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "South Dakota State"
+      },
+      {
+        "name": "Christian Watson",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "North Dakota State"
+      },
+      {
+        "name": "Isaiah Neyor",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Nebraska; Texas; Wyoming"
+      },
+      {
+        "name": "Jakobie Keeney-James",
+        "position": "WR",
+        "age": 25,
+        "experience": 1,
+        "college": "UMass Amherst; Eastern Washington"
+      },
+      {
+        "name": "Jayden Reed",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Michigan State; Western Michigan"
+      },
+      {
+        "name": "Matthew Golden",
+        "position": "WR",
+        "age": 22,
+        "experience": 1,
+        "college": "Texas; Houston"
+      },
+      {
+        "name": "Savion Williams",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "TCU"
+      },
+      {
+        "name": "Skyy Moore",
+        "position": "WR",
+        "age": 25,
+        "experience": 4,
+        "college": "Western Michigan"
+      },
+      {
+        "name": "Will Sheppard",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Colorado; Vanderbilt"
+      },
+      {
+        "name": "Drake Dabney",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "TCU; Baylor"
+      },
+      {
+        "name": "John FitzPatrick",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "Georgia"
+      },
+      {
+        "name": "Josh Whyle",
+        "position": "TE",
+        "age": 26,
+        "experience": 3,
+        "college": "Cincinnati"
+      },
+      {
+        "name": "Luke Musgrave",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Oregon State"
+      },
+      {
+        "name": "Messiah Swinson",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Arizona State; Missouri"
+      },
+      {
+        "name": "RJ Maryland",
+        "position": "TE",
+        "age": 21,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Tucker Kraft",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "South Dakota State"
+      },
+      {
+        "name": "Trey Smack",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "HOU": [
+      {
+        "name": "C.J. Stroud",
+        "position": "QB",
+        "age": 24,
+        "experience": 3,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Davis Mills",
+        "position": "QB",
+        "age": 27,
+        "experience": 5,
+        "college": "Stanford"
+      },
+      {
+        "name": "Graham Mertz",
+        "position": "QB",
+        "age": 25,
+        "experience": 1,
+        "college": "Florida; Wisconsin"
+      },
+      {
+        "name": "British Brooks",
+        "position": "RB",
+        "age": 26,
+        "experience": 2,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Dare Ogunbowale",
+        "position": "RB",
+        "age": 32,
+        "experience": 9,
+        "college": "Wisconsin"
+      },
+      {
+        "name": "David Montgomery",
+        "position": "RB",
+        "age": 28,
+        "experience": 7,
+        "college": "Iowa State"
+      },
+      {
+        "name": "Jawhar Jordan",
+        "position": "RB",
+        "age": 26,
+        "experience": 2,
+        "college": "Louisville; Syracuse"
+      },
+      {
+        "name": "Joe Mixon",
+        "position": "RB",
+        "age": 29,
+        "experience": 9,
+        "college": "Oklahoma"
+      },
+      {
+        "name": "Joshua Pitsenberger",
+        "position": "RB",
+        "age": null,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Nick Chubb",
+        "position": "RB",
+        "age": 30,
+        "experience": 8,
+        "college": "Georgia"
+      },
+      {
+        "name": "Woody Marks",
+        "position": "RB",
+        "age": 25,
+        "experience": 1,
+        "college": "USC; Mississippi State"
+      },
+      {
+        "name": "Braxton Berrios",
+        "position": "WR",
+        "age": 30,
+        "experience": 8,
+        "college": "Miami"
+      },
+      {
+        "name": "Jared Wayne",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "Pittsburgh"
+      },
+      {
+        "name": "Jayden Higgins",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Iowa State; Eastern Kentucky"
+      },
+      {
+        "name": "Jaylin Noel",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Iowa State"
+      },
+      {
+        "name": "Josh Kelly",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Texas Tech; Washington State; Fresno State"
+      },
+      {
+        "name": "Justin Watson",
+        "position": "WR",
+        "age": 30,
+        "experience": 8,
+        "college": "Penn"
+      },
+      {
+        "name": "Nico Collins",
+        "position": "WR",
+        "age": 27,
+        "experience": 5,
+        "college": "Michigan"
+      },
+      {
+        "name": "Tank Dell",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Houston; Independence Comm. College; Alabama A&M"
+      },
+      {
+        "name": "Xavier Hutchinson",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "Iowa State"
+      },
+      {
+        "name": "Brevin Jordan",
+        "position": "TE",
+        "age": 25,
+        "experience": 5,
+        "college": "Miami"
+      },
+      {
+        "name": "Cade Stover",
+        "position": "TE",
+        "age": 25,
+        "experience": 2,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Dalton Schultz",
+        "position": "TE",
+        "age": 29,
+        "experience": 8,
+        "college": "Stanford"
+      },
+      {
+        "name": "Foster Moreau",
+        "position": "TE",
+        "age": 29,
+        "experience": 7,
+        "college": "LSU"
+      },
+      {
+        "name": "Luke Lachey",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "Iowa"
+      },
+      {
+        "name": "Ka'imi Fairbairn",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "IND": [
+      {
+        "name": "Anthony Richardson",
+        "position": "QB",
+        "age": 23,
+        "experience": 3,
+        "college": "Florida"
+      },
+      {
+        "name": "Daniel Jones",
+        "position": "QB",
+        "age": 28,
+        "experience": 7,
+        "college": "Duke"
+      },
+      {
+        "name": "Riley Leonard",
+        "position": "QB",
+        "age": 23,
+        "experience": 1,
+        "college": "Notre Dame; Duke"
+      },
+      {
+        "name": "Seth Henigan",
+        "position": "QB",
+        "age": 23,
+        "experience": 1,
+        "college": "Memphis"
+      },
+      {
+        "name": "Ameer Abdullah",
+        "position": "RB",
+        "age": 32,
+        "experience": 11,
+        "college": "Nebraska"
+      },
+      {
+        "name": "DJ Giddens",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Kansas State"
+      },
+      {
+        "name": "Jonathan Taylor",
+        "position": "RB",
+        "age": 27,
+        "experience": 6,
+        "college": "Wisconsin"
+      },
+      {
+        "name": "Salvon Ahmed",
+        "position": "RB",
+        "age": 27,
+        "experience": 6,
+        "college": "Washington"
+      },
+      {
+        "name": "Seth McGowan",
+        "position": "RB",
+        "age": 24,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Ulysses Bentley IV",
+        "position": "RB",
+        "age": 25,
+        "experience": 1,
+        "college": "Mississippi; SMU"
+      },
+      {
+        "name": "Alec Pierce",
+        "position": "WR",
+        "age": 26,
+        "experience": 4,
+        "college": "Cincinnati"
+      },
+      {
+        "name": "Anthony Gould",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Oregon State"
+      },
+      {
+        "name": "Ashton Dulin",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Malone"
+      },
+      {
+        "name": "Coleman Owen",
+        "position": "WR",
+        "age": 25,
+        "experience": 1,
+        "college": "Ohio; Northern Arizona"
+      },
+      {
+        "name": "D.J. Montgomery",
+        "position": "WR",
+        "age": 29,
+        "experience": 7,
+        "college": "Austin Peay; Holmes County JC"
+      },
+      {
+        "name": "Eli Pancol",
+        "position": "WR",
+        "age": 25,
+        "experience": 1,
+        "college": "Duke"
+      },
+      {
+        "name": "Josh Downs",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Laquon Treadwell",
+        "position": "WR",
+        "age": 30,
+        "experience": 10,
+        "college": "Mississippi"
+      },
+      {
+        "name": "Nick Westbrook-Ikhine",
+        "position": "WR",
+        "age": 29,
+        "experience": 6,
+        "college": "Indiana"
+      },
+      {
+        "name": "Andrew Ogletree",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "Youngstown State"
+      },
+      {
+        "name": "Mo Alie-Cox",
+        "position": "TE",
+        "age": 32,
+        "experience": 9,
+        "college": "Virginia Commonwealth Univ."
+      },
+      {
+        "name": "Sean McKeon",
+        "position": "TE",
+        "age": 28,
+        "experience": 6,
+        "college": "Michigan"
+      },
+      {
+        "name": "Tyler Warren",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Penn State"
+      },
+      {
+        "name": "Will Mallory",
+        "position": "TE",
+        "age": 26,
+        "experience": 3,
+        "college": "Miami"
+      },
+      {
+        "name": "Blake Grupe",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      },
+      {
+        "name": "Spencer Shrader",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "JAX": [
+      {
+        "name": "Carter Bradley",
+        "position": "QB",
+        "age": 26,
+        "experience": 2,
+        "college": "South Alabama; Toledo"
+      },
+      {
+        "name": "Joey Aguilar",
+        "position": "QB",
+        "age": 24,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Nick Mullens",
+        "position": "QB",
+        "age": 31,
+        "experience": 9,
+        "college": "Southern Mississippi"
+      },
+      {
+        "name": "Trevor Lawrence",
+        "position": "QB",
+        "age": 26,
+        "experience": 5,
+        "college": "Clemson"
+      },
+      {
+        "name": "Bhayshul Tuten",
+        "position": "RB",
+        "age": 24,
+        "experience": 1,
+        "college": "Virginia Tech; North Carolina A&T"
+      },
+      {
+        "name": "Chris Rodriguez Jr.",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "Kentucky"
+      },
+      {
+        "name": "DeeJay Dallas",
+        "position": "RB",
+        "age": 27,
+        "experience": 6,
+        "college": "Miami"
+      },
+      {
+        "name": "Ja'Quinden Jackson",
+        "position": "RB",
+        "age": 24,
+        "experience": 1,
+        "college": "Arkansas; Utah; Texas"
+      },
+      {
+        "name": "LeQuint Allen Jr.",
+        "position": "RB",
+        "age": 21,
+        "experience": 1,
+        "college": "Syracuse"
+      },
+      {
+        "name": "Austin Trammell",
+        "position": "WR",
+        "age": 27,
+        "experience": 5,
+        "college": "Rice"
+      },
+      {
+        "name": "Brian Thomas Jr.",
+        "position": "WR",
+        "age": 23,
+        "experience": 2,
+        "college": "LSU"
+      },
+      {
+        "name": "Chandler Brayboy",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Elon"
+      },
+      {
+        "name": "Jakobi Meyers",
+        "position": "WR",
+        "age": 29,
+        "experience": 7,
+        "college": "N.C. State"
+      },
+      {
+        "name": "Joshua Cephus",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Texas-San Antonio"
+      },
+      {
+        "name": "Parker Washington",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "Penn State"
+      },
+      {
+        "name": "Tim Jones",
+        "position": "WR",
+        "age": 27,
+        "experience": 5,
+        "college": "Southern Mississippi"
+      },
+      {
+        "name": "Tim Patrick",
+        "position": "WR",
+        "age": 32,
+        "experience": 9,
+        "college": "Utah; Grossmont"
+      },
+      {
+        "name": "Brenton Strange",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Penn State"
+      },
+      {
+        "name": "Hunter Long",
+        "position": "TE",
+        "age": 27,
+        "experience": 5,
+        "college": "Boston College"
+      },
+      {
+        "name": "Patrick Herbert",
+        "position": "TE",
+        "age": 25,
+        "experience": 1,
+        "college": "Oregon"
+      },
+      {
+        "name": "Quintin Morris",
+        "position": "TE",
+        "age": 27,
+        "experience": 5,
+        "college": "Bowling Green"
+      },
+      {
+        "name": "Cam Little",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "KC": [
+      {
+        "name": "Chris Oladokun",
+        "position": "QB",
+        "age": 28,
+        "experience": 4,
+        "college": "South Dakota State"
+      },
+      {
+        "name": "Garrett Nussmeier",
+        "position": "QB",
+        "age": 24,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Justin Fields",
+        "position": "QB",
+        "age": 27,
+        "experience": 5,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Patrick Mahomes",
+        "position": "QB",
+        "age": 30,
+        "experience": 9,
+        "college": "Texas Tech"
+      },
+      {
+        "name": "Brashard Smith",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "SMU; Miami"
+      },
+      {
+        "name": "Emari Demercado",
+        "position": "RB",
+        "age": 27,
+        "experience": 3,
+        "college": "TCU"
+      },
+      {
+        "name": "Kareem Hunt",
+        "position": "RB",
+        "age": 30,
+        "experience": 9,
+        "college": "Toledo"
+      },
+      {
+        "name": "Keaontay Ingram",
+        "position": "RB",
+        "age": 26,
+        "experience": 4,
+        "college": "USC"
+      },
+      {
+        "name": "Kenneth Walker III",
+        "position": "RB",
+        "age": 25,
+        "experience": 4,
+        "college": "Michigan State; Wake Forest"
+      },
+      {
+        "name": "Andrew Armstrong",
+        "position": "WR",
+        "age": 25,
+        "experience": 1,
+        "college": "Arkansas; East Texas A&M"
+      },
+      {
+        "name": "Jalen Royals",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Utah State"
+      },
+      {
+        "name": "Jason Brownlee",
+        "position": "WR",
+        "age": 27,
+        "experience": 3,
+        "college": "Southern Mississippi"
+      },
+      {
+        "name": "Jimmy Holiday",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Louisiana Tech; Western Kentucky; Tennessee"
+      },
+      {
+        "name": "JuJu Smith-Schuster",
+        "position": "WR",
+        "age": 29,
+        "experience": 9,
+        "college": "USC"
+      },
+      {
+        "name": "Nikko Remigio",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Fresno State"
+      },
+      {
+        "name": "Rashee Rice",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "SMU"
+      },
+      {
+        "name": "Tyquan Thornton",
+        "position": "WR",
+        "age": 25,
+        "experience": 4,
+        "college": "Baylor"
+      },
+      {
+        "name": "Xavier Worthy",
+        "position": "WR",
+        "age": 23,
+        "experience": 2,
+        "college": "Texas"
+      },
+      {
+        "name": "Jake Briningstool",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Clemson"
+      },
+      {
+        "name": "Jared Wiley",
+        "position": "TE",
+        "age": 25,
+        "experience": 2,
+        "college": "TCU; Texas"
+      },
+      {
+        "name": "Noah Gray",
+        "position": "TE",
+        "age": 27,
+        "experience": 5,
+        "college": "Duke"
+      },
+      {
+        "name": "Robert Tonyan",
+        "position": "TE",
+        "age": 32,
+        "experience": 9,
+        "college": "Indiana State"
+      },
+      {
+        "name": "Travis Kelce",
+        "position": "TE",
+        "age": 36,
+        "experience": 13,
+        "college": "Cincinnati"
+      },
+      {
+        "name": "Tre Watson",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Texas A&M; Fresno State"
+      },
+      {
+        "name": "Harrison Butker",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "LA": [
+      {
+        "name": "Jimmy Garoppolo",
+        "position": "QB",
+        "age": 34,
+        "experience": 12,
+        "college": "Eastern Illinois"
+      },
+      {
+        "name": "Matthew Stafford",
+        "position": "QB",
+        "age": 38,
+        "experience": 17,
+        "college": "Georgia"
+      },
+      {
+        "name": "Stetson Bennett",
+        "position": "QB",
+        "age": 28,
+        "experience": 3,
+        "college": "Georgia; Jones County JC"
+      },
+      {
+        "name": "Blake Corum",
+        "position": "RB",
+        "age": 25,
+        "experience": 2,
+        "college": "Michigan"
+      },
+      {
+        "name": "Jarquez Hunter",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Auburn"
+      },
+      {
+        "name": "Jordan Waters",
+        "position": "RB",
+        "age": 25,
+        "experience": 0,
+        "college": "N.C. State; Duke"
+      },
+      {
+        "name": "Kyren Williams",
+        "position": "RB",
+        "age": 25,
+        "experience": 4,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Ronnie Rivers",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "Fresno State"
+      },
+      {
+        "name": "Brennan Presley",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Oklahoma State"
+      },
+      {
+        "name": "CJ Daniels",
+        "position": "WR",
+        "age": 24,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Davante Adams",
+        "position": "WR",
+        "age": 33,
+        "experience": 12,
+        "college": "Fresno State"
+      },
+      {
+        "name": "Jordan Whittington",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Texas"
+      },
+      {
+        "name": "Konata Mumpfield",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Pittsburgh; Akron"
+      },
+      {
+        "name": "Mario Williams",
+        "position": "WR",
+        "age": 23,
+        "experience": 0,
+        "college": "Tulane; Oklahoma"
+      },
+      {
+        "name": "Puka Nacua",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "BYU; Washington"
+      },
+      {
+        "name": "Tru Edwards",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Louisiana Tech; Hawaii; Navarro"
+      },
+      {
+        "name": "Tyler Scott",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "Cincinnati"
+      },
+      {
+        "name": "Xavier Smith",
+        "position": "WR",
+        "age": 28,
+        "experience": 3,
+        "college": "Florida A&M"
+      },
+      {
+        "name": "Colby Parkinson",
+        "position": "TE",
+        "age": 27,
+        "experience": 6,
+        "college": "Stanford"
+      },
+      {
+        "name": "Davis Allen",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Clemson"
+      },
+      {
+        "name": "Mark Redman",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "Louisville; San Diego State"
+      },
+      {
+        "name": "Nick Vannett",
+        "position": "TE",
+        "age": 33,
+        "experience": 10,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Terrance Ferguson",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Oregon"
+      },
+      {
+        "name": "Tyler Higbee",
+        "position": "TE",
+        "age": 33,
+        "experience": 10,
+        "college": "Western Kentucky"
+      },
+      {
+        "name": "Harrison Mevis",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "LAC": [
+      {
+        "name": "DJ Uiagalelei",
+        "position": "QB",
+        "age": 25,
+        "experience": 1,
+        "college": "Florida State; Oregon State; Clemson"
+      },
+      {
+        "name": "Justin Herbert",
+        "position": "QB",
+        "age": 28,
+        "experience": 6,
+        "college": "Oregon"
+      },
+      {
+        "name": "Trey Lance",
+        "position": "QB",
+        "age": 26,
+        "experience": 5,
+        "college": "North Dakota State"
+      },
+      {
+        "name": "Alec Ingold",
+        "position": "RB",
+        "age": 29,
+        "experience": 7,
+        "college": "Wisconsin"
+      },
+      {
+        "name": "Amar Johnson",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "South Dakota State"
+      },
+      {
+        "name": "Hassan Haskins",
+        "position": "RB",
+        "age": 26,
+        "experience": 4,
+        "college": "Michigan"
+      },
+      {
+        "name": "Jaret Patterson",
+        "position": "RB",
+        "age": 26,
+        "experience": 5,
+        "college": "Buffalo"
+      },
+      {
+        "name": "Keaton Mitchell",
+        "position": "RB",
+        "age": 24,
+        "experience": 3,
+        "college": "East Carolina"
+      },
+      {
+        "name": "Kimani Vidal",
+        "position": "RB",
+        "age": 24,
+        "experience": 2,
+        "college": "Troy"
+      },
+      {
+        "name": "Najee Harris",
+        "position": "RB",
+        "age": 28,
+        "experience": 5,
+        "college": "Alabama"
+      },
+      {
+        "name": "Omarion Hampton",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Dalevon Campbell",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "South Carolina"
+      },
+      {
+        "name": "Derius Davis",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "TCU"
+      },
+      {
+        "name": "JaQuae Jackson",
+        "position": "WR",
+        "age": 26,
+        "experience": 2,
+        "college": "Rutgers; California (PA)"
+      },
+      {
+        "name": "Jerand Bradley",
+        "position": "WR",
+        "age": 23,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "KeAndre Lambert-Smith",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Auburn; Penn State"
+      },
+      {
+        "name": "Keenan Allen",
+        "position": "WR",
+        "age": 34,
+        "experience": 13,
+        "college": "California"
+      },
+      {
+        "name": "Ladd McConkey",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "Georgia"
+      },
+      {
+        "name": "Luke Grimm",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Kansas"
+      },
+      {
+        "name": "Quentin Johnston",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "TCU"
+      },
+      {
+        "name": "Tre Harris",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Mississippi; Louisiana Tech"
+      },
+      {
+        "name": "Charlie Kolar",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "Iowa State"
+      },
+      {
+        "name": "Oronde Gadsden II",
+        "position": "TE",
+        "age": 22,
+        "experience": 1,
+        "college": "Syracuse"
+      },
+      {
+        "name": "Tanner McLachlan",
+        "position": "TE",
+        "age": 27,
+        "experience": 2,
+        "college": "Arizona"
+      },
+      {
+        "name": "Thomas Yassmin",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Utah"
+      },
+      {
+        "name": "Tucker Fisk",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "Stanford"
+      },
+      {
+        "name": "Will Dissly",
+        "position": "TE",
+        "age": 29,
+        "experience": 8,
+        "college": "Washington"
+      },
+      {
+        "name": "Cameron Dicker",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "LV": [
+      {
+        "name": "Aidan O'Connell",
+        "position": "QB",
+        "age": 27,
+        "experience": 3,
+        "college": "Purdue"
+      },
+      {
+        "name": "Kirk Cousins",
+        "position": "QB",
+        "age": 37,
+        "experience": 14,
+        "college": "Michigan State"
+      },
+      {
+        "name": "Ashton Jeanty",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Boise State"
+      },
+      {
+        "name": "Chris Collier",
+        "position": "RB",
+        "age": 26,
+        "experience": 2,
+        "college": "University of Lock Haven"
+      },
+      {
+        "name": "Connor Heyward",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "Michigan State"
+      },
+      {
+        "name": "Dylan Laube",
+        "position": "RB",
+        "age": 26,
+        "experience": 2,
+        "college": "New Hampshire"
+      },
+      {
+        "name": "Raheem Mostert",
+        "position": "RB",
+        "age": 34,
+        "experience": 11,
+        "college": "Purdue"
+      },
+      {
+        "name": "Zamir White",
+        "position": "RB",
+        "age": 26,
+        "experience": 4,
+        "college": "Georgia"
+      },
+      {
+        "name": "Alex Bachman",
+        "position": "WR",
+        "age": 29,
+        "experience": 7,
+        "college": "Wake Forest"
+      },
+      {
+        "name": "Brenden Rice",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "USC; Colorado"
+      },
+      {
+        "name": "Dareke Young",
+        "position": "WR",
+        "age": 26,
+        "experience": 4,
+        "college": "Lenoir Rhyne"
+      },
+      {
+        "name": "Dont'e Thornton Jr.",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Tennessee; Oregon"
+      },
+      {
+        "name": "Jack Bech",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "TCU; LSU"
+      },
+      {
+        "name": "Jalen Nailor",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "Michigan State"
+      },
+      {
+        "name": "Jonathan Brady",
+        "position": "WR",
+        "age": 22,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Phillip Dorsett",
+        "position": "WR",
+        "age": 33,
+        "experience": 11,
+        "college": "Miami"
+      },
+      {
+        "name": "Shedrick Jackson",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Auburn"
+      },
+      {
+        "name": "Tre Tucker",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "Cincinnati"
+      },
+      {
+        "name": "Tyler Lockett",
+        "position": "WR",
+        "age": 33,
+        "experience": 11,
+        "college": "Kansas State"
+      },
+      {
+        "name": "Albert Okwuegbunam",
+        "position": "TE",
+        "age": 28,
+        "experience": 6,
+        "college": "Missouri"
+      },
+      {
+        "name": "Brock Bowers",
+        "position": "TE",
+        "age": 23,
+        "experience": 2,
+        "college": "Georgia"
+      },
+      {
+        "name": "Carter Runyon",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "Towson; Shenandoah University"
+      },
+      {
+        "name": "Ian Thomas",
+        "position": "TE",
+        "age": 29,
+        "experience": 8,
+        "college": "Indiana; Nassau CC"
+      },
+      {
+        "name": "Justin Shorter",
+        "position": "TE",
+        "age": 26,
+        "experience": 3,
+        "college": "Florida; Penn State"
+      },
+      {
+        "name": "Michael Mayer",
+        "position": "TE",
+        "age": 24,
+        "experience": 3,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Daniel Carlson",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "MIA": [
+      {
+        "name": "Cam Miller",
+        "position": "QB",
+        "age": 24,
+        "experience": 1,
+        "college": "North Dakota State"
+      },
+      {
+        "name": "Malik Willis",
+        "position": "QB",
+        "age": 26,
+        "experience": 4,
+        "college": "Liberty; Auburn"
+      },
+      {
+        "name": "Quinn Ewers",
+        "position": "QB",
+        "age": 23,
+        "experience": 1,
+        "college": "Texas; Ohio State"
+      },
+      {
+        "name": "Alexander Mattison",
+        "position": "RB",
+        "age": 27,
+        "experience": 7,
+        "college": "Boise State"
+      },
+      {
+        "name": "Anthony Hankerson",
+        "position": "RB",
+        "age": 22,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "De'Von Achane",
+        "position": "RB",
+        "age": 24,
+        "experience": 3,
+        "college": "Texas A&M"
+      },
+      {
+        "name": "Donovan Edwards",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Michigan"
+      },
+      {
+        "name": "Jaylen Wright",
+        "position": "RB",
+        "age": 23,
+        "experience": 2,
+        "college": "Tennessee"
+      },
+      {
+        "name": "Ollie Gordon II",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Oklahoma State"
+      },
+      {
+        "name": "A.J. Henning",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Northwestern; Michigan"
+      },
+      {
+        "name": "Cedrick Wilson Jr.",
+        "position": "WR",
+        "age": 30,
+        "experience": 8,
+        "college": "Boise State; Coffeyville CC"
+      },
+      {
+        "name": "Dee Eskridge",
+        "position": "WR",
+        "age": 29,
+        "experience": 5,
+        "college": "Western Michigan"
+      },
+      {
+        "name": "Jalen Tolbert",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "South Alabama"
+      },
+      {
+        "name": "Malik Washington",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Virginia; Northwestern"
+      },
+      {
+        "name": "Tahj Washington",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "USC; Memphis"
+      },
+      {
+        "name": "Terrace Marshall Jr.",
+        "position": "WR",
+        "age": 25,
+        "experience": 5,
+        "college": "LSU"
+      },
+      {
+        "name": "Theo Wease Jr.",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Missouri; Oklahoma"
+      },
+      {
+        "name": "Tutu Atwell",
+        "position": "WR",
+        "age": 26,
+        "experience": 5,
+        "college": "Louisville"
+      },
+      {
+        "name": "Tyreek Hill",
+        "position": "WR",
+        "age": 32,
+        "experience": 10,
+        "college": "West Alabama; Garden City CC; Oklahoma State"
+      },
+      {
+        "name": "Ben Sims",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Baylor"
+      },
+      {
+        "name": "Cole Turner",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "Nevada"
+      },
+      {
+        "name": "Darren Waller",
+        "position": "TE",
+        "age": 33,
+        "experience": 11,
+        "college": "Georgia Tech"
+      },
+      {
+        "name": "Greg Dulcich",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "UCLA"
+      },
+      {
+        "name": "Jalin Conyers",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "Texas Tech; Arizona State; Oklahoma"
+      },
+      {
+        "name": "Zane Gonzalez",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "MIN": [
+      {
+        "name": "Brett Rypien",
+        "position": "QB",
+        "age": 29,
+        "experience": 7,
+        "college": "Boise State"
+      },
+      {
+        "name": "Carson Wentz",
+        "position": "QB",
+        "age": 33,
+        "experience": 10,
+        "college": "North Dakota State"
+      },
+      {
+        "name": "J.J. McCarthy",
+        "position": "QB",
+        "age": 23,
+        "experience": 2,
+        "college": "Michigan"
+      },
+      {
+        "name": "John Wolford",
+        "position": "QB",
+        "age": 30,
+        "experience": 7,
+        "college": "Wake Forest"
+      },
+      {
+        "name": "Kyler Murray",
+        "position": "QB",
+        "age": 28,
+        "experience": 7,
+        "college": "Oklahoma; Texas A&M"
+      },
+      {
+        "name": "Max Brosmer",
+        "position": "QB",
+        "age": 25,
+        "experience": 1,
+        "college": "Minnesota; New Hampshire"
+      },
+      {
+        "name": "Aaron Jones",
+        "position": "RB",
+        "age": 31,
+        "experience": 9,
+        "college": "Texas-El Paso"
+      },
+      {
+        "name": "Jordan Mason",
+        "position": "RB",
+        "age": 26,
+        "experience": 4,
+        "college": "Georgia Tech"
+      },
+      {
+        "name": "Dontae Fleming",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Tulane"
+      },
+      {
+        "name": "Jeshaun Jones",
+        "position": "WR",
+        "age": 26,
+        "experience": 2,
+        "college": "Maryland"
+      },
+      {
+        "name": "Joaquin Davis",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "North Carolina Central"
+      },
+      {
+        "name": "Jordan Addison",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "USC; Pittsburgh"
+      },
+      {
+        "name": "Justin Jefferson",
+        "position": "WR",
+        "age": 26,
+        "experience": 6,
+        "college": "LSU"
+      },
+      {
+        "name": "Marcus Sanders Jr.",
+        "position": "WR",
+        "age": null,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Myles Price",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Indiana; Texas Tech"
+      },
+      {
+        "name": "Tai Felton",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Maryland"
+      },
+      {
+        "name": "Zavier Scott",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Maine"
+      },
+      {
+        "name": "Ben Yurosek",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "Georgia; Stanford"
+      },
+      {
+        "name": "Bryson Nesbit",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Gavin Bartholomew",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Pittsburgh"
+      },
+      {
+        "name": "Josh Oliver",
+        "position": "TE",
+        "age": 29,
+        "experience": 7,
+        "college": "San Jose State"
+      },
+      {
+        "name": "T.J. Hockenson",
+        "position": "TE",
+        "age": 28,
+        "experience": 7,
+        "college": "Iowa"
+      },
+      {
+        "name": "Will Reichard",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "NE": [
+      {
+        "name": "Drake Maye",
+        "position": "QB",
+        "age": 23,
+        "experience": 2,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Joshua Dobbs",
+        "position": "QB",
+        "age": 31,
+        "experience": 9,
+        "college": "Tennessee"
+      },
+      {
+        "name": "Tommy DeVito",
+        "position": "QB",
+        "age": 27,
+        "experience": 3,
+        "college": "Illinois; Syracuse"
+      },
+      {
+        "name": "Antonio Gibson",
+        "position": "RB",
+        "age": 27,
+        "experience": 6,
+        "college": "Memphis; East Central JC"
+      },
+      {
+        "name": "Brock Lampe",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Northern Illinois"
+      },
+      {
+        "name": "D'Ernest Johnson",
+        "position": "RB",
+        "age": 30,
+        "experience": 7,
+        "college": "University of South Florida"
+      },
+      {
+        "name": "Deneric Prince",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "Tulsa; Texas A&M"
+      },
+      {
+        "name": "Elijah Mitchell",
+        "position": "RB",
+        "age": 28,
+        "experience": 5,
+        "college": "Louisiana-Lafayette"
+      },
+      {
+        "name": "Lan Larison",
+        "position": "RB",
+        "age": 24,
+        "experience": 1,
+        "college": "UC Davis"
+      },
+      {
+        "name": "Reggie Gilliam",
+        "position": "RB",
+        "age": 28,
+        "experience": 6,
+        "college": "Toledo"
+      },
+      {
+        "name": "Rhamondre Stevenson",
+        "position": "RB",
+        "age": 28,
+        "experience": 5,
+        "college": "Oklahoma; Cerritos College"
+      },
+      {
+        "name": "Terrell Jennings",
+        "position": "RB",
+        "age": 25,
+        "experience": 2,
+        "college": "Florida A&M"
+      },
+      {
+        "name": "TreVeyon Henderson",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Ohio State"
+      },
+      {
+        "name": "DeMario Douglas",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "Liberty"
+      },
+      {
+        "name": "Efton Chism III",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Eastern Washington"
+      },
+      {
+        "name": "Jeremiah Webb",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "South Alabama; South Dakota"
+      },
+      {
+        "name": "Kayshon Boutte",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "LSU"
+      },
+      {
+        "name": "Kyle Williams",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Washington State"
+      },
+      {
+        "name": "Mack Hollins",
+        "position": "WR",
+        "age": 32,
+        "experience": 9,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Romeo Doubs",
+        "position": "WR",
+        "age": 26,
+        "experience": 4,
+        "college": "Nevada"
+      },
+      {
+        "name": "Stefon Diggs",
+        "position": "WR",
+        "age": 32,
+        "experience": 11,
+        "college": "Maryland"
+      },
+      {
+        "name": "CJ Dippre",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "Alabama; Maryland"
+      },
+      {
+        "name": "Hunter Henry",
+        "position": "TE",
+        "age": 31,
+        "experience": 10,
+        "college": "Arkansas"
+      },
+      {
+        "name": "Jack Westover",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Washington"
+      },
+      {
+        "name": "Julian Hill",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Campbell University"
+      },
+      {
+        "name": "Tanner Arkin",
+        "position": "TE",
+        "age": 22,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Andy Borregales",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "NO": [
+      {
+        "name": "Spencer Rattler",
+        "position": "QB",
+        "age": 25,
+        "experience": 2,
+        "college": "South Carolina; Oklahoma"
+      },
+      {
+        "name": "Taysom Hill",
+        "position": "QB",
+        "age": 35,
+        "experience": 9,
+        "college": "BYU"
+      },
+      {
+        "name": "Tyler Shough",
+        "position": "QB",
+        "age": 26,
+        "experience": 1,
+        "college": "Louisville; Texas Tech; Oregon"
+      },
+      {
+        "name": "Zach Wilson",
+        "position": "QB",
+        "age": 26,
+        "experience": 5,
+        "college": "BYU"
+      },
+      {
+        "name": "Alvin Kamara",
+        "position": "RB",
+        "age": 30,
+        "experience": 9,
+        "college": "Tennessee; Hutchinson CC; Alabama"
+      },
+      {
+        "name": "Audric Estimé",
+        "position": "RB",
+        "age": 22,
+        "experience": 2,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Devin Neal",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Kansas"
+      },
+      {
+        "name": "Kendre Miller",
+        "position": "RB",
+        "age": 23,
+        "experience": 3,
+        "college": "TCU"
+      },
+      {
+        "name": "Travis Etienne",
+        "position": "RB",
+        "age": 27,
+        "experience": 5,
+        "college": "Clemson"
+      },
+      {
+        "name": "Ty Chandler",
+        "position": "RB",
+        "age": 28,
+        "experience": 4,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Bub Means",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Pittsburgh; Louisiana Tech"
+      },
+      {
+        "name": "Chris Olave",
+        "position": "WR",
+        "age": 25,
+        "experience": 4,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Damien Alford",
+        "position": "WR",
+        "age": 25,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Dante Pettis",
+        "position": "WR",
+        "age": 30,
+        "experience": 8,
+        "college": "Washington"
+      },
+      {
+        "name": "Devaughn Vele",
+        "position": "WR",
+        "age": 28,
+        "experience": 2,
+        "college": "Utah"
+      },
+      {
+        "name": "Ja'Lynn Polk",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "Washington; Texas Tech"
+      },
+      {
+        "name": "Kevin Austin Jr.",
+        "position": "WR",
+        "age": 26,
+        "experience": 4,
+        "college": "Notre Dame"
+      },
+      {
+        "name": "Mason Tipton",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Yale"
+      },
+      {
+        "name": "Ronnie Bell",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Michigan"
+      },
+      {
+        "name": "Trey Palmer",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "Nebraska; LSU"
+      },
+      {
+        "name": "Juwan Johnson",
+        "position": "TE",
+        "age": 29,
+        "experience": 6,
+        "college": "Oregon; Penn State"
+      },
+      {
+        "name": "Mason Pline",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Furman; Ferris State"
+      },
+      {
+        "name": "Moliki Matavao",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "UCLA"
+      },
+      {
+        "name": "Noah Fant",
+        "position": "TE",
+        "age": 28,
+        "experience": 7,
+        "college": "Iowa"
+      },
+      {
+        "name": "Treyton Welch",
+        "position": "TE",
+        "age": 25,
+        "experience": 2,
+        "college": "Wyoming"
+      },
+      {
+        "name": "Zaire Mitchell-Paden",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "Florida Atlantic"
+      },
+      {
+        "name": "Charlie Smyth",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "NYG": [
+      {
+        "name": "Brandon Allen",
+        "position": "QB",
+        "age": 33,
+        "experience": 10,
+        "college": "Arkansas"
+      },
+      {
+        "name": "Jameis Winston",
+        "position": "QB",
+        "age": 32,
+        "experience": 11,
+        "college": "Florida State"
+      },
+      {
+        "name": "Jaxson Dart",
+        "position": "QB",
+        "age": 23,
+        "experience": 1,
+        "college": "Mississippi; USC"
+      },
+      {
+        "name": "Russell Wilson",
+        "position": "QB",
+        "age": 37,
+        "experience": 14,
+        "college": "Wisconsin; N.C. State"
+      },
+      {
+        "name": "Cam Skattebo",
+        "position": "RB",
+        "age": 24,
+        "experience": 1,
+        "college": "Arizona State; Sacramento State"
+      },
+      {
+        "name": "Dante Miller",
+        "position": "RB",
+        "age": 27,
+        "experience": 2,
+        "college": "South Carolina; Columbia"
+      },
+      {
+        "name": "Devin Singletary",
+        "position": "RB",
+        "age": 28,
+        "experience": 7,
+        "college": "Florida Atlantic"
+      },
+      {
+        "name": "Eric Gray",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "Oklahoma; Tennessee"
+      },
+      {
+        "name": "Patrick Ricard",
+        "position": "RB",
+        "age": 31,
+        "experience": 9,
+        "college": "Maine"
+      },
+      {
+        "name": "Tyrone Tracy Jr.",
+        "position": "RB",
+        "age": 26,
+        "experience": 2,
+        "college": "Purdue; Iowa"
+      },
+      {
+        "name": "Beaux Collins",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Notre Dame; Clemson"
+      },
+      {
+        "name": "Bryce Ford-Wheaton",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "West Virginia"
+      },
+      {
+        "name": "Calvin Austin III",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "Memphis"
+      },
+      {
+        "name": "Dalen Cambre",
+        "position": "WR",
+        "age": 25,
+        "experience": 1,
+        "college": "Louisiana"
+      },
+      {
+        "name": "Darius Slayton",
+        "position": "WR",
+        "age": 29,
+        "experience": 7,
+        "college": "Auburn"
+      },
+      {
+        "name": "Darnell Mooney",
+        "position": "WR",
+        "age": 28,
+        "experience": 6,
+        "college": "Tulane"
+      },
+      {
+        "name": "Gunner Olszewski",
+        "position": "WR",
+        "age": 29,
+        "experience": 7,
+        "college": "Bemidji State University"
+      },
+      {
+        "name": "Isaiah Hodgins",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "Oregon State"
+      },
+      {
+        "name": "Jalin Hyatt",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "Tennessee"
+      },
+      {
+        "name": "Malachi Fields",
+        "position": "WR",
+        "age": 23,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Malik Nabers",
+        "position": "WR",
+        "age": 22,
+        "experience": 2,
+        "college": "LSU"
+      },
+      {
+        "name": "Ryan Miller",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Furman"
+      },
+      {
+        "name": "Xavier Gipson",
+        "position": "WR",
+        "age": 25,
+        "experience": 3,
+        "college": "Stephen F. Austin State"
+      },
+      {
+        "name": "Chris Manhertz",
+        "position": "TE",
+        "age": 34,
+        "experience": 11,
+        "college": "Canisius College"
+      },
+      {
+        "name": "Isaiah Likely",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "Coastal Carolina"
+      },
+      {
+        "name": "Tanner Conner",
+        "position": "TE",
+        "age": 28,
+        "experience": 4,
+        "college": "Idaho State"
+      },
+      {
+        "name": "Theo Johnson",
+        "position": "TE",
+        "age": 25,
+        "experience": 2,
+        "college": "Penn State"
+      },
+      {
+        "name": "Thomas Fidone II",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Nebraska"
+      },
+      {
+        "name": "Ben Sauls",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "NYJ": [
+      {
+        "name": "Bailey Zappe",
+        "position": "QB",
+        "age": 27,
+        "experience": 4,
+        "college": "Western Kentucky; Houston Christian University"
+      },
+      {
+        "name": "Brady Cook",
+        "position": "QB",
+        "age": 24,
+        "experience": 1,
+        "college": "Missouri"
+      },
+      {
+        "name": "Cade Klubnik",
+        "position": "QB",
+        "age": 22,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Geno Smith",
+        "position": "QB",
+        "age": 35,
+        "experience": 13,
+        "college": "West Virginia"
+      },
+      {
+        "name": "Braelon Allen",
+        "position": "RB",
+        "age": 22,
+        "experience": 2,
+        "college": "Wisconsin"
+      },
+      {
+        "name": "Breece Hall",
+        "position": "RB",
+        "age": 24,
+        "experience": 4,
+        "college": "Iowa State"
+      },
+      {
+        "name": "Isaiah Davis",
+        "position": "RB",
+        "age": 24,
+        "experience": 2,
+        "college": "South Dakota State"
+      },
+      {
+        "name": "Kene Nwangwu",
+        "position": "RB",
+        "age": 28,
+        "experience": 5,
+        "college": "Iowa State"
+      },
+      {
+        "name": "Khalil Herbert",
+        "position": "RB",
+        "age": 28,
+        "experience": 5,
+        "college": "Virginia Tech"
+      },
+      {
+        "name": "Adonai Mitchell",
+        "position": "WR",
+        "age": 23,
+        "experience": 2,
+        "college": "Texas; Georgia"
+      },
+      {
+        "name": "Arian Smith",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Georgia"
+      },
+      {
+        "name": "Garrett Wilson",
+        "position": "WR",
+        "age": 25,
+        "experience": 4,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Irvin Charles",
+        "position": "WR",
+        "age": 29,
+        "experience": 4,
+        "college": "Indiana PA,  University of; Penn State"
+      },
+      {
+        "name": "Isaiah Williams",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Illinois"
+      },
+      {
+        "name": "Jamaal Pritchett",
+        "position": "WR",
+        "age": 22,
+        "experience": 1,
+        "college": "South Alabama; Tuskegee University"
+      },
+      {
+        "name": "Josh Reynolds",
+        "position": "WR",
+        "age": 31,
+        "experience": 9,
+        "college": "Texas A&M; Tyler JC"
+      },
+      {
+        "name": "Mac Dalena",
+        "position": "WR",
+        "age": 24,
+        "experience": 0,
+        "college": "Fresno State"
+      },
+      {
+        "name": "Quentin Skinner",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Kansas"
+      },
+      {
+        "name": "Andrew Beck",
+        "position": "TE",
+        "age": 29,
+        "experience": 7,
+        "college": "Texas"
+      },
+      {
+        "name": "Jelani Woods",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "Virginia"
+      },
+      {
+        "name": "Jeremy Ruckert",
+        "position": "TE",
+        "age": 25,
+        "experience": 4,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Mason Taylor",
+        "position": "TE",
+        "age": 22,
+        "experience": 1,
+        "college": "LSU"
+      },
+      {
+        "name": "Jason Sanders",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "PHI": [
+      {
+        "name": "Andy Dalton",
+        "position": "QB",
+        "age": 38,
+        "experience": 15,
+        "college": "TCU"
+      },
+      {
+        "name": "Cole Payton",
+        "position": "QB",
+        "age": 23,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Jalen Hurts",
+        "position": "QB",
+        "age": 27,
+        "experience": 6,
+        "college": "Oklahoma; Alabama"
+      },
+      {
+        "name": "Tanner McKee",
+        "position": "QB",
+        "age": 26,
+        "experience": 3,
+        "college": "Stanford"
+      },
+      {
+        "name": "Carson Steele",
+        "position": "RB",
+        "age": 23,
+        "experience": 2,
+        "college": "UCLA; Ball State"
+      },
+      {
+        "name": "Dameon Pierce",
+        "position": "RB",
+        "age": 26,
+        "experience": 4,
+        "college": "Florida"
+      },
+      {
+        "name": "Saquon Barkley",
+        "position": "RB",
+        "age": 29,
+        "experience": 8,
+        "college": "Penn State"
+      },
+      {
+        "name": "Tank Bigsby",
+        "position": "RB",
+        "age": 23,
+        "experience": 3,
+        "college": "Auburn"
+      },
+      {
+        "name": "Will Shipley",
+        "position": "RB",
+        "age": 23,
+        "experience": 2,
+        "college": "Clemson"
+      },
+      {
+        "name": "A.J. Brown",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Mississippi"
+      },
+      {
+        "name": "Britain Covey",
+        "position": "WR",
+        "age": 29,
+        "experience": 4,
+        "college": "Utah"
+      },
+      {
+        "name": "Danny Gray",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "SMU"
+      },
+      {
+        "name": "Darius Cooper",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Tarleton State"
+      },
+      {
+        "name": "DeVonta Smith",
+        "position": "WR",
+        "age": 27,
+        "experience": 5,
+        "college": "Alabama"
+      },
+      {
+        "name": "Dontayvion Wicks",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "Virginia"
+      },
+      {
+        "name": "Elijah Moore",
+        "position": "WR",
+        "age": 26,
+        "experience": 5,
+        "college": "Mississippi"
+      },
+      {
+        "name": "Johnny Wilson",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Florida State; Arizona State"
+      },
+      {
+        "name": "Marquise Brown",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Oklahoma; College of the Canyons"
+      },
+      {
+        "name": "Quez Watkins",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "Southern Mississippi"
+      },
+      {
+        "name": "Cameron Latu",
+        "position": "TE",
+        "age": 26,
+        "experience": 3,
+        "college": "Alabama"
+      },
+      {
+        "name": "Dallas Goedert",
+        "position": "TE",
+        "age": 31,
+        "experience": 8,
+        "college": "South Dakota State"
+      },
+      {
+        "name": "E.J. Jenkins",
+        "position": "TE",
+        "age": 27,
+        "experience": 3,
+        "college": "Georgia Tech; South Carolina; St. Francis PA"
+      },
+      {
+        "name": "Grant Calcaterra",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "SMU; Oklahoma"
+      },
+      {
+        "name": "Johnny Mundt",
+        "position": "TE",
+        "age": 31,
+        "experience": 9,
+        "college": "Oregon"
+      },
+      {
+        "name": "Stone Smartt",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "Old Dominion"
+      },
+      {
+        "name": "Jake Elliott",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "PIT": [
+      {
+        "name": "Aaron Rodgers",
+        "position": "QB",
+        "age": 42,
+        "experience": 21,
+        "college": "California; Butte College"
+      },
+      {
+        "name": "Mason Rudolph",
+        "position": "QB",
+        "age": 30,
+        "experience": 8,
+        "college": "Oklahoma State"
+      },
+      {
+        "name": "Will Howard",
+        "position": "QB",
+        "age": 24,
+        "experience": 1,
+        "college": "Ohio State; Kansas State"
+      },
+      {
+        "name": "Jaylen Warren",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "Oklahoma State"
+      },
+      {
+        "name": "Kaleb Johnson",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Iowa"
+      },
+      {
+        "name": "Lew Nichols III",
+        "position": "RB",
+        "age": 24,
+        "experience": 3,
+        "college": "Central Michigan"
+      },
+      {
+        "name": "Max Hurleman",
+        "position": "RB",
+        "age": 24,
+        "experience": 1,
+        "college": "Notre Dame; Colgate"
+      },
+      {
+        "name": "Rico Dowdle",
+        "position": "RB",
+        "age": 27,
+        "experience": 6,
+        "college": "South Carolina"
+      },
+      {
+        "name": "Travis Homer",
+        "position": "RB",
+        "age": 27,
+        "experience": 7,
+        "college": "Miami"
+      },
+      {
+        "name": "A.T. Perry",
+        "position": "WR",
+        "age": 26,
+        "experience": 3,
+        "college": "Wake Forest"
+      },
+      {
+        "name": "Ben Skowronek",
+        "position": "WR",
+        "age": 28,
+        "experience": 5,
+        "college": "Notre Dame; Northwestern"
+      },
+      {
+        "name": "Brandon Johnson",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "UCF; Tennessee"
+      },
+      {
+        "name": "Brandon Smith",
+        "position": "WR",
+        "age": 27,
+        "experience": 5,
+        "college": "Iowa"
+      },
+      {
+        "name": "Cole Burgess",
+        "position": "WR",
+        "age": 26,
+        "experience": 2,
+        "college": "Cortland State Of New York"
+      },
+      {
+        "name": "DK Metcalf",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Mississippi"
+      },
+      {
+        "name": "Michael Pittman",
+        "position": "WR",
+        "age": 28,
+        "experience": 6,
+        "college": "USC"
+      },
+      {
+        "name": "Roman Wilson",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "Michigan"
+      },
+      {
+        "name": "Scott Miller",
+        "position": "WR",
+        "age": 28,
+        "experience": 7,
+        "college": "Bowling Green"
+      },
+      {
+        "name": "Darnell Washington",
+        "position": "TE",
+        "age": 24,
+        "experience": 3,
+        "college": "Georgia"
+      },
+      {
+        "name": "Donald Parham",
+        "position": "TE",
+        "age": 28,
+        "experience": 7,
+        "college": "Stetson"
+      },
+      {
+        "name": "Jaheim Bell",
+        "position": "TE",
+        "age": 24,
+        "experience": 2,
+        "college": "Florida State; South Carolina"
+      },
+      {
+        "name": "JJ Galbreath",
+        "position": "TE",
+        "age": 24,
+        "experience": 1,
+        "college": "South Dakota"
+      },
+      {
+        "name": "Jonnu Smith",
+        "position": "TE",
+        "age": 30,
+        "experience": 9,
+        "college": "Florida International"
+      },
+      {
+        "name": "Pat Freiermuth",
+        "position": "TE",
+        "age": 27,
+        "experience": 5,
+        "college": "Penn State"
+      },
+      {
+        "name": "Riley Nowakowski",
+        "position": "TE",
+        "age": 23,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Chris Boswell",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "SEA": [
+      {
+        "name": "Drew Lock",
+        "position": "QB",
+        "age": 29,
+        "experience": 7,
+        "college": "Missouri"
+      },
+      {
+        "name": "Jalen Milroe",
+        "position": "QB",
+        "age": 23,
+        "experience": 1,
+        "college": "Alabama"
+      },
+      {
+        "name": "Sam Darnold",
+        "position": "QB",
+        "age": 28,
+        "experience": 8,
+        "college": "USC"
+      },
+      {
+        "name": "Brady Russell",
+        "position": "RB",
+        "age": 27,
+        "experience": 3,
+        "college": "Colorado"
+      },
+      {
+        "name": "Cam Akers",
+        "position": "RB",
+        "age": 26,
+        "experience": 6,
+        "college": "Florida State"
+      },
+      {
+        "name": "Emanuel Wilson",
+        "position": "RB",
+        "age": 27,
+        "experience": 3,
+        "college": "Fort Valley State College"
+      },
+      {
+        "name": "George Holani",
+        "position": "RB",
+        "age": 26,
+        "experience": 2,
+        "college": "Boise State"
+      },
+      {
+        "name": "Jacardia Wright",
+        "position": "RB",
+        "age": 25,
+        "experience": 1,
+        "college": "Missouri State; Kansas State"
+      },
+      {
+        "name": "Kenny McIntosh",
+        "position": "RB",
+        "age": 26,
+        "experience": 3,
+        "college": "Georgia"
+      },
+      {
+        "name": "Robbie Ouzts",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Alabama"
+      },
+      {
+        "name": "Zach Charbonnet",
+        "position": "RB",
+        "age": 25,
+        "experience": 3,
+        "college": "UCLA; Michigan"
+      },
+      {
+        "name": "Cody White",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "Michigan State"
+      },
+      {
+        "name": "Cooper Kupp",
+        "position": "WR",
+        "age": 32,
+        "experience": 9,
+        "college": "Eastern Washington"
+      },
+      {
+        "name": "Jake Bobo",
+        "position": "WR",
+        "age": 27,
+        "experience": 3,
+        "college": "UCLA; Duke"
+      },
+      {
+        "name": "Jaxon Smith-Njigba",
+        "position": "WR",
+        "age": 24,
+        "experience": 3,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Montorie Foster Jr",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Michigan State"
+      },
+      {
+        "name": "Rashid Shaheed",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "Weber State"
+      },
+      {
+        "name": "Ricky White III",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "UNLV; Michigan State"
+      },
+      {
+        "name": "Tory Horton",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Colorado State; Nevada"
+      },
+      {
+        "name": "Velus Jones Jr.",
+        "position": "WR",
+        "age": 29,
+        "experience": 4,
+        "college": "Tennessee; USC"
+      },
+      {
+        "name": "AJ Barner",
+        "position": "TE",
+        "age": 24,
+        "experience": 2,
+        "college": "Michigan; Indiana"
+      },
+      {
+        "name": "Elijah Arroyo",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Miami"
+      },
+      {
+        "name": "Eric Saubert",
+        "position": "TE",
+        "age": 32,
+        "experience": 9,
+        "college": "Drake"
+      },
+      {
+        "name": "Harrison Bryant",
+        "position": "TE",
+        "age": 28,
+        "experience": 6,
+        "college": "Florida Atlantic"
+      },
+      {
+        "name": "Lance Mason",
+        "position": "TE",
+        "age": 22,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Nick Kallerup",
+        "position": "TE",
+        "age": 25,
+        "experience": 1,
+        "college": "Minnesota"
+      },
+      {
+        "name": "Jason Myers",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "SF": [
+      {
+        "name": "Adrian Martinez",
+        "position": "QB",
+        "age": 26,
+        "experience": 2,
+        "college": "Kansas State; Nebraska"
+      },
+      {
+        "name": "Brock Purdy",
+        "position": "QB",
+        "age": 26,
+        "experience": 4,
+        "college": "Iowa State"
+      },
+      {
+        "name": "Kurtis Rourke",
+        "position": "QB",
+        "age": 25,
+        "experience": 1,
+        "college": "Indiana"
+      },
+      {
+        "name": "Mac Jones",
+        "position": "QB",
+        "age": 27,
+        "experience": 5,
+        "college": "Alabama"
+      },
+      {
+        "name": "Christian McCaffrey",
+        "position": "RB",
+        "age": 29,
+        "experience": 9,
+        "college": "Stanford"
+      },
+      {
+        "name": "Isaac Guerendo",
+        "position": "RB",
+        "age": 25,
+        "experience": 2,
+        "college": "Louisville; Wisconsin"
+      },
+      {
+        "name": "Jordan James",
+        "position": "RB",
+        "age": 22,
+        "experience": 1,
+        "college": "Oregon"
+      },
+      {
+        "name": "Kyle Juszczyk",
+        "position": "RB",
+        "age": 35,
+        "experience": 13,
+        "college": "Harvard"
+      },
+      {
+        "name": "Patrick Taylor",
+        "position": "RB",
+        "age": 28,
+        "experience": 6,
+        "college": "Memphis"
+      },
+      {
+        "name": "Sincere McCormick",
+        "position": "RB",
+        "age": 25,
+        "experience": 4,
+        "college": "Texas-San Antonio"
+      },
+      {
+        "name": "Christian Kirk",
+        "position": "WR",
+        "age": 29,
+        "experience": 8,
+        "college": "Texas A&M"
+      },
+      {
+        "name": "Colton Dowell",
+        "position": "WR",
+        "age": 27,
+        "experience": 3,
+        "college": "Tennessee-Martin"
+      },
+      {
+        "name": "De'Zhaun Stribling",
+        "position": "WR",
+        "age": 23,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Demarcus Robinson",
+        "position": "WR",
+        "age": 31,
+        "experience": 10,
+        "college": "Florida"
+      },
+      {
+        "name": "Jacob Cowing",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Arizona; Texas-El Paso"
+      },
+      {
+        "name": "Jauan Jennings",
+        "position": "WR",
+        "age": 28,
+        "experience": 6,
+        "college": "Tennessee"
+      },
+      {
+        "name": "Jordan Watkins",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Mississippi; Louisville"
+      },
+      {
+        "name": "Junior Bergen",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Montana"
+      },
+      {
+        "name": "Malik Turner",
+        "position": "WR",
+        "age": 30,
+        "experience": 8,
+        "college": "Illinois"
+      },
+      {
+        "name": "Mike Evans",
+        "position": "WR",
+        "age": 32,
+        "experience": 12,
+        "college": "Texas A&M"
+      },
+      {
+        "name": "Ricky Pearsall",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Florida; Arizona State"
+      },
+      {
+        "name": "Trent Taylor",
+        "position": "WR",
+        "age": 32,
+        "experience": 9,
+        "college": "Louisiana Tech"
+      },
+      {
+        "name": "Brayden Willis",
+        "position": "TE",
+        "age": 26,
+        "experience": 3,
+        "college": "Oklahoma"
+      },
+      {
+        "name": "George Kittle",
+        "position": "TE",
+        "age": 32,
+        "experience": 9,
+        "college": "Iowa"
+      },
+      {
+        "name": "Hayden Rucci",
+        "position": "TE",
+        "age": 25,
+        "experience": 2,
+        "college": "Wisconsin"
+      },
+      {
+        "name": "Jake Tonges",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "California"
+      },
+      {
+        "name": "Luke Farrell",
+        "position": "TE",
+        "age": 28,
+        "experience": 5,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Eddy Pineiro",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "TB": [
+      {
+        "name": "Baker Mayfield",
+        "position": "QB",
+        "age": 31,
+        "experience": 8,
+        "college": "Oklahoma; Texas Tech"
+      },
+      {
+        "name": "Connor Bazelak",
+        "position": "QB",
+        "age": 25,
+        "experience": 1,
+        "college": "Bowling Green; Indiana; Missouri"
+      },
+      {
+        "name": "Jake Browning",
+        "position": "QB",
+        "age": 30,
+        "experience": 7,
+        "college": "Washington"
+      },
+      {
+        "name": "Bucky Irving",
+        "position": "RB",
+        "age": 23,
+        "experience": 2,
+        "college": "Oregon; Minnesota"
+      },
+      {
+        "name": "Josh Williams",
+        "position": "RB",
+        "age": 25,
+        "experience": 1,
+        "college": "LSU"
+      },
+      {
+        "name": "Kenneth Gainwell",
+        "position": "RB",
+        "age": 27,
+        "experience": 5,
+        "college": "Memphis"
+      },
+      {
+        "name": "Michael Wiley",
+        "position": "RB",
+        "age": 24,
+        "experience": 2,
+        "college": "Arizona"
+      },
+      {
+        "name": "Owen Wright",
+        "position": "RB",
+        "age": 27,
+        "experience": 3,
+        "college": "Monmouth; William & Mary"
+      },
+      {
+        "name": "Sean Tucker",
+        "position": "RB",
+        "age": 24,
+        "experience": 3,
+        "college": "Syracuse"
+      },
+      {
+        "name": "Chris Godwin Jr.",
+        "position": "WR",
+        "age": 30,
+        "experience": 9,
+        "college": "Penn State"
+      },
+      {
+        "name": "David Sills",
+        "position": "WR",
+        "age": 30,
+        "experience": 7,
+        "college": "West Virginia"
+      },
+      {
+        "name": "Dennis Houston",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "Western Illinois"
+      },
+      {
+        "name": "Emeka Egbuka",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Garrett Greene",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "West Virginia"
+      },
+      {
+        "name": "Jalen McMillan",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "Washington"
+      },
+      {
+        "name": "Kameron Johnson",
+        "position": "WR",
+        "age": 24,
+        "experience": 2,
+        "college": "Barton College"
+      },
+      {
+        "name": "Noah Short",
+        "position": "WR",
+        "age": null,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Sterling Shepard",
+        "position": "WR",
+        "age": 33,
+        "experience": 10,
+        "college": "Oklahoma"
+      },
+      {
+        "name": "Tez Johnson",
+        "position": "WR",
+        "age": 23,
+        "experience": 1,
+        "college": "Oregon; Troy"
+      },
+      {
+        "name": "Cade Otton",
+        "position": "TE",
+        "age": 27,
+        "experience": 4,
+        "college": "Washington"
+      },
+      {
+        "name": "Devin Culp",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Washington"
+      },
+      {
+        "name": "Ko Kieft",
+        "position": "TE",
+        "age": 28,
+        "experience": 4,
+        "college": "Minnesota"
+      },
+      {
+        "name": "Payne Durham",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Purdue"
+      },
+      {
+        "name": "Chase McLaughlin",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "TEN": [
+      {
+        "name": "Cam Ward",
+        "position": "QB",
+        "age": 23,
+        "experience": 1,
+        "college": "Miami; Washington State; Incarnate Word"
+      },
+      {
+        "name": "Hendon Hooker",
+        "position": "QB",
+        "age": 28,
+        "experience": 3,
+        "college": "Tennessee; Virginia Tech"
+      },
+      {
+        "name": "Mitchell Trubisky",
+        "position": "QB",
+        "age": 31,
+        "experience": 9,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Will Levis",
+        "position": "QB",
+        "age": 26,
+        "experience": 3,
+        "college": "Kentucky; Penn State"
+      },
+      {
+        "name": "Julius Chestnut",
+        "position": "RB",
+        "age": 25,
+        "experience": 4,
+        "college": "Sacred Heart University"
+      },
+      {
+        "name": "Kalel Mullings",
+        "position": "RB",
+        "age": 23,
+        "experience": 1,
+        "college": "Michigan"
+      },
+      {
+        "name": "Michael Carter",
+        "position": "RB",
+        "age": 27,
+        "experience": 5,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Tony Pollard",
+        "position": "RB",
+        "age": 29,
+        "experience": 7,
+        "college": "Memphis"
+      },
+      {
+        "name": "Tyjae Spears",
+        "position": "RB",
+        "age": 24,
+        "experience": 3,
+        "college": "Tulane"
+      },
+      {
+        "name": "Bryce Oliver",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Youngstown State; Kentucky"
+      },
+      {
+        "name": "Calvin Ridley",
+        "position": "WR",
+        "age": 31,
+        "experience": 8,
+        "college": "Alabama"
+      },
+      {
+        "name": "Chimere Dike",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Florida; Wisconsin"
+      },
+      {
+        "name": "Courtney Jackson",
+        "position": "WR",
+        "age": 25,
+        "experience": 1,
+        "college": "Arkansas State"
+      },
+      {
+        "name": "Elic Ayomanor",
+        "position": "WR",
+        "age": 22,
+        "experience": 1,
+        "college": "Stanford"
+      },
+      {
+        "name": "James Proche",
+        "position": "WR",
+        "age": 29,
+        "experience": 6,
+        "college": "SMU"
+      },
+      {
+        "name": "K.J. Osborn",
+        "position": "WR",
+        "age": 28,
+        "experience": 6,
+        "college": "Miami; Buffalo"
+      },
+      {
+        "name": "Lance McCutcheon",
+        "position": "WR",
+        "age": 27,
+        "experience": 4,
+        "college": "Montana State"
+      },
+      {
+        "name": "Mason Kinsey",
+        "position": "WR",
+        "age": 27,
+        "experience": 6,
+        "college": "Berry College"
+      },
+      {
+        "name": "Tyren Montgomery",
+        "position": "WR",
+        "age": 24,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Wan'Dale Robinson",
+        "position": "WR",
+        "age": 25,
+        "experience": 4,
+        "college": "Kentucky"
+      },
+      {
+        "name": "Xavier Restrepo",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Miami"
+      },
+      {
+        "name": "Daniel Bellinger",
+        "position": "TE",
+        "age": 25,
+        "experience": 4,
+        "college": "San Diego State"
+      },
+      {
+        "name": "David Martin-Robinson",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "Temple"
+      },
+      {
+        "name": "Gunnar Helm",
+        "position": "TE",
+        "age": 23,
+        "experience": 1,
+        "college": "Texas"
+      },
+      {
+        "name": "Joel Wilson",
+        "position": "TE",
+        "age": 25,
+        "experience": 3,
+        "college": "Central Michigan"
+      },
+      {
+        "name": "Kylen Granson",
+        "position": "TE",
+        "age": 28,
+        "experience": 5,
+        "college": "SMU"
+      },
+      {
+        "name": "Joey Slye",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ],
+    "WAS": [
+      {
+        "name": "Jayden Daniels",
+        "position": "QB",
+        "age": 25,
+        "experience": 2,
+        "college": "LSU; Arizona State"
+      },
+      {
+        "name": "Jeff Driskel",
+        "position": "QB",
+        "age": 33,
+        "experience": 10,
+        "college": "Louisiana Tech; Florida"
+      },
+      {
+        "name": "Marcus Mariota",
+        "position": "QB",
+        "age": 32,
+        "experience": 11,
+        "college": "Oregon"
+      },
+      {
+        "name": "Sam Hartman",
+        "position": "QB",
+        "age": 26,
+        "experience": 2,
+        "college": "Notre Dame; Wake Forest"
+      },
+      {
+        "name": "Austin Ekeler",
+        "position": "RB",
+        "age": 30,
+        "experience": 9,
+        "college": "Western State"
+      },
+      {
+        "name": "Chase Edmonds",
+        "position": "RB",
+        "age": 30,
+        "experience": 8,
+        "college": "Fordham"
+      },
+      {
+        "name": "Jacory Croskey-Merritt",
+        "position": "RB",
+        "age": 25,
+        "experience": 1,
+        "college": "Arizona; New Mexico; Alabama State"
+      },
+      {
+        "name": "Jeremy McNichols",
+        "position": "RB",
+        "age": 30,
+        "experience": 9,
+        "college": "Boise State"
+      },
+      {
+        "name": "Jerome Ford",
+        "position": "RB",
+        "age": 26,
+        "experience": 4,
+        "college": "Cincinnati; Alabama"
+      },
+      {
+        "name": "Nick Bellore",
+        "position": "RB",
+        "age": 37,
+        "experience": 15,
+        "college": "Central Michigan"
+      },
+      {
+        "name": "Rachaad White",
+        "position": "RB",
+        "age": 27,
+        "experience": 4,
+        "college": "Arizona State; Mt. San Antonio; Kearney State"
+      },
+      {
+        "name": "Chris Hilton Jr.",
+        "position": "WR",
+        "age": null,
+        "experience": 0,
+        "college": null
+      },
+      {
+        "name": "Chris Moore",
+        "position": "WR",
+        "age": 32,
+        "experience": 10,
+        "college": "Cincinnati"
+      },
+      {
+        "name": "Deebo Samuel Sr.",
+        "position": "WR",
+        "age": 30,
+        "experience": 7,
+        "college": "South Carolina"
+      },
+      {
+        "name": "Dyami Brown",
+        "position": "WR",
+        "age": 26,
+        "experience": 5,
+        "college": "North Carolina"
+      },
+      {
+        "name": "Ja'Corey Brooks",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Louisville"
+      },
+      {
+        "name": "Jacoby Jones",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "UCF; Ohio"
+      },
+      {
+        "name": "Jaylin Lane",
+        "position": "WR",
+        "age": 24,
+        "experience": 1,
+        "college": "Virginia Tech; Middle Tennessee State"
+      },
+      {
+        "name": "Luke McCaffrey",
+        "position": "WR",
+        "age": 25,
+        "experience": 2,
+        "college": "Rice; Nebraska"
+      },
+      {
+        "name": "Nick Nash",
+        "position": "WR",
+        "age": 26,
+        "experience": 1,
+        "college": "San Jose State"
+      },
+      {
+        "name": "Noah Brown",
+        "position": "WR",
+        "age": 30,
+        "experience": 9,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Terry McLaurin",
+        "position": "WR",
+        "age": 30,
+        "experience": 7,
+        "college": "Ohio State"
+      },
+      {
+        "name": "Treylon Burks",
+        "position": "WR",
+        "age": 26,
+        "experience": 4,
+        "college": "Arkansas"
+      },
+      {
+        "name": "Van Jefferson",
+        "position": "WR",
+        "age": 29,
+        "experience": 6,
+        "college": "Florida; Mississippi"
+      },
+      {
+        "name": "Ben Sinnott",
+        "position": "TE",
+        "age": 23,
+        "experience": 2,
+        "college": "Kansas State"
+      },
+      {
+        "name": "Chig Okonkwo",
+        "position": "TE",
+        "age": 26,
+        "experience": 4,
+        "college": "Maryland"
+      },
+      {
+        "name": "Colson Yankoff",
+        "position": "TE",
+        "age": 26,
+        "experience": 2,
+        "college": "UCLA; Washington"
+      },
+      {
+        "name": "John Bates",
+        "position": "TE",
+        "age": 28,
+        "experience": 5,
+        "college": "Boise State"
+      },
+      {
+        "name": "Lawrence Cager",
+        "position": "TE",
+        "age": 28,
+        "experience": 6,
+        "college": "Georgia; Miami"
+      },
+      {
+        "name": "Tyree Jackson",
+        "position": "TE",
+        "age": 28,
+        "experience": 5,
+        "college": "Buffalo"
+      },
+      {
+        "name": "Zach Ertz",
+        "position": "TE",
+        "age": 35,
+        "experience": 13,
+        "college": "Stanford"
+      },
+      {
+        "name": "Jake Moody",
+        "position": "K",
+        "age": null,
+        "experience": null,
+        "college": null
+      }
+    ]
+  }
+}
