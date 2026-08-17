@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 Visual Beta v4 · Draft From Player Card</title>
+<title>FF26 Visual Beta v5 · Top Dog Player Card</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -75,6 +75,8 @@ button{cursor:pointer}
 .player-profile-avatar{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;border:3px solid var(--gold);background:linear-gradient(145deg,#2b2b2b,#101010);font-family:Impact,"Arial Narrow",sans-serif;font-size:20px;font-weight:900;color:var(--gold);overflow:hidden}
 .player-profile-avatar img{width:58px;height:58px;object-fit:contain;display:block;filter:drop-shadow(0 3px 5px rgba(0,0,0,.45))}
 .player-profile-avatar .profile-logo-fallback{font-size:17px;letter-spacing:.04em}
+.player-profile-top-dog{display:inline-flex;align-items:center;gap:7px;margin-top:7px;padding:4px 9px 4px 5px;border:1px solid rgba(244,198,91,.48);border-radius:999px;background:linear-gradient(135deg,rgba(82,11,18,.88),rgba(12,12,14,.92));color:#f4c65b;font-size:10px;font-weight:950;letter-spacing:.055em}
+.player-profile-top-dog img{width:27px;height:27px;object-fit:cover;border-radius:50%;border:1px solid rgba(244,198,91,.72)}
 .player-profile-name{font-size:24px;line-height:1;font-weight:950;margin-bottom:6px}.player-profile-sub{color:var(--muted);font-size:13px;font-weight:800}
 .player-profile-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:16px 0 13px}.profile-stat{padding:9px 6px;border:1px solid #3d3d3d;border-radius:9px;background:#101010;text-align:center}.profile-stat b{display:block;color:#fff;font-size:15px}.profile-stat span{display:block;color:var(--muted);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
 .player-profile-honor{margin:0 0 12px;padding:8px 10px;border-left:3px solid var(--red);background:#111;color:#d7d2c8;font-size:12px;font-weight:850}
@@ -2045,7 +2047,7 @@ select.setup-input option:checked{
     <button class="player-profile-close" id="playerProfileClose" type="button" aria-label="Close player profile">×</button>
     <div class="player-profile-top">
       <div class="player-profile-avatar" id="playerProfileAvatar">NFL</div>
-      <div><div class="player-profile-name" id="playerProfileName">Player</div><div class="player-profile-sub" id="playerProfileSub"></div></div>
+      <div><div class="player-profile-name" id="playerProfileName">Player</div><div class="player-profile-sub" id="playerProfileSub"></div><div class="player-profile-top-dog hidden" id="playerProfileTopDog"><img src="top-dog.png" alt=""><span>TOP DOG</span></div></div>
     </div>
     <div class="player-profile-stats" id="playerProfileStats"></div>
     <div class="profile-status GREEN" id="playerProfileStatus">
@@ -6629,6 +6631,8 @@ function openPlayerProfile(playerOrId){
   $('#playerProfileName').textContent=p.name;
   const jerseyNumber=ff26PlayerJerseyNumber(p);
   $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''}${jerseyNumber!==null?` · #${jerseyNumber}`:''} · Bye ${p.bye??'—'}`;
+  const topDogBadge=$('#playerProfileTopDog');
+  if(topDogBadge)topDogBadge.classList.toggle('hidden',!ff26IsTopDogCandidate(p));
   ff26RenderProfileTeamLogo(p);
   const statusBox=$('#playerProfileStatus');
   if(p.rosterOnly){
