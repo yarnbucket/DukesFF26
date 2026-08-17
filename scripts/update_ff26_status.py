@@ -8,6 +8,7 @@ No third-party Python packages are required.
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -36,13 +37,6 @@ TEAM_ALIASES = {
     "LA": "LAR",
 }
 
-NAME_ALIASES = {
-    "hollywood brown": "marquise brown",
-    "bam knight": "zonovan knight",
-}
-
-FREE_AGENT_TEAMS = {"", "FA"}
-
 
 def norm_team(value: object) -> str:
     team = str(value or "").strip().upper()
@@ -53,10 +47,9 @@ def norm_name(value: object) -> str:
     text = unicodedata.normalize("NFKD", str(value or ""))
     text = "".join(ch for ch in text if not unicodedata.combining(ch))
     text = text.replace("’", "'").replace(".", "")
-    text = re.sub(r"\b(jr|sr|ii|iii|iv|v)\b", "", text, flags=re.I)
+    text = re.sub(r"\b(jr|sr|ii|iii|iv)\b", "", text, flags=re.I)
     text = re.sub(r"[^a-zA-Z0-9]+", " ", text).strip().lower()
-    normalized = re.sub(r"\s+", " ", text)
-    return NAME_ALIASES.get(normalized, normalized)
+    return re.sub(r"\s+", " ", text)
 
 
 def sleeper_full_name(record: dict) -> str:
@@ -169,23 +162,12 @@ def build_indexes(sleeper_map: dict) -> tuple[dict, dict]:
 def match_player(player: dict, by_name: dict, by_name_team: dict) -> tuple[dict | None, str]:
     name = norm_name(player.get("name"))
     team = norm_team(player.get("team"))
-
     exact = by_name_team.get((name, team))
     if exact:
         return exact, "name+team"
-
     candidates = by_name.get(name, [])
     if len(candidates) == 1:
-        candidate = candidates[0]
-        source_team = norm_team(candidate.get("team"))
-
-        # Name-only matching is safe when one side has no active team assignment.
-        # If both sides name different real NFL teams, do not silently attach status.
-        if team in FREE_AGENT_TEAMS or source_team in FREE_AGENT_TEAMS:
-            return candidate, "name-only"
-
-        return None, "team-conflict"
-
+        return candidates[0], "name-only"
     return None, "unmatched"
 
 
@@ -209,7 +191,6 @@ def main() -> int:
     refreshed = {}
     matched = 0
     name_only = 0
-    team_conflicts = []
     unmatched = []
     changed_statuses = 0
 
@@ -224,17 +205,11 @@ def main() -> int:
         old = old_players.get(name, {}) if isinstance(old_players.get(name), dict) else {}
 
         if not rec:
-            if match_type == "team-conflict":
-                team_conflicts.append(name)
-                match_status = "TEAM_CONFLICT_CURRENT_FEED"
-            else:
-                unmatched.append(name)
-                match_status = "UNMATCHED_CURRENT_FEED"
-
+            unmatched.append(name)
             # Preserve an existing sourced record, but mark stale-source provenance explicitly.
             if old:
                 kept = dict(old)
-                kept["matchStatus"] = match_status
+                kept["matchStatus"] = "UNMATCHED_CURRENT_FEED"
                 refreshed[name] = kept
             continue
 
@@ -257,6 +232,7 @@ def main() -> int:
             "sourceType": "SLEEPER_PLAYER_FEED",
             "sourcePlayerId": rec.get("player_id"),
             "sourceTeam": norm_team(rec.get("team")),
+            "jerseyNumber": rec.get("number"),
             "matchType": match_type,
         }
 
@@ -269,7 +245,7 @@ def main() -> int:
         refreshed[name] = new_record
 
     out = {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "season": 2026,
         "scoring": "PPR",
         "updatedAt": now,
@@ -288,7 +264,6 @@ def main() -> int:
             "draftPlayers": len(player_list),
             "matchedPlayers": matched,
             "nameOnlyMatches": name_only,
-            "teamConflicts": len(team_conflicts),
             "unmatchedPlayers": len(unmatched),
             "statusChanges": changed_statuses,
         },
@@ -300,13 +275,7 @@ def main() -> int:
         json.dump(out, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
-    print(
-        f"Updated {STATUS_PATH.name}: matched={matched}, "
-        f"name_only={name_only}, team_conflicts={len(team_conflicts)}, "
-        f"unmatched={len(unmatched)}, status_changes={changed_statuses}"
-    )
-    if team_conflicts:
-        print("Team-conflict sample:", ", ".join(team_conflicts[:20]))
+    print(f"Updated {STATUS_PATH.name}: matched={matched}, name_only={name_only}, unmatched={len(unmatched)}, status_changes={changed_statuses}")
     if unmatched:
         print("Unmatched sample:", ", ".join(unmatched[:20]))
     return 0
