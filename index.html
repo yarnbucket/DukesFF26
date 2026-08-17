@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 Visual Beta v5 · Top Dog Player Card</title>
+<title>FF26 Visual Beta v6 · Navigation + Export Menu</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -84,6 +84,17 @@ button{cursor:pointer}
 .player-profile-actions .btn,.player-profile-actions a{min-height:54px}
 .player-profile-draft{font-size:16px;font-weight:950;letter-spacing:.06em}
 .player-profile-draft:disabled{opacity:.38;cursor:not-allowed;filter:grayscale(.25)}
+.home-nav-tab{border-color:rgba(255,210,26,.38)!important}
+.draft-view{scroll-margin-top:118px}
+.export-choice-overlay{position:fixed;inset:0;z-index:1400;display:grid;place-items:center;padding:18px;background:rgba(0,0,0,.78);backdrop-filter:blur(7px)}
+.export-choice-overlay.hidden{display:none!important}
+.export-choice-card{position:relative;width:min(410px,100%);padding:24px 18px 18px;border:1px solid #5b5b5b;border-top:3px solid var(--gold);border-radius:18px;background:linear-gradient(145deg,#181818,#090909);box-shadow:0 30px 90px rgba(0,0,0,.82)}
+.export-choice-kicker{color:var(--gold);font-size:11px;font-weight:950;letter-spacing:.13em}
+.export-choice-card h2{margin:6px 42px 7px 0;font-size:22px;line-height:1.05}
+.export-choice-card p{margin:0 0 17px;color:var(--muted);font-size:12px;line-height:1.4}
+.export-choice-actions{display:grid;gap:10px}
+.export-choice-actions .btn{min-height:56px;font-size:15px;font-weight:950;letter-spacing:.045em}
+
 @media(max-width:520px){
   .player-profile-actions{grid-template-columns:1fr}
   .player-profile-actions .btn,.player-profile-actions a{min-height:52px}
@@ -1922,6 +1933,7 @@ select.setup-input option:checked{
     <section class="panel">
       <div class="panel-head">
         <div class="tabs" id="draftRoomTabs" role="tablist" aria-label="Draft room sections">
+          <button class="tab home-nav-tab" id="homeNavBtn" type="button" aria-label="Go to top of page">⌂ Home</button>
           <button class="tab active" id="playersTab" data-view="players" type="button" role="tab" aria-controls="playersView" aria-selected="true" tabindex="0">Players</button>
           <button class="tab" id="boardTab" data-view="board" type="button" role="tab" aria-controls="boardView" aria-selected="false" tabindex="-1">Draft Board</button>
           <button class="tab" id="teamsTab" data-view="teams" type="button" role="tab" aria-controls="teamsView" aria-selected="false" tabindex="-1">All Teams</button>
@@ -2039,6 +2051,19 @@ select.setup-input option:checked{
       <button class="bye-clash-close" id="draftAnalysisClose" type="button" aria-label="Close draft analysis">×</button>
     </div>
     <div class="draft-analysis-body" id="draftAnalysisBody"></div>
+  </div>
+</div>
+
+<div class="export-choice-overlay hidden" id="exportChoiceOverlay" role="dialog" aria-modal="true" aria-labelledby="exportChoiceTitle">
+  <div class="export-choice-card">
+    <button class="player-profile-close" id="exportChoiceClose" type="button" aria-label="Close export menu">×</button>
+    <div class="export-choice-kicker">EXPORT</div>
+    <h2 id="exportChoiceTitle">What do you want to export?</h2>
+    <p>Use the same Export button for either your team or the complete draft.</p>
+    <div class="export-choice-actions">
+      <button class="btn primary" id="exportRosterBtn" type="button">MY ROSTER</button>
+      <button class="btn" id="exportBoardBtn" type="button">DRAFT BOARD</button>
+    </div>
   </div>
 </div>
 
@@ -7227,6 +7252,18 @@ function centerActiveTab(tab){
   const left=tab.offsetLeft-(strip.clientWidth-tab.offsetWidth)/2;
   try{strip.scrollTo({left:Math.max(0,left),behavior:'smooth'})}catch(_){strip.scrollLeft=Math.max(0,left)}
 }
+function ff26NavigateToView(view){
+  const config=DRAFT_VIEWS[view];
+  const target=config?$(config.panel):null;
+  if(!target)return;
+  const header=document.querySelector('.topbar');
+  const offset=(header?.offsetHeight||0)+18;
+  const y=Math.max(0,target.getBoundingClientRect().top+window.scrollY-offset);
+  try{window.scrollTo({top:y,left:0,behavior:'smooth'})}catch(_){window.scrollTo(0,y)}
+}
+function ff26GoHome(){
+  try{window.scrollTo({top:0,left:0,behavior:'smooth'})}catch(_){window.scrollTo(0,0)}
+}
 function switchView(requestedView,render=true){
   const view=DRAFT_VIEWS[requestedView]?requestedView:'players';
   state.view=view;
@@ -7248,10 +7285,130 @@ function switchView(requestedView,render=true){
     DRAFT_VIEWS[view].render();
     save();
     scrollActiveViewToTop(view);
-    scrollPageToTop(false);
   }
   updateTabMeta(view);
   centerActiveTab($(`.tab[data-view="${view}"]`));
+  if(render)ff26NavigateToView(view);
+}
+async function ff26SaveJpegBlob(blob,fileName,title,shareText,successLabel){
+  try{
+    if(typeof window.showSaveFilePicker==='function'){
+      const handle=await window.showSaveFilePicker({
+        suggestedName:fileName,
+        types:[{description:'JPEG image',accept:{'image/jpeg':['.jpg','.jpeg']}}]
+      });
+      const writable=await handle.createWritable();
+      await writable.write(blob);
+      await writable.close();
+      toast(`${successLabel} saved.`,'good');
+      return;
+    }
+    const file=new File([blob],fileName,{type:'image/jpeg'});
+    if(navigator.share && (!navigator.canShare || navigator.canShare({files:[file]}))){
+      await navigator.share({files:[file],title,text:shareText});
+      toast('Export dialog closed.','good');
+      return;
+    }
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=fileName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+    toast(`${successLabel} downloaded.`,'good');
+  }catch(error){
+    if(error?.name==='AbortError'){toast('Export canceled.');return}
+    console.error('Export failed:',error);
+    toast('Unable to open the save dialog.','bad');
+  }
+}
+
+async function exportMyRosterJpg(){
+  const picks=state.picks
+    .filter(pick=>pick.teamSlot===state.userSlot)
+    .slice()
+    .sort((a,b)=>a.overall-b.overall);
+
+  if(!picks.length){
+    toast('Your roster does not have any drafted players yet.','bad');
+    return;
+  }
+
+  const roster=draftOrderRoster(state.userSlot);
+  const width=920,pad=34,titleH=128,rowH=62,headerH=42;
+  const height=titleH+headerH+(Math.max(roster.length,1)*rowH)+pad*2;
+  const scale=2;
+  const canvas=document.createElement('canvas');
+  canvas.width=width*scale;canvas.height=height*scale;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(scale,scale);
+  ctx.imageSmoothingEnabled=true;
+
+  const bg='#070707',panel='#111111',line='#3b3b3b',gold='#ffd21a',ink='#f6f3ea',muted='#aaa79f';
+  ctx.fillStyle=bg;ctx.fillRect(0,0,width,height);
+  ctx.fillStyle=panel;ctx.fillRect(pad,titleH,width-pad*2,height-titleH-pad);
+
+  ctx.fillStyle=gold;ctx.font='900 30px Arial';ctx.fillText("DUKE'S FF26 · MY ROSTER",pad,48);
+  ctx.fillStyle=ink;ctx.font='900 20px Arial';ctx.fillText(state.teamNames?.[state.userSlot-1]||`Team ${state.userSlot}`,pad,80);
+  ctx.fillStyle=muted;ctx.font='700 13px Arial';ctx.fillText(`Draft slot ${state.userSlot} · ${picks.length} drafted players`,pad,104);
+
+  const cols=[
+    {x:pad+18,label:'SLOT'},
+    {x:pad+112,label:'PLAYER'},
+    {x:pad+495,label:'NFL'},
+    {x:pad+585,label:'BYE'},
+    {x:pad+660,label:'DRAFTED'},
+    {x:pad+790,label:'ADP'}
+  ];
+  ctx.fillStyle='#1d1d1d';ctx.fillRect(pad,titleH,width-pad*2,headerH);
+  ctx.font='900 11px Arial';ctx.fillStyle=gold;
+  cols.forEach(c=>ctx.fillText(c.label,c.x,titleH+27));
+
+  const rosterRows=assignRoster(rosterFor(state.userSlot));
+  rosterRows.forEach((row,index)=>{
+    const y=titleH+headerH+index*rowH;
+    ctx.fillStyle=index%2?'#0c0c0c':'#131313';ctx.fillRect(pad,y,width-pad*2,rowH);
+    ctx.strokeStyle=line;ctx.beginPath();ctx.moveTo(pad,y+rowH);ctx.lineTo(width-pad,y+rowH);ctx.stroke();
+
+    const p=row.p;
+    ctx.fillStyle=p?gold:'#666';ctx.font='900 14px Arial';ctx.fillText(row.label,pad+18,y+37);
+    if(!p){
+      ctx.fillStyle='#6f6f6f';ctx.font='700 14px Arial';ctx.fillText('—',pad+112,y+37);
+      return;
+    }
+    const pick=state.picks.find(pk=>pk.teamSlot===state.userSlot&&pk.playerId===p.rank);
+    ctx.fillStyle=ink;ctx.font='900 17px Arial';ctx.fillText(String(p.name).slice(0,34),pad+112,y+28);
+    ctx.fillStyle=muted;ctx.font='800 11px Arial';
+    const jersey=ff26PlayerJerseyNumber(p);
+    ctx.fillText(`${p.pos}${p.posRank||''}${jersey!==null?` · #${jersey}`:''}`,pad+112,y+47);
+    ctx.fillStyle=ink;ctx.font='900 13px Arial';ctx.fillText(p.team||'—',pad+495,y+37);
+    ctx.fillText(String(p.bye??'—'),pad+585,y+37);
+    ctx.fillText(pick?pickLabel(pick.overall-1):'—',pad+660,y+37);
+    ctx.fillText(String(ff26DisplayedADP(p)??'—'),pad+790,y+37);
+  });
+
+  const blob=await new Promise((resolve,reject)=>{
+    canvas.toBlob(result=>result?resolve(result):reject(new Error('Could not create roster JPG.')),'image/jpeg',0.94);
+  });
+  await ff26SaveJpegBlob(
+    blob,
+    'Dukes_FF26_My_Roster.jpg',
+    "Duke's FF26 My Roster",
+    'Save my Duke’s FF26 fantasy roster.',
+    'My roster'
+  );
+}
+
+function openExportChoice(){
+  const overlay=$('#exportChoiceOverlay');
+  if(!overlay)return;
+  overlay.classList.remove('hidden');
+  focusWithoutScroll($('#exportRosterBtn'));
+}
+function closeExportChoice(){
+  $('#exportChoiceOverlay')?.classList.add('hidden');
 }
 async function exportBoardJpg(){
   const cols=TOTAL_TEAMS, rows=TOTAL_ROUNDS, cellW=150, cellH=72, roundW=64, headerH=48, titleH=86, pad=18, scale=2;
@@ -7720,7 +7877,12 @@ $('#autoPickBtn').onclick=()=>{
 };
 $('#undoBtn').onclick=undoTurn;
 $('#resetBtn').onclick=resetDraft;
-$('#exportBtn').onclick=exportBoardJpg;
+$('#exportBtn').onclick=openExportChoice;
+$('#exportRosterBtn').onclick=()=>{closeExportChoice();exportMyRosterJpg()};
+$('#exportBoardBtn').onclick=()=>{closeExportChoice();exportBoardJpg()};
+$('#exportChoiceClose').onclick=closeExportChoice;
+$('#exportChoiceOverlay').onclick=e=>{if(e.target===$('#exportChoiceOverlay'))closeExportChoice()};
+$('#homeNavBtn').onclick=ff26GoHome;
 $('#editTeamsBtn').onclick=openTeamEditor;
 $('#cancelTeamEditBtn').onclick=closeTeamEditor;
 $('#saveTeamNamesBtn').onclick=saveTeamNames;
@@ -7760,7 +7922,7 @@ $('#draftAnalysisOverlay').onclick=e=>{if(e.target===$('#draftAnalysisOverlay'))
 $('#playerProfileClose').onclick=closePlayerProfile;
 $('#playerProfileOverlay').onclick=e=>{if(e.target===$('#playerProfileOverlay'))closePlayerProfile()};
 $('#playerMoreInfo').onclick=e=>{const href=e.currentTarget.href;if(!href||href.endsWith('#')){e.preventDefault();toast('Player information link is unavailable.','bad');return}closePlayerProfile();};
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePlayerProfile();closeByeClashDetails();closeDraftAnalysis()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePlayerProfile();closeByeClashDetails();closeDraftAnalysis();closeExportChoice()}});
 
 if('scrollRestoration' in history)history.scrollRestoration='manual';
 let mobileViewportRaf=0;
