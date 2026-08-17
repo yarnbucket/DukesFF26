@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>Duke's FF26</title>
+<title>FF26 Visual Beta v4 · Draft From Player Card</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -72,10 +72,21 @@ button{cursor:pointer}
 .player-profile-card{width:min(430px,100%);border:1px solid #666;border-top:3px solid var(--gold);border-radius:18px;background:linear-gradient(145deg,#181818,#090909);box-shadow:0 30px 90px rgba(0,0,0,.8),0 0 30px rgba(255,210,26,.12);padding:18px;position:relative}
 .player-profile-close{position:absolute;right:12px;top:10px;width:36px;height:36px;border:1px solid #555;border-radius:50%;background:#0b0b0b;color:#fff;font-size:22px;cursor:pointer}
 .player-profile-top{display:grid;grid-template-columns:74px 1fr;gap:14px;align-items:center;padding-right:35px}
-.player-profile-avatar{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;border:3px solid var(--gold);background:linear-gradient(145deg,#2b2b2b,#101010);font-family:Impact,"Arial Narrow",sans-serif;font-size:20px;font-weight:900;color:var(--gold)}
+.player-profile-avatar{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;border:3px solid var(--gold);background:linear-gradient(145deg,#2b2b2b,#101010);font-family:Impact,"Arial Narrow",sans-serif;font-size:20px;font-weight:900;color:var(--gold);overflow:hidden}
+.player-profile-avatar img{width:58px;height:58px;object-fit:contain;display:block;filter:drop-shadow(0 3px 5px rgba(0,0,0,.45))}
+.player-profile-avatar .profile-logo-fallback{font-size:17px;letter-spacing:.04em}
 .player-profile-name{font-size:24px;line-height:1;font-weight:950;margin-bottom:6px}.player-profile-sub{color:var(--muted);font-size:13px;font-weight:800}
 .player-profile-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:16px 0 13px}.profile-stat{padding:9px 6px;border:1px solid #3d3d3d;border-radius:9px;background:#101010;text-align:center}.profile-stat b{display:block;color:#fff;font-size:15px}.profile-stat span{display:block;color:var(--muted);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
 .player-profile-honor{margin:0 0 12px;padding:8px 10px;border-left:3px solid var(--red);background:#111;color:#d7d2c8;font-size:12px;font-weight:850}
+.player-profile-actions{display:grid;grid-template-columns:1fr 1.35fr;gap:10px;align-items:stretch}
+.player-profile-actions .btn,.player-profile-actions a{min-height:54px}
+.player-profile-draft{font-size:16px;font-weight:950;letter-spacing:.06em}
+.player-profile-draft:disabled{opacity:.38;cursor:not-allowed;filter:grayscale(.25)}
+@media(max-width:520px){
+  .player-profile-actions{grid-template-columns:1fr}
+  .player-profile-actions .btn,.player-profile-actions a{min-height:52px}
+}
+
 .more-info-link{display:flex;justify-content:center;align-items:center;width:100%;min-height:43px;border:2px solid var(--gold);border-radius:10px;color:#111;background:linear-gradient(180deg,#ffe75b,#f0b900);font-weight:1000;text-decoration:none;letter-spacing:.06em}.more-info-link:hover,.more-info-link:focus{filter:brightness(1.08);box-shadow:0 0 20px rgba(255,210,26,.42)}
 .profile-trigger{cursor:pointer}.profile-trigger:hover{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
 @media(max-width:520px){.player-profile-stats{grid-template-columns:repeat(2,1fr)}}
@@ -87,7 +98,18 @@ button{cursor:pointer}
 .status-dot.GREEN{background:#43d36b;box-shadow:0 0 0 2px rgba(67,211,107,.15),0 0 9px rgba(67,211,107,.42)}
 .status-dot.YELLOW{background:#ffd21a;box-shadow:0 0 0 2px rgba(255,210,26,.14),0 0 10px rgba(255,210,26,.42)}
 .status-dot.RED{background:#ff4055;box-shadow:0 0 0 2px rgba(255,64,85,.16),0 0 10px rgba(255,64,85,.5)}
-.player-name-line,.rec-name-line{display:flex;align-items:center;gap:7px;min-width:0}.player-name-line .player-name,.rec-name-line .rec-name{min-width:0}
+.player-name-line,.rec-name-line{display:flex;align-items:center;gap:7px;min-width:0}.player-name-line .player-name,.rec-name-line .rec-name{min-width:0}.ff26-player-team-logo{width:24px;height:24px;object-fit:contain;flex:0 0 24px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.42))}
+.ff26-player-team-logo-fallback{width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;flex:0 0 24px;border:1px solid #555;background:#111;color:var(--gold);font-size:8px;font-weight:950}
+.ff26-jersey-number{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:18px;padding:0 6px;border-radius:999px;border:1px solid rgba(255,210,26,.38);background:rgba(255,210,26,.08);color:var(--gold);font-size:9px;font-weight:950;letter-spacing:.03em}
+.ff26-player-info-cell{position:relative;cursor:pointer;min-width:300px}
+.ff26-player-info-cell:active{background:rgba(255,210,26,.08)}
+.ff26-more-info-hit{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;min-width:86px;height:34px;padding:0 10px;border-radius:999px;border:1px solid rgba(255,210,26,.22);background:rgba(255,210,26,.045);color:#a9a39a;font-size:9px;font-weight:900;letter-spacing:.055em;white-space:nowrap}
+.ff26-player-info-cell:hover .ff26-more-info-hit,.ff26-player-info-cell:focus-within .ff26-more-info-hit{border-color:rgba(255,210,26,.48);color:var(--gold);background:rgba(255,210,26,.09)}
+@media(max-width:720px){
+  .ff26-player-info-cell{min-width:360px;padding-right:106px!important}
+  .ff26-more-info-hit{right:8px;min-width:92px;height:38px;font-size:9px}
+}
+
 .profile-status{margin:13px 0 12px;padding:11px 12px;border:1px solid #3a3a3a;border-left-width:4px;border-radius:10px;background:#0e0e0e}
 .profile-status.GREEN{border-left-color:#43d36b;background:linear-gradient(90deg,rgba(67,211,107,.09),#0e0e0e 50%)}
 .profile-status.YELLOW{border-left-color:#ffd21a;background:linear-gradient(90deg,rgba(255,210,26,.09),#0e0e0e 50%)}
@@ -1771,6 +1793,53 @@ select.setup-input option:checked{
 }
 .setup-autopick-toggle[aria-pressed="false"] .setup-autopick-icon{color:#8f949c}
 
+
+/* =========================================================
+   FF26 TOP DOG — review build only
+   ========================================================= */
+.top-dog-beta-badge{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-height:42px;
+  padding:5px 10px 5px 6px;
+  border:1px solid rgba(244,198,91,.62);
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(82,11,18,.94),rgba(12,12,14,.96));
+  box-shadow:0 0 0 1px rgba(0,0,0,.55) inset,0 6px 18px rgba(0,0,0,.24);
+}
+.top-dog-beta-badge img{
+  width:38px;
+  height:38px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:50%;
+  border:1px solid rgba(244,198,91,.8);
+}
+.top-dog-beta-badge span{display:flex;flex-direction:column;line-height:1.05}
+.top-dog-beta-badge strong{font-size:11px;letter-spacing:.08em;color:#f4c65b}
+.top-dog-beta-badge small{margin-top:3px;font-size:9px;color:var(--muted);font-weight:800}
+.player-table tr.top-dog-row td{
+  background:linear-gradient(90deg,rgba(86,13,18,.13),rgba(244,198,91,.025));
+}
+.top-dog-inline{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-top:4px;
+  padding:2px 7px 2px 3px;
+  border:1px solid rgba(244,198,91,.34);
+  border-radius:999px;
+  background:rgba(54,8,12,.42);
+  color:#f4c65b;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.055em;
+}
+.top-dog-inline img{
+  width:18px;height:18px;border-radius:50%;object-fit:cover;
+}
+
 </style>
 </head>
 <body>
@@ -1863,7 +1932,7 @@ select.setup-input option:checked{
         <div class="controls">
           <input class="field search" id="searchInput" type="search" placeholder="Search player or NFL team…" autocomplete="off">
           <select class="field" id="positionFilter"><option value="ALL">ALL POS</option><option>QB</option><option>RB</option><option>WR</option><option>TE</option><option>DST</option><option>K</option></select>
-          <select class="field" id="sortSelect"><option value="rank">ADP Only</option><option value="consensus">Consensus</option><option value="ppg25">2025 PPG</option><option value="trend">PPG Trend</option><option value="nflTeam">NFL Team</option></select>
+          <select class="field" id="sortSelect"><option value="rank">ADP Only</option><option value="topDogs">TOP DOG</option><option value="consensus">Consensus</option><option value="ppg25">2025 PPG</option><option value="trend">PPG Trend</option><option value="nflTeam">NFL Team</option></select><div id="topDogBetaBadge" class="top-dog-beta-badge hidden" aria-live="polite"><img src="top-dog.png" alt=""><span><strong>TOP DOG</strong><small>RB1 + WR1 · 64-player pool</small></span></div>
           <select class="field team-filter hidden" id="teamFilter" aria-label="NFL team filter"><option value="ALL">Team: All</option></select>
           
         </div>
@@ -1878,7 +1947,7 @@ select.setup-input option:checked{
         <div id="recommendations" class="recommendations"></div>
         <div class="table-wrap">
           <table class="player-table">
-            <thead><tr><th class="sortable-th"><button type="button" data-column-sort="rank" aria-label="Sort by rank or ADP">ADP <span data-sort-arrow="rank"></span></button></th><th class="sortable-th"><button type="button" data-column-sort="player" aria-label="Sort by player name">Player <span data-sort-arrow="player"></span></button></th><th>Pos</th><th class="sortable-th"><button type="button" data-column-sort="team" aria-label="Sort by NFL team">Team <span data-sort-arrow="team"></span></button></th><th>Tier</th><th class="sortable-th"><button type="button" data-column-sort="bye" aria-label="Sort by bye week">Bye <span data-sort-arrow="bye"></span></button></th><th class="sortable-th"><button type="button" data-column-sort="ppg25" aria-label="Sort by 2025 PPG">2025 PPG <span data-sort-arrow="ppg25"></span></button></th><th>Trend</th><th></th></tr></thead>
+            <thead><tr><th class="sortable-th"><button type="button" data-column-sort="rank" aria-label="Sort by rank or ADP">ADP <span data-sort-arrow="rank"></span></button></th><th class="sortable-th"><button type="button" data-column-sort="player" aria-label="Sort by player name">Player <span data-sort-arrow="player"></span></button></th><th class="sortable-th"><button type="button" data-column-sort="pos" aria-label="Sort by position">Pos <span data-sort-arrow="pos"></span></button></th><th class="sortable-th"><button type="button" data-column-sort="team" aria-label="Sort by NFL team">Team <span data-sort-arrow="team"></span></button></th><th>Tier</th><th class="sortable-th"><button type="button" data-column-sort="bye" aria-label="Sort by bye week">Bye <span data-sort-arrow="bye"></span></button></th><th class="sortable-th"><button type="button" data-column-sort="ppg25" aria-label="Sort by 2025 PPG">2025 PPG <span data-sort-arrow="ppg25"></span></button></th><th class="sortable-th"><button type="button" data-column-sort="trend" aria-label="Sort by PPG trend">Trend <span data-sort-arrow="trend"></span></button></th><th></th></tr></thead>
             <tbody id="playerRows"></tbody>
           </table>
         </div>
@@ -1987,7 +2056,10 @@ select.setup-input option:checked{
       <a class="profile-status-source hidden" id="playerProfileStatusSource" href="#" target="_blank" rel="noopener noreferrer">STATUS SOURCE ↗</a>
     </div>
     <div class="player-profile-honor" id="playerProfileHonor"></div>
-    <a class="more-info-link" id="playerMoreInfo" href="#" target="_blank" rel="noopener noreferrer">MORE INFO ↗</a>
+    <div class="player-profile-actions">
+  <button type="button" class="btn primary player-profile-draft" id="playerProfileDraftBtn">DRAFT</button>
+  <a class="more-info-link" id="playerMoreInfo" href="#" target="_blank" rel="noopener noreferrer">MORE INFO ↗</a>
+</div>
   </div>
 </div>
 
@@ -2413,6 +2485,7 @@ function refreshFF26StatusUI(){
       const currentName=document.getElementById('playerProfileName')?.textContent;
       const currentPlayer=PLAYERS.find(player=>player.name===currentName);
       if(currentPlayer)openPlayerProfile(currentPlayer);
+      else if(FF26_OPEN_PROFILE_PLAYER)ff26SyncProfileDraftButton(FF26_OPEN_PROFILE_PLAYER);
     }
   }catch(error){FF26_DIAG.warn('FF26 status UI refresh skipped:',error)}
 }
@@ -6469,15 +6542,94 @@ function playerInfoUrl(player){
   return `https://www.google.com/search?q=${query}`;
 }
 
+const FF26_ESPN_TEAM_LOGO_CODE=Object.freeze({WAS:"wsh"});
+function ff26TeamLogoUrl(team){
+  const key=String(team||"").trim().toUpperCase();
+  if(!key||key==="FA")return null;
+  const code=FF26_ESPN_TEAM_LOGO_CODE[key]||key.toLowerCase();
+  return `https://a.espncdn.com/i/teamlogos/nfl/500/${encodeURIComponent(code)}.png`;
+}
+function ff26PlayerJerseyNumber(player){
+  if(!player)return null;
+  const direct=player.jerseyNumber;
+  if(direct!==null&&direct!==undefined&&String(direct).trim()!=="")return String(direct).trim();
+  const status=getPlayerStatus(player);
+  const live=status?.jerseyNumber;
+  if(live!==null&&live!==undefined&&String(live).trim()!=="")return String(live).trim();
+  return null;
+}
+function ff26PlayerTeamLogoMarkup(player){
+  const team=String(player?.team||"").trim().toUpperCase();
+  const url=ff26TeamLogoUrl(team);
+  if(!url)return `<span class="ff26-player-team-logo-fallback" aria-hidden="true">${escapeHtml(team||player?.pos||'NFL')}</span>`;
+  return `<img class="ff26-player-team-logo" src="${escapeHtml(url)}" alt="${escapeHtml(team)} logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">`;
+}
+function ff26JerseyMarkup(player){
+  const number=ff26PlayerJerseyNumber(player);
+  return number===null?'':`<span class="ff26-jersey-number" title="Jersey number">#${escapeHtml(number)}</span>`;
+}
+function ff26RenderProfileTeamLogo(player){
+  const avatar=$('#playerProfileAvatar');
+  if(!avatar)return;
+  const team=String(player?.team||"NFL").toUpperCase();
+  const url=ff26TeamLogoUrl(team);
+  avatar.className=`player-profile-avatar pos-${player?.pos||''}`;
+  avatar.innerHTML='';
+  if(!url){
+    avatar.innerHTML=`<span class="profile-logo-fallback">${escapeHtml(player?.pos||team||'NFL')}</span>`;
+    return;
+  }
+  const img=document.createElement('img');
+  img.src=url;
+  img.alt=`${team} team logo`;
+  img.loading='eager';
+  img.decoding='async';
+  img.referrerPolicy='no-referrer';
+  img.onerror=()=>{
+    avatar.innerHTML=`<span class="profile-logo-fallback">${escapeHtml(team||player?.pos||'NFL')}</span>`;
+  };
+  avatar.appendChild(img);
+}
+let FF26_OPEN_PROFILE_PLAYER=null;
+function ff26SyncProfileDraftButton(player){
+  const btn=$('#playerProfileDraftBtn');
+  if(!btn)return;
+  const p=player||FF26_OPEN_PROFILE_PLAYER;
+  if(!p||p.rosterOnly){
+    btn.disabled=true;
+    btn.textContent='NOT DRAFTABLE';
+    return;
+  }
+  const alreadyDrafted=state?.picks?.some?.(pick=>String(pick?.player?.rank??pick?.rank)===String(p.rank));
+  if(alreadyDrafted){
+    btn.disabled=true;
+    btn.textContent='DRAFTED';
+    return;
+  }
+  if(!state?.started){
+    btn.disabled=true;
+    btn.textContent='START DRAFT FIRST';
+    return;
+  }
+  if(!isUserTurn()){
+    btn.disabled=true;
+    btn.textContent='WAIT FOR YOUR PICK';
+    return;
+  }
+  btn.disabled=false;
+  btn.textContent='DRAFT';
+}
 function openPlayerProfile(playerOrId){
   const p=typeof playerOrId==='object'
     ? playerOrId
     : (byId(playerOrId)||ROSTER26_PLAYERS.find(player=>String(player.rank)===String(playerOrId)));
   if(!p)return;
+  FF26_OPEN_PROFILE_PLAYER=p;
+  ff26SyncProfileDraftButton(p);
   $('#playerProfileName').textContent=p.name;
-  $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''} · Bye ${p.bye??'—'}`;
-  $('#playerProfileAvatar').textContent=p.pos;
-  $('#playerProfileAvatar').className=`player-profile-avatar pos-${p.pos}`;
+  const jerseyNumber=ff26PlayerJerseyNumber(p);
+  $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''}${jerseyNumber!==null?` · #${jerseyNumber}`:''} · Bye ${p.bye??'—'}`;
+  ff26RenderProfileTeamLogo(p);
   const statusBox=$('#playerProfileStatus');
   if(p.rosterOnly){
     const exp=p.experience==null?'—':p.experience;
@@ -6531,19 +6683,97 @@ function closePlayerProfile(){
   overlay.classList.add('hidden');
   unlockMobilePageScroll();
 }
+document.addEventListener('click',event=>{
+  const btn=event.target.closest('#playerProfileDraftBtn');
+  if(!btn)return;
+  const p=FF26_OPEN_PROFILE_PLAYER;
+  if(!p||btn.disabled)return;
+  if(draftActionLocked||typeof makePick!=='function'||typeof byId!=='function')return;
+  makePick(byId(p.rank));
+  ff26SyncProfileDraftButton(p);
+  closePlayerProfile();
+});
+
 
 const FF26_NFL_TEAMS=["ARI","ATL","BAL","BUF","CAR","CHI","CIN","CLE","DAL","DEN","DET","GB","HOU","IND","JAX","KC","LV","LAC","LAR","MIA","MIN","NE","NO","NYG","NYJ","PHI","PIT","SEA","SF","TB","TEN","WAS"];
+
+const FF26_TOP_DOGS_BETA = Object.freeze({
+  ARI:{RB:"Jeremiyah Love",WR:"Marvin Harrison Jr."},
+  ATL:{RB:"Bijan Robinson",WR:"Drake London"},
+  BAL:{RB:"Derrick Henry",WR:"Zay Flowers"},
+  BUF:{RB:"James Cook III",WR:"DJ Moore"},
+  CAR:{RB:"Chuba Hubbard",WR:"Tetairoa McMillan"},
+  CHI:{RB:"D'Andre Swift",WR:"Rome Odunze"},
+  CIN:{RB:"Chase Brown",WR:"Ja'Marr Chase"},
+  CLE:{RB:"Quinshon Judkins",WR:"Jerry Jeudy"},
+  DAL:{RB:"Javonte Williams",WR:"CeeDee Lamb"},
+  DEN:{RB:"J.K. Dobbins",WR:"Jaylen Waddle"},
+  DET:{RB:"Jahmyr Gibbs",WR:"Amon-Ra St. Brown"},
+  GB:{RB:"Josh Jacobs",WR:"Christian Watson"},
+  HOU:{RB:"David Montgomery",WR:"Nico Collins"},
+  IND:{RB:"Jonathan Taylor",WR:"Alec Pierce"},
+  JAX:{RB:"Bhayshul Tuten",WR:"Jakobi Meyers"},
+  KC:{RB:"Kenneth Walker III",WR:"Rashee Rice"},
+  LV:{RB:"Ashton Jeanty",WR:"Tre Tucker"},
+  LAC:{RB:"Omarion Hampton",WR:"Ladd McConkey"},
+  LAR:{RB:"Kyren Williams",WR:"Puka Nacua"},
+  MIA:{RB:"De'Von Achane",WR:"Malik Washington"},
+  MIN:{RB:"Aaron Jones Sr.",WR:"Justin Jefferson"},
+  NE:{RB:"Rhamondre Stevenson",WR:"A.J. Brown"},
+  NO:{RB:"Travis Etienne Jr.",WR:"Chris Olave"},
+  NYG:{RB:"Cam Skattebo",WR:"Malik Nabers"},
+  NYJ:{RB:"Breece Hall",WR:"Garrett Wilson"},
+  PHI:{RB:"Saquon Barkley",WR:"DeVonta Smith"},
+  PIT:{RB:"Jaylen Warren",WR:"Michael Pittman Jr."},
+  SF:{RB:"Christian McCaffrey",WR:"Mike Evans"},
+  SEA:{RB:"Zach Charbonnet",WR:"Jaxon Smith-Njigba"},
+  TB:{RB:"Bucky Irving",WR:"Emeka Egbuka"},
+  TEN:{RB:"Tony Pollard",WR:"Carnell Tate"},
+  WAS:{RB:"Rachaad White",WR:"Terry McLaurin"}
+});
+function ff26TopDogKey(value){
+  return String(value||"")
+    .toLowerCase()
+    .replace(/[’']/g,"")
+    .replace(/\b(jr|sr|ii|iii|iv|v)\b\.?/g,"")
+    .replace(/[^a-z0-9]+/g,"");
+}
+function ff26IsTopDogCandidate(player){
+  if(!player||player.rosterOnly||!["RB","WR"].includes(player.pos))return false;
+  const team=FF26_TOP_DOGS_BETA[player.team];
+  if(!team)return false;
+  return ff26TopDogKey(player.name)===ff26TopDogKey(team[player.pos]);
+}
+function ff26UpdateTopDogBetaUI(){
+  const active=$('#sortSelect')?.value==='topDogs';
+  const badge=$('#topDogBetaBadge');
+  if(badge)badge.classList.toggle('hidden',!active);
+}
+
 let ff26ColumnSort={key:null,direction:1};
 let ff26TeamModeSeen=false;
 function ff26PopulateTeamFilter(){const select=$('#teamFilter');if(!select||select.options.length>1)return;FF26_NFL_TEAMS.forEach(team=>select.add(new Option(team,team)))}
 function ff26StatusPenalty(player){const status=getPlayerStatus(player)?.status;return status==='RED'?18:status==='YELLOW'?6:0}
 function ff26TeamPlaymakerScore(player){const adp=Math.max(1,Number(player.rank)||500),tier=Math.max(1,Number(player.tier)||12),ppg=Number.isFinite(Number(player.ppg25))?Number(player.ppg25):0,trend=Number.isFinite(Number(player.trend))?Number(player.trend):0,posWeight={RB:8,WR:8,TE:5,QB:4,K:-8,DST:-8}[player.pos]||0;return (120-adp*.22)+(ppg*2.2)+(trend*.45)+(14-tier)+posWeight-ff26StatusPenalty(player)}
 function ff26TeamFantasyComparator(a,b){const scoreDiff=ff26TeamPlaymakerScore(b)-ff26TeamPlaymakerScore(a);if(Math.abs(scoreDiff)>.001)return scoreDiff;const ppgDiff=(Number(b.ppg25)||0)-(Number(a.ppg25)||0);if(ppgDiff)return ppgDiff;return (Number(a.rank)||999)-(Number(b.rank)||999)}
+function ff26DisplayedADP(player){
+  const validRank=value=>{
+    if(value===null||value===undefined||value==='')return null;
+    const n=Number(value);
+    return Number.isFinite(n)&&n>0?n:null;
+  };
+  const espn=validRank(player?.espnRank);
+  if(espn!==null)return espn;
+  const market=validRank(player?.consensus);
+  if(market!==null)return market;
+  const fallback=validRank(player?.rank);
+  return fallback!==null?fallback:9999;
+}
 function ff26CompareNullableNumbers(a,b,direction=1){const av=Number(a),bv=Number(b),am=!Number.isFinite(av),bm=!Number.isFinite(bv);if(am&&bm)return 0;if(am)return 1;if(bm)return -1;return (av-bv)*direction}
-function ff26ApplyColumnSort(list){const {key,direction}=ff26ColumnSort;if(!key)return false;list.sort((a,b)=>{if(key==='player')return a.name.localeCompare(b.name,undefined,{sensitivity:'base'})*direction;if(key==='team')return (a.team||'').localeCompare(b.team||'',undefined,{sensitivity:'base'})*direction||(Number(a.rank)||999)-(Number(b.rank)||999);if(key==='rank')return ff26CompareNullableNumbers(a.rank,b.rank,direction);if(key==='bye')return ff26CompareNullableNumbers(a.bye,b.bye,direction);if(key==='ppg25')return ff26CompareNullableNumbers(a.ppg25,b.ppg25,direction);return 0});return true}
+function ff26ApplyColumnSort(list){const {key,direction}=ff26ColumnSort;if(!key)return false;list.sort((a,b)=>{if(key==='player')return a.name.localeCompare(b.name,undefined,{sensitivity:'base'})*direction;if(key==='team')return (a.team||'').localeCompare(b.team||'',undefined,{sensitivity:'base'})*direction||(Number(a.rank)||999)-(Number(b.rank)||999);if(key==='pos')return (a.pos||'').localeCompare(b.pos||'',undefined,{sensitivity:'base'})*direction||(Number(a.rank)||999)-(Number(b.rank)||999);if(key==='rank')return ff26CompareNullableNumbers(ff26DisplayedADP(a),ff26DisplayedADP(b),direction);if(key==='bye')return ff26CompareNullableNumbers(a.bye,b.bye,direction);if(key==='ppg25')return ff26CompareNullableNumbers(a.ppg25,b.ppg25,direction);if(key==='trend')return ff26CompareNullableNumbers(a.trend,b.trend,direction);return 0});return true}
 function ff26UpdateSortHeaderUI(){document.querySelectorAll('[data-column-sort]').forEach(button=>{const key=button.dataset.columnSort,active=ff26ColumnSort.key===key;button.classList.toggle('active-sort',active);button.setAttribute('aria-pressed',String(active));const arrow=button.querySelector(`[data-sort-arrow="${key}"]`);if(arrow)arrow.textContent=active?(ff26ColumnSort.direction===1?'▲':'▼'):''})}
 function ff26ToggleColumnSort(key){if(ff26ColumnSort.key===key)ff26ColumnSort.direction*=-1;else ff26ColumnSort={key,direction:1};ff26UpdateSortHeaderUI();renderPlayers()}
-function ff26UpdateTeamMode(){const isTeam=$('#sortSelect')?.value==='nflTeam',team=$('#teamFilter');if(team)team.classList.toggle('hidden',!isTeam);if(isTeam&&!ff26TeamModeSeen){ff26TeamModeSeen=true;ff26ColumnSort={key:null,direction:1};ff26UpdateSortHeaderUI()}}
+function ff26UpdateTeamMode(){const isTeam=$('#sortSelect')?.value==='nflTeam',team=$('#teamFilter');if(team)team.classList.toggle('hidden',!isTeam);if(isTeam&&!ff26TeamModeSeen){ff26TeamModeSeen=true;ff26ColumnSort={key:null,direction:1};ff26UpdateSortHeaderUI()}ff26UpdateTopDogBetaUI()}
 
 
 /* FF26 v1.2 supplemental complete-roster search layer.
@@ -6613,8 +6843,12 @@ function filteredPlayers(){
   const includeRoster=Boolean(q)||sort==='nflTeam';
   const source=includeRoster?[...ranked,...ROSTER26_PLAYERS]:ranked;
   let list=source.filter(p=>(pos==='ALL'||p.pos===pos)&&(!q||`${p.name} ${p.team}`.toLowerCase().includes(q))&&(sort!=='nflTeam'||selectedTeam==='ALL'||p.team===selectedTeam));
+  if(sort==='topDogs')list=list.filter(ff26IsTopDogCandidate);
   const manuallySorted=ff26ApplyColumnSort(list);
-  if(!manuallySorted){if(sort==='nflTeam')list.sort((a,b)=>{if(a.rosterOnly!==b.rosterOnly)return a.rosterOnly?1:-1;return ff26TeamFantasyComparator(a,b)});else list.sort((a,b)=>{if(a.rosterOnly!==b.rosterOnly)return a.rosterOnly?1:-1;if(sort==='ppg25')return (b.ppg25??-99)-(a.ppg25??-99);if(sort==='trend')return (b.trend??-99)-(a.trend??-99);if(sort==='consensus')return (a.consensus??999)-(b.consensus??999);return (Number(a.rank)||9999)-(Number(b.rank)||9999)})}
+  if(!manuallySorted){
+    if(sort==='nflTeam')list.sort((a,b)=>{if(a.rosterOnly!==b.rosterOnly)return a.rosterOnly?1:-1;return ff26TeamFantasyComparator(a,b)});
+    else list.sort((a,b)=>{if(a.rosterOnly!==b.rosterOnly)return a.rosterOnly?1:-1;if(sort==='ppg25')return (b.ppg25??-99)-(a.ppg25??-99);if(sort==='trend')return (b.trend??-99)-(a.trend??-99);if(sort==='consensus')return (a.consensus??999)-(b.consensus??999);return ff26DisplayedADP(a)-ff26DisplayedADP(b)})
+  }
   return list
 }
 function bestPickStrategyText(player,slot,pickIndex){
@@ -6678,12 +6912,13 @@ function marketFlagMarkup(player){
 }
 
 function renderPlayers(){
-  $('#availableCount').textContent=`${available().length} available`;
   const list=filteredPlayers(),tbody=$('#playerRows');tbody.innerHTML='';
+  const topDogMode=$('#sortSelect')?.value==='topDogs';
+  $('#availableCount').textContent=topDogMode?`${list.length} TOP DOG available`:`${available().length} available`;
   const clashRoster=state.started?rosterFor(state.userSlot):[];
   const teamMode=$('#sortSelect')?.value==='nflTeam',selectedTeam=$('#teamFilter')?.value||'ALL';
   const bestTeamPlayer=teamMode&&selectedTeam!=='ALL'?[...list].filter(p=>!p.rosterOnly).sort(ff26TeamFantasyComparator)[0]:null;
-  list.forEach(p=>{const clash=p.rosterOnly?{level:0,text:''}:byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);const bestMarker=!p.rosterOnly&&bestTeamPlayer?.rank===p.rank?'<span class="team-best-marker">★ Best Available on Team</span>':'';const valueFlags=p.rosterOnly?'':marketFlagMarkup(p);const rosterMeta=p.rosterOnly?`<div class="team-text">FULL 2026 ROSTER${p.college?` · ${escapeHtml(p.college)}`:''}</div>`:`<div class="team-text">${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div>`;const action=p.rosterOnly?'<span class="tier-pill">ROSTER</span>':`<button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button>`;tr.innerHTML=`<td class="rank">${p.rosterOnly?'—':p.rank}</td><td><div class="player-name-line">${p.rosterOnly?'':statusDotMarkup(p)}<div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div></div>${rosterMeta}${valueFlags}${bestMarker}</td><td><span class="pos ${p.pos}">${p.pos}</span></td><td class="metric">${escapeHtml(p.team)}</td><td><span class="tier-pill">${p.rosterOnly?'ROSTER':`T${p.tier??'—'}`}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${p.rosterOnly?'—':fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.rosterOnly?'—':(p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`)}</td><td>${action}</td>`;if(!p.rosterOnly)tr.onclick=e=>{if(!e.target.closest('button')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
+  list.forEach(p=>{const clash=p.rosterOnly?{level:0,text:''}:byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.classList.toggle('top-dog-row',topDogMode&&ff26IsTopDogCandidate(p));const bestMarker=!p.rosterOnly&&bestTeamPlayer?.rank===p.rank?'<span class="team-best-marker">★ Best Available on Team</span>':'';const valueFlags=p.rosterOnly?'':marketFlagMarkup(p);const topDogMarker=topDogMode&&ff26IsTopDogCandidate(p)?`<span class="top-dog-inline"><img src="top-dog.png" alt="">TOP DOG · ${p.pos}1</span>`:'';const rosterMeta=p.rosterOnly?`<div class="team-text">FULL 2026 ROSTER${p.college?` · ${escapeHtml(p.college)}`:''}</div>`:`<div class="team-text">${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div>${topDogMarker}`;const action=p.rosterOnly?'<span class="tier-pill">ROSTER</span>':`<button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button>`;tr.innerHTML=`<td class="rank">${p.rosterOnly?'—':ff26DisplayedADP(p)}</td><td class="ff26-player-info-cell" data-player-info="${p.rank}" role="button" tabindex="0" aria-label="More information about ${escapeHtml(p.name)}"><div class="player-name-line">${ff26PlayerTeamLogoMarkup(p)}${p.rosterOnly?'':statusDotMarkup(p)}<div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div>${ff26JerseyMarkup(p)}</div>${rosterMeta}${valueFlags}${bestMarker}<span class="ff26-more-info-hit" aria-hidden="true">MORE INFO ›</span></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td class="metric">${escapeHtml(p.team)}</td><td><span class="tier-pill">${p.rosterOnly?'ROSTER':`T${p.tier??'—'}`}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${p.rosterOnly?'—':fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.rosterOnly?'—':(p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`)}</td><td>${action}</td>`;const infoCell=tr.querySelector('[data-player-info]');if(infoCell){const openInfo=e=>{e.preventDefault();e.stopPropagation();openPlayerProfile(p)};infoCell.addEventListener('click',openInfo);infoCell.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){openInfo(e)}})}if(!p.rosterOnly)tr.onclick=e=>{if(!e.target.closest('button,[data-player-info]')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
 
   const guide=$('#rosterGuidance'),rec=$('#recommendations');rec.innerHTML='';
   if(!isUserTurn()){rec.classList.add('hidden');guide.classList.add('hidden')}
@@ -6698,7 +6933,7 @@ function renderPlayers(){
       const fitText=fills?'Fills a required starter/FLEX need':assessment.marginalLineup>0.5?'Improves the projected starting lineup':assessment.adjustedADP>=5?'Strong ADP and turn value':status.complete?'Best-value depth pick':'Best composite roster value';
       const byeText=clash.level?` · ⚠ ${clash.text}`:` · Bye ${p.bye??'—'} clear`;
       const strategyText=i===0?bestPickStrategyText(p,activeDraftSlot(),state.currentPick):'';
-      d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name-line">${statusDotMarkup(p)}<div class="rec-name profile-trigger" data-profile="${p.rank}">${i===0?'★ ':''}${escapeHtml(p.name)}</div></div><div class="rec-meta">${fitText} · ADP ${p.rank} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div>${i===0?`<div class="rec-strategy"><strong>Draft Strategy:</strong> ${escapeHtml(strategyText)}</div>`:''}</div><button type="button" class="btn small primary draft-rec-btn" data-rec="${p.rank}" aria-label="Pick ${escapeHtml(p.name)}">PICK</button>`;
+      d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name-line">${ff26PlayerTeamLogoMarkup(p)}${statusDotMarkup(p)}<div class="rec-name profile-trigger" data-profile="${p.rank}">${i===0?'★ ':''}${escapeHtml(p.name)}</div>${ff26JerseyMarkup(p)}</div><div class="rec-meta">${fitText} · ADP ${ff26DisplayedADP(p)} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div>${i===0?`<div class="rec-strategy"><strong>Draft Strategy:</strong> ${escapeHtml(strategyText)}</div>`:''}</div><button type="button" class="btn small primary draft-rec-btn" data-rec="${p.rank}" aria-label="Pick ${escapeHtml(p.name)}">PICK</button>`;
       rec.appendChild(d)
     });
   }
@@ -7415,7 +7650,7 @@ if(FF26_BUILD_MODE==='development'){
 /* @DEV_EXPORTS_END */
 FF26_DIAG.info("Duke's FF26 strategy release v3.1.0 WR stopping-point build integrated.",DUKES_STRATEGY_V3_VALIDATION);
 
-function buildFilters(){ff26PopulateTeamFilter();$('#searchInput').addEventListener('input',renderPlayers);$('#positionFilter').addEventListener('change',renderPlayers);$('#sortSelect').addEventListener('change',()=>{ff26UpdateTeamMode();renderPlayers()});$('#teamFilter').addEventListener('change',renderPlayers);document.querySelectorAll('[data-column-sort]').forEach(button=>button.addEventListener('click',()=>ff26ToggleColumnSort(button.dataset.columnSort)));ff26UpdateTeamMode();ff26UpdateSortHeaderUI();}
+function buildFilters(){ff26PopulateTeamFilter();$('#searchInput').addEventListener('input',renderPlayers);$('#positionFilter').addEventListener('change',renderPlayers);$('#sortSelect').addEventListener('change',()=>{ff26ColumnSort={key:null,direction:1};ff26UpdateSortHeaderUI();ff26UpdateTeamMode();renderPlayers()});$('#teamFilter').addEventListener('change',renderPlayers);document.querySelectorAll('[data-column-sort]').forEach(button=>button.addEventListener('click',()=>ff26ToggleColumnSort(button.dataset.columnSort)));ff26UpdateTeamMode();ff26UpdateSortHeaderUI();}
 
 document.querySelectorAll('[data-sound-toggle]').forEach(button=>button.addEventListener('click',()=>setSoundEnabled(!soundEnabled,{confirmWithSound:!soundEnabled})));
 document.addEventListener('click',event=>{
