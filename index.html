@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 v18.7</title>
+<title>FF26 v18.8</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -2067,7 +2067,7 @@ body{
 
 /* FF26 v18.7 — More Info bye-week clash indicator */
 .profile-bye-clear{color:#b8f5c5!important}
-.profile-bye-clash{color:#ffd36a!important}
+.profile-bye-clash{color:#ff9f2f!important}
 .profile-bye-danger{color:#ff8a8a!important;font-weight:900}
 
 </style>
@@ -5096,7 +5096,17 @@ function posCounts(roster){return dukesCountRoster(roster)}
 function flexCount(roster){return dukesFlexCount(roster)}
 function starterStatus(roster){return dukesFullRosterStatus(roster)}
 function playerFillsNeed(player,roster){return dukesPlayerFillsNeed(player,roster,true)}
-function byeConflict(roster,player){if(!player?.bye)return {level:0,text:''};const sameBye=roster.filter(x=>x.bye===player.bye),samePos=sameBye.filter(x=>x.pos===player.pos);let level=0;if(sameBye.length>=2)level=1;if(sameBye.length>=3||samePos.length>=1)level=2;return {level,text:level?`Bye ${player.bye} clash: ${sameBye.length} already rostered${samePos.length?` (${samePos.length} at ${player.pos})`:''}`:''}}
+function byeConflict(roster,player){
+  if(!player?.bye)return {level:0,text:''};
+  const sameBye=roster.filter(x=>x.bye===player.bye);
+  const samePos=sameBye.filter(x=>x.pos===player.pos);
+  let level=0;
+  if(sameBye.length>=1)level=1;
+  if(samePos.length>=1||sameBye.length>=2)level=2;
+  return {level,text:level?(level===1
+    ?`Bye ${player.bye} warning: ${sameBye.length} already rostered at another position`
+    :`Bye ${player.bye} clash: ${sameBye.length} already rostered${samePos.length?` (${samePos.length} at ${player.pos})`:''}`):''};
+}
 function rosterRequirementText(roster){const needs=dukesActiveNeeds(roster,state.currentPick);return needs.length?[...new Set(needs)].join(', '):'BENCH VALUE'}
 
 function isBuildMode(){
