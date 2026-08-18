@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 v18.5 · Centered Crest</title>
+<title>FF26 v18.6</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -5211,7 +5211,8 @@ function initializeSetup(){
 }
 
 function startDraft(){
-  primeSounds();playStartupSequence(5);
+  /* v18.6: preserve the currently playing startup track and its exact
+     playback position when transitioning from Setup into the Draft. */
   simToken++;
   const chosenName=$('#teamNameInput').value.trim()||"Duke's Ribbers";
   const chosenSlot=Number($('#draftSlotSelect').value)||1;
