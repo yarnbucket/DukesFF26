@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26</title>
+<title>FF26 v18.5 · Centered Crest</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -2036,6 +2036,32 @@ body{
 #startBtn,
 .setup-start{
   scroll-margin-bottom:max(34px,env(safe-area-inset-bottom));
+}
+
+
+/* FF26 v18.1 — custom setup image also appears in draft HUD */
+.hud-crest{
+  position:relative!important;
+  overflow:hidden!important;
+}
+.hud-crest.ff26-has-custom-logo{
+  color:transparent!important;
+  background:#0b0b0b!important;
+}
+.hud-crest img.ff26-hud-custom-logo{
+  position:absolute!important;
+  top:50%!important;
+  left:50%!important;
+  transform:translate(-50%,-50%)!important;
+  width:88%!important;
+  height:88%!important;
+  max-width:88%!important;
+  max-height:88%!important;
+  margin:0!important;
+  padding:0!important;
+  display:block!important;
+  object-fit:contain!important;
+  object-position:center center!important;
 }
 
 </style>
@@ -4699,15 +4725,37 @@ const STORAGE_KEY='dukes-ff2026-strategy-release-v3-0-0';
 const SOUND_SETTING_KEY='dukes-draft-sound-enabled';
 const SETUP_LOGO_STORAGE_KEY='dukes-ff26-custom-setup-logo-v1';
 const SETUP_LOGO_MODE_KEY='dukes-ff26-custom-setup-logo-mode-v1';
+let FF26_CURRENT_SETUP_LOGO='';
 function ff26ApplySetupLogo(dataUrl){
   const custom=$('#setupLogoCustom'),fallback=$('#setupLogoDefault'),reset=$('#setupLogoResetBtn');
+  FF26_CURRENT_SETUP_LOGO=String(dataUrl||'');
   if(!custom||!fallback)return;
   if(dataUrl){
     custom.src=dataUrl;custom.classList.remove('hidden');fallback.classList.add('hidden');reset?.classList.remove('hidden');$('#setupImageModes')?.classList.remove('hidden');
   }else{
     custom.removeAttribute('src');custom.classList.add('hidden');fallback.classList.remove('hidden');reset?.classList.add('hidden');$('#setupImageModes')?.classList.add('hidden');
   }
+  ff26SyncHudCustomLogo(dataUrl);
 }
+function ff26SyncHudCustomLogo(dataUrl){
+  const crest=$('#hudTeamInitial');
+  if(!crest)return;
+  let img=crest.querySelector('img.ff26-hud-custom-logo');
+  if(dataUrl){
+    if(!img){
+      img=document.createElement('img');
+      img.className='ff26-hud-custom-logo';
+      img.alt='Team logo';
+      crest.appendChild(img);
+    }
+    img.src=dataUrl;
+    crest.classList.add('ff26-has-custom-logo');
+  }else{
+    if(img)img.remove();
+    crest.classList.remove('ff26-has-custom-logo');
+  }
+}
+
 function ff26ApplySetupImageMode(mode){
   const sign=$('#setupDukesLogo');
   if(!sign)return;
@@ -6909,7 +6957,15 @@ function renderStatus(){
   renderLastPickHud();
   $('#teamNameStat').textContent=state.teamName;
   const hudInitial=$('#hudTeamInitial');
-  if(hudInitial)hudInitial.textContent=ff26TeamInitialFromName(state.teamName);
+  if(hudInitial){
+    const customLogo=FF26_CURRENT_SETUP_LOGO||safeStorageGet(SETUP_LOGO_STORAGE_KEY)||'';
+    if(customLogo){
+      ff26SyncHudCustomLogo(customLogo);
+    }else{
+      hudInitial.classList.remove('ff26-has-custom-logo');
+      hudInitial.textContent=ff26TeamInitialFromName(state.teamName);
+    }
+  }
   $('#slotStat').textContent=state.started?ordinal(state.userSlot):'—';
   $('#pickStat').textContent=state.currentPick<TOTAL_PICKS?pickLabel(state.currentPick):'Complete';
   const completedRounds=state.currentPick>=TOTAL_PICKS?TOTAL_ROUNDS:Math.floor(state.currentPick/TOTAL_TEAMS);
