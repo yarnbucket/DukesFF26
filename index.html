@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 v18.6</title>
+<title>FF26 v18.7</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -2063,6 +2063,12 @@ body{
   object-fit:contain!important;
   object-position:center center!important;
 }
+
+
+/* FF26 v18.7 — More Info bye-week clash indicator */
+.profile-bye-clear{color:#b8f5c5!important}
+.profile-bye-clash{color:#ffd36a!important}
+.profile-bye-danger{color:#ff8a8a!important;font-weight:900}
 
 </style>
 </head>
@@ -7201,7 +7207,17 @@ function openPlayerProfile(playerOrId){
   ff26SyncKeeperButton(p);
   $('#playerProfileName').textContent=p.name;
   const jerseyNumber=ff26PlayerJerseyNumber(p);
-  $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''}${jerseyNumber!==null?` · #${jerseyNumber}`:''} · Bye ${p.bye??'—'}`;
+  const profileRoster=rosterFor(state.userSlot);
+  const profileBye=byeConflict(profileRoster,p);
+  const profileByeCount=p?.bye?profileRoster.filter(x=>x.bye===p.bye).length:0;
+  const profileByeText=!p?.bye
+    ? 'Bye —'
+    : profileBye.level
+      ? `⚠ Bye ${p.bye} Clash · ${profileByeCount} already rostered`
+      : `Bye ${p.bye} · CLEAR`;
+  $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''}${jerseyNumber!==null?` · #${jerseyNumber}`:''} · ${profileByeText}`;
+  $('#playerProfileSub').classList.remove('profile-bye-clear','profile-bye-clash','profile-bye-danger');
+  if(p?.bye)$('#playerProfileSub').classList.add(profileBye.level>=2?'profile-bye-danger':profileBye.level===1?'profile-bye-clash':'profile-bye-clear');
   const topDogBadge=$('#playerProfileTopDog');
   if(topDogBadge)topDogBadge.classList.toggle('hidden',!ff26IsTopDogCandidate(p));
   ff26RenderProfileTeamLogo(p);
@@ -7240,7 +7256,12 @@ function openPlayerProfile(playerOrId){
   $('#playerProfileStatusUpdated').textContent=`Status updated: ${availability.updatedAt||'—'} · ${availability.dataSource==='LIVE JSON'?'FF26 live file':'FF26 embedded fallback'}`;
   const statusSource=$('#playerProfileStatusSource');
   const safeStatusSource=safeHttpsUrl(availability.sourceUrl);if(safeStatusSource){statusSource.href=safeStatusSource;statusSource.target='_blank';statusSource.rel='noopener noreferrer';statusSource.classList.remove('hidden')}else{statusSource.removeAttribute('href');statusSource.target='_blank';statusSource.rel='noopener noreferrer';statusSource.classList.add('hidden')}
-  $('#playerProfileHonor').textContent=p.pos==='DST'?`DST PROFILE · Personnel/readiness status is separate from weekly matchup and schedule grade.`:(p.rank<=150?`NFL TOP 150 HONOREE · Ranked No. ${p.rank} in this draft database.`:`PLAYER PROFILE · Ranked No. ${p.rank} in this draft database.`);
+  const profileHonorBase=p.pos==='DST'
+    ? `DST PROFILE · Personnel/readiness status is separate from weekly matchup and schedule grade.`
+    : (p.rank<=150?`NFL TOP 150 HONOREE · Ranked No. ${p.rank} in this draft database.`:`PLAYER PROFILE · Ranked No. ${p.rank} in this draft database.`);
+  $('#playerProfileHonor').textContent=profileBye.level&&profileBye.text
+    ? `${profileHonorBase} · ${profileBye.text}`
+    : profileHonorBase;
   const safePlayerInfo=safeHttpsUrl(playerInfoUrl(p));
   if(safePlayerInfo)$('#playerMoreInfo').href=safePlayerInfo;else $('#playerMoreInfo').removeAttribute('href');
   $('#playerMoreInfo').target='_blank';
