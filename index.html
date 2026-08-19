@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 v18.9d5</title>
+<title>FF26 v18.9d6</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -8912,17 +8912,33 @@ function dukesRoundOneAdpGate(candidates,pickIndex){
 function dukesBestFitRanking(slot,pickIndex,limit=DUKES_BEST_FIT_CONSENSUS_WINDOW){
   const context=dukesV3Context(slot,pickIndex);
   const mode=ff26ActiveRecommendationMode();
-  const manualPool=ff26RecommendationCandidatePool(slot,pickIndex)
-    .sort((a,b)=>ff26RecommendationPrimaryValue(a,mode)-ff26RecommendationPrimaryValue(b,mode)||(Number(a.rank)||999)-(Number(b.rank)||999))
-    .slice(0,Math.max(1,Number(limit)||DUKES_BEST_FIT_CONSENSUS_WINDOW));
-  const candidates=mode==='consensus'||mode==='adp'
-    ? dukesRoundOneAdpGate(manualPool,pickIndex)
-    : manualPool;
 
-  const scored=candidates.map(player=>{const detail=ff26AutoPickScore(player,slot,pickIndex,context);return {player,score:ff26ManualRecommendationScore(player,slot,pickIndex,context),detail}});
-  const nonBlocked=scored.filter(x=>x.detail.governor.level!=='BLOCK');
-  return (nonBlocked.length?nonBlocked:scored)
-    .sort((a,b)=>b.score-a.score||ff26RecommendationPrimaryValue(a.player,mode)-ff26RecommendationPrimaryValue(b.player,mode)||(Number(a.player.rank)||999)-(Number(b.player.rank)||999));
+  const ranked=ff26RecommendationCandidatePool(slot,pickIndex)
+    .map(player=>{
+      const detail=ff26AutoPickScore(player,slot,pickIndex,context);
+      return {
+        player,
+        primary:ff26RecommendationPrimaryValue(player,mode),
+        strategy:ff26ManualRecommendationScore(player,slot,pickIndex,context),
+        detail
+      };
+    })
+    .filter(x=>x.detail?.governor?.level!=='BLOCK')
+    .sort((a,b)=>a.primary-b.primary||b.strategy-a.strategy||(Number(a.player.rank)||999)-(Number(b.player.rank)||999))
+    .slice(0,Math.max(1,Number(limit)||DUKES_BEST_FIT_CONSENSUS_WINDOW));
+
+  if(!ranked.length)return[];
+
+  // Selected mode controls the manual Best Pick. FF26 strategy only breaks a genuine tie.
+  const leader=ranked[0];
+  const tied=ranked.filter(x=>{
+    if(mode==='consensus'||mode==='adp')return Math.abs(Number(x.primary)-Number(leader.primary))<1;
+    if(mode==='ppg25')return Math.abs((Number(x.player?.ppg25)||0)-(Number(leader.player?.ppg25)||0))<=0.3;
+    if(mode==='trend')return Math.abs((Number(x.player?.trend)||0)-(Number(leader.player?.trend)||0))<=0.25;
+    return x.primary===leader.primary;
+  });
+  const winner=tied.length>1?tied.slice().sort((a,b)=>b.strategy-a.strategy)[0]:leader;
+  return [winner,...ranked.filter(x=>x.player.rank!==winner.player.rank)];
 }
 
 recommendedPlayers=function(){
