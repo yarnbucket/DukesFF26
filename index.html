@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 v18.9d1</title>
+<title>FF26 v18.9d2</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -2102,6 +2102,13 @@ body{
 .profile-drafted-meta{margin:9px 0 2px;padding:8px 10px;border:1px solid rgba(255,210,26,.28);border-radius:9px;background:rgba(255,210,26,.045);font-size:11px;line-height:1.35}
 .profile-drafted-meta strong{color:var(--gold);letter-spacing:.055em}
 .profile-drafted-meta span{color:#f3efe5;font-weight:850}
+#playerProfileDraftBtn:disabled{
+  cursor:not-allowed;
+  opacity:.62;
+  filter:saturate(.18) brightness(.72);
+  box-shadow:none;
+}
+
 
 
 #rosterGrid .slot-player.profile-trigger{cursor:pointer}
@@ -7284,7 +7291,9 @@ function ff26SyncProfileDraftButton(player){
     btn.textContent='NOT DRAFTABLE';
     return;
   }
-  const alreadyDrafted=state?.picks?.some?.(pick=>String(pick?.player?.rank??pick?.rank)===String(p.rank));
+  // state.picks stores the drafted player's id in playerId.
+  // Check every team's picks so any drafted player is disabled in More Info.
+  const alreadyDrafted=state?.picks?.some?.(pick=>String(pick?.playerId??pick?.player?.rank??pick?.rank)===String(p.rank));
   if(alreadyDrafted){
     btn.disabled=true;
     btn.textContent='DRAFTED';
