@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 v18.9d4</title>
+<title>FF26 v18.9d5</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -7018,21 +7018,42 @@ function ff26RiskMarkup(pick){
 function ff26CaptureMissedOpportunities(selectedPlayer,slot,pickIndex,limit=3){
   try{
     const context=dukesV3Context(slot,pickIndex);
-    const selected=ff26AutoPickScore(selectedPlayer,slot,pickIndex,context);
-    return ff26AutoPickPool(slot,pickIndex)
-      .filter(p=>p.rank!==selectedPlayer.rank)
-      .map(p=>({player:p,detail:ff26AutoPickScore(p,slot,pickIndex,context)}))
-      .filter(x=>x.detail?.governor?.level!=='BLOCK'&&x.detail.score>=selected.score+12)
-      .sort((a,b)=>b.detail.score-a.detail.score)
-      .slice(0,limit)
-      .map((x,index)=>({
-        rank:index+1,playerId:x.player.rank,name:x.player.name,team:x.player.team,pos:x.player.pos,
-        adp:dukesConsensusAdp(x.player),
-        scoreGap:Number((x.detail.score-selected.score).toFixed(1)),
-        why:[...(x.detail.pressure?.reasons||[]),...(x.detail.governor?.reasons||[])].slice(0,3)
-      }));
+    const mode=ff26ActiveRecommendationMode();
+    const selectedPrimary=ff26RecommendationPrimaryValue(selectedPlayer,mode);
+    const selectedScore=ff26ManualRecommendationScore(selectedPlayer,slot,pickIndex,context);
+    const pool=ff26RecommendationCandidatePool(slot,pickIndex).filter(p=>p.rank!==selectedPlayer.rank);
+
+    // Market/value neighborhood first. This prevents an internal strategy score
+    // from promoting a lower-market option over the actual market leader.
+    const ordered=pool
+      .map(p=>({
+        player:p,
+        primary:ff26RecommendationPrimaryValue(p,mode),
+        score:ff26ManualRecommendationScore(p,slot,pickIndex,context),
+        detail:ff26AutoPickScore(p,slot,pickIndex,context)
+      }))
+      .filter(x=>x.detail?.governor?.level!=='BLOCK')
+      .sort((a,b)=>a.primary-b.primary||b.score-a.score);
+
+    const selectedMarketRank=Number.isFinite(Number(selectedPrimary))?Number(selectedPrimary):99999;
+    const legitimateTier=ordered.filter(x=>{
+      if(mode==='ppg25'||mode==='trend'||mode==='topDogs'||mode==='nflTeam')return true;
+      return x.primary<=selectedMarketRank+8;
+    });
+
+    const meaningful=legitimateTier
+      .filter(x=>x.score>=selectedScore+18)
+      .slice(0,limit);
+
+    return meaningful.map((x,index)=>({
+      rank:index+1,playerId:x.player.rank,name:x.player.name,team:x.player.team,pos:x.player.pos,
+      adp:dukesConsensusAdp(x.player),
+      scoreGap:Number((x.score-selectedScore).toFixed(1)),
+      why:[...(x.detail.pressure?.reasons||[]),...(x.detail.governor?.reasons||[])].slice(0,3)
+    }));
   }catch(_){return []}
 }
+
 function ff26OpportunityMarkup(pick){
   const items=Array.isArray(pick?.missedOpportunities)?pick.missedOpportunities:[];
   if(!items.length)return '';
@@ -8804,6 +8825,59 @@ function ff26AutoPickPool(slot,pickIndex){
   return dukesEligiblePool(slot,pickIndex);
 }
 
+
+function ff26ActiveRecommendationMode(){
+  const mode=$('#sortSelect')?.value||'adp';
+  return mode;
+}
+function ff26RecommendationPrimaryValue(player,mode=ff26ActiveRecommendationMode()){
+  const safe=(v,fallback=99999)=>{const n=Number(v);return Number.isFinite(n)?n:fallback};
+  if(mode==='consensus')return safe(player?.consensus,safe(player?.rank));
+  if(mode==='ppg25')return -safe(player?.ppg25,-999);
+  if(mode==='trend')return -safe(player?.trend,-999);
+  if(mode==='topDogs')return ff26IsTopDogCandidate(player)?0:99999;
+  if(mode==='nflTeam')return safe(player?.consensus,safe(player?.rank));
+  // Default/manual ADP emphasis uses the same displayed ADP the player table shows.
+  return safe(ff26DisplayedADP(player),safe(player?.rank));
+}
+function ff26RecommendationCandidatePool(slot,pickIndex){
+  const mode=ff26ActiveRecommendationMode();
+  let pool=dukesEligiblePool(slot,pickIndex);
+  if(mode==='topDogs')pool=pool.filter(ff26IsTopDogCandidate);
+  if(mode==='nflTeam'){
+    const team=$('#teamFilter')?.value||'ALL';
+    if(team!=='ALL')pool=pool.filter(p=>p.team===team);
+  }
+  return pool;
+}
+function ff26ManualRecommendationScore(player,slot,pickIndex,context=null){
+  const strategy=ff26AutoPickScore(player,slot,pickIndex,context).score;
+  const mode=ff26ActiveRecommendationMode();
+  const primary=ff26RecommendationPrimaryValue(player,mode);
+
+  // Small mode emphasis only; strategy still decides roster fit among close candidates.
+  let emphasis=0;
+  if(mode==='consensus'||mode==='adp'){
+    const overall=pickIndex+1;
+    emphasis=Math.max(-22,Math.min(22,(overall-primary)*0.9));
+  }else if(mode==='ppg25'){
+    emphasis=(Number(player?.ppg25)||0)*1.35;
+  }else if(mode==='trend'){
+    emphasis=(Number(player?.trend)||0)*2.2;
+  }else if(mode==='topDogs'){
+    emphasis=ff26IsTopDogCandidate(player)?18:-1000;
+  }else if(mode==='nflTeam'){
+    emphasis=0;
+  }
+  return strategy+emphasis;
+}
+
+/* Auto-Pick is intentionally independent of the display sort.
+   It remains FF26 Balanced and uses Consensus as its stable market anchor. */
+function ff26AutoPickConsensusScore(player,slot,pickIndex,context=null){
+  return ff26AutoPickScore(player,slot,pickIndex,context);
+}
+
 function dukesConsensusAdp(player){
   const value=Number(player?.consensus??player?.rank);
   return Number.isFinite(value)?value:99999;
@@ -8837,15 +8911,18 @@ function dukesRoundOneAdpGate(candidates,pickIndex){
 
 function dukesBestFitRanking(slot,pickIndex,limit=DUKES_BEST_FIT_CONSENSUS_WINDOW){
   const context=dukesV3Context(slot,pickIndex);
-  const consensusCandidates=dukesEligiblePool(slot,pickIndex)
-    .sort((a,b)=>dukesConsensusAdp(a)-dukesConsensusAdp(b)||(Number(a.rank)||999)-(Number(b.rank)||999))
+  const mode=ff26ActiveRecommendationMode();
+  const manualPool=ff26RecommendationCandidatePool(slot,pickIndex)
+    .sort((a,b)=>ff26RecommendationPrimaryValue(a,mode)-ff26RecommendationPrimaryValue(b,mode)||(Number(a.rank)||999)-(Number(b.rank)||999))
     .slice(0,Math.max(1,Number(limit)||DUKES_BEST_FIT_CONSENSUS_WINDOW));
-  const candidates=dukesRoundOneAdpGate(consensusCandidates,pickIndex);
+  const candidates=mode==='consensus'||mode==='adp'
+    ? dukesRoundOneAdpGate(manualPool,pickIndex)
+    : manualPool;
 
-  const scored=candidates.map(player=>{const detail=ff26AutoPickScore(player,slot,pickIndex,context);return {player,score:detail.score,detail}});
+  const scored=candidates.map(player=>{const detail=ff26AutoPickScore(player,slot,pickIndex,context);return {player,score:ff26ManualRecommendationScore(player,slot,pickIndex,context),detail}});
   const nonBlocked=scored.filter(x=>x.detail.governor.level!=='BLOCK');
   return (nonBlocked.length?nonBlocked:scored)
-    .sort((a,b)=>b.score-a.score||dukesConsensusAdp(a.player)-dukesConsensusAdp(b.player)||(Number(a.player.rank)||999)-(Number(b.player.rank)||999));
+    .sort((a,b)=>b.score-a.score||ff26RecommendationPrimaryValue(a.player,mode)-ff26RecommendationPrimaryValue(b.player,mode)||(Number(a.player.rank)||999)-(Number(b.player.rank)||999));
 }
 
 recommendedPlayers=function(){
@@ -8962,7 +9039,12 @@ $('#autoPickBtn').onclick=()=>{
   /* At Duke's own turn, the football Auto-Pick button chooses the
      recommended legal player for Duke's roster, then CPU flow continues. */
   const slot=state.userSlot,pickIndex=state.currentPick;
-  const p=recommendedPlayers()[0]||dukesBestFitRanking(slot,pickIndex,25)[0]?.player||ff26AutoPickPool(slot,pickIndex)[0];
+  const autoContext=dukesV3Context(slot,pickIndex);
+  const autoScored=ff26AutoPickPool(slot,pickIndex)
+    .map(player=>{const detail=ff26AutoPickConsensusScore(player,slot,pickIndex,autoContext);return {player,detail,score:detail.score}})
+    .filter(x=>x.detail?.governor?.level!=='BLOCK')
+    .sort((a,b)=>b.score-a.score||dukesConsensusAdp(a.player)-dukesConsensusAdp(b.player));
+  const p=autoScored[0]?.player||ff26AutoPickPool(slot,pickIndex)[0];
   if(p)makePick(p,true);
   else toast('No legal player is available for this pick.','bad');
 };
