@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26 v18.9d2</title>
+<title>FF26 v18.9d4</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -2111,6 +2111,20 @@ body{
 
 
 
+#rosterGrid .slot,
+#rosterGrid .slot-player,
+#rosterGrid .slot-bye,
+#rosterGrid .slot-player > div{
+  text-align:left!important;
+  justify-content:flex-start!important;
+  align-items:center;
+}
+#rosterGrid .slot-bye{padding-left:8px}
+#rosterGrid .slot-player.bye-clash:not(.risk-text-ORANGE):not(.risk-text-RED){color:inherit!important}
+#rosterGrid .slot-player.risk-text-ORANGE{color:#ff9f2f!important}
+#rosterGrid .slot-player.risk-text-RED{color:#ff4055!important}
+#rosterGrid .slot-player.risk-text-ORANGE .pos,
+#rosterGrid .slot-player.risk-text-RED .pos{color:#111!important}
 #rosterGrid .slot-player.profile-trigger{cursor:pointer}
 #rosterGrid .slot-player.profile-trigger:active{background:rgba(255,210,26,.08)}
 #rosterGrid .slot-player .pick-risk-note{margin:4px 0 0 0;max-width:100%;white-space:normal}
@@ -7807,12 +7821,10 @@ function renderRoster(){
     const byeLabel=x.p?.bye?`${sharedBye?'⚠ ':''}B${x.p.bye}`:'';
     const rosterPick=x.p?state.picks.find(pk=>pk.teamSlot===state.userSlot&&pk.playerId===x.p.rank):null;
     const risk=rosterPick?.pickRisk;
-    const riskLight=risk&&risk.level!=='GREEN'
-      ? `<span class="pick-risk-light ${risk.level}" title="${escapeHtml(risk.reason||'Risk alert')}"></span>`
-      : '';
+    const riskClass=risk&&risk.level!=='GREEN'?` risk-text-${risk.level}`:'';
     const riskNote='';
     const playerCell=x.p
-      ? `<div class="slot-player profile-trigger ${sharedBye?'bye-clash':''}" data-profile="${x.p.rank}" role="button" tabindex="0" aria-label="More information about ${escapeHtml(x.p.name)}"><div>${riskLight}<span class="pos ${x.p.pos}" style="margin-right:7px;min-width:31px;height:22px">${x.p.pos}</span>${escapeHtml(x.p.name)}</div></div>`
+      ? `<div class="slot-player profile-trigger${riskClass}" data-profile="${x.p.rank}" role="button" tabindex="0" aria-label="More information about ${escapeHtml(x.p.name)}"><div><span class="pos ${x.p.pos}" style="margin-right:7px;min-width:31px;height:22px">${x.p.pos}</span>${escapeHtml(x.p.name)}</div></div>`
       : `<div class="slot-player empty">Empty</div>`;
     box.insertAdjacentHTML('beforeend',`<div class="slot" title="${escapeHtml(labelTitle)}">${x.label}</div>${playerCell}<div class="slot-bye ${sharedBye?'bye-clash':''}" title="${sharedBye?`Shared offensive bye week ${x.p?.bye}`:''}">${byeLabel}</div>`);
   });
