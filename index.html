@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>Fantasy Football 2026</title>
+<title>FF26</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -2130,11 +2130,181 @@ body{
 #rosterGrid .slot-player .pick-risk-note{margin:4px 0 0 0;max-width:100%;white-space:normal}
 
 
+
+/* FF26 v18.9d9 — Pixel 9 Pro / modern portrait phone clarity */
+@media (max-width:430px) and (orientation:portrait){
+  body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  .app{padding-left:8px;padding-right:8px}
+  .brand-copy h1{font-size:22px!important;line-height:1.08!important}
+  .brand-copy small{font-size:10px!important;line-height:1.2!important}
+  .tab{font-size:14px!important;padding:10px 12px!important}
+  .hud-team-name{font-size:20px!important}
+  .hud-slot-kicker,.hud-pick-box span{font-size:10px!important}
+  .hud-slot-value{font-size:38px!important}
+  .hud-pick-box strong{font-size:24px!important}
+  .turn-banner{font-size:15px!important;line-height:1.25!important}
+  .roster-guidance{font-size:13px!important;line-height:1.4!important}
+  .field,#searchInput,#positionFilter,#sortSelect,#teamFilter{font-size:16px!important;min-height:48px!important}
+  .rec-name{font-size:17px!important}.rec-meta{font-size:12.5px!important;line-height:1.35!important}
+  .rec-strategy{font-size:11.5px!important;line-height:1.38!important}
+  .player-table th{font-size:10.5px!important;padding:9px 7px!important}
+  .player-table td{font-size:13.5px!important;padding:9px 7px!important}
+  .player-name{font-size:16.5px!important;line-height:1.12!important}
+  .team-text{font-size:11px!important}.rank,.metric{font-size:12.5px!important}
+  #rosterTitle{font-size:18px!important}.slot-player{font-size:14px!important;line-height:1.18!important}
+  .player-profile-overlay{padding:10px!important}
+  .player-profile-card{width:min(100%,420px)!important;padding:17px!important;max-height:calc(100dvh - 20px)!important;overflow-y:auto!important}
+  .player-profile-name{font-size:25px!important}.player-profile-sub{font-size:13.5px!important}
+  .profile-stat b{font-size:18px!important}.profile-status{font-size:12.5px!important;line-height:1.4!important}
+  #playerProfileHonor{font-size:12.5px!important;line-height:1.35!important}
+  .profile-drafted-meta,.profile-coaching-block{font-size:12px!important;line-height:1.4!important}
+  #playerProfileDraftBtn,#playerProfileKeeperBtn,#playerMoreInfo{min-height:54px!important;font-size:17px!important}
+  .setup-subtitle{font-size:13px!important}
+  #setupTitle .setup-title-silver,#setupTitle .setup-title-red{font-size:clamp(34px,10.3vw,44px)!important}
+  .setup-field-light label{font-size:14px!important}.setup-input{font-size:17px!important}
+  .setup-settings-button{font-size:27px!important;min-height:68px!important}
+  .setup-start{font-size:31px!important;min-height:72px!important}
+  .setup-resume{font-size:19px!important}
+  .grade{font-size:62px!important}
+  #gradeMessage{font-size:14px!important;line-height:1.35!important}
+  button,.btn,.setup-start,.setup-settings-button,.setup-resume{white-space:normal!important;text-wrap:balance}
+}
+@media (max-width:430px) and (orientation:portrait) and (min-height:780px){
+  .setup-phone-card{padding-bottom:26px!important}
+  .setup-actions{margin-top:20px!important}
+}
+
+
+/* v18.9d10 — Players list mobile action priority */
+.ff26-player-row-actions{display:flex;align-items:center;gap:8px;margin-top:5px}
+.ff26-inline-draft{min-width:74px!important;min-height:42px!important;padding:7px 12px!important;border-radius:999px!important;font-size:13px!important;font-weight:1000!important}
+.ff26-more-cue{font-size:9px;font-weight:950;letter-spacing:.08em;color:var(--muted);white-space:nowrap}
+.ff26-row-more{white-space:nowrap;min-width:96px}
+@media (max-width:430px) and (orientation:portrait){
+  .ff26-player-row-actions{margin-top:6px}
+  .ff26-inline-draft{min-height:36px!important;padding:6px 14px!important;font-size:12px!important}
+  .ff26-more-cue{font-size:9.5px!important}
+  .ff26-row-more{min-width:102px!important;font-size:10px!important}
+}
+
+
+/* v18.9d11 — Pixel player-row action alignment */
+@media (max-width:430px) and (orientation:portrait){
+  .ff26-player-info-cell{
+    position:relative!important;
+    padding-right:118px!important;
+    min-height:82px!important;
+  }
+  .ff26-player-row-actions{
+    position:absolute!important;
+    right:10px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    margin:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:4px!important;
+  }
+  .ff26-inline-draft{
+    min-width:74px!important;
+    min-height:42px!important;
+    padding:7px 12px!important;
+    font-size:13px!important;
+    border-radius:999px!important;
+  }
+  .ff26-more-cue{
+    font-size:9px!important;
+    line-height:1!important;
+  }
+}
+
+
+/* v18.9d13 — tighten mobile ADP column to prioritize player names */
+@media (max-width:430px) and (orientation:portrait){
+  .player-table th:first-child,
+  .player-table td.rank{
+    width:54px!important;
+    min-width:54px!important;
+    max-width:54px!important;
+    box-sizing:border-box!important;
+    padding-left:5px!important;
+    padding-right:5px!important;
+  }
+}
+
+
+/* v18.9d14 — fixed mobile action column for aligned DRAFT buttons */
+@media (max-width:430px) and (orientation:portrait){
+  .ff26-player-info-cell{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 92px!important;
+    column-gap:10px!important;
+    align-items:center!important;
+    padding-right:8px!important;
+    min-height:82px!important;
+  }
+
+  .ff26-player-info-cell > .player-name-line,
+  .ff26-player-info-cell > .team-text,
+  .ff26-player-info-cell > .market-flags,
+  .ff26-player-info-cell > .team-best-marker,
+  .ff26-player-info-cell > .top-dog-inline{
+    grid-column:1!important;
+  }
+
+  .ff26-player-row-actions{
+    position:static!important;
+    transform:none!important;
+    grid-column:2!important;
+    grid-row:1 / span 5!important;
+    width:92px!important;
+    margin:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:4px!important;
+  }
+
+  .ff26-inline-draft{
+    width:92px!important;
+    min-width:92px!important;
+    max-width:92px!important;
+    min-height:42px!important;
+    padding:7px 8px!important;
+    font-size:13px!important;
+  }
+
+  .ff26-more-cue{
+    width:92px!important;
+    text-align:center!important;
+  }
+}
+
+
+/* FF26 v18.9d17 — Touchdown Rivals launcher + Setup return */
+.setup-game-launcher{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  width:100%;box-sizing:border-box;text-decoration:none;color:inherit;
+  padding:14px 16px;margin:10px 0;border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;background:rgba(255,255,255,.055);
+}
+.setup-game-launcher-title{display:block;font-size:16px;font-weight:1000;letter-spacing:.055em}
+.setup-game-launcher-sub{display:block;margin-top:3px;font-size:9px;font-weight:850;letter-spacing:.08em;opacity:.7}
+.setup-game-launcher-arrow{font-size:22px;font-weight:1000}
+.ff26-setup-return{font-weight:950!important}
+.ff26-setup-return-floating{position:fixed;top:10px;right:10px;z-index:80}
+@media(max-width:430px) and (orientation:portrait){
+  .setup-game-launcher{min-height:62px;padding:12px 14px}
+  .setup-game-launcher-title{font-size:16px}
+}
+
 </style>
 </head>
 <body>
 <div class="ff26-platform-bg" id="ff26PlatformBg" aria-hidden="true"></div>
-<div class="app">
+<div class="app"><button type="button" class="ff26-setup-return ff26-setup-return-floating" id="ff26SetupReturnBtn">SETUP</button>
   <header class="topbar">
     <div class="brand">
       <div class="ff26-fist-badge" aria-label="FF26 fist trial logo">✊</div>
@@ -2453,6 +2623,14 @@ body{
         </span>
         <span class="setup-switch" aria-hidden="true"></span>
       </button>
+
+      <a class="setup-game-launcher" id="touchdownRivalsLauncher" href="touchdown-rival.html" target="_blank" rel="noopener">
+        <span class="setup-game-launcher-copy">
+          <span class="setup-game-launcher-title">TOUCHDOWN RIVALS</span>
+          <span class="setup-game-launcher-sub">PLAY GAME · OPENS NEW TAB</span>
+        </span>
+        <span class="setup-game-launcher-arrow" aria-hidden="true">↗</span>
+      </a>
 
       <button class="setup-sound-toggle setup-autopick-toggle" id="setupAutoPickToggle" type="button" aria-pressed="false" title="Turn Auto-Pick on">
         <span class="setup-sound-copy">
@@ -5243,6 +5421,9 @@ function scrollPageToTop(resetInner=true){
 }
 
 function initializeSetup(){
+  const setupReturnBtn=$('#ff26SetupReturnBtn');
+  if(setupReturnBtn)setupReturnBtn.onclick=ff26ReturnToSetup;
+
   const slotSelect=$('#draftSlotSelect');
   const setupAutoPick=$('#setupAutoPickToggle');
   const setupSettingsBtn=$('#setupSettingsBtn');
@@ -5301,6 +5482,22 @@ function initializeSetup(){
       if(state.currentPick<TOTAL_PICKS)playStartupSequence(5);
       if(draftAutoBox?.checked&&!isUserTurn()&&state.currentPick<TOTAL_PICKS)runCpuUntilUser();
     };
+  }
+}
+
+
+function ff26ReturnToSetup(){
+  try{
+    simToken++;
+    const overlay=$('#setupOverlay');
+    if(!overlay)return;
+    overlay.classList.remove('hidden');
+    const resume=$('#resumeBtn');
+    if(resume&&state?.started)resume.classList.remove('hidden');
+    scrollPageToTop(false);
+    setTimeout(()=>$('#teamNameInput')?.focus({preventScroll:true}),80);
+  }catch(error){
+    console.error('Could not return to setup:',error);
   }
 }
 
@@ -7792,7 +7989,7 @@ function renderPlayers(){
   const clashRoster=state.started?rosterFor(state.userSlot):[];
   const teamMode=$('#sortSelect')?.value==='nflTeam',selectedTeam=$('#teamFilter')?.value||'ALL';
   const bestTeamPlayer=teamMode&&selectedTeam!=='ALL'?[...list].filter(p=>!p.rosterOnly).sort(ff26TeamFantasyComparator)[0]:null;
-  list.forEach(p=>{const clash=p.rosterOnly?{level:0,text:''}:byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.classList.toggle('top-dog-row',topDogMode&&ff26IsTopDogCandidate(p));const bestMarker=!p.rosterOnly&&bestTeamPlayer?.rank===p.rank?'<span class="team-best-marker">★ Best Available on Team</span>':'';const valueFlags=p.rosterOnly?'':marketFlagMarkup(p);const topDogMarker=topDogMode&&ff26IsTopDogCandidate(p)?`<span class="top-dog-inline"><img src="top-dog.png" alt="">TOP DOG · ${p.pos}1</span>`:'';const rosterMeta=p.rosterOnly?`<div class="team-text">FULL 2026 ROSTER${p.college?` · ${escapeHtml(p.college)}`:''}</div>`:`<div class="team-text">${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div>${topDogMarker}`;const action=p.rosterOnly?'<span class="tier-pill">ROSTER</span>':`<button type="button" class="btn small draft-player-btn ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button>`;tr.innerHTML=`<td class="rank">${p.rosterOnly?'—':ff26DisplayedADP(p)}</td><td class="ff26-player-info-cell" data-player-info="${p.rank}" role="button" tabindex="0" aria-label="More information about ${escapeHtml(p.name)}"><div class="player-name-line">${ff26PlayerTeamLogoMarkup(p)}${p.rosterOnly?'':statusDotMarkup(p)}<div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div>${ff26JerseyMarkup(p)}</div>${rosterMeta}${valueFlags}${bestMarker}<span class="ff26-more-info-hit" aria-hidden="true">MORE INFO ›</span></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td class="metric">${escapeHtml(p.team)}</td><td><span class="tier-pill">${p.rosterOnly?'ROSTER':`T${p.tier??'—'}`}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${p.rosterOnly?'—':fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.rosterOnly?'—':(p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`)}</td><td>${action}</td>`;const infoCell=tr.querySelector('[data-player-info]');if(infoCell){const openInfo=e=>{e.preventDefault();e.stopPropagation();openPlayerProfile(p)};infoCell.addEventListener('click',openInfo);infoCell.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){openInfo(e)}})}if(!p.rosterOnly)tr.onclick=e=>{if(!e.target.closest('button,[data-player-info]')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
+  list.forEach(p=>{const clash=p.rosterOnly?{level:0,text:''}:byeConflict(clashRoster,p);const tr=document.createElement('tr');tr.classList.toggle('selected',selectedPlayerId===p.rank);tr.classList.toggle('top-dog-row',topDogMode&&ff26IsTopDogCandidate(p));const bestMarker=!p.rosterOnly&&bestTeamPlayer?.rank===p.rank?'<span class="team-best-marker">★ Best Available on Team</span>':'';const valueFlags=p.rosterOnly?'':marketFlagMarkup(p);const topDogMarker=topDogMode&&ff26IsTopDogCandidate(p)?`<span class="top-dog-inline"><img src="top-dog.png" alt="">TOP DOG · ${p.pos}1</span>`:'';const rosterMeta=p.rosterOnly?`<div class="team-text">FULL 2026 ROSTER${p.college?` · ${escapeHtml(p.college)}`:''}</div>`:`<div class="team-text">${p.pos}${p.posRank||''} · ESPN ${p.espnRank??'—'}</div>${topDogMarker}`;const inlineDraft=p.rosterOnly?'':`<button type="button" class="btn small draft-player-btn ff26-inline-draft ${isUserTurn()?'good':''}" data-draft="${p.rank}" aria-label="Draft ${escapeHtml(p.name)}" ${isUserTurn()?'':'disabled'}>DRAFT</button>`;const farAction=p.rosterOnly?'<span class="tier-pill">ROSTER</span>':`<button type="button" class="btn small ghost ff26-row-more" data-row-more="${p.rank}" aria-label="More information about ${escapeHtml(p.name)}">MORE INFO ›</button>`;tr.innerHTML=`<td class="rank">${p.rosterOnly?'—':ff26DisplayedADP(p)}</td><td class="ff26-player-info-cell" data-player-info="${p.rank}" role="button" tabindex="0" aria-label="More information about ${escapeHtml(p.name)}"><div class="player-name-line">${ff26PlayerTeamLogoMarkup(p)}${p.rosterOnly?'':statusDotMarkup(p)}<div class="player-name profile-trigger" data-profile="${p.rank}">${escapeHtml(p.name)}</div>${ff26JerseyMarkup(p)}</div>${rosterMeta}${valueFlags}${bestMarker}<div class="ff26-player-row-actions">${inlineDraft}<span class="ff26-more-cue" aria-hidden="true">MORE ›</span></div></td><td><span class="pos ${p.pos}">${p.pos}</span></td><td class="metric">${escapeHtml(p.team)}</td><td><span class="tier-pill">${p.rosterOnly?'ROSTER':`T${p.tier??'—'}`}</span></td><td class="metric ${clash.level?'bye-clash':''}">${p.bye??'—'}</td><td class="metric">${p.rosterOnly?'—':fmt(p.ppg25)}</td><td class="metric ${(p.trend||0)>0?'trend-up':(p.trend||0)<0?'trend-down':''}">${p.rosterOnly?'—':(p.trend==null?'—':`${p.trend>0?'+':''}${fmt(p.trend)}`)}</td><td>${farAction}</td>`;const infoCell=tr.querySelector('[data-player-info]');if(infoCell){const openInfo=e=>{if(e.target.closest('[data-draft]'))return;e.preventDefault();e.stopPropagation();openPlayerProfile(p)};infoCell.addEventListener('click',openInfo);infoCell.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('[data-draft]')){openInfo(e)}})}const moreBtn=tr.querySelector('[data-row-more]');if(moreBtn)moreBtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openPlayerProfile(p)});if(!p.rosterOnly)tr.onclick=e=>{if(!e.target.closest('button,[data-player-info]')){selectedPlayerId=p.rank;renderPlayers()}};tbody.appendChild(tr)});
 
   const guide=$('#rosterGuidance'),rec=$('#recommendations');rec.innerHTML='';
   if(!isUserTurn()){rec.classList.add('hidden');guide.classList.add('hidden')}
@@ -7807,7 +8004,7 @@ function renderPlayers(){
       const fitText=fills?'Fills a required starter/FLEX need':assessment.marginalLineup>0.5?'Improves the projected starting lineup':assessment.adjustedADP>=5?'Strong ADP and turn value':status.complete?'Best-value depth pick':'Best composite roster value';
       const byeText=clash.level?` · ⚠ ${clash.text}`:` · Bye ${p.bye??'—'} clear`;
       const strategyText=i===0?bestPickStrategyText(p,activeDraftSlot(),state.currentPick):'';
-      d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name-line">${ff26PlayerTeamLogoMarkup(p)}${statusDotMarkup(p)}<div class="rec-name profile-trigger" data-profile="${p.rank}">${i===0?'★ ':''}${escapeHtml(p.name)}</div>${ff26JerseyMarkup(p)}</div><div class="rec-meta">${fitText} · ADP ${ff26DisplayedADP(p)} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div>${i===0?`<div class="rec-strategy"><strong>Draft Strategy:</strong> ${escapeHtml(strategyText)}</div>`:''}</div><button type="button" class="btn small primary draft-rec-btn" data-rec="${p.rank}" aria-label="Pick ${escapeHtml(p.name)}">PICK</button>`;
+      d.innerHTML=`<span class="pos ${p.pos}">${p.pos}</span><div class="rec-info"><div class="rec-name-line">${ff26PlayerTeamLogoMarkup(p)}${statusDotMarkup(p)}<div class="rec-name profile-trigger" data-profile="${p.rank}">${i===0?'★ ':''}${escapeHtml(p.name)}</div>${ff26JerseyMarkup(p)}</div><div class="rec-meta">${fitText} · ADP ${ff26DisplayedADP(p)} · ${fmt(p.ppg25)} PPG${escapeHtml(byeText)}</div>${i===0?`<div class="rec-strategy"><strong>Draft Strategy:</strong> ${escapeHtml(strategyText)}</div>`:''}</div><button type="button" class="btn small primary draft-rec-btn" data-rec="${p.rank}" aria-label="Pick ${escapeHtml(p.name)}">DRAFT</button>`;
       rec.appendChild(d)
     });
   }
@@ -9054,26 +9251,10 @@ $('#autoPickBtn').onclick=()=>{
      recommended legal player for Duke's roster, then CPU flow continues. */
   const slot=state.userSlot,pickIndex=state.currentPick;
   const autoContext=dukesV3Context(slot,pickIndex);
-  const autoRound=DUKES_STRATEGY_V3.roundFromPickIndex(pickIndex);
   const autoScored=ff26AutoPickPool(slot,pickIndex)
     .map(player=>{const detail=ff26AutoPickConsensusScore(player,slot,pickIndex,autoContext);return {player,detail,score:detail.score}})
-    .filter(x=>x.detail?.governor?.level!=='BLOCK');
-
-  // TEST v18.9d8a: Consensus controls Auto-Pick in Rounds 1-2.
-  // From Round 3 onward, the existing FF26 Balanced strategy resumes.
-  if(autoRound<=2){
-    autoScored.sort((a,b)=>
-      dukesConsensusAdp(a.player)-dukesConsensusAdp(b.player)||
-      b.score-a.score||
-      (Number(a.player.rank)||999)-(Number(b.player.rank)||999)
-    );
-  }else{
-    autoScored.sort((a,b)=>
-      b.score-a.score||
-      dukesConsensusAdp(a.player)-dukesConsensusAdp(b.player)||
-      (Number(a.player.rank)||999)-(Number(b.player.rank)||999)
-    );
-  }
+    .filter(x=>x.detail?.governor?.level!=='BLOCK')
+    .sort((a,b)=>b.score-a.score||dukesConsensusAdp(a.player)-dukesConsensusAdp(b.player));
   const p=autoScored[0]?.player||ff26AutoPickPool(slot,pickIndex)[0];
   if(p)makePick(p,true);
   else toast('No legal player is available for this pick.','bad');
