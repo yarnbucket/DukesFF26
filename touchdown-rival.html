@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#060a10">
-<title>Touchdown Rivals - Full Game v1.25</title>
+<title>Touchdown Rivals - Full Game v1.29</title>
 <style>
 :root{
   --bg:#05080d;
@@ -473,7 +473,7 @@ button{-webkit-tap-highlight-color:transparent}
   *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important}
 }
 
-/* Touchdown Rivals v1.25 — iPad/Safari GPU-light visuals */
+/* Touchdown Rivals v1.29 — iPad/Safari GPU-light visuals */
 .ipad-safari-optimized .helmet-image,
 .ipad-safari-optimized #p1PlayerSprite,
 .ipad-safari-optimized #p2PlayerSprite,
@@ -504,7 +504,7 @@ button{-webkit-tap-highlight-color:transparent}
 }
 
 
-/* v1.25 — quick return to the live FF26 draft */
+/* v1.29 — quick return to the live FF26 draft */
 .setup-footer.setup-footer-draft{
   grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.25fr);
   gap:8px;
@@ -522,7 +522,7 @@ button{-webkit-tap-highlight-color:transparent}
 }
 
 
-/* v1.25 — uniform setup footer typography */
+/* v1.29 — uniform setup footer typography */
 .setup-footer.setup-footer-draft .setup-back,
 .setup-footer.setup-footer-draft .setup-draft,
 .setup-footer.setup-footer-draft .setup-start{
@@ -540,7 +540,7 @@ button{-webkit-tap-highlight-color:transparent}
 }
 
 
-/* v1.25 — larger, uniform setup footer typography for clarity */
+/* v1.29 — larger, uniform setup footer typography for clarity */
 .setup-footer.setup-footer-draft .setup-back,
 .setup-footer.setup-footer-draft .setup-draft,
 .setup-footer.setup-footer-draft .setup-start{
@@ -1172,7 +1172,7 @@ button{-webkit-tap-highlight-color:transparent}
   const BALL_R = 29;
   const PLAYER_R = 52;
 
-  // ---------- iPad / Safari graphics optimization layer v1.25 ----------
+  // ---------- iPad / Safari graphics optimization layer v1.29 ----------
   const FF26_GRAPHICS_PROFILE=(()=>{
     const ua=navigator.userAgent||'';
     const platform=navigator.platform||'';
@@ -1201,7 +1201,7 @@ button{-webkit-tap-highlight-color:transparent}
 
   function difficultyTuning(){
     if(config.difficulty==='Legends'){
-      return {serve:9.6,max:38,hitBoost:1.0,cpuY:6.5,cpuX:4.2,weather:1.35,ramp:1.035,soloCpuBoost:1.34};
+      return {serve:10.4,max:42,hitBoost:1.06,cpuY:8.7,cpuX:6.2,weather:1.35,ramp:1.045,soloCpuBoost:1.58};
     }
     if(config.difficulty==='Pro'){
       return {serve:8.8,max:30,hitBoost:.88,cpuY:6.0,cpuX:3.9,weather:.9,ramp:1.012,soloCpuBoost:1.20};
@@ -1210,50 +1210,32 @@ button{-webkit-tap-highlight-color:transparent}
   }
 
   function adaptiveCpuProfile(){
-    // Positive gap means the CPU is behind.
-    const gap = score1 - score2;
-
-    // A close game (within 1 point) gets no comeback boost.
-    // The ramp begins only when the CPU trails by 2+.
-    const pressure = Math.max(0,Math.min(1,(gap-1)/5));
-
-    let maxSpeedBoost, maxReactionBoost, maxAggression, hardSpeedCap;
+    const diff=score1-score2;
 
     if(config.difficulty==='Legends'){
-      maxSpeedBoost = 1.85;
-      maxReactionBoost = 1.65;
-      maxAggression = 1.00;
-      hardSpeedCap = 15.5;
-    }else if(config.difficulty==='Pro'){
-      maxSpeedBoost = 1.45;
-      maxReactionBoost = 1.32;
-      maxAggression = .65;
-      hardSpeedCap = 11.5;
-    }else{
-      maxSpeedBoost = 1.20;
-      maxReactionBoost = 1.15;
-      maxAggression = .32;
-      hardSpeedCap = 8.3;
+      // Legends is a boss-level CPU from the opening serve, not only when trailing.
+      let pressure=0.62;
+      if(diff>=1)pressure=.76;
+      if(diff>=2)pressure=.90;
+      if(diff>=3)pressure=1.00;
+      if(diff<=-1)pressure=.58; // stays aggressive even while ahead
+
+      return {
+        pressure,
+        speedBoost:1.34+pressure*.42,
+        reactionBoost:1.34+pressure*.52,
+        aggression:.78+pressure*.22,
+        hardSpeedCap:13.8+pressure*3.2
+      };
     }
 
-    let speedBoost = 1 + pressure*(maxSpeedBoost-1);
-    let reactionBoost = 1 + pressure*(maxReactionBoost-1);
-    let aggression = pressure*maxAggression;
-
-    // If CPU is comfortably ahead, back off slightly rather than becoming a wall.
-    if(gap <= -2){
-      speedBoost *= .92;
-      reactionBoost *= .94;
-      aggression *= .50;
-    }
-
+    const pressure=diff>=3?1:diff===2?.7:diff===1?.35:0;
     return {
-      gap,
       pressure,
-      speedBoost,
-      reactionBoost,
-      aggression,
-      hardSpeedCap
+      speedBoost:1+pressure*.22,
+      reactionBoost:1+pressure*.28,
+      aggression:.45+pressure*.38,
+      hardSpeedCap:9.2+pressure*2.2
     };
   }
 
@@ -1463,7 +1445,7 @@ button{-webkit-tap-highlight-color:transparent}
   p2El.addEventListener('pointerup',e=>endDrag(p2,e));
   p2El.addEventListener('pointercancel',e=>endDrag(p2,e));
 
-  // ---------- PC TWO-PLAYER CONTROLS v1.25 ----------
+  // ---------- PC TWO-PLAYER CONTROLS v1.29 ----------
   // Player 1 keeps the existing Pointer Events control, which works with mouse
   // on PC and touch on phones/tablets. Player 2 can use held arrow keys on PC.
   const p2Keys={ArrowUp:false,ArrowDown:false,ArrowLeft:false,ArrowRight:false};
@@ -1523,29 +1505,36 @@ button{-webkit-tap-highlight-color:transparent}
     const tune=difficultyTuning();
     const adaptive=adaptiveCpuProfile();
 
-    // Base difficulty still matters, but score pressure adds comeback speed.
+    // Base difficulty still matters, but Legends is aggressive from 0-0.
     const soloBoost=(tune.soloCpuBoost || 1)*adaptive.speedBoost;
     const reaction=adaptive.reactionBoost;
+    const legends=config.difficulty==='Legends';
 
-    // Faster vertical reaction when the CPU falls behind.
-    const yErr=ball.y-p2.y;
+    // Predictive tracking in Legends: aim where the ball is going, not only where it is now.
+    const lookAhead=legends?Math.max(3.5,Math.min(8.5,Math.abs(ball.vx)*.34+3.6)):0;
+    const predictedY=Math.max(75,Math.min(545,ball.y+ball.vy*lookAhead));
+    const yTarget=legends?predictedY:ball.y;
+    const yErr=yTarget-p2.y;
     const maxY=Math.min(adaptive.hardSpeedCap,tune.cpuY*soloBoost)*dt;
-    const yReaction=.11*reaction;
+    const yReaction=(legends?.19:.11)*reaction;
     p2.y += Math.max(-maxY,Math.min(maxY,yErr*yReaction));
 
-    // When trailing, the CPU closes more aggressively instead of sitting deep.
-    let targetX=900;
-    if(ball.x>610){
-      const followOffset=70-(adaptive.aggression*46);
-      targetX=Math.max(675,Math.min(1038,ball.x+followOffset));
+    let targetX=legends?840:900;
+    if(ball.x>590){
+      const followOffset=legends
+        ? 28-(adaptive.aggression*18)
+        : 70-(adaptive.aggression*46);
+      targetX=Math.max(650,Math.min(1042,ball.x+followOffset));
+    }else if(legends){
+      // Hard recovery toward midfield so the CPU does not sit deep after a miss.
+      targetX=810-(adaptive.aggression*30);
     }else if(adaptive.pressure>.35){
-      // Recover toward midfield faster in difficult comeback situations.
       targetX=900-(adaptive.aggression*35);
     }
 
     const xErr=targetX-p2.x;
     const maxX=Math.min(adaptive.hardSpeedCap,tune.cpuX*soloBoost)*dt;
-    const xReaction=.05*reaction;
+    const xReaction=(legends?.095:.05)*reaction;
     p2.x += Math.max(-maxX,Math.min(maxX,xErr*xReaction));
 
     p2.x=Math.max(P2_MIN_X,Math.min(P2_MAX_X,p2.x));
