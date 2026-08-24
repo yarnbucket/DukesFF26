@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#060a10">
-<title>Touchdown Rivals - Full Game v1.21</title>
+<title>Touchdown Rivals - Full Game v1.25</title>
 <style>
 :root{
   --bg:#05080d;
@@ -472,6 +472,93 @@ button{-webkit-tap-highlight-color:transparent}
 @media (prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important}
 }
+
+/* Touchdown Rivals v1.25 — iPad/Safari GPU-light visuals */
+.ipad-safari-optimized .helmet-image,
+.ipad-safari-optimized #p1PlayerSprite,
+.ipad-safari-optimized #p2PlayerSprite,
+.ipad-safari-optimized #footballObj,
+.ipad-safari-optimized .weather-layer,
+.ipad-safari-optimized .impact-layer{
+  transform:translateZ(0);
+  will-change:transform;
+}
+.ipad-safari-optimized .helmet-image{
+  transition:none!important;
+}
+.ipad-safari-optimized .sun-glow,
+.ipad-safari-optimized .fog,
+.ipad-safari-optimized .rain,
+.ipad-safari-optimized .snow,
+.ipad-safari-optimized .sleet{
+  filter:none!important;
+  box-shadow:none!important;
+}
+.ipad-safari-optimized #flashLayer{
+  opacity:.72;
+}
+.ipad-safari-optimized .field-shell,
+.ipad-safari-optimized .game-screen{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+
+/* v1.25 — quick return to the live FF26 draft */
+.setup-footer.setup-footer-draft{
+  grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.25fr);
+  gap:8px;
+}
+.setup-draft{
+  min-width:0;border:1px solid #45a8ff;border-radius:12px;
+  background:linear-gradient(180deg,#163c61,#0b2037);
+  color:#fff;font-weight:1000;letter-spacing:.35px;
+  padding:11px 8px;cursor:pointer;
+}
+.setup-draft:active{transform:translateY(1px)}
+@media(max-width:520px){
+  .setup-footer.setup-footer-draft{gap:6px}
+  .setup-draft{font-size:12px;padding:10px 5px}
+}
+
+
+/* v1.25 — uniform setup footer typography */
+.setup-footer.setup-footer-draft .setup-back,
+.setup-footer.setup-footer-draft .setup-draft,
+.setup-footer.setup-footer-draft .setup-start{
+  font-size:13px!important;
+  line-height:1.15!important;
+  font-weight:1000!important;
+  letter-spacing:.35px!important;
+}
+@media(max-width:520px){
+  .setup-footer.setup-footer-draft .setup-back,
+  .setup-footer.setup-footer-draft .setup-draft,
+  .setup-footer.setup-footer-draft .setup-start{
+    font-size:13px!important;
+  }
+}
+
+
+/* v1.25 — larger, uniform setup footer typography for clarity */
+.setup-footer.setup-footer-draft .setup-back,
+.setup-footer.setup-footer-draft .setup-draft,
+.setup-footer.setup-footer-draft .setup-start{
+  font-size:16px!important;
+  line-height:1.2!important;
+  font-weight:1000!important;
+  letter-spacing:.35px!important;
+  min-height:48px!important;
+}
+@media(max-width:520px){
+  .setup-footer.setup-footer-draft .setup-back,
+  .setup-footer.setup-footer-draft .setup-draft,
+  .setup-footer.setup-footer-draft .setup-start{
+    font-size:16px!important;
+    min-height:48px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -586,8 +673,9 @@ button{-webkit-tap-highlight-color:transparent}
 
     <div class="ready" id="setupReady"><strong>READY:</strong> Champion vs All-Star · 2 Player · Rookie · Day · Clear</div>
 
-    <footer class="setup-footer">
+    <footer class="setup-footer setup-footer-draft">
       <button class="setup-back" id="setupReset" type="button">← RESET</button>
+      <button class="setup-draft" id="goToDraftBtn" type="button">← GO TO DRAFT</button>
       <button class="setup-start" id="startGameBtn" type="button">START GAME 🏈</button>
     </footer>
   </div>
@@ -1083,6 +1171,28 @@ button{-webkit-tap-highlight-color:transparent}
   const FIELD_W = 1200, FIELD_H = 620;
   const BALL_R = 29;
   const PLAYER_R = 52;
+
+  // ---------- iPad / Safari graphics optimization layer v1.25 ----------
+  const FF26_GRAPHICS_PROFILE=(()=>{
+    const ua=navigator.userAgent||'';
+    const platform=navigator.platform||'';
+    const touchPoints=navigator.maxTouchPoints||0;
+    const isIOS=/iPad|iPhone|iPod/i.test(ua) || (platform==='MacIntel' && touchPoints>1);
+    const isSafari=/Safari/i.test(ua) && !/Chrome|CriOS|Edg|OPR|Firefox|FxiOS/i.test(ua);
+    const optimized=isIOS && isSafari;
+    return Object.freeze({
+      optimized,
+      weatherFactor:optimized?.58:1,
+      trailMax:optimized?4:8,
+      impactLimit:optimized?10:24,
+      shadowLite:optimized,
+      effectFrameSkip:optimized?2:1
+    });
+  })();
+
+  if(FF26_GRAPHICS_PROFILE.optimized){
+    document.documentElement.classList.add('ipad-safari-optimized');
+  }
   const TOP = 28, BOTTOM = 592;
   const P1_MIN_X = 135, P1_MAX_X = 565;
   const P2_MIN_X = 635, P2_MAX_X = 1065;
@@ -1353,7 +1463,7 @@ button{-webkit-tap-highlight-color:transparent}
   p2El.addEventListener('pointerup',e=>endDrag(p2,e));
   p2El.addEventListener('pointercancel',e=>endDrag(p2,e));
 
-  // ---------- PC TWO-PLAYER CONTROLS v1.21 ----------
+  // ---------- PC TWO-PLAYER CONTROLS v1.25 ----------
   // Player 1 keeps the existing Pointer Events control, which works with mouse
   // on PC and touch on phones/tablets. Player 2 can use held arrow keys on PC.
   const p2Keys={ArrowUp:false,ArrowDown:false,ArrowLeft:false,ArrowRight:false};
@@ -1656,6 +1766,11 @@ button{-webkit-tap-highlight-color:transparent}
     }
   }
 
+
+  function ff26FxCount(base,min=1){
+    return Math.max(min,Math.round(base*FF26_GRAPHICS_PROFILE.weatherFactor));
+  }
+
   function applyWeather(){
     weatherLayer.innerHTML='';
     const type=config.weather;
@@ -1685,7 +1800,7 @@ button{-webkit-tap-highlight-color:transparent}
     }
 
     if(type==='Rain'){
-      for(let i=0;i<count(65);i++){
+      for(let i=0;i<ff26FxCount(count(65),14);i++){
         const d=document.createElement('i');d.className='rain';
         d.style.left=Math.random()*100+'%';
         d.style.animationDelay=(-Math.random()*2)+'s';
@@ -1719,7 +1834,7 @@ button{-webkit-tap-highlight-color:transparent}
         weatherLayer.appendChild(d);
       }
     }else if(type==='Sleet'){
-      for(let i=0;i<count(65);i++){
+      for(let i=0;i<ff26FxCount(count(65),14);i++){
         const d=document.createElement('i');d.className='sleet';
         d.style.left=Math.random()*100+'%';
         d.style.animationDelay=(-Math.random()*3)+'s';
@@ -1736,7 +1851,8 @@ button{-webkit-tap-highlight-color:transparent}
         weatherLayer.appendChild(d);
       }
     }else if(type==='Fog'){
-      const fogCount=config.difficulty==='Rookie'?4:config.difficulty==='Pro'?7:10;
+      const fogBase=config.difficulty==='Rookie'?4:config.difficulty==='Pro'?7:10;
+      const fogCount=FF26_GRAPHICS_PROFILE.optimized?Math.max(3,Math.round(fogBase*.6)):fogBase;
       for(let i=0;i<fogCount;i++){
         const d=document.createElement('i');d.className='fog';
         d.style.top=(3+i*(config.difficulty==='Legends'?9:14))+'%';
@@ -1803,7 +1919,7 @@ button{-webkit-tap-highlight-color:transparent}
         }
 
         trail.push({x:ball.x,y:ball.y});
-        if(trail.length>8) trail.shift();
+        if(trail.length>FF26_GRAPHICS_PROFILE.trailMax) trail.shift();
         renderTrail();
 
         // Cross outer end-zone walls to score.
@@ -1960,6 +2076,31 @@ button{-webkit-tap-highlight-color:transparent}
     gameMessage.textContent='Match reset — Player 1 serves first.';
   });
 
+
+  // ---------- QUICK RETURN TO FF26 DRAFT ----------
+  function goToFF26Draft(){
+    try{
+      paused=true;
+      if(typeof clearP2Keys==='function')clearP2Keys();
+      if(typeof clearPendingCpuServe==='function')clearPendingCpuServe();
+    }catch(_){}
+
+    // Touchdown Rivals is normally opened by FF26 with target="_blank".
+    // In that case this closes the game tab and exposes the live FF26 draft.
+    if(window.opener && !window.opener.closed){
+      try{
+        window.opener.focus();
+        window.close();
+        return;
+      }catch(_){}
+    }
+
+    // Safari/PWA fallback: same GitHub Pages directory, where index.html is FF26.
+    window.location.href='./';
+  }
+
+  document.getElementById('goToDraftBtn').addEventListener('click',goToFF26Draft);
+
   // ---------- START GAME ----------
   document.getElementById('startGameBtn').addEventListener('click',async()=>{
     // START GAME always begins a fresh match; RESUME PLAY preserves the paused one.
@@ -2014,4 +2155,3 @@ button{-webkit-tap-highlight-color:transparent}
 </script>
 </body>
 </html>
-
