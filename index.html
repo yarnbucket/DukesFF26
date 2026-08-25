@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<title>FF26</title>
+<title>FF26 v18.9d17 TX Phase 1</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -2298,6 +2298,15 @@ body{
 @media(max-width:430px) and (orientation:portrait){
   .setup-game-launcher{min-height:62px;padding:12px 14px}
   .setup-game-launcher-title{font-size:16px}
+}
+
+
+/* FF26 Transaction Overlay Phase 1 */
+.ff26-transaction-badge{
+  display:inline-flex;align-items:center;margin-left:5px;padding:2px 6px;
+  border:1px solid rgba(255,151,46,.55);border-radius:999px;
+  background:rgba(255,125,20,.08);color:#ffb263;
+  font-size:8px;font-weight:950;letter-spacing:.045em;white-space:nowrap;
 }
 
 </style>
@@ -5334,7 +5343,7 @@ function pickTeamSlot(pickIndex){
   return r%2?inRound:TOTAL_TEAMS+1-inRound
 }
 function pickLabel(idx){return `${Math.floor(idx/TOTAL_TEAMS)+1}.${String(idx%TOTAL_TEAMS+1).padStart(2,'0')}`}
-function available(){const used=new Set(state.picks.map(x=>x.playerId));return PLAYERS.filter(p=>!used.has(p.rank))}
+function available(){const used=new Set(state.picks.map(x=>x.playerId));return PLAYERS.filter(p=>!used.has(p.rank)&&p.draftEligible!==false)}
 function rosterFor(slot){return state.picks.filter(x=>x.teamSlot===slot).map(x=>byId(x.playerId)).filter(Boolean)}
 function posCounts(roster){return dukesCountRoster(roster)}
 
@@ -7518,9 +7527,9 @@ function ff26SyncProfileDraftButton(player){
   const btn=$('#playerProfileDraftBtn');
   if(!btn)return;
   const p=player||FF26_OPEN_PROFILE_PLAYER;
-  if(!p||p.rosterOnly){
+  if(!p||p.rosterOnly||p.draftEligible===false){
     btn.disabled=true;
-    btn.textContent='NOT DRAFTABLE';
+    btn.textContent=p?.ff26Transaction?'ROSTER INACTIVE':'NOT DRAFTABLE';
     return;
   }
   // state.picks stores the drafted player's id in playerId.
@@ -7655,7 +7664,8 @@ function openPlayerProfile(playerOrId){
     : profileBye.level
       ? `⚠ Bye ${p.bye} Clash · ${profileByeCount} already rostered`
       : `Bye ${p.bye} · CLEAR`;
-  $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''}${jerseyNumber!==null?` · #${jerseyNumber}`:''} · ${profileByeText}`;
+  const txLabel=ff26TransactionLabel(p);
+  $('#playerProfileSub').textContent=`${p.team} · ${p.pos}${p.posRank||''}${jerseyNumber!==null?` · #${jerseyNumber}`:''} · ${profileByeText}${txLabel?` · ${txLabel}`:''}`;
   $('#playerProfileSub').classList.remove('profile-bye-clear','profile-bye-clash','profile-bye-danger');
   if(p?.bye)$('#playerProfileSub').classList.add(profileBye.level>=2?'profile-bye-danger':profileBye.level===1?'profile-bye-clash':'profile-bye-clear');
   const topDogBadge=$('#playerProfileTopDog');
@@ -7860,6 +7870,159 @@ function ff26CanonicalPlayerName(name){
     .replace(/[^a-z0-9]+/g,' ')
     .trim();
 }
+
+
+/* =========================================================
+   FF26 TRANSACTION OVERLAY — PHASE 1
+   Lightweight roster/team/status overrides loaded from
+   ./ff26-transactions.json. The baseline roster remains intact.
+   ========================================================= */
+const FF26_TRANSACTION_FILE='./ff26-transactions.json';
+const FF26_TRANSACTION_REFRESH_MS=15*60*1000;
+let FF26_TRANSACTION_MAP=Object.create(null);
+let FF26_TRANSACTION_DATA_SOURCE='NONE';
+let FF26_TRANSACTION_UPDATED_AT=null;
+let FF26_TRANSACTION_LAST_ERROR=null;
+let FF26_TRANSACTION_REFRESH_TIMER=null;
+const FF26_TRANSACTION_BASELINE=new WeakMap();
+
+function ff26PlainTransactionObject(value){
+  return !!value&&typeof value==='object'&&!Array.isArray(value);
+}
+function ff26SafeTransactionText(value,max=140){
+  if(value===null||value===undefined)return null;
+  const s=String(value).trim();
+  return s&&s.length<=max?s:null;
+}
+function ff26NormalizeTransactionTeam(value){
+  const s=String(value||'').trim().toUpperCase();
+  if(!s)return null;
+  if(['FA','FREE AGENT','FREE_AGENT'].includes(s))return 'FA';
+  return ff26NormalizeRosterTeam(s);
+}
+function ff26ValidateTransactionPayload(payload){
+  if(!ff26PlainTransactionObject(payload))throw new Error('Transaction payload is not an object.');
+  if(Number(payload.schemaVersion)!==1)throw new Error(`Unsupported transaction schema: ${payload.schemaVersion}`);
+  if(Number(payload.season)!==2026)throw new Error('Transaction file season does not match 2026.');
+  if(!ff26PlainTransactionObject(payload.players))throw new Error('Transaction players object is missing.');
+
+  const clean=Object.create(null);
+  for(const [rawName,raw] of Object.entries(payload.players)){
+    const name=String(rawName||'').trim();
+    if(!name||!ff26PlainTransactionObject(raw))continue;
+    const key=ff26CanonicalPlayerName(name);
+    if(!key)continue;
+    const team=ff26NormalizeTransactionTeam(raw.team);
+    const previousTeam=ff26NormalizeTransactionTeam(raw.previousTeam);
+    const rosterStatus=ff26SafeTransactionText(raw.rosterStatus,48);
+    const transaction=ff26SafeTransactionText(raw.transaction,64);
+    const effectiveDate=ff26SafeTransactionText(raw.effectiveDate,24);
+    const source=ff26SafeTransactionText(raw.source,80);
+    const note=ff26SafeTransactionText(raw.note,240);
+    const draftable=typeof raw.draftable==='boolean'?raw.draftable:null;
+    clean[key]={name,team,previousTeam,rosterStatus,transaction,effectiveDate,source,note,draftable};
+  }
+  return {
+    schemaVersion:1,
+    season:2026,
+    updatedAt:ff26SafeTransactionText(payload.updatedAt,40),
+    players:clean
+  };
+}
+function ff26RememberTransactionBaseline(player){
+  if(!player||FF26_TRANSACTION_BASELINE.has(player))return;
+  FF26_TRANSACTION_BASELINE.set(player,{
+    team:player.team,
+    bye:player.bye,
+    draftEligible:player.draftEligible,
+    rosterStatus:player.rosterStatus,
+    ff26Transaction:player.ff26Transaction
+  });
+}
+function ff26RestoreTransactionBaseline(player){
+  const base=FF26_TRANSACTION_BASELINE.get(player);
+  if(!base)return;
+  player.team=base.team;
+  player.bye=base.bye;
+  if(base.draftEligible===undefined)delete player.draftEligible;
+  else player.draftEligible=base.draftEligible;
+  if(base.rosterStatus===undefined)delete player.rosterStatus;
+  else player.rosterStatus=base.rosterStatus;
+  if(base.ff26Transaction===undefined)delete player.ff26Transaction;
+  else player.ff26Transaction=base.ff26Transaction;
+}
+function ff26ApplyTransactionToPlayer(player){
+  if(!player)return false;
+  ff26RememberTransactionBaseline(player);
+  ff26RestoreTransactionBaseline(player);
+  const tx=FF26_TRANSACTION_MAP[ff26CanonicalPlayerName(player.name)];
+  if(!tx)return false;
+
+  if(tx.team){
+    player.team=tx.team;
+    player.bye=tx.team==='FA'?null:ff26ByeForTeam(tx.team);
+  }
+  if(tx.draftable!==null){
+    player.draftEligible=tx.draftable;
+  }
+  if(tx.rosterStatus)player.rosterStatus=tx.rosterStatus;
+  player.ff26Transaction=tx;
+  return true;
+}
+function ff26ApplyTransactions(){
+  let applied=0;
+  [...PLAYERS,...ROSTER26_PLAYERS].forEach(player=>{
+    if(ff26ApplyTransactionToPlayer(player))applied++;
+  });
+  try{
+    if(typeof renderAll==='function')renderAll();
+    const overlay=document.getElementById('playerProfileOverlay');
+    if(overlay&&!overlay.classList.contains('hidden')){
+      const currentName=document.getElementById('playerProfileName')?.textContent?.trim();
+      const current=[...PLAYERS,...ROSTER26_PLAYERS].find(p=>p.name===currentName);
+      if(current)openPlayerProfile(current);
+    }
+  }catch(error){FF26_DIAG.warn('Transaction UI refresh skipped:',error)}
+  return applied;
+}
+function ff26TransactionLabel(player){
+  const tx=player?.ff26Transaction;
+  if(!tx)return '';
+  const status=tx.rosterStatus||tx.transaction||'TRANSACTION';
+  const date=tx.effectiveDate?` · ${tx.effectiveDate}`:'';
+  return `${status}${date}`;
+}
+async function loadFF26Transactions(){
+  try{
+    const url=new URL(FF26_TRANSACTION_FILE,document.baseURI);
+    url.searchParams.set('v',String(Date.now()));
+    const response=await fetch(url.href,{cache:'no-store',credentials:'same-origin',headers:{Accept:'application/json'}});
+    if(!response.ok)throw new Error(`HTTP ${response.status}`);
+    const payload=ff26ValidateTransactionPayload(await response.json());
+    FF26_TRANSACTION_MAP=payload.players;
+    FF26_TRANSACTION_DATA_SOURCE='LIVE JSON';
+    FF26_TRANSACTION_UPDATED_AT=payload.updatedAt||null;
+    FF26_TRANSACTION_LAST_ERROR=null;
+    const applied=ff26ApplyTransactions();
+    FF26_DIAG.info(`FF26 transaction overlay loaded · ${applied} player override(s)`);
+    return true;
+  }catch(error){
+    FF26_TRANSACTION_LAST_ERROR=String(error?.message||error);
+    FF26_DIAG.warn('FF26 transaction overlay unavailable; baseline roster retained.',error);
+    return false;
+  }
+}
+function ff26StartTransactionRefresh(){
+  if(FF26_TRANSACTION_REFRESH_TIMER)clearInterval(FF26_TRANSACTION_REFRESH_TIMER);
+  FF26_TRANSACTION_REFRESH_TIMER=setInterval(()=>{
+    if(document.visibilityState!=='hidden')loadFF26Transactions();
+  },FF26_TRANSACTION_REFRESH_MS);
+}
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible')loadFF26Transactions();
+});
+window.addEventListener('online',()=>loadFF26Transactions());
+
 function ff26NormalizeRosterTeam(team){
   return ({JAX:'JAX',LA:'LAR'})[String(team||'').toUpperCase()]||String(team||'').toUpperCase();
 }
@@ -7900,6 +8063,7 @@ async function loadRoster26SearchData(){
     });
     ROSTER26_PLAYERS=supplements;
     FF26_ROSTER26_LOAD_STATE=`LIVE JSON · ${supplements.length} supplemental`;
+    ff26ApplyTransactions();
     if(typeof renderPlayers==='function')renderPlayers();
   }catch(error){
     ROSTER26_PLAYERS=[];
@@ -7913,7 +8077,7 @@ function filteredPlayers(){
   const ranked=available();
   const includeRoster=Boolean(q)||sort==='nflTeam';
   const source=includeRoster?[...ranked,...ROSTER26_PLAYERS]:ranked;
-  let list=source.filter(p=>(pos==='ALL'||p.pos===pos)&&(!q||`${p.name} ${p.team}`.toLowerCase().includes(q))&&(sort!=='nflTeam'||selectedTeam==='ALL'||p.team===selectedTeam));
+  let list=source.filter(p=>(pos==='ALL'||p.pos===pos)&&(!q||`${p.name} ${p.team} ${p.rosterStatus||''} ${p.ff26Transaction?.transaction||''}`.toLowerCase().includes(q))&&(sort!=='nflTeam'||selectedTeam==='ALL'||p.team===selectedTeam));
   if(sort==='topDogs')list=list.filter(ff26IsTopDogCandidate);
   const manuallySorted=ff26ApplyColumnSort(list);
   if(!manuallySorted){
@@ -9353,7 +9517,7 @@ window.addEventListener('orientationchange',scheduleMobileViewportUpdate,{passiv
 window.visualViewport?.addEventListener('resize',scheduleMobileViewportUpdate,{passive:true});
 window.addEventListener('pageshow',()=>{updateMobileViewportHeight();scrollPageToTop()});
 window.addEventListener('load',()=>{updateMobileViewportHeight();scrollPageToTop()});
-buildFilters();initializeSetup();renderAll();scrollPageToTop();loadFF26Status();loadFF26Market();loadRoster26SearchData();ff26StartMarketRefresh();
+buildFilters();initializeSetup();renderAll();scrollPageToTop();loadFF26Status();loadFF26Market();loadRoster26SearchData();loadFF26Transactions();ff26StartMarketRefresh();ff26StartTransactionRefresh();
 })();
 </script>
 
