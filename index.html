@@ -6,7 +6,7 @@
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
 <!-- FF26 v19.1 Phase 8A Player History Intelligence concept build — 2026-08-25 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
-<!-- FF26 v19.8 Superflex + Setup Scroll Fix: 10-starter SF roster, approved QB targets, retained setup scroll -->
+<!-- FF26 v19.9 Setup Anchor Scroll Fix: restores the changed setup control to the same visual position after reload -->
 <title>FF26 v19.1 Phase 8A History Concept</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
@@ -5657,27 +5657,46 @@ function ff26SyncLeagueSetup(){
   const req=$('#setupRequirement');
   if(req)req.textContent=`Roster: 1 QB, 2 RB, 3 WR, 1 TE, ${FF26_LEAGUE_BOOT.superflex?'1 SUPERFLEX':'1 FLEX'}, 1 K, 1 DST and ${FF26_LEAGUE_BOOT.benchSpots} bench. ${FF26_LEAGUE_BOOT.rounds} rounds. ${FF26_LEAGUE_BOOT.superflex?`QB target: ${DUKES_FF26_LEAGUE.rosterTargets.QB.minimum}${DUKES_FF26_LEAGUE.rosterTargets.QB.target!==DUKES_FF26_LEAGUE.rosterTargets.QB.minimum?`–${DUKES_FF26_LEAGUE.rosterTargets.QB.target}`:''}.`:''}`;
   document.documentElement.style.setProperty('--ff26-teams',String(FF26_LEAGUE_BOOT.teams));
-  const FF26_SETUP_SCROLL_KEY='ff26-setup-scroll-v19.8';
-  const apply=()=>{
+  const FF26_SETUP_ANCHOR_KEY='ff26-setup-anchor-v19.9';
+  const apply=(event)=>{
     const next={teams:Number(teamsEl.value),format:formatEl.value,benchSpots:Number(benchEl.value)};
     if(next.teams===FF26_LEAGUE_BOOT.teams&&next.format===FF26_LEAGUE_BOOT.format&&next.benchSpots===FF26_LEAGUE_BOOT.benchSpots)return;
     try{
       localStorage.setItem(FF26_LEAGUE_CONFIG_KEY,JSON.stringify(next));
       const setupOverlay=document.getElementById('setupOverlay');
-      sessionStorage.setItem(FF26_SETUP_SCROLL_KEY,String(setupOverlay?.scrollTop||0));
+      const anchor=event?.currentTarget||document.activeElement;
+      const overlayRect=setupOverlay?.getBoundingClientRect();
+      const anchorRect=anchor?.getBoundingClientRect();
+      const saved={
+        id:anchor?.id||'',
+        offset:(overlayRect&&anchorRect)?anchorRect.top-overlayRect.top:null,
+        scrollTop:setupOverlay?.scrollTop||0
+      };
+      sessionStorage.setItem(FF26_SETUP_ANCHOR_KEY,JSON.stringify(saved));
     }catch(_e){}
     location.reload();
   };
-  setTimeout(()=>{
+  const restoreSetupAnchor=()=>{
     try{
-      const savedScroll=Number(sessionStorage.getItem(FF26_SETUP_SCROLL_KEY)||0);
-      if(savedScroll>0){
-        const setupOverlay=document.getElementById('setupOverlay');
-        if(setupOverlay)setupOverlay.scrollTop=savedScroll;
+      const raw=sessionStorage.getItem(FF26_SETUP_ANCHOR_KEY);
+      if(!raw)return;
+      const saved=JSON.parse(raw);
+      const setupOverlay=document.getElementById('setupOverlay');
+      if(!setupOverlay)return;
+      const anchor=saved?.id?document.getElementById(saved.id):null;
+      if(anchor&&Number.isFinite(saved.offset)){
+        const overlayRect=setupOverlay.getBoundingClientRect();
+        const anchorRect=anchor.getBoundingClientRect();
+        setupOverlay.scrollTop += (anchorRect.top-overlayRect.top)-saved.offset;
+        anchor.focus?.({preventScroll:true});
+      }else if(Number.isFinite(saved?.scrollTop)){
+        setupOverlay.scrollTop=saved.scrollTop;
       }
-      sessionStorage.removeItem(FF26_SETUP_SCROLL_KEY);
+      sessionStorage.removeItem(FF26_SETUP_ANCHOR_KEY);
     }catch(_e){}
-  },60);
+  };
+  requestAnimationFrame(()=>requestAnimationFrame(restoreSetupAnchor));
+  setTimeout(restoreSetupAnchor,120);
   teamsEl.addEventListener('change',apply); formatEl.addEventListener('change',apply); benchEl.addEventListener('change',apply);
 }
 setTimeout(ff26SyncLeagueSetup,0);
