@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#060a10">
-<title>Touchdown Rivals - Full Game v1.29</title>
+<title>Touchdown Rivals - Full Game v1.30</title>
 <style>
 :root{
   --bg:#05080d;
@@ -473,11 +473,10 @@ button{-webkit-tap-highlight-color:transparent}
   *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important}
 }
 
-/* Touchdown Rivals v1.29 — iPad/Safari GPU-light visuals */
+/* Touchdown Rivals v1.30 — iPad/Safari GPU-light visuals */
 .ipad-safari-optimized .helmet-image,
 .ipad-safari-optimized #p1PlayerSprite,
 .ipad-safari-optimized #p2PlayerSprite,
-.ipad-safari-optimized #footballObj,
 .ipad-safari-optimized .weather-layer,
 .ipad-safari-optimized .impact-layer{
   transform:translateZ(0);
@@ -504,7 +503,7 @@ button{-webkit-tap-highlight-color:transparent}
 }
 
 
-/* v1.29 — quick return to the live FF26 draft */
+/* v1.30 — quick return to the live FF26 draft */
 .setup-footer.setup-footer-draft{
   grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.25fr);
   gap:8px;
@@ -522,7 +521,7 @@ button{-webkit-tap-highlight-color:transparent}
 }
 
 
-/* v1.29 — uniform setup footer typography */
+/* v1.30 — uniform setup footer typography */
 .setup-footer.setup-footer-draft .setup-back,
 .setup-footer.setup-footer-draft .setup-draft,
 .setup-footer.setup-footer-draft .setup-start{
@@ -540,7 +539,7 @@ button{-webkit-tap-highlight-color:transparent}
 }
 
 
-/* v1.29 — larger, uniform setup footer typography for clarity */
+/* v1.30 — larger, uniform setup footer typography for clarity */
 .setup-footer.setup-footer-draft .setup-back,
 .setup-footer.setup-footer-draft .setup-draft,
 .setup-footer.setup-footer-draft .setup-start{
@@ -557,6 +556,44 @@ button{-webkit-tap-highlight-color:transparent}
     font-size:16px!important;
     min-height:48px!important;
   }
+}
+
+
+/* v1.30 — iPhone / Pixel football rendering parity */
+.football-ui-icon{
+  display:inline-block;
+  width:1.38em;
+  height:.82em;
+  vertical-align:-.08em;
+  position:relative;
+  box-sizing:border-box;
+  border:.11em solid #f1e7dd;
+  border-radius:55% 45% 55% 45% / 50%;
+  background:#7a3d22;
+  transform:rotate(-12deg);
+  transform-origin:50% 50%;
+  flex:0 0 auto;
+}
+.football-ui-icon:before{
+  content:"";
+  position:absolute;
+  left:22%;right:22%;top:44%;
+  height:.09em;
+  background:#fff;
+  border-radius:999px;
+}
+.football-ui-icon:after{
+  content:"";
+  position:absolute;
+  left:48%;top:22%;bottom:22%;
+  width:.08em;
+  background:#fff;
+  box-shadow:-.25em 0 0 #fff,.25em 0 0 #fff;
+  border-radius:999px;
+}
+#footballObj{
+  transform-box:view-box;
+  transform-origin:0 0;
 }
 
 </style>
@@ -676,7 +713,7 @@ button{-webkit-tap-highlight-color:transparent}
     <footer class="setup-footer setup-footer-draft">
       <button class="setup-back" id="setupReset" type="button">← RESET</button>
       <button class="setup-draft" id="goToDraftBtn" type="button">← GO TO DRAFT</button>
-      <button class="setup-start" id="startGameBtn" type="button">START GAME 🏈</button>
+      <button class="setup-start" id="startGameBtn" type="button">START GAME <span class="football-ui-icon" aria-hidden="true"></span></button>
     </footer>
   </div>
 </section>
@@ -692,7 +729,7 @@ button{-webkit-tap-highlight-color:transparent}
 
       <div class="serve-box">
         <button id="serveBtn" class="ready-serve" type="button">
-          <span class="stack">◀ 🏈</span>
+          <span class="stack">◀ <span class="football-ui-icon" aria-hidden="true"></span></span>
           <span class="stack">P1 MOVE TO SERVE</span>
         </button>
       </div>
@@ -1172,7 +1209,7 @@ button{-webkit-tap-highlight-color:transparent}
   const BALL_R = 29;
   const PLAYER_R = 52;
 
-  // ---------- iPad / Safari graphics optimization layer v1.29 ----------
+  // ---------- iPad / Safari graphics optimization layer v1.30 ----------
   const FF26_GRAPHICS_PROFILE=(()=>{
     const ua=navigator.userAgent||'';
     const platform=navigator.platform||'';
@@ -1201,7 +1238,7 @@ button{-webkit-tap-highlight-color:transparent}
 
   function difficultyTuning(){
     if(config.difficulty==='Legends'){
-      return {serve:10.4,max:42,hitBoost:1.06,cpuY:8.7,cpuX:6.2,weather:1.35,ramp:1.045,soloCpuBoost:1.58};
+      return {serve:9.6,max:38,hitBoost:1.0,cpuY:6.5,cpuX:4.2,weather:1.35,ramp:1.035,soloCpuBoost:1.34};
     }
     if(config.difficulty==='Pro'){
       return {serve:8.8,max:30,hitBoost:.88,cpuY:6.0,cpuX:3.9,weather:.9,ramp:1.012,soloCpuBoost:1.20};
@@ -1210,32 +1247,50 @@ button{-webkit-tap-highlight-color:transparent}
   }
 
   function adaptiveCpuProfile(){
-    const diff=score1-score2;
+    // Positive gap means the CPU is behind.
+    const gap = score1 - score2;
+
+    // A close game (within 1 point) gets no comeback boost.
+    // The ramp begins only when the CPU trails by 2+.
+    const pressure = Math.max(0,Math.min(1,(gap-1)/5));
+
+    let maxSpeedBoost, maxReactionBoost, maxAggression, hardSpeedCap;
 
     if(config.difficulty==='Legends'){
-      // Legends is a boss-level CPU from the opening serve, not only when trailing.
-      let pressure=0.62;
-      if(diff>=1)pressure=.76;
-      if(diff>=2)pressure=.90;
-      if(diff>=3)pressure=1.00;
-      if(diff<=-1)pressure=.58; // stays aggressive even while ahead
-
-      return {
-        pressure,
-        speedBoost:1.34+pressure*.42,
-        reactionBoost:1.34+pressure*.52,
-        aggression:.78+pressure*.22,
-        hardSpeedCap:13.8+pressure*3.2
-      };
+      maxSpeedBoost = 1.85;
+      maxReactionBoost = 1.65;
+      maxAggression = 1.00;
+      hardSpeedCap = 15.5;
+    }else if(config.difficulty==='Pro'){
+      maxSpeedBoost = 1.45;
+      maxReactionBoost = 1.32;
+      maxAggression = .65;
+      hardSpeedCap = 11.5;
+    }else{
+      maxSpeedBoost = 1.20;
+      maxReactionBoost = 1.15;
+      maxAggression = .32;
+      hardSpeedCap = 8.3;
     }
 
-    const pressure=diff>=3?1:diff===2?.7:diff===1?.35:0;
+    let speedBoost = 1 + pressure*(maxSpeedBoost-1);
+    let reactionBoost = 1 + pressure*(maxReactionBoost-1);
+    let aggression = pressure*maxAggression;
+
+    // If CPU is comfortably ahead, back off slightly rather than becoming a wall.
+    if(gap <= -2){
+      speedBoost *= .92;
+      reactionBoost *= .94;
+      aggression *= .50;
+    }
+
     return {
+      gap,
       pressure,
-      speedBoost:1+pressure*.22,
-      reactionBoost:1+pressure*.28,
-      aggression:.45+pressure*.38,
-      hardSpeedCap:9.2+pressure*2.2
+      speedBoost,
+      reactionBoost,
+      aggression,
+      hardSpeedCap
     };
   }
 
@@ -1362,14 +1417,14 @@ button{-webkit-tap-highlight-color:transparent}
     } else if(rallyLive){
       serveBtn.disabled = true;
       serveBtn.classList.remove('ready-serve');
-      serveBtn.innerHTML = '<span class="stack">🏈</span><span class="stack">BALL IN PLAY</span>';
+      serveBtn.innerHTML = '<span class="stack"><span class="football-ui-icon" aria-hidden="true"></span></span><span class="stack">BALL IN PLAY</span>';
     } else {
       serveBtn.disabled = false;
       serveBtn.classList.add('ready-serve');
       if(serveOwner===1){
-        serveBtn.innerHTML = '<span class="stack">◀ 🏈</span><span class="stack">P1 MOVE TO SERVE</span>';
+        serveBtn.innerHTML = '<span class="stack">◀ <span class="football-ui-icon" aria-hidden="true"></span></span><span class="stack">P1 MOVE TO SERVE</span>';
       }else{
-        serveBtn.innerHTML = '<span class="stack">🏈 ▶</span><span class="stack">P2 MOVE TO SERVE</span>';
+        serveBtn.innerHTML = '<span class="stack"><span class="football-ui-icon" aria-hidden="true"></span> ▶</span><span class="stack">P2 MOVE TO SERVE</span>';
       }
       if(config.mode===1 && serveOwner===2){
         gameMessage.textContent = `${config.p2} serving automatically — get ready.`;
@@ -1445,7 +1500,7 @@ button{-webkit-tap-highlight-color:transparent}
   p2El.addEventListener('pointerup',e=>endDrag(p2,e));
   p2El.addEventListener('pointercancel',e=>endDrag(p2,e));
 
-  // ---------- PC TWO-PLAYER CONTROLS v1.29 ----------
+  // ---------- PC TWO-PLAYER CONTROLS v1.30 ----------
   // Player 1 keeps the existing Pointer Events control, which works with mouse
   // on PC and touch on phones/tablets. Player 2 can use held arrow keys on PC.
   const p2Keys={ArrowUp:false,ArrowDown:false,ArrowLeft:false,ArrowRight:false};
@@ -1505,36 +1560,29 @@ button{-webkit-tap-highlight-color:transparent}
     const tune=difficultyTuning();
     const adaptive=adaptiveCpuProfile();
 
-    // Base difficulty still matters, but Legends is aggressive from 0-0.
+    // Base difficulty still matters, but score pressure adds comeback speed.
     const soloBoost=(tune.soloCpuBoost || 1)*adaptive.speedBoost;
     const reaction=adaptive.reactionBoost;
-    const legends=config.difficulty==='Legends';
 
-    // Predictive tracking in Legends: aim where the ball is going, not only where it is now.
-    const lookAhead=legends?Math.max(3.5,Math.min(8.5,Math.abs(ball.vx)*.34+3.6)):0;
-    const predictedY=Math.max(75,Math.min(545,ball.y+ball.vy*lookAhead));
-    const yTarget=legends?predictedY:ball.y;
-    const yErr=yTarget-p2.y;
+    // Faster vertical reaction when the CPU falls behind.
+    const yErr=ball.y-p2.y;
     const maxY=Math.min(adaptive.hardSpeedCap,tune.cpuY*soloBoost)*dt;
-    const yReaction=(legends?.19:.11)*reaction;
+    const yReaction=.11*reaction;
     p2.y += Math.max(-maxY,Math.min(maxY,yErr*yReaction));
 
-    let targetX=legends?840:900;
-    if(ball.x>590){
-      const followOffset=legends
-        ? 28-(adaptive.aggression*18)
-        : 70-(adaptive.aggression*46);
-      targetX=Math.max(650,Math.min(1042,ball.x+followOffset));
-    }else if(legends){
-      // Hard recovery toward midfield so the CPU does not sit deep after a miss.
-      targetX=810-(adaptive.aggression*30);
+    // When trailing, the CPU closes more aggressively instead of sitting deep.
+    let targetX=900;
+    if(ball.x>610){
+      const followOffset=70-(adaptive.aggression*46);
+      targetX=Math.max(675,Math.min(1038,ball.x+followOffset));
     }else if(adaptive.pressure>.35){
+      // Recover toward midfield faster in difficult comeback situations.
       targetX=900-(adaptive.aggression*35);
     }
 
     const xErr=targetX-p2.x;
     const maxX=Math.min(adaptive.hardSpeedCap,tune.cpuX*soloBoost)*dt;
-    const xReaction=(legends?.095:.05)*reaction;
+    const xReaction=.05*reaction;
     p2.x += Math.max(-maxX,Math.min(maxX,xErr*xReaction));
 
     p2.x=Math.max(P2_MIN_X,Math.min(P2_MAX_X,p2.x));
@@ -1663,9 +1711,26 @@ button{-webkit-tap-highlight-color:transparent}
     p2El.setAttribute('transform',`translate(${p2.x} ${p2.y})`);
   }
 
+  function renderFootball(){
+    // gameField stretches to each device's landscape viewport. Counter that stretch
+    // for the football only, preserving one identical football silhouette everywhere.
+    const rect=svg.getBoundingClientRect();
+    const sx=Math.max(.0001,rect.width/FIELD_W);
+    const sy=Math.max(.0001,rect.height/FIELD_H);
+    const ratio=sy/sx;
+    const rad=ball.angle*Math.PI/180;
+    const c=Math.cos(rad),s=Math.sin(rad);
+
+    // M = inverse(viewport stretch) × isotropic rotation.
+    // After the browser applies its SVG viewport scaling, the football remains
+    // circularly/isotropically transformed instead of becoming wider/narrower.
+    const a=ratio*c,b=s,cc=-ratio*s,d=c;
+    ballEl.setAttribute('transform',`matrix(${a} ${b} ${cc} ${d} ${ball.x} ${ball.y})`);
+  }
+
   function render(){
     renderPlayers();
-    ballEl.setAttribute('transform',`translate(${ball.x} ${ball.y}) rotate(${ball.angle})`);
+    renderFootball();
     scoreP1El.textContent=String(score1);
     scoreP2El.textContent=String(score2);
   }
