@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.3",
+  "schemaVersion": "1.3-progress",
   "season": 2025,
   "purpose": "FF26 Full Player History Intelligence",
   "updated": "2026-08-25",
@@ -10,7 +10,10 @@
     "playerId is the canonical FF26 join key across the complete player universe.",
     "The draftable pool is filtered separately from this history database.",
     "stats2025 and injury2025 are populated only when verified; missing values remain null/UNKNOWN.",
-    "2025 history is frozen after verification; future 2026 weekly data should live in a separate JSON."
+    "2025 history is frozen after verification; future 2026 weekly data should live in a separate JSON.",
+    "This progress revision preserves the 934-player canonical playerId universe.",
+    "Only safe derived values were calculated from already-present verified raw fields.",
+    "Bulk 2025 NFL production ingestion is NOT marked complete until the source CSV is successfully imported and identity-matched."
   ],
   "players": [
     {
@@ -269,7 +272,9 @@
         "receptions": 68,
         "targets": 112,
         "recYards": 919,
-        "recTD": 7
+        "recTD": 7,
+        "yardsPerReception": 13.51,
+        "catchPct": 60.7
       },
       "injury2025": {
         "gamesMissed": 5,
@@ -490,7 +495,9 @@
         "receptions": 64,
         "targets": 86,
         "recYards": 680,
-        "recTD": 7
+        "recTD": 7,
+        "yardsPerReception": 10.62,
+        "catchPct": 74.4
       },
       "injury2025": {
         "gamesMissed": 5,
@@ -712,7 +719,8 @@
       "stats2025": {
         "receptions": 36,
         "recYards": 395,
-        "recTD": 4
+        "recTD": 4,
+        "yardsPerReception": 10.97
       },
       "injury2025": {
         "gamesMissed": 10,
@@ -794,7 +802,9 @@
         "receptions": 59,
         "targets": 98,
         "recYards": 846,
-        "recTD": 11
+        "recTD": 11,
+        "yardsPerReception": 14.34,
+        "catchPct": 60.2
       },
       "injury2025": {
         "gamesMissed": 2,
@@ -849,7 +859,9 @@
         "receptions": 18,
         "targets": 35,
         "recYards": 271,
-        "recTD": 2
+        "recTD": 2,
+        "yardsPerReception": 15.06,
+        "catchPct": 51.4
       },
       "injury2025": {
         "gamesMissed": 13,
@@ -1076,7 +1088,8 @@
       "stats2025": {
         "receptions": 38,
         "recYards": 582,
-        "recTD": 3
+        "recTD": 3,
+        "yardsPerReception": 15.32
       },
       "injury2025": {
         "gamesMissed": 7,
@@ -1232,7 +1245,9 @@
         "receptions": 30,
         "targets": 62,
         "recYards": 368,
-        "recTD": 3
+        "recTD": 3,
+        "yardsPerReception": 12.27,
+        "catchPct": 48.4
       },
       "injury2025": {
         "gamesMissed": 9,
@@ -1409,7 +1424,9 @@
         "receptions": 35,
         "targets": 55,
         "recYards": 611,
-        "recTD": 6
+        "recTD": 6,
+        "yardsPerReception": 17.46,
+        "catchPct": 63.6
       },
       "injury2025": {
         "gamesMissed": 6,
@@ -1605,7 +1622,8 @@
       "stats2025": {
         "receptions": 51,
         "recYards": 875,
-        "recTD": 9
+        "recTD": 9,
+        "yardsPerReception": 17.16
       },
       "injury2025": {
         "gamesMissed": 3,
@@ -2622,7 +2640,9 @@
         "receptions": 57,
         "targets": 69,
         "recYards": 628,
-        "recTD": 7
+        "recTD": 7,
+        "yardsPerReception": 11.02,
+        "catchPct": 82.6
       },
       "injury2025": {
         "gamesMissed": 6,
@@ -22520,5 +22540,15 @@
       "dataStatus": "PENDING"
     }
   ],
-  "roster26PlayerCount": 822
+  "roster26PlayerCount": 822,
+  "populationStatus": {
+    "totalPlayers": 934,
+    "verifiedSeedRecords": 15,
+    "recordsWithAny2025Stats": 15,
+    "recordsWithExistingPPG2025": 409,
+    "recordsWithGamesMissedData": 15,
+    "collegeSeason2025Flagged": 3,
+    "pendingBulkVerification": 919,
+    "bulkNFLStatsIngestionComplete": false
+  }
 }
