@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "updatedAt": "2026-08-25T13:00:00Z",
+  "players": {
+    "Trey Benson": {
+      "previousTeam": "ARI",
+      "team": "FA",
+      "transaction": "WAIVED/INJURED",
+      "rosterStatus": "WAIVED/INJURED",
+      "draftable": false,
+      "effectiveDate": "2026-08-24",
+      "source": "NFL transaction overlay",
+      "note": "Phase 1 test case. Keep searchable but remove from active draft pool until roster status changes."
+    }
+  }
+}
