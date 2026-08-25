@@ -32,203 +32,232 @@
         "position": "QB",
         "age": 23,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_4a82e84701e6"
       },
       {
         "name": "Gardner Minshew",
         "position": "QB",
         "age": 29,
         "experience": 7,
-        "college": "Washington State"
+        "college": "Washington State",
+        "playerId": "ff26_bc977626067d"
       },
       {
         "name": "Jacoby Brissett",
         "position": "QB",
         "age": 33,
         "experience": 10,
-        "college": "N.C. State; Florida"
+        "college": "N.C. State; Florida",
+        "playerId": "ff26_dd618c8a5710"
       },
       {
         "name": "Kedon Slovis",
         "position": "QB",
         "age": 25,
         "experience": 2,
-        "college": "BYU; Pittsburgh; USC"
+        "college": "BYU; Pittsburgh; USC",
+        "playerId": "ff26_9ad92c5ca4b1"
       },
       {
         "name": "Bam Knight",
         "position": "RB",
         "age": 25,
         "experience": 4,
-        "college": "N.C. State"
+        "college": "N.C. State",
+        "playerId": "ff26_00e9f51bb9d4"
       },
       {
         "name": "Corey Kiner",
         "position": "RB",
         "age": 24,
         "experience": 1,
-        "college": "Cincinnati; LSU"
+        "college": "Cincinnati; LSU",
+        "playerId": "ff26_8caa20d2d32e"
       },
       {
         "name": "James Conner",
         "position": "RB",
         "age": 31,
         "experience": 9,
-        "college": "Pittsburgh"
+        "college": "Pittsburgh",
+        "playerId": "ff26_ccff09de853a"
       },
       {
         "name": "Trey Benson",
         "position": "RB",
         "age": 23,
         "experience": 2,
-        "college": "Florida State; Oregon"
+        "college": "Florida State; Oregon",
+        "playerId": "ff26_09cea998cbb5"
       },
       {
         "name": "Tyler Allgeier",
         "position": "RB",
         "age": 26,
         "experience": 4,
-        "college": "BYU"
+        "college": "BYU",
+        "playerId": "ff26_ceeed397681c"
       },
       {
         "name": "Andre Baccellia",
         "position": "WR",
         "age": 29,
         "experience": 5,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_630d9eef3f1a"
       },
       {
         "name": "Bryson Green",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Wisconsin; Oklahoma State"
+        "college": "Wisconsin; Oklahoma State",
+        "playerId": "ff26_ca99fd53e7fe"
       },
       {
         "name": "Devin Duvernay",
         "position": "WR",
         "age": 28,
         "experience": 6,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_354ae12fe073"
       },
       {
         "name": "Ihmir Smith-Marsette",
         "position": "WR",
         "age": 26,
         "experience": 5,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_2520803fc64e"
       },
       {
         "name": "Jalen Brooks",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "South Carolina; Tarleton State; Wingate"
+        "college": "South Carolina; Tarleton State; Wingate",
+        "playerId": "ff26_21a14e7a29e9"
       },
       {
         "name": "Kendrick Bourne",
         "position": "WR",
         "age": 30,
         "experience": 9,
-        "college": "Eastern Washington"
+        "college": "Eastern Washington",
+        "playerId": "ff26_f5fa87e676ba"
       },
       {
         "name": "Marvin Harrison Jr.",
         "position": "WR",
         "age": 23,
         "experience": 2,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_23560175cfef"
       },
       {
         "name": "Michael Wilson",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_3d805febd041"
       },
       {
         "name": "Simi Fehoko",
         "position": "WR",
         "age": 28,
         "experience": 5,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_e6997985cf40"
       },
       {
         "name": "Tejhaun Palmer",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "UAB"
+        "college": "UAB",
+        "playerId": "ff26_54e1ef647d43"
       },
       {
         "name": "Xavier Weaver",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Colorado; University of South Florida"
+        "college": "Colorado; University of South Florida",
+        "playerId": "ff26_de75ea16a990"
       },
       {
         "name": "Zay Jones",
         "position": "WR",
         "age": 31,
         "experience": 9,
-        "college": "East Carolina"
+        "college": "East Carolina",
+        "playerId": "ff26_91b77b876189"
       },
       {
         "name": "Elijah Higgins",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_dd30f0166136"
       },
       {
         "name": "Josiah Deguara",
         "position": "TE",
         "age": 29,
         "experience": 6,
-        "college": "Cincinnati"
+        "college": "Cincinnati",
+        "playerId": "ff26_5871a30428c1"
       },
       {
         "name": "Pharaoh Brown",
         "position": "TE",
         "age": 32,
         "experience": 9,
-        "college": "Oregon"
+        "college": "Oregon",
+        "playerId": "ff26_ab1bcdcf1073"
       },
       {
         "name": "Rivaldo Fairweather",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Auburn; Florida International"
+        "college": "Auburn; Florida International",
+        "playerId": "ff26_c7a095737bd1"
       },
       {
         "name": "Teagan Quitoriano",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "Oregon State"
+        "college": "Oregon State",
+        "playerId": "ff26_4b961d1e75dd"
       },
       {
         "name": "Tip Reiman",
         "position": "TE",
         "age": 24,
         "experience": 2,
-        "college": "Illinois"
+        "college": "Illinois",
+        "playerId": "ff26_c12aa888f399"
       },
       {
         "name": "Trey McBride",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "Colorado State"
+        "college": "Colorado State",
+        "playerId": "ff26_ab46500149a0"
       },
       {
         "name": "Chad Ryland",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_b7c3418f5a71"
       }
     ],
     "ATL": [
@@ -237,175 +266,200 @@
         "position": "QB",
         "age": 30,
         "experience": 7,
-        "college": "North Dakota State"
+        "college": "North Dakota State",
+        "playerId": "ff26_4e6724a87655"
       },
       {
         "name": "Emory Jones",
         "position": "QB",
         "age": 26,
         "experience": 2,
-        "college": "Cincinnati; Arizona State; Florida"
+        "college": "Cincinnati; Arizona State; Florida",
+        "playerId": "ff26_7c460b153c09"
       },
       {
         "name": "Michael Penix Jr.",
         "position": "QB",
         "age": 26,
         "experience": 2,
-        "college": "Washington; Indiana"
+        "college": "Washington; Indiana",
+        "playerId": "ff26_ca849225494c"
       },
       {
         "name": "Trevor Siemian",
         "position": "QB",
         "age": 34,
         "experience": 11,
-        "college": "Northwestern"
+        "college": "Northwestern",
+        "playerId": "ff26_78dca028e6c1"
       },
       {
         "name": "Tua Tagovailoa",
         "position": "QB",
         "age": 28,
         "experience": 6,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_5311eb2f5136"
       },
       {
         "name": "Bijan Robinson",
         "position": "RB",
         "age": 24,
         "experience": 3,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_05a24ed49cfa"
       },
       {
         "name": "Brian Robinson",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_2d088b77ad97"
       },
       {
         "name": "Carlos Washington",
         "position": "RB",
         "age": 27,
         "experience": 3,
-        "college": "Southeastern Louisiana"
+        "college": "Southeastern Louisiana",
+        "playerId": "ff26_21ffc7cc67bc"
       },
       {
         "name": "Nate Carter",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Michigan State; Connecticut"
+        "college": "Michigan State; Connecticut",
+        "playerId": "ff26_b403f08713af"
       },
       {
         "name": "Tyler Goodson",
         "position": "RB",
         "age": 25,
         "experience": 4,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_c9494dd20207"
       },
       {
         "name": "Casey Washington",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Illinois"
+        "college": "Illinois",
+        "playerId": "ff26_4e09ba1608fd"
       },
       {
         "name": "Chris Blair",
         "position": "WR",
         "age": 28,
         "experience": 5,
-        "college": "Alcorn State"
+        "college": "Alcorn State",
+        "playerId": "ff26_6b72c5865fc6"
       },
       {
         "name": "Deven Thompkins",
         "position": "WR",
         "age": 26,
         "experience": 4,
-        "college": "Utah State"
+        "college": "Utah State",
+        "playerId": "ff26_12f6be2ebc7f"
       },
       {
         "name": "Drake London",
         "position": "WR",
         "age": 24,
         "experience": 4,
-        "college": "USC"
+        "college": "USC",
+        "playerId": "ff26_55181d5d4217"
       },
       {
         "name": "Dylan Drummond",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Eastern Michigan"
+        "college": "Eastern Michigan",
+        "playerId": "ff26_304aab75eb8f"
       },
       {
         "name": "Jahan Dotson",
         "position": "WR",
         "age": 26,
         "experience": 4,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_627b4d581f5d"
       },
       {
         "name": "KhaDarel Hodge",
         "position": "WR",
         "age": 32,
         "experience": 8,
-        "college": "Prairie View A&M; Hinds CC; Alcorn State"
+        "college": "Prairie View A&M; Hinds CC; Alcorn State",
+        "playerId": "ff26_d85fff743b14"
       },
       {
         "name": "Malik Heath",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Mississippi; Mississippi State"
+        "college": "Mississippi; Mississippi State",
+        "playerId": "ff26_05871ba8247e"
       },
       {
         "name": "Olamide Zaccheaus",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Virginia"
+        "college": "Virginia",
+        "playerId": "ff26_825c13dc3655"
       },
       {
         "name": "Vinny Anthony II",
         "position": "WR",
         "age": 22,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_bec38b4bce83"
       },
       {
         "name": "Austin Hooper",
         "position": "TE",
         "age": 31,
         "experience": 10,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_60e1f63238e0"
       },
       {
         "name": "Charlie Woerner",
         "position": "TE",
         "age": 28,
         "experience": 6,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_aac63165ced9"
       },
       {
         "name": "Joshua Simon",
         "position": "TE",
         "age": 25,
         "experience": 1,
-        "college": "South Carolina; Western Kentucky"
+        "college": "South Carolina; Western Kentucky",
+        "playerId": "ff26_c3a6e19dee4e"
       },
       {
         "name": "Kyle Pitts",
         "position": "TE",
         "age": 25,
         "experience": 5,
-        "college": "Florida"
+        "college": "Florida",
+        "playerId": "ff26_9f8d65a737c5"
       },
       {
         "name": "Nick Folk",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_10e1a553e114"
       }
     ],
     "BAL": [
@@ -414,140 +468,160 @@
         "position": "QB",
         "age": 32,
         "experience": 9,
-        "college": "Central Michigan; Tarrant County JC"
+        "college": "Central Michigan; Tarrant County JC",
+        "playerId": "ff26_9e224964b26b"
       },
       {
         "name": "Lamar Jackson",
         "position": "QB",
         "age": 29,
         "experience": 8,
-        "college": "Louisville"
+        "college": "Louisville",
+        "playerId": "ff26_31651d0d888e"
       },
       {
         "name": "Skylar Thompson",
         "position": "QB",
         "age": 28,
         "experience": 4,
-        "college": "Kansas State"
+        "college": "Kansas State",
+        "playerId": "ff26_fa86c62f5840"
       },
       {
         "name": "Tyler Huntley",
         "position": "QB",
         "age": 28,
         "experience": 6,
-        "college": "Utah"
+        "college": "Utah",
+        "playerId": "ff26_62d634b6f238"
       },
       {
         "name": "Derrick Henry",
         "position": "RB",
         "age": 32,
         "experience": 10,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_7bdae13d86cd"
       },
       {
         "name": "Justice Hill",
         "position": "RB",
         "age": 28,
         "experience": 7,
-        "college": "Oklahoma State"
+        "college": "Oklahoma State",
+        "playerId": "ff26_95e23b024895"
       },
       {
         "name": "Lucas Scott",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Army"
+        "college": "Army",
+        "playerId": "ff26_cd4f4df04f59"
       },
       {
         "name": "Rasheen Ali",
         "position": "RB",
         "age": 25,
         "experience": 2,
-        "college": "Marshall"
+        "college": "Marshall",
+        "playerId": "ff26_c0b86ef05260"
       },
       {
         "name": "Cornelius Johnson",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_50444ba67f26"
       },
       {
         "name": "Dayton Wade",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Mississippi; Western Kentucky"
+        "college": "Mississippi; Western Kentucky",
+        "playerId": "ff26_93fcf89c8e06"
       },
       {
         "name": "DeAndre Hopkins",
         "position": "WR",
         "age": 33,
         "experience": 13,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_5d9072a990dc"
       },
       {
         "name": "Devontez Walker",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "North Carolina; Kent State; North Carolina Central"
+        "college": "North Carolina; Kent State; North Carolina Central",
+        "playerId": "ff26_cd978eeb3173"
       },
       {
         "name": "Ja'Kobi Lane",
         "position": "WR",
         "age": 21,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_a3d51b45a892"
       },
       {
         "name": "LaJohntay Wester",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Colorado; Florida Atlantic"
+        "college": "Colorado; Florida Atlantic",
+        "playerId": "ff26_b1f63bcea8ed"
       },
       {
         "name": "Rashod Bateman",
         "position": "WR",
         "age": 26,
         "experience": 5,
-        "college": "Minnesota"
+        "college": "Minnesota",
+        "playerId": "ff26_bec58038ff02"
       },
       {
         "name": "Xavier Guillory",
         "position": "WR",
         "age": 24,
         "experience": 0,
-        "college": "Arizona State; Idaho State"
+        "college": "Arizona State; Idaho State",
+        "playerId": "ff26_41f263ff45b6"
       },
       {
         "name": "Zay Flowers",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "Boston College"
+        "college": "Boston College",
+        "playerId": "ff26_4009075cb96f"
       },
       {
         "name": "Durham Smythe",
         "position": "TE",
         "age": 30,
         "experience": 8,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_c376e0ad0624"
       },
       {
         "name": "Mark Andrews",
         "position": "TE",
         "age": 30,
         "experience": 8,
-        "college": "Oklahoma"
+        "college": "Oklahoma",
+        "playerId": "ff26_f767e7d35e5d"
       },
       {
         "name": "Tyler Loop",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_798652a64318"
       }
     ],
     "BUF": [
@@ -556,182 +630,208 @@
         "position": "QB",
         "age": 29,
         "experience": 8,
-        "college": "Wyoming; Reedley"
+        "college": "Wyoming; Reedley",
+        "playerId": "ff26_0c56d92f4257"
       },
       {
         "name": "Kyle Allen",
         "position": "QB",
         "age": 30,
         "experience": 8,
-        "college": "Houston; Texas A&M"
+        "college": "Houston; Texas A&M",
+        "playerId": "ff26_5ebba875133e"
       },
       {
         "name": "Shane Buechele",
         "position": "QB",
         "age": 28,
         "experience": 5,
-        "college": "SMU"
+        "college": "SMU",
+        "playerId": "ff26_63c0d586a9b6"
       },
       {
         "name": "Ben VanSumeren",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "Michigan State; Michigan"
+        "college": "Michigan State; Michigan",
+        "playerId": "ff26_a322db536ea7"
       },
       {
         "name": "Desmond Reid",
         "position": "RB",
         "age": 21,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_6134d44bacff"
       },
       {
         "name": "Frank Gore Jr.",
         "position": "RB",
         "age": 24,
         "experience": 2,
-        "college": "Southern Mississippi"
+        "college": "Southern Mississippi",
+        "playerId": "ff26_041c028bef8f"
       },
       {
         "name": "James Cook",
         "position": "RB",
         "age": 26,
         "experience": 4,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_b7dd8032fb24"
       },
       {
         "name": "Ray Davis",
         "position": "RB",
         "age": 26,
         "experience": 2,
-        "college": "Kentucky; Vanderbilt; Temple"
+        "college": "Kentucky; Vanderbilt; Temple",
+        "playerId": "ff26_5379051fc68e"
       },
       {
         "name": "Ty Johnson",
         "position": "RB",
         "age": 28,
         "experience": 7,
-        "college": "Maryland"
+        "college": "Maryland",
+        "playerId": "ff26_494af0067741"
       },
       {
         "name": "Brandin Cooks",
         "position": "WR",
         "age": 32,
         "experience": 12,
-        "college": "Oregon State"
+        "college": "Oregon State",
+        "playerId": "ff26_4c2e7c63fc60"
       },
       {
         "name": "Curtis Samuel",
         "position": "WR",
         "age": 29,
         "experience": 9,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_3a4cb7e6813d"
       },
       {
         "name": "DJ Moore",
         "position": "WR",
         "age": 29,
         "experience": 8,
-        "college": "Maryland"
+        "college": "Maryland",
+        "playerId": "ff26_341f328d37d6"
       },
       {
         "name": "Gabe Davis",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "UCF"
+        "college": "UCF",
+        "playerId": "ff26_f49a57477bc2"
       },
       {
         "name": "Jalen Virgil",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "Appalachian State; UMass Amherst"
+        "college": "Appalachian State; UMass Amherst",
+        "playerId": "ff26_ab2e3d0a6df3"
       },
       {
         "name": "Josh Palmer",
         "position": "WR",
         "age": 26,
         "experience": 5,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_2e814b9da806"
       },
       {
         "name": "Keon Coleman",
         "position": "WR",
         "age": 22,
         "experience": 2,
-        "college": "Florida State; Michigan State"
+        "college": "Florida State; Michigan State",
+        "playerId": "ff26_7a688db4de0d"
       },
       {
         "name": "Khalil Shakir",
         "position": "WR",
         "age": 26,
         "experience": 4,
-        "college": "Boise State"
+        "college": "Boise State",
+        "playerId": "ff26_44fcebf177e1"
       },
       {
         "name": "Mecole Hardman",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_a25a5d4dda37"
       },
       {
         "name": "Stephen Gosnell",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Virginia Tech; North Carolina"
+        "college": "Virginia Tech; North Carolina",
+        "playerId": "ff26_794917b3dda0"
       },
       {
         "name": "Trent Sherfield",
         "position": "WR",
         "age": 30,
         "experience": 8,
-        "college": "Vanderbilt"
+        "college": "Vanderbilt",
+        "playerId": "ff26_15e8776bc010"
       },
       {
         "name": "Tyrell Shavers",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "San Diego State; Mississippi State; Alabama"
+        "college": "San Diego State; Mississippi State; Alabama",
+        "playerId": "ff26_44fb0cdc9b69"
       },
       {
         "name": "Dalton Kincaid",
         "position": "TE",
         "age": 26,
         "experience": 3,
-        "college": "Utah; Univ of California-San Diego"
+        "college": "Utah; Univ of California-San Diego",
+        "playerId": "ff26_23c51ea4409a"
       },
       {
         "name": "Dawson Knox",
         "position": "TE",
         "age": 29,
         "experience": 7,
-        "college": "Mississippi"
+        "college": "Mississippi",
+        "playerId": "ff26_7372642f5bf1"
       },
       {
         "name": "Jackson Hawes",
         "position": "TE",
         "age": 25,
         "experience": 1,
-        "college": "Georgia Tech; Yale"
+        "college": "Georgia Tech; Yale",
+        "playerId": "ff26_6120229538d7"
       },
       {
         "name": "Keleki Latu",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Washington; Nevada"
+        "college": "Washington; Nevada",
+        "playerId": "ff26_0ba64ca18c47"
       },
       {
         "name": "Tyler Bass",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_8c838b24442f"
       }
     ],
     "CAR": [
@@ -740,189 +840,216 @@
         "position": "QB",
         "age": 24,
         "experience": 3,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_d18d4e86c422"
       },
       {
         "name": "Haynes King",
         "position": "QB",
         "age": 25,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_c76d145ee9a3"
       },
       {
         "name": "Kenny Pickett",
         "position": "QB",
         "age": 27,
         "experience": 4,
-        "college": "Pittsburgh"
+        "college": "Pittsburgh",
+        "playerId": "ff26_3df284ed64ec"
       },
       {
         "name": "Will Grier",
         "position": "QB",
         "age": 31,
         "experience": 7,
-        "college": "West Virginia; Florida State"
+        "college": "West Virginia; Florida State",
+        "playerId": "ff26_174b9c8afd2d"
       },
       {
         "name": "AJ Dillon",
         "position": "RB",
         "age": 28,
         "experience": 6,
-        "college": "Boston College"
+        "college": "Boston College",
+        "playerId": "ff26_95039d4fd3b7"
       },
       {
         "name": "Anthony Tyus III",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Ohio"
+        "college": "Ohio",
+        "playerId": "ff26_ee78f23241a6"
       },
       {
         "name": "Chuba Hubbard",
         "position": "RB",
         "age": 26,
         "experience": 5,
-        "college": "Oklahoma State"
+        "college": "Oklahoma State",
+        "playerId": "ff26_f07d1cd75ab7"
       },
       {
         "name": "Jonathon Brooks",
         "position": "RB",
         "age": 22,
         "experience": 2,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_33653c999c3a"
       },
       {
         "name": "Montrell Johnson Jr.",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Florida; Louisiana"
+        "college": "Florida; Louisiana",
+        "playerId": "ff26_99842ea0ca3a"
       },
       {
         "name": "Trevor Etienne",
         "position": "RB",
         "age": 21,
         "experience": 1,
-        "college": "Georgia; Florida"
+        "college": "Georgia; Florida",
+        "playerId": "ff26_27ef1ae54ae6"
       },
       {
         "name": "Ainias Smith",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "Texas A&M"
+        "college": "Texas A&M",
+        "playerId": "ff26_0896cfddd7ae"
       },
       {
         "name": "Brycen Tremayne",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_aef655292ac0"
       },
       {
         "name": "Dan Chisena",
         "position": "WR",
         "age": 29,
         "experience": 6,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_89580fd9026a"
       },
       {
         "name": "David Moore",
         "position": "WR",
         "age": 31,
         "experience": 9,
-        "college": "East Central"
+        "college": "East Central",
+        "playerId": "ff26_a3623313694c"
       },
       {
         "name": "Ja'Seem Reed",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "San Diego"
+        "college": "San Diego",
+        "playerId": "ff26_f0ade4e0d52e"
       },
       {
         "name": "Jalen Coker",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "Holy Cross"
+        "college": "Holy Cross",
+        "playerId": "ff26_74b22df1da38"
       },
       {
         "name": "Jimmy Horn Jr.",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Colorado; University of South Florida"
+        "college": "Colorado; University of South Florida",
+        "playerId": "ff26_ece7579a0e62"
       },
       {
         "name": "John Metchie III",
         "position": "WR",
         "age": 25,
         "experience": 4,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_d90e8ab507b9"
       },
       {
         "name": "Tetairoa McMillan",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Arizona"
+        "college": "Arizona",
+        "playerId": "ff26_a2633b05c122"
       },
       {
         "name": "Xavier Legette",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "South Carolina"
+        "college": "South Carolina",
+        "playerId": "ff26_b507cf6a5dc4"
       },
       {
         "name": "Bryce Pierre",
         "position": "TE",
         "age": 25,
         "experience": 1,
-        "college": "UCLA; Arizona State"
+        "college": "UCLA; Arizona State",
+        "playerId": "ff26_a7e281dac8d7"
       },
       {
         "name": "Feleipe Franks",
         "position": "TE",
         "age": 28,
         "experience": 5,
-        "college": "Arkansas"
+        "college": "Arkansas",
+        "playerId": "ff26_ea1af8ae2ceb"
       },
       {
         "name": "Ja'Tavion Sanders",
         "position": "TE",
         "age": 23,
         "experience": 2,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_e563e3398449"
       },
       {
         "name": "James Mitchell",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "Virginia Tech"
+        "college": "Virginia Tech",
+        "playerId": "ff26_5616fe1350c9"
       },
       {
         "name": "Mitchell Evans",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_614cb1e347d6"
       },
       {
         "name": "Tommy Tremble",
         "position": "TE",
         "age": 25,
         "experience": 5,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_e2d57ab219d6"
       },
       {
         "name": "Ryan Fitzgerald",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_b6db0d94fdfa"
       }
     ],
     "CHI": [
@@ -931,147 +1058,168 @@
         "position": "QB",
         "age": 24,
         "experience": 2,
-        "college": "USC; Oklahoma"
+        "college": "USC; Oklahoma",
+        "playerId": "ff26_634e35e1ed1a"
       },
       {
         "name": "Case Keenum",
         "position": "QB",
         "age": 38,
         "experience": 14,
-        "college": "Houston"
+        "college": "Houston",
+        "playerId": "ff26_e3fbd72fc638"
       },
       {
         "name": "Miller Moss",
         "position": "QB",
         "age": 24,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_79fea2887efc"
       },
       {
         "name": "Tyson Bagent",
         "position": "QB",
         "age": 25,
         "experience": 3,
-        "college": "Shepherd"
+        "college": "Shepherd",
+        "playerId": "ff26_22ff79a58076"
       },
       {
         "name": "Brittain Brown",
         "position": "RB",
         "age": 28,
         "experience": 4,
-        "college": "UCLA"
+        "college": "UCLA",
+        "playerId": "ff26_44806efbea81"
       },
       {
         "name": "D'Andre Swift",
         "position": "RB",
         "age": 27,
         "experience": 6,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_828d43e26255"
       },
       {
         "name": "Deion Hankins",
         "position": "RB",
         "age": 25,
         "experience": 1,
-        "college": "Texas State-San Marcos"
+        "college": "Texas State-San Marcos",
+        "playerId": "ff26_5699acf592ec"
       },
       {
         "name": "Kyle Monangai",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Rutgers"
+        "college": "Rutgers",
+        "playerId": "ff26_568bf1147c79"
       },
       {
         "name": "Roschon Johnson",
         "position": "RB",
         "age": 25,
         "experience": 3,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_a851899ddd07"
       },
       {
         "name": "Jahdae Walker",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Texas A&M; Grand Valley"
+        "college": "Texas A&M; Grand Valley",
+        "playerId": "ff26_bedff66edf9c"
       },
       {
         "name": "JP Richardson",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "TCU; Oklahoma State"
+        "college": "TCU; Oklahoma State",
+        "playerId": "ff26_6b61db2a2035"
       },
       {
         "name": "Kalif Raymond",
         "position": "WR",
         "age": 31,
         "experience": 10,
-        "college": "Holy Cross"
+        "college": "Holy Cross",
+        "playerId": "ff26_dde6308d3b57"
       },
       {
         "name": "Luther Burden III",
         "position": "WR",
         "age": 22,
         "experience": 1,
-        "college": "Missouri"
+        "college": "Missouri",
+        "playerId": "ff26_fee78fefa144"
       },
       {
         "name": "Maurice Alexander",
         "position": "WR",
         "age": 29,
         "experience": 4,
-        "college": "Florida International"
+        "college": "Florida International",
+        "playerId": "ff26_099121f12652"
       },
       {
         "name": "Rome Odunze",
         "position": "WR",
         "age": 23,
         "experience": 2,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_758517eb045f"
       },
       {
         "name": "Cole Kmet",
         "position": "TE",
         "age": 27,
         "experience": 6,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_a77a7025cbc3"
       },
       {
         "name": "Colston Loveland",
         "position": "TE",
         "age": 22,
         "experience": 1,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_098fb2174059"
       },
       {
         "name": "Nikola Kalinic",
         "position": "TE",
         "age": 29,
         "experience": 4,
-        "college": "York (Canada)"
+        "college": "York (Canada)",
+        "playerId": "ff26_372872327b43"
       },
       {
         "name": "Qadir Ismail",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Samford; Villanova"
+        "college": "Samford; Villanova",
+        "playerId": "ff26_05e7a29dcdea"
       },
       {
         "name": "Stephen Carlson",
         "position": "TE",
         "age": 29,
         "experience": 7,
-        "college": "Princeton"
+        "college": "Princeton",
+        "playerId": "ff26_85a52bf82c6e"
       },
       {
         "name": "Cairo Santos",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_34be3f5c7099"
       }
     ],
     "CIN": [
@@ -1080,175 +1228,200 @@
         "position": "QB",
         "age": 29,
         "experience": 6,
-        "college": "LSU; Ohio State"
+        "college": "LSU; Ohio State",
+        "playerId": "ff26_e2ca2d44f039"
       },
       {
         "name": "Joe Flacco",
         "position": "QB",
         "age": 41,
         "experience": 18,
-        "college": "Delaware; Pittsburgh"
+        "college": "Delaware; Pittsburgh",
+        "playerId": "ff26_efcd43e0a605"
       },
       {
         "name": "Josh Johnson",
         "position": "QB",
         "age": 39,
         "experience": 18,
-        "college": "San Diego"
+        "college": "San Diego",
+        "playerId": "ff26_91c427310615"
       },
       {
         "name": "Sean Clifford",
         "position": "QB",
         "age": 27,
         "experience": 3,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_4e6470349067"
       },
       {
         "name": "Chase Brown",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "Illinois; Western Michigan"
+        "college": "Illinois; Western Michigan",
+        "playerId": "ff26_608211820042"
       },
       {
         "name": "Gary Brightwell",
         "position": "RB",
         "age": 28,
         "experience": 5,
-        "college": "Arizona"
+        "college": "Arizona",
+        "playerId": "ff26_bd1dc6965031"
       },
       {
         "name": "Kendall Milton",
         "position": "RB",
         "age": 24,
         "experience": 2,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_ae259154d754"
       },
       {
         "name": "Kentrel Bullock",
         "position": "RB",
         "age": 24,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_63b0c1432536"
       },
       {
         "name": "Samaje Perine",
         "position": "RB",
         "age": 30,
         "experience": 9,
-        "college": "Oklahoma"
+        "college": "Oklahoma",
+        "playerId": "ff26_f024fede5867"
       },
       {
         "name": "Tahj Brooks",
         "position": "RB",
         "age": 24,
         "experience": 1,
-        "college": "Texas Tech"
+        "college": "Texas Tech",
+        "playerId": "ff26_3f84a301627a"
       },
       {
         "name": "Andrei Iosivas",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Princeton"
+        "college": "Princeton",
+        "playerId": "ff26_da26f05d2b02"
       },
       {
         "name": "Charlie Jones",
         "position": "WR",
         "age": 27,
         "experience": 3,
-        "college": "Purdue; Iowa"
+        "college": "Purdue; Iowa",
+        "playerId": "ff26_9ef978138d58"
       },
       {
         "name": "Ja'Marr Chase",
         "position": "WR",
         "age": 26,
         "experience": 5,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_7653353a2225"
       },
       {
         "name": "Jordan Moore",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Duke"
+        "college": "Duke",
+        "playerId": "ff26_d273d164f097"
       },
       {
         "name": "Ke'Shawn Williams",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Indiana; Wake Forest"
+        "college": "Indiana; Wake Forest",
+        "playerId": "ff26_a1557d6ed706"
       },
       {
         "name": "Kendric Pryor",
         "position": "WR",
         "age": 28,
         "experience": 4,
-        "college": "Wisconsin"
+        "college": "Wisconsin",
+        "playerId": "ff26_5c401a94eeef"
       },
       {
         "name": "Mitchell Tinsley",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Penn State; Western Kentucky"
+        "college": "Penn State; Western Kentucky",
+        "playerId": "ff26_429d98ab3003"
       },
       {
         "name": "Tee Higgins",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_dab26a086d44"
       },
       {
         "name": "Xavier Johnson",
         "position": "WR",
         "age": 27,
         "experience": 2,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_c9f10398444d"
       },
       {
         "name": "Cam Grandy",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Illinois State; Missouri Western"
+        "college": "Illinois State; Missouri Western",
+        "playerId": "ff26_f5eba73c9d15"
       },
       {
         "name": "Drew Sample",
         "position": "TE",
         "age": 30,
         "experience": 7,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_4315f3dc5101"
       },
       {
         "name": "Erick All",
         "position": "TE",
         "age": 25,
         "experience": 2,
-        "college": "Iowa; Michigan"
+        "college": "Iowa; Michigan",
+        "playerId": "ff26_f89b7ac857f2"
       },
       {
         "name": "Mike Gesicki",
         "position": "TE",
         "age": 30,
         "experience": 8,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_9d81eaf221b1"
       },
       {
         "name": "Tanner Hudson",
         "position": "TE",
         "age": 31,
         "experience": 8,
-        "college": "Southern Arkansas; Memphis"
+        "college": "Southern Arkansas; Memphis",
+        "playerId": "ff26_6557ea0f5504"
       },
       {
         "name": "Evan McPherson",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_5052be0f4619"
       }
     ],
     "CLE": [
@@ -1257,196 +1430,224 @@
         "position": "QB",
         "age": 30,
         "experience": 9,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_6610bb5ac34a"
       },
       {
         "name": "Dillon Gabriel",
         "position": "QB",
         "age": 25,
         "experience": 1,
-        "college": "Oregon; Oklahoma; UCF"
+        "college": "Oregon; Oklahoma; UCF",
+        "playerId": "ff26_00e7a201485a"
       },
       {
         "name": "Shedeur Sanders",
         "position": "QB",
         "age": 24,
         "experience": 1,
-        "college": "Colorado; Jackson State University"
+        "college": "Colorado; Jackson State University",
+        "playerId": "ff26_8ad8305e1c92"
       },
       {
         "name": "Taylen Green",
         "position": "QB",
         "age": 23,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_59714daa8688"
       },
       {
         "name": "Ahmani Marshall",
         "position": "RB",
         "age": 24,
         "experience": 1,
-        "college": "Appalachian State; Wake Forest"
+        "college": "Appalachian State; Wake Forest",
+        "playerId": "ff26_2fef366f0cce"
       },
       {
         "name": "Dylan Sampson",
         "position": "RB",
         "age": 21,
         "experience": 1,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_df2e1e70fbde"
       },
       {
         "name": "Michael Burton",
         "position": "RB",
         "age": 34,
         "experience": 11,
-        "college": "Rutgers"
+        "college": "Rutgers",
+        "playerId": "ff26_0ab57f1c037a"
       },
       {
         "name": "Quinshon Judkins",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Ohio State; Mississippi"
+        "college": "Ohio State; Mississippi",
+        "playerId": "ff26_83918b2fbc96"
       },
       {
         "name": "Raheim Sanders",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "South Carolina; Arkansas"
+        "college": "South Carolina; Arkansas",
+        "playerId": "ff26_991ed84823f1"
       },
       {
         "name": "Trayveon Williams",
         "position": "RB",
         "age": 28,
         "experience": 7,
-        "college": "Texas A&M"
+        "college": "Texas A&M",
+        "playerId": "ff26_34a8c981f9f8"
       },
       {
         "name": "Cedric Tillman",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_b90a5f0f7b5b"
       },
       {
         "name": "DeAndre Carter",
         "position": "WR",
         "age": 33,
         "experience": 11,
-        "college": "Sacramento State"
+        "college": "Sacramento State",
+        "playerId": "ff26_69b6d3703418"
       },
       {
         "name": "Gage Larvadain",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "South Carolina; Miami (Ohio)"
+        "college": "South Carolina; Miami (Ohio)",
+        "playerId": "ff26_3522ce7d6a27"
       },
       {
         "name": "Isaiah Bond",
         "position": "WR",
         "age": 22,
         "experience": 1,
-        "college": "Texas; Alabama"
+        "college": "Texas; Alabama",
+        "playerId": "ff26_42c698ff657c"
       },
       {
         "name": "Isaiah Wooden",
         "position": "WR",
         "age": 26,
         "experience": 0,
-        "college": "Southern Utah State; Kent State"
+        "college": "Southern Utah State; Kent State",
+        "playerId": "ff26_3db789cdf93e"
       },
       {
         "name": "Jamari Thrash",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Louisville; Georgia State"
+        "college": "Louisville; Georgia State",
+        "playerId": "ff26_808665ed0fe2"
       },
       {
         "name": "Jerry Jeudy",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_ba6725dee6c6"
       },
       {
         "name": "Luke Floriea",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Kent State"
+        "college": "Kent State",
+        "playerId": "ff26_3dd63794cb4d"
       },
       {
         "name": "Malachi Corley",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "Western Kentucky"
+        "college": "Western Kentucky",
+        "playerId": "ff26_d2a1c61b10f6"
       },
       {
         "name": "Tylan Wallace",
         "position": "WR",
         "age": 27,
         "experience": 5,
-        "college": "Oklahoma State"
+        "college": "Oklahoma State",
+        "playerId": "ff26_bb82832fec05"
       },
       {
         "name": "Blake Whiteheart",
         "position": "TE",
         "age": 26,
         "experience": 3,
-        "college": "Wake Forest"
+        "college": "Wake Forest",
+        "playerId": "ff26_efb4e02d4086"
       },
       {
         "name": "Brenden Bates",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Kentucky"
+        "college": "Kentucky",
+        "playerId": "ff26_f663d23443f0"
       },
       {
         "name": "Caden Prieskorn",
         "position": "TE",
         "age": 26,
         "experience": 1,
-        "college": "Mississippi; Memphis"
+        "college": "Mississippi; Memphis",
+        "playerId": "ff26_abe5175a6610"
       },
       {
         "name": "David Njoku",
         "position": "TE",
         "age": 29,
         "experience": 9,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_2fcdf303619b"
       },
       {
         "name": "Harold Fannin Jr.",
         "position": "TE",
         "age": 21,
         "experience": 1,
-        "college": "Bowling Green"
+        "college": "Bowling Green",
+        "playerId": "ff26_18a38ca78373"
       },
       {
         "name": "Jack Stoll",
         "position": "TE",
         "age": 28,
         "experience": 5,
-        "college": "Nebraska"
+        "college": "Nebraska",
+        "playerId": "ff26_3cadd5a4f85d"
       },
       {
         "name": "Sal Cannella",
         "position": "TE",
         "age": 29,
         "experience": 1,
-        "college": "Auburn"
+        "college": "Auburn",
+        "playerId": "ff26_ed096f3c3ce2"
       },
       {
         "name": "Andre Szmyt",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_b35d028a4eb6"
       }
     ],
     "DAL": [
@@ -1455,175 +1656,200 @@
         "position": "QB",
         "age": 32,
         "experience": 10,
-        "college": "Mississippi State"
+        "college": "Mississippi State",
+        "playerId": "ff26_48df15541062"
       },
       {
         "name": "Joe Milton III",
         "position": "QB",
         "age": 26,
         "experience": 2,
-        "college": "Tennessee; Michigan"
+        "college": "Tennessee; Michigan",
+        "playerId": "ff26_fc4e273f9388"
       },
       {
         "name": "Sam Howell",
         "position": "QB",
         "age": 25,
         "experience": 4,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_92512947f7e2"
       },
       {
         "name": "Hunter Luepke",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "North Dakota State"
+        "college": "North Dakota State",
+        "playerId": "ff26_1929f42a819a"
       },
       {
         "name": "Israel Abanikanda",
         "position": "RB",
         "age": 23,
         "experience": 3,
-        "college": "Pittsburgh"
+        "college": "Pittsburgh",
+        "playerId": "ff26_04dda248d2c3"
       },
       {
         "name": "Javonte Williams",
         "position": "RB",
         "age": 26,
         "experience": 5,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_16c94c11a118"
       },
       {
         "name": "Jaydon Blue",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_21d83426f3c3"
       },
       {
         "name": "Malik Davis",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "Florida"
+        "college": "Florida",
+        "playerId": "ff26_020fafd5f535"
       },
       {
         "name": "Miles Sanders",
         "position": "RB",
         "age": 29,
         "experience": 7,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_a72b1f9d99ee"
       },
       {
         "name": "Phil Mafah",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_c25f3a662d11"
       },
       {
         "name": "CeeDee Lamb",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "Oklahoma"
+        "college": "Oklahoma",
+        "playerId": "ff26_894c5f239b97"
       },
       {
         "name": "George Pickens",
         "position": "WR",
         "age": 25,
         "experience": 4,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_e09772bda1aa"
       },
       {
         "name": "Jonathan Mingo",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "Mississippi"
+        "college": "Mississippi",
+        "playerId": "ff26_719a4777881d"
       },
       {
         "name": "Jordan Hudson",
         "position": "WR",
         "age": 22,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_d7ee183d3ec2"
       },
       {
         "name": "KaVontae Turpin",
         "position": "WR",
         "age": 29,
         "experience": 4,
-        "college": "TCU"
+        "college": "TCU",
+        "playerId": "ff26_e42daa65ac99"
       },
       {
         "name": "Marquez Valdes-Scantling",
         "position": "WR",
         "age": 31,
         "experience": 8,
-        "college": "University of South Florida; N.C. State"
+        "college": "University of South Florida; N.C. State",
+        "playerId": "ff26_a902c78b956a"
       },
       {
         "name": "Parris Campbell",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_1a789710c414"
       },
       {
         "name": "Ryan Flournoy",
         "position": "WR",
         "age": 26,
         "experience": 2,
-        "college": "Southeast Missouri State; Iowa Western CC"
+        "college": "Southeast Missouri State; Iowa Western CC",
+        "playerId": "ff26_789fd0f713cd"
       },
       {
         "name": "Traeshon Holden",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Oregon; Alabama"
+        "college": "Oregon; Alabama",
+        "playerId": "ff26_0ff39f9eba79"
       },
       {
         "name": "Tyler Johnson",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "Minnesota"
+        "college": "Minnesota",
+        "playerId": "ff26_0f0726a85fa9"
       },
       {
         "name": "Brevyn Spann-Ford",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Minnesota"
+        "college": "Minnesota",
+        "playerId": "ff26_c0c89df7f2db"
       },
       {
         "name": "Jake Ferguson",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "Wisconsin"
+        "college": "Wisconsin",
+        "playerId": "ff26_a891d4655038"
       },
       {
         "name": "Luke Schoonmaker",
         "position": "TE",
         "age": 27,
         "experience": 3,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_199d03f33e02"
       },
       {
         "name": "Princeton Fant",
         "position": "TE",
         "age": 27,
         "experience": 3,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_ad62ae2700e9"
       },
       {
         "name": "Brandon Aubrey",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_cfb703bd0315"
       }
     ],
     "DEN": [
@@ -1632,168 +1858,192 @@
         "position": "QB",
         "age": 26,
         "experience": 2,
-        "college": "Oregon; Auburn"
+        "college": "Oregon; Auburn",
+        "playerId": "ff26_444f72a08787"
       },
       {
         "name": "Jarrett Stidham",
         "position": "QB",
         "age": 29,
         "experience": 7,
-        "college": "Auburn; McLennan CC; Baylor"
+        "college": "Auburn; McLennan CC; Baylor",
+        "playerId": "ff26_98ced868d7ed"
       },
       {
         "name": "Sam Ehlinger",
         "position": "QB",
         "age": 27,
         "experience": 5,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_847455da55fb"
       },
       {
         "name": "Adam Prentice",
         "position": "RB",
         "age": 29,
         "experience": 5,
-        "college": "South Carolina"
+        "college": "South Carolina",
+        "playerId": "ff26_0633ab71815d"
       },
       {
         "name": "Cody Schrader",
         "position": "RB",
         "age": 26,
         "experience": 2,
-        "college": "Missouri; Truman State University"
+        "college": "Missouri; Truman State University",
+        "playerId": "ff26_4aa50f3a7e36"
       },
       {
         "name": "Deuce Vaughn",
         "position": "RB",
         "age": 24,
         "experience": 3,
-        "college": "Kansas State"
+        "college": "Kansas State",
+        "playerId": "ff26_3b8eaaaf79bc"
       },
       {
         "name": "J.K. Dobbins",
         "position": "RB",
         "age": 27,
         "experience": 6,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_7a41894c898f"
       },
       {
         "name": "Jaleel McLaughlin",
         "position": "RB",
         "age": 25,
         "experience": 3,
-        "college": "Youngstown State"
+        "college": "Youngstown State",
+        "playerId": "ff26_a7c068b7f28e"
       },
       {
         "name": "RJ Harvey",
         "position": "RB",
         "age": 25,
         "experience": 1,
-        "college": "UCF; Virginia"
+        "college": "UCF; Virginia",
+        "playerId": "ff26_67c7ed39a878"
       },
       {
         "name": "Tyler Badie",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "Missouri"
+        "college": "Missouri",
+        "playerId": "ff26_240f68d98bbc"
       },
       {
         "name": "Courtland Sutton",
         "position": "WR",
         "age": 30,
         "experience": 8,
-        "college": "SMU"
+        "college": "SMU",
+        "playerId": "ff26_f7d22f69f8c1"
       },
       {
         "name": "Jaylen Waddle",
         "position": "WR",
         "age": 27,
         "experience": 5,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_4a6a2c0e5a70"
       },
       {
         "name": "Kolbe Katsis",
         "position": "WR",
         "age": null,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_f7ee623f22bb"
       },
       {
         "name": "Lil'Jordan Humphrey",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_99845e49cf03"
       },
       {
         "name": "Marvin Mims Jr.",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "Oklahoma"
+        "college": "Oklahoma",
+        "playerId": "ff26_da425d0f847c"
       },
       {
         "name": "Michael Bandy",
         "position": "WR",
         "age": 28,
         "experience": 5,
-        "college": "San Diego"
+        "college": "San Diego",
+        "playerId": "ff26_3de796bc0e95"
       },
       {
         "name": "Pat Bryant",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Illinois"
+        "college": "Illinois",
+        "playerId": "ff26_8f023075699f"
       },
       {
         "name": "Troy Franklin",
         "position": "WR",
         "age": 23,
         "experience": 2,
-        "college": "Oregon"
+        "college": "Oregon",
+        "playerId": "ff26_c515ab996ce5"
       },
       {
         "name": "Adam Trautman",
         "position": "TE",
         "age": 29,
         "experience": 6,
-        "college": "Dayton"
+        "college": "Dayton",
+        "playerId": "ff26_3d8f67bf6303"
       },
       {
         "name": "Caleb Lohner",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "Utah; Baylor"
+        "college": "Utah; Baylor",
+        "playerId": "ff26_94d07bc56ba2"
       },
       {
         "name": "Evan Engram",
         "position": "TE",
         "age": 31,
         "experience": 9,
-        "college": "Mississippi"
+        "college": "Mississippi",
+        "playerId": "ff26_447628602bbb"
       },
       {
         "name": "Lucas Krull",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "Pittsburgh"
+        "college": "Pittsburgh",
+        "playerId": "ff26_be47453b5304"
       },
       {
         "name": "Nate Adkins",
         "position": "TE",
         "age": 26,
         "experience": 3,
-        "college": "South Carolina"
+        "college": "South Carolina",
+        "playerId": "ff26_c02d756e8a6a"
       },
       {
         "name": "Wil Lutz",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_acaf0290c6a0"
       }
     ],
     "DET": [
@@ -1802,175 +2052,200 @@
         "position": "QB",
         "age": 31,
         "experience": 10,
-        "college": "California"
+        "college": "California",
+        "playerId": "ff26_5066d4331021"
       },
       {
         "name": "Malik Cunningham",
         "position": "QB",
         "age": 27,
         "experience": 3,
-        "college": "Louisville"
+        "college": "Louisville",
+        "playerId": "ff26_a65d1c90ecff"
       },
       {
         "name": "Teddy Bridgewater",
         "position": "QB",
         "age": 33,
         "experience": 12,
-        "college": "Louisville"
+        "college": "Louisville",
+        "playerId": "ff26_4ec1634857d4"
       },
       {
         "name": "Isiah Pacheco",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "Rutgers"
+        "college": "Rutgers",
+        "playerId": "ff26_3c95cc28562b"
       },
       {
         "name": "Jabari Small",
         "position": "RB",
         "age": 24,
         "experience": 2,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_7b7f84562c38"
       },
       {
         "name": "Jacob Saylors",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "East Tennessee State"
+        "college": "East Tennessee State",
+        "playerId": "ff26_03254f7dfb86"
       },
       {
         "name": "Jahmyr Gibbs",
         "position": "RB",
         "age": 24,
         "experience": 3,
-        "college": "Alabama; Georgia Tech"
+        "college": "Alabama; Georgia Tech",
+        "playerId": "ff26_3d1a70cafc45"
       },
       {
         "name": "Kye Robichaux",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Boston College; Western Kentucky"
+        "college": "Boston College; Western Kentucky",
+        "playerId": "ff26_7a88d39dbcc8"
       },
       {
         "name": "Sione Vaki",
         "position": "RB",
         "age": 24,
         "experience": 2,
-        "college": "Utah"
+        "college": "Utah",
+        "playerId": "ff26_549a10c1c7d5"
       },
       {
         "name": "Amon-Ra St. Brown",
         "position": "WR",
         "age": 26,
         "experience": 5,
-        "college": "USC"
+        "college": "USC",
+        "playerId": "ff26_ce6978d832e7"
       },
       {
         "name": "Dominic Lovett",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Georgia; Missouri"
+        "college": "Georgia; Missouri",
+        "playerId": "ff26_198f9b89c910"
       },
       {
         "name": "Greg Dortch",
         "position": "WR",
         "age": 27,
         "experience": 7,
-        "college": "Wake Forest"
+        "college": "Wake Forest",
+        "playerId": "ff26_d18ab5af0e95"
       },
       {
         "name": "Isaac TeSlaa",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Arkansas; Hillsdale"
+        "college": "Arkansas; Hillsdale",
+        "playerId": "ff26_cc2b8f357ae7"
       },
       {
         "name": "Jackson Meeks",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Syracuse"
+        "college": "Syracuse",
+        "playerId": "ff26_632749bf595d"
       },
       {
         "name": "Jameson Williams",
         "position": "WR",
         "age": 25,
         "experience": 4,
-        "college": "Alabama; Ohio State"
+        "college": "Alabama; Ohio State",
+        "playerId": "ff26_53b75778a4b3"
       },
       {
         "name": "Kendrick Law",
         "position": "WR",
         "age": 22,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_f24119b2f92f"
       },
       {
         "name": "Tom Kennedy",
         "position": "WR",
         "age": 29,
         "experience": 7,
-        "college": "Bryant"
+        "college": "Bryant",
+        "playerId": "ff26_a45bcbbb0f14"
       },
       {
         "name": "Anthony Firkser",
         "position": "TE",
         "age": 31,
         "experience": 9,
-        "college": "Harvard"
+        "college": "Harvard",
+        "playerId": "ff26_7a28243a41cf"
       },
       {
         "name": "Brock Wright",
         "position": "TE",
         "age": 27,
         "experience": 5,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_6813dac22809"
       },
       {
         "name": "Sam LaPorta",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_da9a6ebe41e1"
       },
       {
         "name": "Shane Zylstra",
         "position": "TE",
         "age": 29,
         "experience": 5,
-        "college": "Minnesota State"
+        "college": "Minnesota State",
+        "playerId": "ff26_928c95eb1cde"
       },
       {
         "name": "Thomas Gordon",
         "position": "TE",
         "age": 25,
         "experience": 1,
-        "college": "Northwestern"
+        "college": "Northwestern",
+        "playerId": "ff26_59e23c1cda10"
       },
       {
         "name": "Tyler Conklin",
         "position": "TE",
         "age": 30,
         "experience": 8,
-        "college": "Central Michigan; Northwood"
+        "college": "Central Michigan; Northwood",
+        "playerId": "ff26_d9edf8272914"
       },
       {
         "name": "Zach Horton",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Indiana; James Madison"
+        "college": "Indiana; James Madison",
+        "playerId": "ff26_567188a8ce5c"
       },
       {
         "name": "Jake Bates",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_9c2337237ecf"
       }
     ],
     "GB": [
@@ -1979,175 +2254,200 @@
         "position": "QB",
         "age": 26,
         "experience": 4,
-        "college": "Cincinnati"
+        "college": "Cincinnati",
+        "playerId": "ff26_7982b3f54bb8"
       },
       {
         "name": "Jordan Love",
         "position": "QB",
         "age": 27,
         "experience": 6,
-        "college": "Utah State"
+        "college": "Utah State",
+        "playerId": "ff26_1689b5298ead"
       },
       {
         "name": "Kyle McCord",
         "position": "QB",
         "age": 23,
         "experience": 1,
-        "college": "Syracuse; Ohio State"
+        "college": "Syracuse; Ohio State",
+        "playerId": "ff26_74ff61ad226e"
       },
       {
         "name": "Tyrod Taylor",
         "position": "QB",
         "age": 36,
         "experience": 15,
-        "college": "Virginia Tech"
+        "college": "Virginia Tech",
+        "playerId": "ff26_821296ce73eb"
       },
       {
         "name": "Chris Brooks",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "BYU; California"
+        "college": "BYU; California",
+        "playerId": "ff26_baaaa2d22202"
       },
       {
         "name": "Damien Martinez",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Miami; Oregon State"
+        "college": "Miami; Oregon State",
+        "playerId": "ff26_d5a6225b44f2"
       },
       {
         "name": "Josh Jacobs",
         "position": "RB",
         "age": 28,
         "experience": 7,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_b169f424e88e"
       },
       {
         "name": "MarShawn Lloyd",
         "position": "RB",
         "age": 25,
         "experience": 2,
-        "college": "USC; South Carolina"
+        "college": "USC; South Carolina",
+        "playerId": "ff26_a0aeb77ca43b"
       },
       {
         "name": "Pierre Strong",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "South Dakota State"
+        "college": "South Dakota State",
+        "playerId": "ff26_f4d43f0241b4"
       },
       {
         "name": "Christian Watson",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "North Dakota State"
+        "college": "North Dakota State",
+        "playerId": "ff26_6f58d84b468c"
       },
       {
         "name": "Isaiah Neyor",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Nebraska; Texas; Wyoming"
+        "college": "Nebraska; Texas; Wyoming",
+        "playerId": "ff26_61cffc463d6d"
       },
       {
         "name": "Jakobie Keeney-James",
         "position": "WR",
         "age": 25,
         "experience": 1,
-        "college": "UMass Amherst; Eastern Washington"
+        "college": "UMass Amherst; Eastern Washington",
+        "playerId": "ff26_f108afd8060e"
       },
       {
         "name": "Jayden Reed",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Michigan State; Western Michigan"
+        "college": "Michigan State; Western Michigan",
+        "playerId": "ff26_b29d05594965"
       },
       {
         "name": "Matthew Golden",
         "position": "WR",
         "age": 22,
         "experience": 1,
-        "college": "Texas; Houston"
+        "college": "Texas; Houston",
+        "playerId": "ff26_109899da5ab0"
       },
       {
         "name": "Savion Williams",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "TCU"
+        "college": "TCU",
+        "playerId": "ff26_33265c6680e4"
       },
       {
         "name": "Skyy Moore",
         "position": "WR",
         "age": 25,
         "experience": 4,
-        "college": "Western Michigan"
+        "college": "Western Michigan",
+        "playerId": "ff26_27fb52e9e6c3"
       },
       {
         "name": "Will Sheppard",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Colorado; Vanderbilt"
+        "college": "Colorado; Vanderbilt",
+        "playerId": "ff26_9d42802e976a"
       },
       {
         "name": "Drake Dabney",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "TCU; Baylor"
+        "college": "TCU; Baylor",
+        "playerId": "ff26_c16867b9f628"
       },
       {
         "name": "John FitzPatrick",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_79c99da464fd"
       },
       {
         "name": "Josh Whyle",
         "position": "TE",
         "age": 26,
         "experience": 3,
-        "college": "Cincinnati"
+        "college": "Cincinnati",
+        "playerId": "ff26_59308e08d390"
       },
       {
         "name": "Luke Musgrave",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Oregon State"
+        "college": "Oregon State",
+        "playerId": "ff26_85bd5ce95b17"
       },
       {
         "name": "Messiah Swinson",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Arizona State; Missouri"
+        "college": "Arizona State; Missouri",
+        "playerId": "ff26_eec403b455de"
       },
       {
         "name": "RJ Maryland",
         "position": "TE",
         "age": 21,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_2297437f972c"
       },
       {
         "name": "Tucker Kraft",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "South Dakota State"
+        "college": "South Dakota State",
+        "playerId": "ff26_66e2502dcc84"
       },
       {
         "name": "Trey Smack",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_9ef93c107610"
       }
     ],
     "HOU": [
@@ -2156,182 +2456,208 @@
         "position": "QB",
         "age": 24,
         "experience": 3,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_dae95885a51f"
       },
       {
         "name": "Davis Mills",
         "position": "QB",
         "age": 27,
         "experience": 5,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_f263d72b478c"
       },
       {
         "name": "Graham Mertz",
         "position": "QB",
         "age": 25,
         "experience": 1,
-        "college": "Florida; Wisconsin"
+        "college": "Florida; Wisconsin",
+        "playerId": "ff26_eae4ffd92338"
       },
       {
         "name": "British Brooks",
         "position": "RB",
         "age": 26,
         "experience": 2,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_9068f3e5b6ca"
       },
       {
         "name": "Dare Ogunbowale",
         "position": "RB",
         "age": 32,
         "experience": 9,
-        "college": "Wisconsin"
+        "college": "Wisconsin",
+        "playerId": "ff26_5dc539ccae57"
       },
       {
         "name": "David Montgomery",
         "position": "RB",
         "age": 28,
         "experience": 7,
-        "college": "Iowa State"
+        "college": "Iowa State",
+        "playerId": "ff26_b2ec0bb71582"
       },
       {
         "name": "Jawhar Jordan",
         "position": "RB",
         "age": 26,
         "experience": 2,
-        "college": "Louisville; Syracuse"
+        "college": "Louisville; Syracuse",
+        "playerId": "ff26_d26f45628b42"
       },
       {
         "name": "Joe Mixon",
         "position": "RB",
         "age": 29,
         "experience": 9,
-        "college": "Oklahoma"
+        "college": "Oklahoma",
+        "playerId": "ff26_8ed842328489"
       },
       {
         "name": "Joshua Pitsenberger",
         "position": "RB",
         "age": null,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_ebc1d405a30f"
       },
       {
         "name": "Nick Chubb",
         "position": "RB",
         "age": 30,
         "experience": 8,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_dd8d71ffbac6"
       },
       {
         "name": "Woody Marks",
         "position": "RB",
         "age": 25,
         "experience": 1,
-        "college": "USC; Mississippi State"
+        "college": "USC; Mississippi State",
+        "playerId": "ff26_ea24be0da719"
       },
       {
         "name": "Braxton Berrios",
         "position": "WR",
         "age": 30,
         "experience": 8,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_639e663b3d6e"
       },
       {
         "name": "Jared Wayne",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "Pittsburgh"
+        "college": "Pittsburgh",
+        "playerId": "ff26_d335ebb026eb"
       },
       {
         "name": "Jayden Higgins",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Iowa State; Eastern Kentucky"
+        "college": "Iowa State; Eastern Kentucky",
+        "playerId": "ff26_530a554a3ee7"
       },
       {
         "name": "Jaylin Noel",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Iowa State"
+        "college": "Iowa State",
+        "playerId": "ff26_3e6c76a4bcab"
       },
       {
         "name": "Josh Kelly",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Texas Tech; Washington State; Fresno State"
+        "college": "Texas Tech; Washington State; Fresno State",
+        "playerId": "ff26_fb7a67a1fca6"
       },
       {
         "name": "Justin Watson",
         "position": "WR",
         "age": 30,
         "experience": 8,
-        "college": "Penn"
+        "college": "Penn",
+        "playerId": "ff26_36b6a389cc63"
       },
       {
         "name": "Nico Collins",
         "position": "WR",
         "age": 27,
         "experience": 5,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_e1a13d89c6d1"
       },
       {
         "name": "Tank Dell",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Houston; Independence Comm. College; Alabama A&M"
+        "college": "Houston; Independence Comm. College; Alabama A&M",
+        "playerId": "ff26_2a043b08f5ff"
       },
       {
         "name": "Xavier Hutchinson",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "Iowa State"
+        "college": "Iowa State",
+        "playerId": "ff26_340356e64f0d"
       },
       {
         "name": "Brevin Jordan",
         "position": "TE",
         "age": 25,
         "experience": 5,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_aa45c544a2c2"
       },
       {
         "name": "Cade Stover",
         "position": "TE",
         "age": 25,
         "experience": 2,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_7d8997ac9885"
       },
       {
         "name": "Dalton Schultz",
         "position": "TE",
         "age": 29,
         "experience": 8,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_374f61f91c93"
       },
       {
         "name": "Foster Moreau",
         "position": "TE",
         "age": 29,
         "experience": 7,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_8828e05fcbf2"
       },
       {
         "name": "Luke Lachey",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_86254e7f064f"
       },
       {
         "name": "Ka'imi Fairbairn",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_f38ead59abc5"
       }
     ],
     "IND": [
@@ -2340,182 +2666,208 @@
         "position": "QB",
         "age": 23,
         "experience": 3,
-        "college": "Florida"
+        "college": "Florida",
+        "playerId": "ff26_ec9d15c11fc7"
       },
       {
         "name": "Daniel Jones",
         "position": "QB",
         "age": 28,
         "experience": 7,
-        "college": "Duke"
+        "college": "Duke",
+        "playerId": "ff26_b51f9b0c6e55"
       },
       {
         "name": "Riley Leonard",
         "position": "QB",
         "age": 23,
         "experience": 1,
-        "college": "Notre Dame; Duke"
+        "college": "Notre Dame; Duke",
+        "playerId": "ff26_80b06194a616"
       },
       {
         "name": "Seth Henigan",
         "position": "QB",
         "age": 23,
         "experience": 1,
-        "college": "Memphis"
+        "college": "Memphis",
+        "playerId": "ff26_33f3fe6eb17f"
       },
       {
         "name": "Ameer Abdullah",
         "position": "RB",
         "age": 32,
         "experience": 11,
-        "college": "Nebraska"
+        "college": "Nebraska",
+        "playerId": "ff26_c44c150184d1"
       },
       {
         "name": "DJ Giddens",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Kansas State"
+        "college": "Kansas State",
+        "playerId": "ff26_21fc0c9a4dde"
       },
       {
         "name": "Jonathan Taylor",
         "position": "RB",
         "age": 27,
         "experience": 6,
-        "college": "Wisconsin"
+        "college": "Wisconsin",
+        "playerId": "ff26_80b3b102e7d1"
       },
       {
         "name": "Salvon Ahmed",
         "position": "RB",
         "age": 27,
         "experience": 6,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_60d7f47b4dea"
       },
       {
         "name": "Seth McGowan",
         "position": "RB",
         "age": 24,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_6cbc37bd515b"
       },
       {
         "name": "Ulysses Bentley IV",
         "position": "RB",
         "age": 25,
         "experience": 1,
-        "college": "Mississippi; SMU"
+        "college": "Mississippi; SMU",
+        "playerId": "ff26_eed888fb03a1"
       },
       {
         "name": "Alec Pierce",
         "position": "WR",
         "age": 26,
         "experience": 4,
-        "college": "Cincinnati"
+        "college": "Cincinnati",
+        "playerId": "ff26_e519ab90f2a7"
       },
       {
         "name": "Anthony Gould",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Oregon State"
+        "college": "Oregon State",
+        "playerId": "ff26_ad12dcc04f5f"
       },
       {
         "name": "Ashton Dulin",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Malone"
+        "college": "Malone",
+        "playerId": "ff26_a87da5ef061b"
       },
       {
         "name": "Coleman Owen",
         "position": "WR",
         "age": 25,
         "experience": 1,
-        "college": "Ohio; Northern Arizona"
+        "college": "Ohio; Northern Arizona",
+        "playerId": "ff26_5a170599d949"
       },
       {
         "name": "D.J. Montgomery",
         "position": "WR",
         "age": 29,
         "experience": 7,
-        "college": "Austin Peay; Holmes County JC"
+        "college": "Austin Peay; Holmes County JC",
+        "playerId": "ff26_fc7824ecbbe3"
       },
       {
         "name": "Eli Pancol",
         "position": "WR",
         "age": 25,
         "experience": 1,
-        "college": "Duke"
+        "college": "Duke",
+        "playerId": "ff26_56f8146e6588"
       },
       {
         "name": "Josh Downs",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_c318249dd1de"
       },
       {
         "name": "Laquon Treadwell",
         "position": "WR",
         "age": 30,
         "experience": 10,
-        "college": "Mississippi"
+        "college": "Mississippi",
+        "playerId": "ff26_79ff8902b82a"
       },
       {
         "name": "Nick Westbrook-Ikhine",
         "position": "WR",
         "age": 29,
         "experience": 6,
-        "college": "Indiana"
+        "college": "Indiana",
+        "playerId": "ff26_7b56ea2b137a"
       },
       {
         "name": "Andrew Ogletree",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "Youngstown State"
+        "college": "Youngstown State",
+        "playerId": "ff26_af82f07231c4"
       },
       {
         "name": "Mo Alie-Cox",
         "position": "TE",
         "age": 32,
         "experience": 9,
-        "college": "Virginia Commonwealth Univ."
+        "college": "Virginia Commonwealth Univ.",
+        "playerId": "ff26_028ea5dd0ead"
       },
       {
         "name": "Sean McKeon",
         "position": "TE",
         "age": 28,
         "experience": 6,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_81c3584884d0"
       },
       {
         "name": "Tyler Warren",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_830ae45a3049"
       },
       {
         "name": "Will Mallory",
         "position": "TE",
         "age": 26,
         "experience": 3,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_b7c931922866"
       },
       {
         "name": "Blake Grupe",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_416f30a61713"
       },
       {
         "name": "Spencer Shrader",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_0c1d0f02e42d"
       }
     ],
     "JAX": [
@@ -2524,154 +2876,176 @@
         "position": "QB",
         "age": 26,
         "experience": 2,
-        "college": "South Alabama; Toledo"
+        "college": "South Alabama; Toledo",
+        "playerId": "ff26_560bb68d1bcd"
       },
       {
         "name": "Joey Aguilar",
         "position": "QB",
         "age": 24,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_8d3e0dc8ac65"
       },
       {
         "name": "Nick Mullens",
         "position": "QB",
         "age": 31,
         "experience": 9,
-        "college": "Southern Mississippi"
+        "college": "Southern Mississippi",
+        "playerId": "ff26_c8910d89e570"
       },
       {
         "name": "Trevor Lawrence",
         "position": "QB",
         "age": 26,
         "experience": 5,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_1d5819f60983"
       },
       {
         "name": "Bhayshul Tuten",
         "position": "RB",
         "age": 24,
         "experience": 1,
-        "college": "Virginia Tech; North Carolina A&T"
+        "college": "Virginia Tech; North Carolina A&T",
+        "playerId": "ff26_05bec6346a0f"
       },
       {
         "name": "Chris Rodriguez Jr.",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "Kentucky"
+        "college": "Kentucky",
+        "playerId": "ff26_8f83e241856b"
       },
       {
         "name": "DeeJay Dallas",
         "position": "RB",
         "age": 27,
         "experience": 6,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_9042e6d19cc6"
       },
       {
         "name": "Ja'Quinden Jackson",
         "position": "RB",
         "age": 24,
         "experience": 1,
-        "college": "Arkansas; Utah; Texas"
+        "college": "Arkansas; Utah; Texas",
+        "playerId": "ff26_8f0eb7376ea7"
       },
       {
         "name": "LeQuint Allen Jr.",
         "position": "RB",
         "age": 21,
         "experience": 1,
-        "college": "Syracuse"
+        "college": "Syracuse",
+        "playerId": "ff26_a0f351519e61"
       },
       {
         "name": "Austin Trammell",
         "position": "WR",
         "age": 27,
         "experience": 5,
-        "college": "Rice"
+        "college": "Rice",
+        "playerId": "ff26_1e501427308d"
       },
       {
         "name": "Brian Thomas Jr.",
         "position": "WR",
         "age": 23,
         "experience": 2,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_e2628ef38626"
       },
       {
         "name": "Chandler Brayboy",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Elon"
+        "college": "Elon",
+        "playerId": "ff26_b1eb41ca70ec"
       },
       {
         "name": "Jakobi Meyers",
         "position": "WR",
         "age": 29,
         "experience": 7,
-        "college": "N.C. State"
+        "college": "N.C. State",
+        "playerId": "ff26_64af98f149e2"
       },
       {
         "name": "Joshua Cephus",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Texas-San Antonio"
+        "college": "Texas-San Antonio",
+        "playerId": "ff26_2497bc640ecb"
       },
       {
         "name": "Parker Washington",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_4de6fe3de302"
       },
       {
         "name": "Tim Jones",
         "position": "WR",
         "age": 27,
         "experience": 5,
-        "college": "Southern Mississippi"
+        "college": "Southern Mississippi",
+        "playerId": "ff26_f1fc336ec118"
       },
       {
         "name": "Tim Patrick",
         "position": "WR",
         "age": 32,
         "experience": 9,
-        "college": "Utah; Grossmont"
+        "college": "Utah; Grossmont",
+        "playerId": "ff26_ab2a4f03f3c6"
       },
       {
         "name": "Brenton Strange",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_1911bfc8de58"
       },
       {
         "name": "Hunter Long",
         "position": "TE",
         "age": 27,
         "experience": 5,
-        "college": "Boston College"
+        "college": "Boston College",
+        "playerId": "ff26_bfd4242e8c73"
       },
       {
         "name": "Patrick Herbert",
         "position": "TE",
         "age": 25,
         "experience": 1,
-        "college": "Oregon"
+        "college": "Oregon",
+        "playerId": "ff26_8a9056a36662"
       },
       {
         "name": "Quintin Morris",
         "position": "TE",
         "age": 27,
         "experience": 5,
-        "college": "Bowling Green"
+        "college": "Bowling Green",
+        "playerId": "ff26_1869eb00d9f0"
       },
       {
         "name": "Cam Little",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_3dd6a1d5689e"
       }
     ],
     "KC": [
@@ -2680,175 +3054,200 @@
         "position": "QB",
         "age": 28,
         "experience": 4,
-        "college": "South Dakota State"
+        "college": "South Dakota State",
+        "playerId": "ff26_eca58002895b"
       },
       {
         "name": "Garrett Nussmeier",
         "position": "QB",
         "age": 24,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_f6e266b1fb22"
       },
       {
         "name": "Justin Fields",
         "position": "QB",
         "age": 27,
         "experience": 5,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_29e97e3d23e3"
       },
       {
         "name": "Patrick Mahomes",
         "position": "QB",
         "age": 30,
         "experience": 9,
-        "college": "Texas Tech"
+        "college": "Texas Tech",
+        "playerId": "ff26_8f34c62e9851"
       },
       {
         "name": "Brashard Smith",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "SMU; Miami"
+        "college": "SMU; Miami",
+        "playerId": "ff26_d6f4c9569521"
       },
       {
         "name": "Emari Demercado",
         "position": "RB",
         "age": 27,
         "experience": 3,
-        "college": "TCU"
+        "college": "TCU",
+        "playerId": "ff26_ef790d2e1d7c"
       },
       {
         "name": "Kareem Hunt",
         "position": "RB",
         "age": 30,
         "experience": 9,
-        "college": "Toledo"
+        "college": "Toledo",
+        "playerId": "ff26_19a7cdd82cea"
       },
       {
         "name": "Keaontay Ingram",
         "position": "RB",
         "age": 26,
         "experience": 4,
-        "college": "USC"
+        "college": "USC",
+        "playerId": "ff26_b0e409b281a3"
       },
       {
         "name": "Kenneth Walker III",
         "position": "RB",
         "age": 25,
         "experience": 4,
-        "college": "Michigan State; Wake Forest"
+        "college": "Michigan State; Wake Forest",
+        "playerId": "ff26_16f58ac98005"
       },
       {
         "name": "Andrew Armstrong",
         "position": "WR",
         "age": 25,
         "experience": 1,
-        "college": "Arkansas; East Texas A&M"
+        "college": "Arkansas; East Texas A&M",
+        "playerId": "ff26_91c84944a072"
       },
       {
         "name": "Jalen Royals",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Utah State"
+        "college": "Utah State",
+        "playerId": "ff26_a4013627776f"
       },
       {
         "name": "Jason Brownlee",
         "position": "WR",
         "age": 27,
         "experience": 3,
-        "college": "Southern Mississippi"
+        "college": "Southern Mississippi",
+        "playerId": "ff26_cb4410c3609b"
       },
       {
         "name": "Jimmy Holiday",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Louisiana Tech; Western Kentucky; Tennessee"
+        "college": "Louisiana Tech; Western Kentucky; Tennessee",
+        "playerId": "ff26_02f6e11f49ae"
       },
       {
         "name": "JuJu Smith-Schuster",
         "position": "WR",
         "age": 29,
         "experience": 9,
-        "college": "USC"
+        "college": "USC",
+        "playerId": "ff26_10a67fb6fcb8"
       },
       {
         "name": "Nikko Remigio",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Fresno State"
+        "college": "Fresno State",
+        "playerId": "ff26_4319e01802fd"
       },
       {
         "name": "Rashee Rice",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "SMU"
+        "college": "SMU",
+        "playerId": "ff26_719bf40c7d42"
       },
       {
         "name": "Tyquan Thornton",
         "position": "WR",
         "age": 25,
         "experience": 4,
-        "college": "Baylor"
+        "college": "Baylor",
+        "playerId": "ff26_f00ff2b619f1"
       },
       {
         "name": "Xavier Worthy",
         "position": "WR",
         "age": 23,
         "experience": 2,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_7c7df44b68fe"
       },
       {
         "name": "Jake Briningstool",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_79c11af0b659"
       },
       {
         "name": "Jared Wiley",
         "position": "TE",
         "age": 25,
         "experience": 2,
-        "college": "TCU; Texas"
+        "college": "TCU; Texas",
+        "playerId": "ff26_cb1b16c981a9"
       },
       {
         "name": "Noah Gray",
         "position": "TE",
         "age": 27,
         "experience": 5,
-        "college": "Duke"
+        "college": "Duke",
+        "playerId": "ff26_319c70998c7e"
       },
       {
         "name": "Robert Tonyan",
         "position": "TE",
         "age": 32,
         "experience": 9,
-        "college": "Indiana State"
+        "college": "Indiana State",
+        "playerId": "ff26_9c0829015ebd"
       },
       {
         "name": "Travis Kelce",
         "position": "TE",
         "age": 36,
         "experience": 13,
-        "college": "Cincinnati"
+        "college": "Cincinnati",
+        "playerId": "ff26_88ce4f490f49"
       },
       {
         "name": "Tre Watson",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Texas A&M; Fresno State"
+        "college": "Texas A&M; Fresno State",
+        "playerId": "ff26_2e25f9d39960"
       },
       {
         "name": "Harrison Butker",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_12b81850e3db"
       }
     ],
     "LA": [
@@ -2857,175 +3256,200 @@
         "position": "QB",
         "age": 34,
         "experience": 12,
-        "college": "Eastern Illinois"
+        "college": "Eastern Illinois",
+        "playerId": "ff26_423825eaae52"
       },
       {
         "name": "Matthew Stafford",
         "position": "QB",
         "age": 38,
         "experience": 17,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_5a912993beaa"
       },
       {
         "name": "Stetson Bennett",
         "position": "QB",
         "age": 28,
         "experience": 3,
-        "college": "Georgia; Jones County JC"
+        "college": "Georgia; Jones County JC",
+        "playerId": "ff26_a5f69e3c9e79"
       },
       {
         "name": "Blake Corum",
         "position": "RB",
         "age": 25,
         "experience": 2,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_67a69226f8f9"
       },
       {
         "name": "Jarquez Hunter",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Auburn"
+        "college": "Auburn",
+        "playerId": "ff26_6bf3ab846155"
       },
       {
         "name": "Jordan Waters",
         "position": "RB",
         "age": 25,
         "experience": 0,
-        "college": "N.C. State; Duke"
+        "college": "N.C. State; Duke",
+        "playerId": "ff26_27b4b6ff6a43"
       },
       {
         "name": "Kyren Williams",
         "position": "RB",
         "age": 25,
         "experience": 4,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_45b11229aa1d"
       },
       {
         "name": "Ronnie Rivers",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "Fresno State"
+        "college": "Fresno State",
+        "playerId": "ff26_cad60885563f"
       },
       {
         "name": "Brennan Presley",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Oklahoma State"
+        "college": "Oklahoma State",
+        "playerId": "ff26_e97c758d193f"
       },
       {
         "name": "CJ Daniels",
         "position": "WR",
         "age": 24,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_eec5aecf79dc"
       },
       {
         "name": "Davante Adams",
         "position": "WR",
         "age": 33,
         "experience": 12,
-        "college": "Fresno State"
+        "college": "Fresno State",
+        "playerId": "ff26_532cff95ff8f"
       },
       {
         "name": "Jordan Whittington",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_4ba88c6ded68"
       },
       {
         "name": "Konata Mumpfield",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Pittsburgh; Akron"
+        "college": "Pittsburgh; Akron",
+        "playerId": "ff26_e4284c7ba2b9"
       },
       {
         "name": "Mario Williams",
         "position": "WR",
         "age": 23,
         "experience": 0,
-        "college": "Tulane; Oklahoma"
+        "college": "Tulane; Oklahoma",
+        "playerId": "ff26_01d6a7f75abe"
       },
       {
         "name": "Puka Nacua",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "BYU; Washington"
+        "college": "BYU; Washington",
+        "playerId": "ff26_b9439967f017"
       },
       {
         "name": "Tru Edwards",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Louisiana Tech; Hawaii; Navarro"
+        "college": "Louisiana Tech; Hawaii; Navarro",
+        "playerId": "ff26_13d7382f1ebd"
       },
       {
         "name": "Tyler Scott",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "Cincinnati"
+        "college": "Cincinnati",
+        "playerId": "ff26_2a4033d75ab7"
       },
       {
         "name": "Xavier Smith",
         "position": "WR",
         "age": 28,
         "experience": 3,
-        "college": "Florida A&M"
+        "college": "Florida A&M",
+        "playerId": "ff26_e524dea4f42f"
       },
       {
         "name": "Colby Parkinson",
         "position": "TE",
         "age": 27,
         "experience": 6,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_e34c764363a6"
       },
       {
         "name": "Davis Allen",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_d483be9bbedc"
       },
       {
         "name": "Mark Redman",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "Louisville; San Diego State"
+        "college": "Louisville; San Diego State",
+        "playerId": "ff26_23b39d961eba"
       },
       {
         "name": "Nick Vannett",
         "position": "TE",
         "age": 33,
         "experience": 10,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_3845b07a8de2"
       },
       {
         "name": "Terrance Ferguson",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Oregon"
+        "college": "Oregon",
+        "playerId": "ff26_5f49338d35a7"
       },
       {
         "name": "Tyler Higbee",
         "position": "TE",
         "age": 33,
         "experience": 10,
-        "college": "Western Kentucky"
+        "college": "Western Kentucky",
+        "playerId": "ff26_1e0d1af344b0"
       },
       {
         "name": "Harrison Mevis",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_66799efc6069"
       }
     ],
     "LAC": [
@@ -3034,196 +3458,224 @@
         "position": "QB",
         "age": 25,
         "experience": 1,
-        "college": "Florida State; Oregon State; Clemson"
+        "college": "Florida State; Oregon State; Clemson",
+        "playerId": "ff26_d92ad2eb61a2"
       },
       {
         "name": "Justin Herbert",
         "position": "QB",
         "age": 28,
         "experience": 6,
-        "college": "Oregon"
+        "college": "Oregon",
+        "playerId": "ff26_ed8db22ba5c6"
       },
       {
         "name": "Trey Lance",
         "position": "QB",
         "age": 26,
         "experience": 5,
-        "college": "North Dakota State"
+        "college": "North Dakota State",
+        "playerId": "ff26_ff06f8852559"
       },
       {
         "name": "Alec Ingold",
         "position": "RB",
         "age": 29,
         "experience": 7,
-        "college": "Wisconsin"
+        "college": "Wisconsin",
+        "playerId": "ff26_fae3af8aeba9"
       },
       {
         "name": "Amar Johnson",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "South Dakota State"
+        "college": "South Dakota State",
+        "playerId": "ff26_18e9543f2dfa"
       },
       {
         "name": "Hassan Haskins",
         "position": "RB",
         "age": 26,
         "experience": 4,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_c48b150ef2e1"
       },
       {
         "name": "Jaret Patterson",
         "position": "RB",
         "age": 26,
         "experience": 5,
-        "college": "Buffalo"
+        "college": "Buffalo",
+        "playerId": "ff26_72d067288c5e"
       },
       {
         "name": "Keaton Mitchell",
         "position": "RB",
         "age": 24,
         "experience": 3,
-        "college": "East Carolina"
+        "college": "East Carolina",
+        "playerId": "ff26_1b0255b6c8f3"
       },
       {
         "name": "Kimani Vidal",
         "position": "RB",
         "age": 24,
         "experience": 2,
-        "college": "Troy"
+        "college": "Troy",
+        "playerId": "ff26_e6580a3915d3"
       },
       {
         "name": "Najee Harris",
         "position": "RB",
         "age": 28,
         "experience": 5,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_7f8873b4cc09"
       },
       {
         "name": "Omarion Hampton",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_f26a9618fa99"
       },
       {
         "name": "Dalevon Campbell",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "South Carolina"
+        "college": "South Carolina",
+        "playerId": "ff26_8a81d6150dee"
       },
       {
         "name": "Derius Davis",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "TCU"
+        "college": "TCU",
+        "playerId": "ff26_0174c1fd4a39"
       },
       {
         "name": "JaQuae Jackson",
         "position": "WR",
         "age": 26,
         "experience": 2,
-        "college": "Rutgers; California (PA)"
+        "college": "Rutgers; California (PA)",
+        "playerId": "ff26_fc946905b6ef"
       },
       {
         "name": "Jerand Bradley",
         "position": "WR",
         "age": 23,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_d71cd27f5224"
       },
       {
         "name": "KeAndre Lambert-Smith",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Auburn; Penn State"
+        "college": "Auburn; Penn State",
+        "playerId": "ff26_2f96792f6ec8"
       },
       {
         "name": "Keenan Allen",
         "position": "WR",
         "age": 34,
         "experience": 13,
-        "college": "California"
+        "college": "California",
+        "playerId": "ff26_90f2a9205a5c"
       },
       {
         "name": "Ladd McConkey",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_2b44c03a3727"
       },
       {
         "name": "Luke Grimm",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Kansas"
+        "college": "Kansas",
+        "playerId": "ff26_12f1e0efd85d"
       },
       {
         "name": "Quentin Johnston",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "TCU"
+        "college": "TCU",
+        "playerId": "ff26_188362b9be90"
       },
       {
         "name": "Tre Harris",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Mississippi; Louisiana Tech"
+        "college": "Mississippi; Louisiana Tech",
+        "playerId": "ff26_49417db85483"
       },
       {
         "name": "Charlie Kolar",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "Iowa State"
+        "college": "Iowa State",
+        "playerId": "ff26_eba6a5ec5eda"
       },
       {
         "name": "Oronde Gadsden II",
         "position": "TE",
         "age": 22,
         "experience": 1,
-        "college": "Syracuse"
+        "college": "Syracuse",
+        "playerId": "ff26_5f3cff2d90a9"
       },
       {
         "name": "Tanner McLachlan",
         "position": "TE",
         "age": 27,
         "experience": 2,
-        "college": "Arizona"
+        "college": "Arizona",
+        "playerId": "ff26_b0d1826cdd15"
       },
       {
         "name": "Thomas Yassmin",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Utah"
+        "college": "Utah",
+        "playerId": "ff26_f2d92cec57ef"
       },
       {
         "name": "Tucker Fisk",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_38812d690b1e"
       },
       {
         "name": "Will Dissly",
         "position": "TE",
         "age": 29,
         "experience": 8,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_849525ffeb34"
       },
       {
         "name": "Cameron Dicker",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_37e096b9e106"
       }
     ],
     "LV": [
@@ -3232,182 +3684,208 @@
         "position": "QB",
         "age": 27,
         "experience": 3,
-        "college": "Purdue"
+        "college": "Purdue",
+        "playerId": "ff26_47eb14952d5b"
       },
       {
         "name": "Kirk Cousins",
         "position": "QB",
         "age": 37,
         "experience": 14,
-        "college": "Michigan State"
+        "college": "Michigan State",
+        "playerId": "ff26_573d195d5d58"
       },
       {
         "name": "Ashton Jeanty",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Boise State"
+        "college": "Boise State",
+        "playerId": "ff26_21588ee86516"
       },
       {
         "name": "Chris Collier",
         "position": "RB",
         "age": 26,
         "experience": 2,
-        "college": "University of Lock Haven"
+        "college": "University of Lock Haven",
+        "playerId": "ff26_a651dbb57ef1"
       },
       {
         "name": "Connor Heyward",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "Michigan State"
+        "college": "Michigan State",
+        "playerId": "ff26_f00db630a896"
       },
       {
         "name": "Dylan Laube",
         "position": "RB",
         "age": 26,
         "experience": 2,
-        "college": "New Hampshire"
+        "college": "New Hampshire",
+        "playerId": "ff26_0564ca1bc762"
       },
       {
         "name": "Raheem Mostert",
         "position": "RB",
         "age": 34,
         "experience": 11,
-        "college": "Purdue"
+        "college": "Purdue",
+        "playerId": "ff26_7a570f5da534"
       },
       {
         "name": "Zamir White",
         "position": "RB",
         "age": 26,
         "experience": 4,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_820d76bc9e9c"
       },
       {
         "name": "Alex Bachman",
         "position": "WR",
         "age": 29,
         "experience": 7,
-        "college": "Wake Forest"
+        "college": "Wake Forest",
+        "playerId": "ff26_3eaaeb0a673a"
       },
       {
         "name": "Brenden Rice",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "USC; Colorado"
+        "college": "USC; Colorado",
+        "playerId": "ff26_eb1000cfb3d8"
       },
       {
         "name": "Dareke Young",
         "position": "WR",
         "age": 26,
         "experience": 4,
-        "college": "Lenoir Rhyne"
+        "college": "Lenoir Rhyne",
+        "playerId": "ff26_d96ee7af045c"
       },
       {
         "name": "Dont'e Thornton Jr.",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Tennessee; Oregon"
+        "college": "Tennessee; Oregon",
+        "playerId": "ff26_92dc7a36befe"
       },
       {
         "name": "Jack Bech",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "TCU; LSU"
+        "college": "TCU; LSU",
+        "playerId": "ff26_ee83f1952020"
       },
       {
         "name": "Jalen Nailor",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "Michigan State"
+        "college": "Michigan State",
+        "playerId": "ff26_3de326fa2cf8"
       },
       {
         "name": "Jonathan Brady",
         "position": "WR",
         "age": 22,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_4a7c4af5dd64"
       },
       {
         "name": "Phillip Dorsett",
         "position": "WR",
         "age": 33,
         "experience": 11,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_f1d78c5d9c56"
       },
       {
         "name": "Shedrick Jackson",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Auburn"
+        "college": "Auburn",
+        "playerId": "ff26_dca7a9ef9989"
       },
       {
         "name": "Tre Tucker",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "Cincinnati"
+        "college": "Cincinnati",
+        "playerId": "ff26_541419114ce8"
       },
       {
         "name": "Tyler Lockett",
         "position": "WR",
         "age": 33,
         "experience": 11,
-        "college": "Kansas State"
+        "college": "Kansas State",
+        "playerId": "ff26_72fc6181a6fc"
       },
       {
         "name": "Albert Okwuegbunam",
         "position": "TE",
         "age": 28,
         "experience": 6,
-        "college": "Missouri"
+        "college": "Missouri",
+        "playerId": "ff26_7d362413aa49"
       },
       {
         "name": "Brock Bowers",
         "position": "TE",
         "age": 23,
         "experience": 2,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_a49df3fa7485"
       },
       {
         "name": "Carter Runyon",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "Towson; Shenandoah University"
+        "college": "Towson; Shenandoah University",
+        "playerId": "ff26_50d54ad7d76c"
       },
       {
         "name": "Ian Thomas",
         "position": "TE",
         "age": 29,
         "experience": 8,
-        "college": "Indiana; Nassau CC"
+        "college": "Indiana; Nassau CC",
+        "playerId": "ff26_61c2d59c47f9"
       },
       {
         "name": "Justin Shorter",
         "position": "TE",
         "age": 26,
         "experience": 3,
-        "college": "Florida; Penn State"
+        "college": "Florida; Penn State",
+        "playerId": "ff26_f964bb3dd2a8"
       },
       {
         "name": "Michael Mayer",
         "position": "TE",
         "age": 24,
         "experience": 3,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_a86f6de458b6"
       },
       {
         "name": "Daniel Carlson",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_7174bf2fe581"
       }
     ],
     "MIA": [
@@ -3416,175 +3894,200 @@
         "position": "QB",
         "age": 24,
         "experience": 1,
-        "college": "North Dakota State"
+        "college": "North Dakota State",
+        "playerId": "ff26_2355f0c52fd0"
       },
       {
         "name": "Malik Willis",
         "position": "QB",
         "age": 26,
         "experience": 4,
-        "college": "Liberty; Auburn"
+        "college": "Liberty; Auburn",
+        "playerId": "ff26_3f048e686f59"
       },
       {
         "name": "Quinn Ewers",
         "position": "QB",
         "age": 23,
         "experience": 1,
-        "college": "Texas; Ohio State"
+        "college": "Texas; Ohio State",
+        "playerId": "ff26_e99ec25d034f"
       },
       {
         "name": "Alexander Mattison",
         "position": "RB",
         "age": 27,
         "experience": 7,
-        "college": "Boise State"
+        "college": "Boise State",
+        "playerId": "ff26_c02f05122ce8"
       },
       {
         "name": "Anthony Hankerson",
         "position": "RB",
         "age": 22,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_ee19510caf4f"
       },
       {
         "name": "De'Von Achane",
         "position": "RB",
         "age": 24,
         "experience": 3,
-        "college": "Texas A&M"
+        "college": "Texas A&M",
+        "playerId": "ff26_60d08a0e37a6"
       },
       {
         "name": "Donovan Edwards",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_f007037a9605"
       },
       {
         "name": "Jaylen Wright",
         "position": "RB",
         "age": 23,
         "experience": 2,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_0881ad3ebc9c"
       },
       {
         "name": "Ollie Gordon II",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Oklahoma State"
+        "college": "Oklahoma State",
+        "playerId": "ff26_80e046806e78"
       },
       {
         "name": "A.J. Henning",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Northwestern; Michigan"
+        "college": "Northwestern; Michigan",
+        "playerId": "ff26_a06fd4d1d3fe"
       },
       {
         "name": "Cedrick Wilson Jr.",
         "position": "WR",
         "age": 30,
         "experience": 8,
-        "college": "Boise State; Coffeyville CC"
+        "college": "Boise State; Coffeyville CC",
+        "playerId": "ff26_2b579b14e1d6"
       },
       {
         "name": "Dee Eskridge",
         "position": "WR",
         "age": 29,
         "experience": 5,
-        "college": "Western Michigan"
+        "college": "Western Michigan",
+        "playerId": "ff26_322d29db5fee"
       },
       {
         "name": "Jalen Tolbert",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "South Alabama"
+        "college": "South Alabama",
+        "playerId": "ff26_bcc29bafb383"
       },
       {
         "name": "Malik Washington",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Virginia; Northwestern"
+        "college": "Virginia; Northwestern",
+        "playerId": "ff26_b5fad7a6c926"
       },
       {
         "name": "Tahj Washington",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "USC; Memphis"
+        "college": "USC; Memphis",
+        "playerId": "ff26_a0248a8a0972"
       },
       {
         "name": "Terrace Marshall Jr.",
         "position": "WR",
         "age": 25,
         "experience": 5,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_1cf5ba17263c"
       },
       {
         "name": "Theo Wease Jr.",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Missouri; Oklahoma"
+        "college": "Missouri; Oklahoma",
+        "playerId": "ff26_36db72151af1"
       },
       {
         "name": "Tutu Atwell",
         "position": "WR",
         "age": 26,
         "experience": 5,
-        "college": "Louisville"
+        "college": "Louisville",
+        "playerId": "ff26_baa64ed34077"
       },
       {
         "name": "Tyreek Hill",
         "position": "WR",
         "age": 32,
         "experience": 10,
-        "college": "West Alabama; Garden City CC; Oklahoma State"
+        "college": "West Alabama; Garden City CC; Oklahoma State",
+        "playerId": "ff26_9e1395039981"
       },
       {
         "name": "Ben Sims",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Baylor"
+        "college": "Baylor",
+        "playerId": "ff26_cd7c3c4c968e"
       },
       {
         "name": "Cole Turner",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "Nevada"
+        "college": "Nevada",
+        "playerId": "ff26_20946b8c0144"
       },
       {
         "name": "Darren Waller",
         "position": "TE",
         "age": 33,
         "experience": 11,
-        "college": "Georgia Tech"
+        "college": "Georgia Tech",
+        "playerId": "ff26_388cde124a8c"
       },
       {
         "name": "Greg Dulcich",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "UCLA"
+        "college": "UCLA",
+        "playerId": "ff26_0979fa89f480"
       },
       {
         "name": "Jalin Conyers",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "Texas Tech; Arizona State; Oklahoma"
+        "college": "Texas Tech; Arizona State; Oklahoma",
+        "playerId": "ff26_8579a0e8f82a"
       },
       {
         "name": "Zane Gonzalez",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_d4e6e17e5e0b"
       }
     ],
     "MIN": [
@@ -3593,161 +4096,184 @@
         "position": "QB",
         "age": 29,
         "experience": 7,
-        "college": "Boise State"
+        "college": "Boise State",
+        "playerId": "ff26_1adb1132df97"
       },
       {
         "name": "Carson Wentz",
         "position": "QB",
         "age": 33,
         "experience": 10,
-        "college": "North Dakota State"
+        "college": "North Dakota State",
+        "playerId": "ff26_9b687973ef3f"
       },
       {
         "name": "J.J. McCarthy",
         "position": "QB",
         "age": 23,
         "experience": 2,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_d772e6eec5e2"
       },
       {
         "name": "John Wolford",
         "position": "QB",
         "age": 30,
         "experience": 7,
-        "college": "Wake Forest"
+        "college": "Wake Forest",
+        "playerId": "ff26_d9138c2f7bc6"
       },
       {
         "name": "Kyler Murray",
         "position": "QB",
         "age": 28,
         "experience": 7,
-        "college": "Oklahoma; Texas A&M"
+        "college": "Oklahoma; Texas A&M",
+        "playerId": "ff26_7e321f09807f"
       },
       {
         "name": "Max Brosmer",
         "position": "QB",
         "age": 25,
         "experience": 1,
-        "college": "Minnesota; New Hampshire"
+        "college": "Minnesota; New Hampshire",
+        "playerId": "ff26_dfcd05b0089d"
       },
       {
         "name": "Aaron Jones",
         "position": "RB",
         "age": 31,
         "experience": 9,
-        "college": "Texas-El Paso"
+        "college": "Texas-El Paso",
+        "playerId": "ff26_1f7ba42c89c2"
       },
       {
         "name": "Jordan Mason",
         "position": "RB",
         "age": 26,
         "experience": 4,
-        "college": "Georgia Tech"
+        "college": "Georgia Tech",
+        "playerId": "ff26_b0528d3cc46f"
       },
       {
         "name": "Dontae Fleming",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Tulane"
+        "college": "Tulane",
+        "playerId": "ff26_d7ac9a880514"
       },
       {
         "name": "Jeshaun Jones",
         "position": "WR",
         "age": 26,
         "experience": 2,
-        "college": "Maryland"
+        "college": "Maryland",
+        "playerId": "ff26_493bb81f66c9"
       },
       {
         "name": "Joaquin Davis",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "North Carolina Central"
+        "college": "North Carolina Central",
+        "playerId": "ff26_1b4c151ffe7a"
       },
       {
         "name": "Jordan Addison",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "USC; Pittsburgh"
+        "college": "USC; Pittsburgh",
+        "playerId": "ff26_7287325d8d7b"
       },
       {
         "name": "Justin Jefferson",
         "position": "WR",
         "age": 26,
         "experience": 6,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_5cac8feea892"
       },
       {
         "name": "Marcus Sanders Jr.",
         "position": "WR",
         "age": null,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_25685350423f"
       },
       {
         "name": "Myles Price",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Indiana; Texas Tech"
+        "college": "Indiana; Texas Tech",
+        "playerId": "ff26_d1705ac512f7"
       },
       {
         "name": "Tai Felton",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Maryland"
+        "college": "Maryland",
+        "playerId": "ff26_8a1da03514e0"
       },
       {
         "name": "Zavier Scott",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Maine"
+        "college": "Maine",
+        "playerId": "ff26_3f30e208085c"
       },
       {
         "name": "Ben Yurosek",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "Georgia; Stanford"
+        "college": "Georgia; Stanford",
+        "playerId": "ff26_c4016a3ba1b7"
       },
       {
         "name": "Bryson Nesbit",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_11eca3e8b7c0"
       },
       {
         "name": "Gavin Bartholomew",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Pittsburgh"
+        "college": "Pittsburgh",
+        "playerId": "ff26_dfdbff7d6728"
       },
       {
         "name": "Josh Oliver",
         "position": "TE",
         "age": 29,
         "experience": 7,
-        "college": "San Jose State"
+        "college": "San Jose State",
+        "playerId": "ff26_f7778ee97d37"
       },
       {
         "name": "T.J. Hockenson",
         "position": "TE",
         "age": 28,
         "experience": 7,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_ec4b1fa5038f"
       },
       {
         "name": "Will Reichard",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_10309baea082"
       }
     ],
     "NE": [
@@ -3756,189 +4282,216 @@
         "position": "QB",
         "age": 23,
         "experience": 2,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_c06d4e316a00"
       },
       {
         "name": "Joshua Dobbs",
         "position": "QB",
         "age": 31,
         "experience": 9,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_d1f843964f24"
       },
       {
         "name": "Tommy DeVito",
         "position": "QB",
         "age": 27,
         "experience": 3,
-        "college": "Illinois; Syracuse"
+        "college": "Illinois; Syracuse",
+        "playerId": "ff26_20dcc4512e8b"
       },
       {
         "name": "Antonio Gibson",
         "position": "RB",
         "age": 27,
         "experience": 6,
-        "college": "Memphis; East Central JC"
+        "college": "Memphis; East Central JC",
+        "playerId": "ff26_99a5402117d9"
       },
       {
         "name": "Brock Lampe",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Northern Illinois"
+        "college": "Northern Illinois",
+        "playerId": "ff26_ca8b859929f6"
       },
       {
         "name": "D'Ernest Johnson",
         "position": "RB",
         "age": 30,
         "experience": 7,
-        "college": "University of South Florida"
+        "college": "University of South Florida",
+        "playerId": "ff26_f1dbfc6f1f2c"
       },
       {
         "name": "Deneric Prince",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "Tulsa; Texas A&M"
+        "college": "Tulsa; Texas A&M",
+        "playerId": "ff26_f883e9cfaf7f"
       },
       {
         "name": "Elijah Mitchell",
         "position": "RB",
         "age": 28,
         "experience": 5,
-        "college": "Louisiana-Lafayette"
+        "college": "Louisiana-Lafayette",
+        "playerId": "ff26_c0fa7374a235"
       },
       {
         "name": "Lan Larison",
         "position": "RB",
         "age": 24,
         "experience": 1,
-        "college": "UC Davis"
+        "college": "UC Davis",
+        "playerId": "ff26_2988e6e73bbb"
       },
       {
         "name": "Reggie Gilliam",
         "position": "RB",
         "age": 28,
         "experience": 6,
-        "college": "Toledo"
+        "college": "Toledo",
+        "playerId": "ff26_25a76f7d504e"
       },
       {
         "name": "Rhamondre Stevenson",
         "position": "RB",
         "age": 28,
         "experience": 5,
-        "college": "Oklahoma; Cerritos College"
+        "college": "Oklahoma; Cerritos College",
+        "playerId": "ff26_353c65541fe0"
       },
       {
         "name": "Terrell Jennings",
         "position": "RB",
         "age": 25,
         "experience": 2,
-        "college": "Florida A&M"
+        "college": "Florida A&M",
+        "playerId": "ff26_afbab56e5b1e"
       },
       {
         "name": "TreVeyon Henderson",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_2a8b3ad56833"
       },
       {
         "name": "DeMario Douglas",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "Liberty"
+        "college": "Liberty",
+        "playerId": "ff26_ab00676a23b0"
       },
       {
         "name": "Efton Chism III",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Eastern Washington"
+        "college": "Eastern Washington",
+        "playerId": "ff26_dadc9c7649e4"
       },
       {
         "name": "Jeremiah Webb",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "South Alabama; South Dakota"
+        "college": "South Alabama; South Dakota",
+        "playerId": "ff26_5c7c726dcf47"
       },
       {
         "name": "Kayshon Boutte",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_8c0660cc278c"
       },
       {
         "name": "Kyle Williams",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Washington State"
+        "college": "Washington State",
+        "playerId": "ff26_ec01827b4895"
       },
       {
         "name": "Mack Hollins",
         "position": "WR",
         "age": 32,
         "experience": 9,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_b1cf6f602a9a"
       },
       {
         "name": "Romeo Doubs",
         "position": "WR",
         "age": 26,
         "experience": 4,
-        "college": "Nevada"
+        "college": "Nevada",
+        "playerId": "ff26_3f24d50caba5"
       },
       {
         "name": "Stefon Diggs",
         "position": "WR",
         "age": 32,
         "experience": 11,
-        "college": "Maryland"
+        "college": "Maryland",
+        "playerId": "ff26_76b66f77bfb7"
       },
       {
         "name": "CJ Dippre",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "Alabama; Maryland"
+        "college": "Alabama; Maryland",
+        "playerId": "ff26_f1c0ccf39556"
       },
       {
         "name": "Hunter Henry",
         "position": "TE",
         "age": 31,
         "experience": 10,
-        "college": "Arkansas"
+        "college": "Arkansas",
+        "playerId": "ff26_543a8063389e"
       },
       {
         "name": "Jack Westover",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_d42bfec636d4"
       },
       {
         "name": "Julian Hill",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Campbell University"
+        "college": "Campbell University",
+        "playerId": "ff26_2ddbc5fe50ea"
       },
       {
         "name": "Tanner Arkin",
         "position": "TE",
         "age": 22,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_2b6a27fcd2c2"
       },
       {
         "name": "Andy Borregales",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_995b5a53dd8f"
       }
     ],
     "NO": [
@@ -3947,189 +4500,216 @@
         "position": "QB",
         "age": 25,
         "experience": 2,
-        "college": "South Carolina; Oklahoma"
+        "college": "South Carolina; Oklahoma",
+        "playerId": "ff26_3eb461f5ac2b"
       },
       {
         "name": "Taysom Hill",
         "position": "QB",
         "age": 35,
         "experience": 9,
-        "college": "BYU"
+        "college": "BYU",
+        "playerId": "ff26_1da5c8504129"
       },
       {
         "name": "Tyler Shough",
         "position": "QB",
         "age": 26,
         "experience": 1,
-        "college": "Louisville; Texas Tech; Oregon"
+        "college": "Louisville; Texas Tech; Oregon",
+        "playerId": "ff26_9c4ec192e2e4"
       },
       {
         "name": "Zach Wilson",
         "position": "QB",
         "age": 26,
         "experience": 5,
-        "college": "BYU"
+        "college": "BYU",
+        "playerId": "ff26_a410c5b1c404"
       },
       {
         "name": "Alvin Kamara",
         "position": "RB",
         "age": 30,
         "experience": 9,
-        "college": "Tennessee; Hutchinson CC; Alabama"
+        "college": "Tennessee; Hutchinson CC; Alabama",
+        "playerId": "ff26_4512f86e7b59"
       },
       {
         "name": "Audric Estimé",
         "position": "RB",
         "age": 22,
         "experience": 2,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_2f5e1ca86124"
       },
       {
         "name": "Devin Neal",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Kansas"
+        "college": "Kansas",
+        "playerId": "ff26_e3c4c90e716b"
       },
       {
         "name": "Kendre Miller",
         "position": "RB",
         "age": 23,
         "experience": 3,
-        "college": "TCU"
+        "college": "TCU",
+        "playerId": "ff26_7ba16a44917b"
       },
       {
         "name": "Travis Etienne",
         "position": "RB",
         "age": 27,
         "experience": 5,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_ee0207f35203"
       },
       {
         "name": "Ty Chandler",
         "position": "RB",
         "age": 28,
         "experience": 4,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_d37187589269"
       },
       {
         "name": "Bub Means",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Pittsburgh; Louisiana Tech"
+        "college": "Pittsburgh; Louisiana Tech",
+        "playerId": "ff26_e2bd6a58351d"
       },
       {
         "name": "Chris Olave",
         "position": "WR",
         "age": 25,
         "experience": 4,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_ef8c4a321374"
       },
       {
         "name": "Damien Alford",
         "position": "WR",
         "age": 25,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_fa137cfe750a"
       },
       {
         "name": "Dante Pettis",
         "position": "WR",
         "age": 30,
         "experience": 8,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_2548c3998a6b"
       },
       {
         "name": "Devaughn Vele",
         "position": "WR",
         "age": 28,
         "experience": 2,
-        "college": "Utah"
+        "college": "Utah",
+        "playerId": "ff26_d41cf5b00e06"
       },
       {
         "name": "Ja'Lynn Polk",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "Washington; Texas Tech"
+        "college": "Washington; Texas Tech",
+        "playerId": "ff26_6cec7b08aeef"
       },
       {
         "name": "Kevin Austin Jr.",
         "position": "WR",
         "age": 26,
         "experience": 4,
-        "college": "Notre Dame"
+        "college": "Notre Dame",
+        "playerId": "ff26_053f54094706"
       },
       {
         "name": "Mason Tipton",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Yale"
+        "college": "Yale",
+        "playerId": "ff26_beac8a2ccdaa"
       },
       {
         "name": "Ronnie Bell",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_b4bbcc910740"
       },
       {
         "name": "Trey Palmer",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "Nebraska; LSU"
+        "college": "Nebraska; LSU",
+        "playerId": "ff26_233959fd11a7"
       },
       {
         "name": "Juwan Johnson",
         "position": "TE",
         "age": 29,
         "experience": 6,
-        "college": "Oregon; Penn State"
+        "college": "Oregon; Penn State",
+        "playerId": "ff26_0a06a1a86c90"
       },
       {
         "name": "Mason Pline",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Furman; Ferris State"
+        "college": "Furman; Ferris State",
+        "playerId": "ff26_d2c93e94f546"
       },
       {
         "name": "Moliki Matavao",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "UCLA"
+        "college": "UCLA",
+        "playerId": "ff26_6d6794dcff72"
       },
       {
         "name": "Noah Fant",
         "position": "TE",
         "age": 28,
         "experience": 7,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_1942ebb51599"
       },
       {
         "name": "Treyton Welch",
         "position": "TE",
         "age": 25,
         "experience": 2,
-        "college": "Wyoming"
+        "college": "Wyoming",
+        "playerId": "ff26_6547fb9ee233"
       },
       {
         "name": "Zaire Mitchell-Paden",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "Florida Atlantic"
+        "college": "Florida Atlantic",
+        "playerId": "ff26_a639cfa71072"
       },
       {
         "name": "Charlie Smyth",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_27640b691eab"
       }
     ],
     "NYG": [
@@ -4138,203 +4718,232 @@
         "position": "QB",
         "age": 33,
         "experience": 10,
-        "college": "Arkansas"
+        "college": "Arkansas",
+        "playerId": "ff26_b5b004fa2286"
       },
       {
         "name": "Jameis Winston",
         "position": "QB",
         "age": 32,
         "experience": 11,
-        "college": "Florida State"
+        "college": "Florida State",
+        "playerId": "ff26_cc4176fe0fa2"
       },
       {
         "name": "Jaxson Dart",
         "position": "QB",
         "age": 23,
         "experience": 1,
-        "college": "Mississippi; USC"
+        "college": "Mississippi; USC",
+        "playerId": "ff26_325d877bd1cf"
       },
       {
         "name": "Russell Wilson",
         "position": "QB",
         "age": 37,
         "experience": 14,
-        "college": "Wisconsin; N.C. State"
+        "college": "Wisconsin; N.C. State",
+        "playerId": "ff26_07b0d4056b74"
       },
       {
         "name": "Cam Skattebo",
         "position": "RB",
         "age": 24,
         "experience": 1,
-        "college": "Arizona State; Sacramento State"
+        "college": "Arizona State; Sacramento State",
+        "playerId": "ff26_d6dc35762c8b"
       },
       {
         "name": "Dante Miller",
         "position": "RB",
         "age": 27,
         "experience": 2,
-        "college": "South Carolina; Columbia"
+        "college": "South Carolina; Columbia",
+        "playerId": "ff26_d0dc8c745e7a"
       },
       {
         "name": "Devin Singletary",
         "position": "RB",
         "age": 28,
         "experience": 7,
-        "college": "Florida Atlantic"
+        "college": "Florida Atlantic",
+        "playerId": "ff26_425824ab38b4"
       },
       {
         "name": "Eric Gray",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "Oklahoma; Tennessee"
+        "college": "Oklahoma; Tennessee",
+        "playerId": "ff26_417827301604"
       },
       {
         "name": "Patrick Ricard",
         "position": "RB",
         "age": 31,
         "experience": 9,
-        "college": "Maine"
+        "college": "Maine",
+        "playerId": "ff26_53cbbc21eb8e"
       },
       {
         "name": "Tyrone Tracy Jr.",
         "position": "RB",
         "age": 26,
         "experience": 2,
-        "college": "Purdue; Iowa"
+        "college": "Purdue; Iowa",
+        "playerId": "ff26_b05ebd6d6d9f"
       },
       {
         "name": "Beaux Collins",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Notre Dame; Clemson"
+        "college": "Notre Dame; Clemson",
+        "playerId": "ff26_dbad64eab782"
       },
       {
         "name": "Bryce Ford-Wheaton",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "West Virginia"
+        "college": "West Virginia",
+        "playerId": "ff26_2c6fd0e93174"
       },
       {
         "name": "Calvin Austin III",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "Memphis"
+        "college": "Memphis",
+        "playerId": "ff26_c7c479326bf9"
       },
       {
         "name": "Dalen Cambre",
         "position": "WR",
         "age": 25,
         "experience": 1,
-        "college": "Louisiana"
+        "college": "Louisiana",
+        "playerId": "ff26_f72920728dfd"
       },
       {
         "name": "Darius Slayton",
         "position": "WR",
         "age": 29,
         "experience": 7,
-        "college": "Auburn"
+        "college": "Auburn",
+        "playerId": "ff26_086799b42ecd"
       },
       {
         "name": "Darnell Mooney",
         "position": "WR",
         "age": 28,
         "experience": 6,
-        "college": "Tulane"
+        "college": "Tulane",
+        "playerId": "ff26_d660245ba273"
       },
       {
         "name": "Gunner Olszewski",
         "position": "WR",
         "age": 29,
         "experience": 7,
-        "college": "Bemidji State University"
+        "college": "Bemidji State University",
+        "playerId": "ff26_2bfd33ffc13c"
       },
       {
         "name": "Isaiah Hodgins",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "Oregon State"
+        "college": "Oregon State",
+        "playerId": "ff26_2239df8e19e1"
       },
       {
         "name": "Jalin Hyatt",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_42c451a27a3e"
       },
       {
         "name": "Malachi Fields",
         "position": "WR",
         "age": 23,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_201872367c98"
       },
       {
         "name": "Malik Nabers",
         "position": "WR",
         "age": 22,
         "experience": 2,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_df1c6cbf68a9"
       },
       {
         "name": "Ryan Miller",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Furman"
+        "college": "Furman",
+        "playerId": "ff26_a359c20f54c0"
       },
       {
         "name": "Xavier Gipson",
         "position": "WR",
         "age": 25,
         "experience": 3,
-        "college": "Stephen F. Austin State"
+        "college": "Stephen F. Austin State",
+        "playerId": "ff26_1e3c20cbbbd4"
       },
       {
         "name": "Chris Manhertz",
         "position": "TE",
         "age": 34,
         "experience": 11,
-        "college": "Canisius College"
+        "college": "Canisius College",
+        "playerId": "ff26_51759cea5ac8"
       },
       {
         "name": "Isaiah Likely",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "Coastal Carolina"
+        "college": "Coastal Carolina",
+        "playerId": "ff26_81225dba6599"
       },
       {
         "name": "Tanner Conner",
         "position": "TE",
         "age": 28,
         "experience": 4,
-        "college": "Idaho State"
+        "college": "Idaho State",
+        "playerId": "ff26_e88b16aa283b"
       },
       {
         "name": "Theo Johnson",
         "position": "TE",
         "age": 25,
         "experience": 2,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_67fc9e2fd0d2"
       },
       {
         "name": "Thomas Fidone II",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Nebraska"
+        "college": "Nebraska",
+        "playerId": "ff26_c9f1f50e5750"
       },
       {
         "name": "Ben Sauls",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_e104a2969e7d"
       }
     ],
     "NYJ": [
@@ -4343,161 +4952,184 @@
         "position": "QB",
         "age": 27,
         "experience": 4,
-        "college": "Western Kentucky; Houston Christian University"
+        "college": "Western Kentucky; Houston Christian University",
+        "playerId": "ff26_ad39fa5a1fbd"
       },
       {
         "name": "Brady Cook",
         "position": "QB",
         "age": 24,
         "experience": 1,
-        "college": "Missouri"
+        "college": "Missouri",
+        "playerId": "ff26_5adfb36b87d9"
       },
       {
         "name": "Cade Klubnik",
         "position": "QB",
         "age": 22,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_86bf74ed0a8f"
       },
       {
         "name": "Geno Smith",
         "position": "QB",
         "age": 35,
         "experience": 13,
-        "college": "West Virginia"
+        "college": "West Virginia",
+        "playerId": "ff26_6fac09d06e9d"
       },
       {
         "name": "Braelon Allen",
         "position": "RB",
         "age": 22,
         "experience": 2,
-        "college": "Wisconsin"
+        "college": "Wisconsin",
+        "playerId": "ff26_9e98555b9374"
       },
       {
         "name": "Breece Hall",
         "position": "RB",
         "age": 24,
         "experience": 4,
-        "college": "Iowa State"
+        "college": "Iowa State",
+        "playerId": "ff26_5c3e34ea5a5f"
       },
       {
         "name": "Isaiah Davis",
         "position": "RB",
         "age": 24,
         "experience": 2,
-        "college": "South Dakota State"
+        "college": "South Dakota State",
+        "playerId": "ff26_773f4d9856d7"
       },
       {
         "name": "Kene Nwangwu",
         "position": "RB",
         "age": 28,
         "experience": 5,
-        "college": "Iowa State"
+        "college": "Iowa State",
+        "playerId": "ff26_f1b72ba195ab"
       },
       {
         "name": "Khalil Herbert",
         "position": "RB",
         "age": 28,
         "experience": 5,
-        "college": "Virginia Tech"
+        "college": "Virginia Tech",
+        "playerId": "ff26_f9ed9e38af01"
       },
       {
         "name": "Adonai Mitchell",
         "position": "WR",
         "age": 23,
         "experience": 2,
-        "college": "Texas; Georgia"
+        "college": "Texas; Georgia",
+        "playerId": "ff26_c45756ed653e"
       },
       {
         "name": "Arian Smith",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_523333710f06"
       },
       {
         "name": "Garrett Wilson",
         "position": "WR",
         "age": 25,
         "experience": 4,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_275e25eca7b9"
       },
       {
         "name": "Irvin Charles",
         "position": "WR",
         "age": 29,
         "experience": 4,
-        "college": "Indiana PA,  University of; Penn State"
+        "college": "Indiana PA,  University of; Penn State",
+        "playerId": "ff26_f38ee96a8ccb"
       },
       {
         "name": "Isaiah Williams",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Illinois"
+        "college": "Illinois",
+        "playerId": "ff26_b351d7107f59"
       },
       {
         "name": "Jamaal Pritchett",
         "position": "WR",
         "age": 22,
         "experience": 1,
-        "college": "South Alabama; Tuskegee University"
+        "college": "South Alabama; Tuskegee University",
+        "playerId": "ff26_80b54c90d3cc"
       },
       {
         "name": "Josh Reynolds",
         "position": "WR",
         "age": 31,
         "experience": 9,
-        "college": "Texas A&M; Tyler JC"
+        "college": "Texas A&M; Tyler JC",
+        "playerId": "ff26_683f9b1d723d"
       },
       {
         "name": "Mac Dalena",
         "position": "WR",
         "age": 24,
         "experience": 0,
-        "college": "Fresno State"
+        "college": "Fresno State",
+        "playerId": "ff26_8434c7950763"
       },
       {
         "name": "Quentin Skinner",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Kansas"
+        "college": "Kansas",
+        "playerId": "ff26_2991585d7b75"
       },
       {
         "name": "Andrew Beck",
         "position": "TE",
         "age": 29,
         "experience": 7,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_918a239d7f47"
       },
       {
         "name": "Jelani Woods",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "Virginia"
+        "college": "Virginia",
+        "playerId": "ff26_0a673f1f61cf"
       },
       {
         "name": "Jeremy Ruckert",
         "position": "TE",
         "age": 25,
         "experience": 4,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_bb55e0b747a7"
       },
       {
         "name": "Mason Taylor",
         "position": "TE",
         "age": 22,
         "experience": 1,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_194d1102f548"
       },
       {
         "name": "Jason Sanders",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_3dc3843e2356"
       }
     ],
     "PHI": [
@@ -4506,182 +5138,208 @@
         "position": "QB",
         "age": 38,
         "experience": 15,
-        "college": "TCU"
+        "college": "TCU",
+        "playerId": "ff26_2f651b61d061"
       },
       {
         "name": "Cole Payton",
         "position": "QB",
         "age": 23,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_8dea348d7bfc"
       },
       {
         "name": "Jalen Hurts",
         "position": "QB",
         "age": 27,
         "experience": 6,
-        "college": "Oklahoma; Alabama"
+        "college": "Oklahoma; Alabama",
+        "playerId": "ff26_a4066deb100d"
       },
       {
         "name": "Tanner McKee",
         "position": "QB",
         "age": 26,
         "experience": 3,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_23c0b3a4e64f"
       },
       {
         "name": "Carson Steele",
         "position": "RB",
         "age": 23,
         "experience": 2,
-        "college": "UCLA; Ball State"
+        "college": "UCLA; Ball State",
+        "playerId": "ff26_f0f73f5d2e18"
       },
       {
         "name": "Dameon Pierce",
         "position": "RB",
         "age": 26,
         "experience": 4,
-        "college": "Florida"
+        "college": "Florida",
+        "playerId": "ff26_9f637a278da7"
       },
       {
         "name": "Saquon Barkley",
         "position": "RB",
         "age": 29,
         "experience": 8,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_4a1359846a37"
       },
       {
         "name": "Tank Bigsby",
         "position": "RB",
         "age": 23,
         "experience": 3,
-        "college": "Auburn"
+        "college": "Auburn",
+        "playerId": "ff26_81a5ddaf04ce"
       },
       {
         "name": "Will Shipley",
         "position": "RB",
         "age": 23,
         "experience": 2,
-        "college": "Clemson"
+        "college": "Clemson",
+        "playerId": "ff26_b2d5bdf3b458"
       },
       {
         "name": "A.J. Brown",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Mississippi"
+        "college": "Mississippi",
+        "playerId": "ff26_e46a31ab1972"
       },
       {
         "name": "Britain Covey",
         "position": "WR",
         "age": 29,
         "experience": 4,
-        "college": "Utah"
+        "college": "Utah",
+        "playerId": "ff26_cbaa9f674db0"
       },
       {
         "name": "Danny Gray",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "SMU"
+        "college": "SMU",
+        "playerId": "ff26_e4d63d381634"
       },
       {
         "name": "Darius Cooper",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Tarleton State"
+        "college": "Tarleton State",
+        "playerId": "ff26_ffb348ede5c4"
       },
       {
         "name": "DeVonta Smith",
         "position": "WR",
         "age": 27,
         "experience": 5,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_3053c19ea11c"
       },
       {
         "name": "Dontayvion Wicks",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "Virginia"
+        "college": "Virginia",
+        "playerId": "ff26_d741b0cccf5b"
       },
       {
         "name": "Elijah Moore",
         "position": "WR",
         "age": 26,
         "experience": 5,
-        "college": "Mississippi"
+        "college": "Mississippi",
+        "playerId": "ff26_b3849a6f59da"
       },
       {
         "name": "Johnny Wilson",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Florida State; Arizona State"
+        "college": "Florida State; Arizona State",
+        "playerId": "ff26_9f9c005ed843"
       },
       {
         "name": "Marquise Brown",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Oklahoma; College of the Canyons"
+        "college": "Oklahoma; College of the Canyons",
+        "playerId": "ff26_6d565d3c5b58"
       },
       {
         "name": "Quez Watkins",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "Southern Mississippi"
+        "college": "Southern Mississippi",
+        "playerId": "ff26_213a372428f7"
       },
       {
         "name": "Cameron Latu",
         "position": "TE",
         "age": 26,
         "experience": 3,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_2a99d142d5f6"
       },
       {
         "name": "Dallas Goedert",
         "position": "TE",
         "age": 31,
         "experience": 8,
-        "college": "South Dakota State"
+        "college": "South Dakota State",
+        "playerId": "ff26_6611b08b7ae7"
       },
       {
         "name": "E.J. Jenkins",
         "position": "TE",
         "age": 27,
         "experience": 3,
-        "college": "Georgia Tech; South Carolina; St. Francis PA"
+        "college": "Georgia Tech; South Carolina; St. Francis PA",
+        "playerId": "ff26_6a1764dc273c"
       },
       {
         "name": "Grant Calcaterra",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "SMU; Oklahoma"
+        "college": "SMU; Oklahoma",
+        "playerId": "ff26_7a7c764c4da6"
       },
       {
         "name": "Johnny Mundt",
         "position": "TE",
         "age": 31,
         "experience": 9,
-        "college": "Oregon"
+        "college": "Oregon",
+        "playerId": "ff26_a7ca1969e8ae"
       },
       {
         "name": "Stone Smartt",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "Old Dominion"
+        "college": "Old Dominion",
+        "playerId": "ff26_d97c120697d7"
       },
       {
         "name": "Jake Elliott",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_2be345d3eb79"
       }
     ],
     "PIT": [
@@ -4690,182 +5348,208 @@
         "position": "QB",
         "age": 42,
         "experience": 21,
-        "college": "California; Butte College"
+        "college": "California; Butte College",
+        "playerId": "ff26_22b756c5d7d2"
       },
       {
         "name": "Mason Rudolph",
         "position": "QB",
         "age": 30,
         "experience": 8,
-        "college": "Oklahoma State"
+        "college": "Oklahoma State",
+        "playerId": "ff26_963de9a6fd58"
       },
       {
         "name": "Will Howard",
         "position": "QB",
         "age": 24,
         "experience": 1,
-        "college": "Ohio State; Kansas State"
+        "college": "Ohio State; Kansas State",
+        "playerId": "ff26_a7c0da88ccec"
       },
       {
         "name": "Jaylen Warren",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "Oklahoma State"
+        "college": "Oklahoma State",
+        "playerId": "ff26_f6aede6e9f53"
       },
       {
         "name": "Kaleb Johnson",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_94c7eec20653"
       },
       {
         "name": "Lew Nichols III",
         "position": "RB",
         "age": 24,
         "experience": 3,
-        "college": "Central Michigan"
+        "college": "Central Michigan",
+        "playerId": "ff26_c9c2a4219dd8"
       },
       {
         "name": "Max Hurleman",
         "position": "RB",
         "age": 24,
         "experience": 1,
-        "college": "Notre Dame; Colgate"
+        "college": "Notre Dame; Colgate",
+        "playerId": "ff26_414cd136372c"
       },
       {
         "name": "Rico Dowdle",
         "position": "RB",
         "age": 27,
         "experience": 6,
-        "college": "South Carolina"
+        "college": "South Carolina",
+        "playerId": "ff26_9bd7bca52ffd"
       },
       {
         "name": "Travis Homer",
         "position": "RB",
         "age": 27,
         "experience": 7,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_e0e5cf092e24"
       },
       {
         "name": "A.T. Perry",
         "position": "WR",
         "age": 26,
         "experience": 3,
-        "college": "Wake Forest"
+        "college": "Wake Forest",
+        "playerId": "ff26_9fec49020361"
       },
       {
         "name": "Ben Skowronek",
         "position": "WR",
         "age": 28,
         "experience": 5,
-        "college": "Notre Dame; Northwestern"
+        "college": "Notre Dame; Northwestern",
+        "playerId": "ff26_e3fd42cded9c"
       },
       {
         "name": "Brandon Johnson",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "UCF; Tennessee"
+        "college": "UCF; Tennessee",
+        "playerId": "ff26_d10a3391d529"
       },
       {
         "name": "Brandon Smith",
         "position": "WR",
         "age": 27,
         "experience": 5,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_f7b1c408fe83"
       },
       {
         "name": "Cole Burgess",
         "position": "WR",
         "age": 26,
         "experience": 2,
-        "college": "Cortland State Of New York"
+        "college": "Cortland State Of New York",
+        "playerId": "ff26_0aca15bc5a20"
       },
       {
         "name": "DK Metcalf",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Mississippi"
+        "college": "Mississippi",
+        "playerId": "ff26_ec49c7a09512"
       },
       {
         "name": "Michael Pittman",
         "position": "WR",
         "age": 28,
         "experience": 6,
-        "college": "USC"
+        "college": "USC",
+        "playerId": "ff26_0817729b4351"
       },
       {
         "name": "Roman Wilson",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_70422def9c09"
       },
       {
         "name": "Scott Miller",
         "position": "WR",
         "age": 28,
         "experience": 7,
-        "college": "Bowling Green"
+        "college": "Bowling Green",
+        "playerId": "ff26_dcd3ca4009bb"
       },
       {
         "name": "Darnell Washington",
         "position": "TE",
         "age": 24,
         "experience": 3,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_000660677447"
       },
       {
         "name": "Donald Parham",
         "position": "TE",
         "age": 28,
         "experience": 7,
-        "college": "Stetson"
+        "college": "Stetson",
+        "playerId": "ff26_ca1725a35ee8"
       },
       {
         "name": "Jaheim Bell",
         "position": "TE",
         "age": 24,
         "experience": 2,
-        "college": "Florida State; South Carolina"
+        "college": "Florida State; South Carolina",
+        "playerId": "ff26_920973f6b10a"
       },
       {
         "name": "JJ Galbreath",
         "position": "TE",
         "age": 24,
         "experience": 1,
-        "college": "South Dakota"
+        "college": "South Dakota",
+        "playerId": "ff26_5ef5c31d7a26"
       },
       {
         "name": "Jonnu Smith",
         "position": "TE",
         "age": 30,
         "experience": 9,
-        "college": "Florida International"
+        "college": "Florida International",
+        "playerId": "ff26_c25f59ebb36b"
       },
       {
         "name": "Pat Freiermuth",
         "position": "TE",
         "age": 27,
         "experience": 5,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_9cf1a322ab86"
       },
       {
         "name": "Riley Nowakowski",
         "position": "TE",
         "age": 23,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_6c339de15aa4"
       },
       {
         "name": "Chris Boswell",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_45ad317cb47b"
       }
     ],
     "SEA": [
@@ -4874,189 +5558,216 @@
         "position": "QB",
         "age": 29,
         "experience": 7,
-        "college": "Missouri"
+        "college": "Missouri",
+        "playerId": "ff26_322f6af9306a"
       },
       {
         "name": "Jalen Milroe",
         "position": "QB",
         "age": 23,
         "experience": 1,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_ed9cf1720d78"
       },
       {
         "name": "Sam Darnold",
         "position": "QB",
         "age": 28,
         "experience": 8,
-        "college": "USC"
+        "college": "USC",
+        "playerId": "ff26_f7cd4c735712"
       },
       {
         "name": "Brady Russell",
         "position": "RB",
         "age": 27,
         "experience": 3,
-        "college": "Colorado"
+        "college": "Colorado",
+        "playerId": "ff26_1dae24617e21"
       },
       {
         "name": "Cam Akers",
         "position": "RB",
         "age": 26,
         "experience": 6,
-        "college": "Florida State"
+        "college": "Florida State",
+        "playerId": "ff26_b7e4bfaa213c"
       },
       {
         "name": "Emanuel Wilson",
         "position": "RB",
         "age": 27,
         "experience": 3,
-        "college": "Fort Valley State College"
+        "college": "Fort Valley State College",
+        "playerId": "ff26_8017e463d66e"
       },
       {
         "name": "George Holani",
         "position": "RB",
         "age": 26,
         "experience": 2,
-        "college": "Boise State"
+        "college": "Boise State",
+        "playerId": "ff26_24d936d940ce"
       },
       {
         "name": "Jacardia Wright",
         "position": "RB",
         "age": 25,
         "experience": 1,
-        "college": "Missouri State; Kansas State"
+        "college": "Missouri State; Kansas State",
+        "playerId": "ff26_fe5e02e96099"
       },
       {
         "name": "Kenny McIntosh",
         "position": "RB",
         "age": 26,
         "experience": 3,
-        "college": "Georgia"
+        "college": "Georgia",
+        "playerId": "ff26_fe1d3553b448"
       },
       {
         "name": "Robbie Ouzts",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_979d8f8d6382"
       },
       {
         "name": "Zach Charbonnet",
         "position": "RB",
         "age": 25,
         "experience": 3,
-        "college": "UCLA; Michigan"
+        "college": "UCLA; Michigan",
+        "playerId": "ff26_f08dc64c1a18"
       },
       {
         "name": "Cody White",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "Michigan State"
+        "college": "Michigan State",
+        "playerId": "ff26_bced8250d0b8"
       },
       {
         "name": "Cooper Kupp",
         "position": "WR",
         "age": 32,
         "experience": 9,
-        "college": "Eastern Washington"
+        "college": "Eastern Washington",
+        "playerId": "ff26_a847d595ae5c"
       },
       {
         "name": "Jake Bobo",
         "position": "WR",
         "age": 27,
         "experience": 3,
-        "college": "UCLA; Duke"
+        "college": "UCLA; Duke",
+        "playerId": "ff26_9d67c7fb3aa6"
       },
       {
         "name": "Jaxon Smith-Njigba",
         "position": "WR",
         "age": 24,
         "experience": 3,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_b588742201e3"
       },
       {
         "name": "Montorie Foster Jr",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Michigan State"
+        "college": "Michigan State",
+        "playerId": "ff26_1ca0e3319a91"
       },
       {
         "name": "Rashid Shaheed",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "Weber State"
+        "college": "Weber State",
+        "playerId": "ff26_1e4a30f8d14f"
       },
       {
         "name": "Ricky White III",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "UNLV; Michigan State"
+        "college": "UNLV; Michigan State",
+        "playerId": "ff26_dad02540824e"
       },
       {
         "name": "Tory Horton",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Colorado State; Nevada"
+        "college": "Colorado State; Nevada",
+        "playerId": "ff26_8647a333c71c"
       },
       {
         "name": "Velus Jones Jr.",
         "position": "WR",
         "age": 29,
         "experience": 4,
-        "college": "Tennessee; USC"
+        "college": "Tennessee; USC",
+        "playerId": "ff26_1d9a6ea159b9"
       },
       {
         "name": "AJ Barner",
         "position": "TE",
         "age": 24,
         "experience": 2,
-        "college": "Michigan; Indiana"
+        "college": "Michigan; Indiana",
+        "playerId": "ff26_eed07601a0a2"
       },
       {
         "name": "Elijah Arroyo",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_468788a033f3"
       },
       {
         "name": "Eric Saubert",
         "position": "TE",
         "age": 32,
         "experience": 9,
-        "college": "Drake"
+        "college": "Drake",
+        "playerId": "ff26_3118cbf95a8c"
       },
       {
         "name": "Harrison Bryant",
         "position": "TE",
         "age": 28,
         "experience": 6,
-        "college": "Florida Atlantic"
+        "college": "Florida Atlantic",
+        "playerId": "ff26_b2df7d0def48"
       },
       {
         "name": "Lance Mason",
         "position": "TE",
         "age": 22,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_b11461655e2e"
       },
       {
         "name": "Nick Kallerup",
         "position": "TE",
         "age": 25,
         "experience": 1,
-        "college": "Minnesota"
+        "college": "Minnesota",
+        "playerId": "ff26_4f521517f7b4"
       },
       {
         "name": "Jason Myers",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_e01ad500ae40"
       }
     ],
     "SF": [
@@ -5065,196 +5776,224 @@
         "position": "QB",
         "age": 26,
         "experience": 2,
-        "college": "Kansas State; Nebraska"
+        "college": "Kansas State; Nebraska",
+        "playerId": "ff26_de73e6a2e40e"
       },
       {
         "name": "Brock Purdy",
         "position": "QB",
         "age": 26,
         "experience": 4,
-        "college": "Iowa State"
+        "college": "Iowa State",
+        "playerId": "ff26_c53266d48418"
       },
       {
         "name": "Kurtis Rourke",
         "position": "QB",
         "age": 25,
         "experience": 1,
-        "college": "Indiana"
+        "college": "Indiana",
+        "playerId": "ff26_132babe2febd"
       },
       {
         "name": "Mac Jones",
         "position": "QB",
         "age": 27,
         "experience": 5,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_777190b4feee"
       },
       {
         "name": "Christian McCaffrey",
         "position": "RB",
         "age": 29,
         "experience": 9,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_63ba9fca5c36"
       },
       {
         "name": "Isaac Guerendo",
         "position": "RB",
         "age": 25,
         "experience": 2,
-        "college": "Louisville; Wisconsin"
+        "college": "Louisville; Wisconsin",
+        "playerId": "ff26_892c65268847"
       },
       {
         "name": "Jordan James",
         "position": "RB",
         "age": 22,
         "experience": 1,
-        "college": "Oregon"
+        "college": "Oregon",
+        "playerId": "ff26_d8300bd259d4"
       },
       {
         "name": "Kyle Juszczyk",
         "position": "RB",
         "age": 35,
         "experience": 13,
-        "college": "Harvard"
+        "college": "Harvard",
+        "playerId": "ff26_d00d8436c781"
       },
       {
         "name": "Patrick Taylor",
         "position": "RB",
         "age": 28,
         "experience": 6,
-        "college": "Memphis"
+        "college": "Memphis",
+        "playerId": "ff26_8202350a1098"
       },
       {
         "name": "Sincere McCormick",
         "position": "RB",
         "age": 25,
         "experience": 4,
-        "college": "Texas-San Antonio"
+        "college": "Texas-San Antonio",
+        "playerId": "ff26_46f057de385a"
       },
       {
         "name": "Christian Kirk",
         "position": "WR",
         "age": 29,
         "experience": 8,
-        "college": "Texas A&M"
+        "college": "Texas A&M",
+        "playerId": "ff26_163744cb84e8"
       },
       {
         "name": "Colton Dowell",
         "position": "WR",
         "age": 27,
         "experience": 3,
-        "college": "Tennessee-Martin"
+        "college": "Tennessee-Martin",
+        "playerId": "ff26_5fc9b8f9f17e"
       },
       {
         "name": "De'Zhaun Stribling",
         "position": "WR",
         "age": 23,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_d0e6a8c2a146"
       },
       {
         "name": "Demarcus Robinson",
         "position": "WR",
         "age": 31,
         "experience": 10,
-        "college": "Florida"
+        "college": "Florida",
+        "playerId": "ff26_93b383690d16"
       },
       {
         "name": "Jacob Cowing",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Arizona; Texas-El Paso"
+        "college": "Arizona; Texas-El Paso",
+        "playerId": "ff26_8b99e41f9aca"
       },
       {
         "name": "Jauan Jennings",
         "position": "WR",
         "age": 28,
         "experience": 6,
-        "college": "Tennessee"
+        "college": "Tennessee",
+        "playerId": "ff26_fbae1e65d035"
       },
       {
         "name": "Jordan Watkins",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Mississippi; Louisville"
+        "college": "Mississippi; Louisville",
+        "playerId": "ff26_2870728b8fa8"
       },
       {
         "name": "Junior Bergen",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Montana"
+        "college": "Montana",
+        "playerId": "ff26_5a5a16eeb821"
       },
       {
         "name": "Malik Turner",
         "position": "WR",
         "age": 30,
         "experience": 8,
-        "college": "Illinois"
+        "college": "Illinois",
+        "playerId": "ff26_4774c8bf32e5"
       },
       {
         "name": "Mike Evans",
         "position": "WR",
         "age": 32,
         "experience": 12,
-        "college": "Texas A&M"
+        "college": "Texas A&M",
+        "playerId": "ff26_c11bddca0abf"
       },
       {
         "name": "Ricky Pearsall",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Florida; Arizona State"
+        "college": "Florida; Arizona State",
+        "playerId": "ff26_2c569bb67129"
       },
       {
         "name": "Trent Taylor",
         "position": "WR",
         "age": 32,
         "experience": 9,
-        "college": "Louisiana Tech"
+        "college": "Louisiana Tech",
+        "playerId": "ff26_d8490e6167a5"
       },
       {
         "name": "Brayden Willis",
         "position": "TE",
         "age": 26,
         "experience": 3,
-        "college": "Oklahoma"
+        "college": "Oklahoma",
+        "playerId": "ff26_62968aa06919"
       },
       {
         "name": "George Kittle",
         "position": "TE",
         "age": 32,
         "experience": 9,
-        "college": "Iowa"
+        "college": "Iowa",
+        "playerId": "ff26_da48da5fce5e"
       },
       {
         "name": "Hayden Rucci",
         "position": "TE",
         "age": 25,
         "experience": 2,
-        "college": "Wisconsin"
+        "college": "Wisconsin",
+        "playerId": "ff26_ac430d5fe8b8"
       },
       {
         "name": "Jake Tonges",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "California"
+        "college": "California",
+        "playerId": "ff26_acf1843e0da0"
       },
       {
         "name": "Luke Farrell",
         "position": "TE",
         "age": 28,
         "experience": 5,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_7ee5ffdef672"
       },
       {
         "name": "Eddy Pineiro",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_c6f3caceb2bf"
       }
     ],
     "TB": [
@@ -5263,168 +6002,192 @@
         "position": "QB",
         "age": 31,
         "experience": 8,
-        "college": "Oklahoma; Texas Tech"
+        "college": "Oklahoma; Texas Tech",
+        "playerId": "ff26_24a354647788"
       },
       {
         "name": "Connor Bazelak",
         "position": "QB",
         "age": 25,
         "experience": 1,
-        "college": "Bowling Green; Indiana; Missouri"
+        "college": "Bowling Green; Indiana; Missouri",
+        "playerId": "ff26_09433520fd62"
       },
       {
         "name": "Jake Browning",
         "position": "QB",
         "age": 30,
         "experience": 7,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_197ef75167ad"
       },
       {
         "name": "Bucky Irving",
         "position": "RB",
         "age": 23,
         "experience": 2,
-        "college": "Oregon; Minnesota"
+        "college": "Oregon; Minnesota",
+        "playerId": "ff26_c8f1046fdd59"
       },
       {
         "name": "Josh Williams",
         "position": "RB",
         "age": 25,
         "experience": 1,
-        "college": "LSU"
+        "college": "LSU",
+        "playerId": "ff26_fe128ca3c82a"
       },
       {
         "name": "Kenneth Gainwell",
         "position": "RB",
         "age": 27,
         "experience": 5,
-        "college": "Memphis"
+        "college": "Memphis",
+        "playerId": "ff26_eb9e3e568b10"
       },
       {
         "name": "Michael Wiley",
         "position": "RB",
         "age": 24,
         "experience": 2,
-        "college": "Arizona"
+        "college": "Arizona",
+        "playerId": "ff26_32c8e4cd21b2"
       },
       {
         "name": "Owen Wright",
         "position": "RB",
         "age": 27,
         "experience": 3,
-        "college": "Monmouth; William & Mary"
+        "college": "Monmouth; William & Mary",
+        "playerId": "ff26_761424959359"
       },
       {
         "name": "Sean Tucker",
         "position": "RB",
         "age": 24,
         "experience": 3,
-        "college": "Syracuse"
+        "college": "Syracuse",
+        "playerId": "ff26_a9a12f468d14"
       },
       {
         "name": "Chris Godwin Jr.",
         "position": "WR",
         "age": 30,
         "experience": 9,
-        "college": "Penn State"
+        "college": "Penn State",
+        "playerId": "ff26_64608feeb5b5"
       },
       {
         "name": "David Sills",
         "position": "WR",
         "age": 30,
         "experience": 7,
-        "college": "West Virginia"
+        "college": "West Virginia",
+        "playerId": "ff26_6e6726de23da"
       },
       {
         "name": "Dennis Houston",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "Western Illinois"
+        "college": "Western Illinois",
+        "playerId": "ff26_a23d3142338a"
       },
       {
         "name": "Emeka Egbuka",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_bf86f10aaa1e"
       },
       {
         "name": "Garrett Greene",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "West Virginia"
+        "college": "West Virginia",
+        "playerId": "ff26_92dec9859ad9"
       },
       {
         "name": "Jalen McMillan",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_1d5775cad827"
       },
       {
         "name": "Kameron Johnson",
         "position": "WR",
         "age": 24,
         "experience": 2,
-        "college": "Barton College"
+        "college": "Barton College",
+        "playerId": "ff26_ec6009d675a7"
       },
       {
         "name": "Noah Short",
         "position": "WR",
         "age": null,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_6e8867d9252a"
       },
       {
         "name": "Sterling Shepard",
         "position": "WR",
         "age": 33,
         "experience": 10,
-        "college": "Oklahoma"
+        "college": "Oklahoma",
+        "playerId": "ff26_e0ef9c25a774"
       },
       {
         "name": "Tez Johnson",
         "position": "WR",
         "age": 23,
         "experience": 1,
-        "college": "Oregon; Troy"
+        "college": "Oregon; Troy",
+        "playerId": "ff26_0fb9ac0c7de1"
       },
       {
         "name": "Cade Otton",
         "position": "TE",
         "age": 27,
         "experience": 4,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_4372c6719929"
       },
       {
         "name": "Devin Culp",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Washington"
+        "college": "Washington",
+        "playerId": "ff26_ad7643cdda60"
       },
       {
         "name": "Ko Kieft",
         "position": "TE",
         "age": 28,
         "experience": 4,
-        "college": "Minnesota"
+        "college": "Minnesota",
+        "playerId": "ff26_45d48b49b290"
       },
       {
         "name": "Payne Durham",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Purdue"
+        "college": "Purdue",
+        "playerId": "ff26_e228bb82ebe4"
       },
       {
         "name": "Chase McLaughlin",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_b02751e691cd"
       }
     ],
     "TEN": [
@@ -5433,189 +6196,216 @@
         "position": "QB",
         "age": 23,
         "experience": 1,
-        "college": "Miami; Washington State; Incarnate Word"
+        "college": "Miami; Washington State; Incarnate Word",
+        "playerId": "ff26_0709e5d71519"
       },
       {
         "name": "Hendon Hooker",
         "position": "QB",
         "age": 28,
         "experience": 3,
-        "college": "Tennessee; Virginia Tech"
+        "college": "Tennessee; Virginia Tech",
+        "playerId": "ff26_b54836afefc4"
       },
       {
         "name": "Mitchell Trubisky",
         "position": "QB",
         "age": 31,
         "experience": 9,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_bfdc71ae7193"
       },
       {
         "name": "Will Levis",
         "position": "QB",
         "age": 26,
         "experience": 3,
-        "college": "Kentucky; Penn State"
+        "college": "Kentucky; Penn State",
+        "playerId": "ff26_10b979f2494b"
       },
       {
         "name": "Julius Chestnut",
         "position": "RB",
         "age": 25,
         "experience": 4,
-        "college": "Sacred Heart University"
+        "college": "Sacred Heart University",
+        "playerId": "ff26_cdf3bc6bb25d"
       },
       {
         "name": "Kalel Mullings",
         "position": "RB",
         "age": 23,
         "experience": 1,
-        "college": "Michigan"
+        "college": "Michigan",
+        "playerId": "ff26_790764ddb27f"
       },
       {
         "name": "Michael Carter",
         "position": "RB",
         "age": 27,
         "experience": 5,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_937e920c5e22"
       },
       {
         "name": "Tony Pollard",
         "position": "RB",
         "age": 29,
         "experience": 7,
-        "college": "Memphis"
+        "college": "Memphis",
+        "playerId": "ff26_517947142cae"
       },
       {
         "name": "Tyjae Spears",
         "position": "RB",
         "age": 24,
         "experience": 3,
-        "college": "Tulane"
+        "college": "Tulane",
+        "playerId": "ff26_09af5799d130"
       },
       {
         "name": "Bryce Oliver",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Youngstown State; Kentucky"
+        "college": "Youngstown State; Kentucky",
+        "playerId": "ff26_75c0db739b19"
       },
       {
         "name": "Calvin Ridley",
         "position": "WR",
         "age": 31,
         "experience": 8,
-        "college": "Alabama"
+        "college": "Alabama",
+        "playerId": "ff26_3a3f17cb4402"
       },
       {
         "name": "Chimere Dike",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Florida; Wisconsin"
+        "college": "Florida; Wisconsin",
+        "playerId": "ff26_339d5067b54c"
       },
       {
         "name": "Courtney Jackson",
         "position": "WR",
         "age": 25,
         "experience": 1,
-        "college": "Arkansas State"
+        "college": "Arkansas State",
+        "playerId": "ff26_f897eb7da897"
       },
       {
         "name": "Elic Ayomanor",
         "position": "WR",
         "age": 22,
         "experience": 1,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_ae25eb5b8e2f"
       },
       {
         "name": "James Proche",
         "position": "WR",
         "age": 29,
         "experience": 6,
-        "college": "SMU"
+        "college": "SMU",
+        "playerId": "ff26_ff5fd4700a42"
       },
       {
         "name": "K.J. Osborn",
         "position": "WR",
         "age": 28,
         "experience": 6,
-        "college": "Miami; Buffalo"
+        "college": "Miami; Buffalo",
+        "playerId": "ff26_52a0732f7e6e"
       },
       {
         "name": "Lance McCutcheon",
         "position": "WR",
         "age": 27,
         "experience": 4,
-        "college": "Montana State"
+        "college": "Montana State",
+        "playerId": "ff26_ef32d47e0285"
       },
       {
         "name": "Mason Kinsey",
         "position": "WR",
         "age": 27,
         "experience": 6,
-        "college": "Berry College"
+        "college": "Berry College",
+        "playerId": "ff26_32c3a3a1ad76"
       },
       {
         "name": "Tyren Montgomery",
         "position": "WR",
         "age": 24,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_0b8a89116243"
       },
       {
         "name": "Wan'Dale Robinson",
         "position": "WR",
         "age": 25,
         "experience": 4,
-        "college": "Kentucky"
+        "college": "Kentucky",
+        "playerId": "ff26_a53bcedb9734"
       },
       {
         "name": "Xavier Restrepo",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Miami"
+        "college": "Miami",
+        "playerId": "ff26_ced60a7eb57b"
       },
       {
         "name": "Daniel Bellinger",
         "position": "TE",
         "age": 25,
         "experience": 4,
-        "college": "San Diego State"
+        "college": "San Diego State",
+        "playerId": "ff26_e85a5ca50ad5"
       },
       {
         "name": "David Martin-Robinson",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "Temple"
+        "college": "Temple",
+        "playerId": "ff26_a4dfb5f8c3fe"
       },
       {
         "name": "Gunnar Helm",
         "position": "TE",
         "age": 23,
         "experience": 1,
-        "college": "Texas"
+        "college": "Texas",
+        "playerId": "ff26_8378ad48ca6d"
       },
       {
         "name": "Joel Wilson",
         "position": "TE",
         "age": 25,
         "experience": 3,
-        "college": "Central Michigan"
+        "college": "Central Michigan",
+        "playerId": "ff26_342b935e2006"
       },
       {
         "name": "Kylen Granson",
         "position": "TE",
         "age": 28,
         "experience": 5,
-        "college": "SMU"
+        "college": "SMU",
+        "playerId": "ff26_f43545dd8096"
       },
       {
         "name": "Joey Slye",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_7c6fd231e364"
       }
     ],
     "WAS": [
@@ -5624,224 +6414,256 @@
         "position": "QB",
         "age": 25,
         "experience": 2,
-        "college": "LSU; Arizona State"
+        "college": "LSU; Arizona State",
+        "playerId": "ff26_d1ba181b32f0"
       },
       {
         "name": "Jeff Driskel",
         "position": "QB",
         "age": 33,
         "experience": 10,
-        "college": "Louisiana Tech; Florida"
+        "college": "Louisiana Tech; Florida",
+        "playerId": "ff26_296d7da49114"
       },
       {
         "name": "Marcus Mariota",
         "position": "QB",
         "age": 32,
         "experience": 11,
-        "college": "Oregon"
+        "college": "Oregon",
+        "playerId": "ff26_86bacec61a4a"
       },
       {
         "name": "Sam Hartman",
         "position": "QB",
         "age": 26,
         "experience": 2,
-        "college": "Notre Dame; Wake Forest"
+        "college": "Notre Dame; Wake Forest",
+        "playerId": "ff26_aa0cb17e5a52"
       },
       {
         "name": "Austin Ekeler",
         "position": "RB",
         "age": 30,
         "experience": 9,
-        "college": "Western State"
+        "college": "Western State",
+        "playerId": "ff26_bc750bd42a8a"
       },
       {
         "name": "Chase Edmonds",
         "position": "RB",
         "age": 30,
         "experience": 8,
-        "college": "Fordham"
+        "college": "Fordham",
+        "playerId": "ff26_7664e566382a"
       },
       {
         "name": "Jacory Croskey-Merritt",
         "position": "RB",
         "age": 25,
         "experience": 1,
-        "college": "Arizona; New Mexico; Alabama State"
+        "college": "Arizona; New Mexico; Alabama State",
+        "playerId": "ff26_199ba45e4c01"
       },
       {
         "name": "Jeremy McNichols",
         "position": "RB",
         "age": 30,
         "experience": 9,
-        "college": "Boise State"
+        "college": "Boise State",
+        "playerId": "ff26_59a8807189f4"
       },
       {
         "name": "Jerome Ford",
         "position": "RB",
         "age": 26,
         "experience": 4,
-        "college": "Cincinnati; Alabama"
+        "college": "Cincinnati; Alabama",
+        "playerId": "ff26_7094054a0bd9"
       },
       {
         "name": "Nick Bellore",
         "position": "RB",
         "age": 37,
         "experience": 15,
-        "college": "Central Michigan"
+        "college": "Central Michigan",
+        "playerId": "ff26_f35d9e6a9f3f"
       },
       {
         "name": "Rachaad White",
         "position": "RB",
         "age": 27,
         "experience": 4,
-        "college": "Arizona State; Mt. San Antonio; Kearney State"
+        "college": "Arizona State; Mt. San Antonio; Kearney State",
+        "playerId": "ff26_7dcd8a51e4e2"
       },
       {
         "name": "Chris Hilton Jr.",
         "position": "WR",
         "age": null,
         "experience": 0,
-        "college": null
+        "college": null,
+        "playerId": "ff26_420d0a3344c8"
       },
       {
         "name": "Chris Moore",
         "position": "WR",
         "age": 32,
         "experience": 10,
-        "college": "Cincinnati"
+        "college": "Cincinnati",
+        "playerId": "ff26_414855daee3b"
       },
       {
         "name": "Deebo Samuel Sr.",
         "position": "WR",
         "age": 30,
         "experience": 7,
-        "college": "South Carolina"
+        "college": "South Carolina",
+        "playerId": "ff26_2bd79f50b84f"
       },
       {
         "name": "Dyami Brown",
         "position": "WR",
         "age": 26,
         "experience": 5,
-        "college": "North Carolina"
+        "college": "North Carolina",
+        "playerId": "ff26_7ccebb8c6502"
       },
       {
         "name": "Ja'Corey Brooks",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Louisville"
+        "college": "Louisville",
+        "playerId": "ff26_16ff5c14970b"
       },
       {
         "name": "Jacoby Jones",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "UCF; Ohio"
+        "college": "UCF; Ohio",
+        "playerId": "ff26_dfcf649e5e54"
       },
       {
         "name": "Jaylin Lane",
         "position": "WR",
         "age": 24,
         "experience": 1,
-        "college": "Virginia Tech; Middle Tennessee State"
+        "college": "Virginia Tech; Middle Tennessee State",
+        "playerId": "ff26_935dcdc3dcfa"
       },
       {
         "name": "Luke McCaffrey",
         "position": "WR",
         "age": 25,
         "experience": 2,
-        "college": "Rice; Nebraska"
+        "college": "Rice; Nebraska",
+        "playerId": "ff26_778c57fc9153"
       },
       {
         "name": "Nick Nash",
         "position": "WR",
         "age": 26,
         "experience": 1,
-        "college": "San Jose State"
+        "college": "San Jose State",
+        "playerId": "ff26_5e4676358003"
       },
       {
         "name": "Noah Brown",
         "position": "WR",
         "age": 30,
         "experience": 9,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_cda0e35a497a"
       },
       {
         "name": "Terry McLaurin",
         "position": "WR",
         "age": 30,
         "experience": 7,
-        "college": "Ohio State"
+        "college": "Ohio State",
+        "playerId": "ff26_e3153623d69f"
       },
       {
         "name": "Treylon Burks",
         "position": "WR",
         "age": 26,
         "experience": 4,
-        "college": "Arkansas"
+        "college": "Arkansas",
+        "playerId": "ff26_e6129efcd49f"
       },
       {
         "name": "Van Jefferson",
         "position": "WR",
         "age": 29,
         "experience": 6,
-        "college": "Florida; Mississippi"
+        "college": "Florida; Mississippi",
+        "playerId": "ff26_8fe5579f1e16"
       },
       {
         "name": "Ben Sinnott",
         "position": "TE",
         "age": 23,
         "experience": 2,
-        "college": "Kansas State"
+        "college": "Kansas State",
+        "playerId": "ff26_3b8835995a47"
       },
       {
         "name": "Chig Okonkwo",
         "position": "TE",
         "age": 26,
         "experience": 4,
-        "college": "Maryland"
+        "college": "Maryland",
+        "playerId": "ff26_c3fe88c44513"
       },
       {
         "name": "Colson Yankoff",
         "position": "TE",
         "age": 26,
         "experience": 2,
-        "college": "UCLA; Washington"
+        "college": "UCLA; Washington",
+        "playerId": "ff26_76c4787a0918"
       },
       {
         "name": "John Bates",
         "position": "TE",
         "age": 28,
         "experience": 5,
-        "college": "Boise State"
+        "college": "Boise State",
+        "playerId": "ff26_040393b5f0ea"
       },
       {
         "name": "Lawrence Cager",
         "position": "TE",
         "age": 28,
         "experience": 6,
-        "college": "Georgia; Miami"
+        "college": "Georgia; Miami",
+        "playerId": "ff26_3b4bb1844c42"
       },
       {
         "name": "Tyree Jackson",
         "position": "TE",
         "age": 28,
         "experience": 5,
-        "college": "Buffalo"
+        "college": "Buffalo",
+        "playerId": "ff26_9b369a5b57d4"
       },
       {
         "name": "Zach Ertz",
         "position": "TE",
         "age": 35,
         "experience": 13,
-        "college": "Stanford"
+        "college": "Stanford",
+        "playerId": "ff26_8582945d3936"
       },
       {
         "name": "Jake Moody",
         "position": "K",
         "age": null,
         "experience": null,
-        "college": null
+        "college": null,
+        "playerId": "ff26_c4c416f529d4"
       }
     ]
   }
