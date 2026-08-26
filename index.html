@@ -2669,7 +2669,7 @@ body{
       </div>
     </div>
 
-    <div class="setup-subtitle" id="setupLeagueLabel">FF26 · LEAGUE-AWARE PPR SNAKE DRAFT</div>
+    <div class="setup-subtitle" id="setupLeagueLabel">12 TEAM PPR SNAKE DRAFT</div>
     <h2 id="setupTitle"><span class="setup-title-silver">2026 FANTASY</span><span class="setup-title-red">FOOTBALL</span></h2>
 
     <div class="setup-form">
@@ -2693,15 +2693,10 @@ body{
         </div>
       </div>
 
-      <div class="setup-field-light">
-        <label for="leagueFormatSelect">PPR FORMAT</label>
-        <div class="setup-input-shell setup-select-shell">
-          <select class="setup-input" id="leagueFormatSelect">
-            <option value="PPR">PPR</option>
-            <option value="SUPERFLEX">SUPERFLEX PPR</option>
-          </select>
-        </div>
-      </div>
+      <!-- FF26 is now a PPR-only draft tool. Keep a hidden fixed value for existing code compatibility. -->
+      <select class="hidden" id="leagueFormatSelect" aria-hidden="true" tabindex="-1">
+        <option value="PPR" selected>PPR</option>
+      </select>
 
       <div class="setup-field-light">
         <label for="benchSizeSelect">BENCH</label>
@@ -2730,7 +2725,7 @@ body{
       <select class="hidden" id="cpuSpeed" aria-hidden="true" tabindex="-1"><option value="80" selected>Fast</option></select>
     </div>
 
-    <div class="sr-only" id="setupRequirement">Roster adapts to league mode: 1 QB, 2 RB, 3 WR, 1 TE, 1 FLEX, optional SUPERFLEX, 1 K, 1 DST and 4 or 5 bench players.</div>
+    <div class="sr-only" id="setupRequirement">Roster: 1 QB, 2 RB, 3 WR, 1 TE, 1 FLEX, 1 K, 1 DST and 4 or 5 bench players.</div>
 
     <div class="setup-divider" aria-hidden="true">★</div>
 
@@ -4381,10 +4376,10 @@ function ff26ReadLeagueBoot(){
   let raw={};
   try{raw=JSON.parse(localStorage.getItem(FF26_LEAGUE_CONFIG_KEY)||'{}')||{}}catch(_e){}
   const teams=Number(raw.teams)===10?10:12;
-  const superflex=raw.format==='SUPERFLEX';
+  const superflex=false; // PPR-only UI/league mode; users may still draft extra QBs manually.
   const benchSpots=Number(raw.benchSpots)===4?4:5;
   const starterCount=10;
-  return Object.freeze({teams,format:superflex?'SUPERFLEX':'PPR',superflex,benchSpots,rounds:starterCount+benchSpots});
+  return Object.freeze({teams,format:'PPR',superflex,benchSpots,rounds:starterCount+benchSpots});
 }
 const FF26_LEAGUE_BOOT=ff26ReadLeagueBoot();
 
@@ -5278,7 +5273,7 @@ function applyLeagueLabels(){
   set('#teamEditorTitle',`EDIT ALL ${teams} TEAM NAMES`);
   set('#rosterDraftSortLabel',`(1st selection to ${rounds}th selection)`);
   const setupLabel=document.querySelector('#setupLeagueLabel');
-  if(setupLabel)setupLabel.textContent=`FF26 · ${teams} TEAM ${scoring} ${String(draftType).toUpperCase()} DRAFT`;
+  if(setupLabel)setupLabel.textContent=`${teams} TEAM PPR ${String(draftType).toUpperCase()} DRAFT`;
   const setupRequirement=document.querySelector('#setupRequirement');
   if(setupRequirement)setupRequirement.textContent=`Roster: 1 QB, 2 RB, 3 WR, 1 TE, 1 FLEX, 1 K, 1 DST and ${bench} bench players. ${ir} IR slot is managed after the draft.`;
   const footer=document.querySelector('#footerLeagueLabel');
@@ -5653,13 +5648,13 @@ function ff26SyncLeagueSetup(){
   [...slotEl.options].forEach(o=>{if(o.value)o.hidden=Number(o.value)>FF26_LEAGUE_BOOT.teams});
   if(Number(slotEl.value)>FF26_LEAGUE_BOOT.teams)slotEl.value='1';
   const label=$('#setupLeagueLabel');
-  if(label)label.textContent=`FF26 · ${FF26_LEAGUE_BOOT.teams} TEAM ${FF26_LEAGUE_BOOT.superflex?'SUPERFLEX ':''}PPR SNAKE · ${FF26_LEAGUE_BOOT.benchSpots} BENCH`;
+  if(label)label.textContent=`${FF26_LEAGUE_BOOT.teams} TEAM PPR SNAKE DRAFT`;
   const req=$('#setupRequirement');
-  if(req)req.textContent=`Roster: 1 QB, 2 RB, 3 WR, 1 TE, ${FF26_LEAGUE_BOOT.superflex?'1 SUPERFLEX':'1 FLEX'}, 1 K, 1 DST and ${FF26_LEAGUE_BOOT.benchSpots} bench. ${FF26_LEAGUE_BOOT.rounds} rounds. ${FF26_LEAGUE_BOOT.superflex?`QB target: ${DUKES_FF26_LEAGUE.rosterTargets.QB.minimum}${DUKES_FF26_LEAGUE.rosterTargets.QB.target!==DUKES_FF26_LEAGUE.rosterTargets.QB.minimum?`–${DUKES_FF26_LEAGUE.rosterTargets.QB.target}`:''}.`:''}`;
+  if(req)req.textContent=`Roster: 1 QB, 2 RB, 3 WR, 1 TE, 1 FLEX, 1 K, 1 DST and ${FF26_LEAGUE_BOOT.benchSpots} bench. ${FF26_LEAGUE_BOOT.rounds} rounds.`;
   document.documentElement.style.setProperty('--ff26-teams',String(FF26_LEAGUE_BOOT.teams));
   const FF26_SETUP_ANCHOR_KEY='ff26-setup-anchor-v19.9';
   const apply=(event)=>{
-    const next={teams:Number(teamsEl.value),format:formatEl.value,benchSpots:Number(benchEl.value)};
+    const next={teams:Number(teamsEl.value),format:'PPR',benchSpots:Number(benchEl.value)};
     if(next.teams===FF26_LEAGUE_BOOT.teams&&next.format===FF26_LEAGUE_BOOT.format&&next.benchSpots===FF26_LEAGUE_BOOT.benchSpots)return;
     try{
       localStorage.setItem(FF26_LEAGUE_CONFIG_KEY,JSON.stringify(next));
@@ -5697,7 +5692,7 @@ function ff26SyncLeagueSetup(){
   };
   requestAnimationFrame(()=>requestAnimationFrame(restoreSetupAnchor));
   setTimeout(restoreSetupAnchor,120);
-  teamsEl.addEventListener('change',apply); formatEl.addEventListener('change',apply); benchEl.addEventListener('change',apply);
+  teamsEl.addEventListener('change',apply); benchEl.addEventListener('change',apply);
 }
 setTimeout(ff26SyncLeagueSetup,0);
 
@@ -9831,11 +9826,13 @@ buildFilters();initializeSetup();renderAll();scrollPageToTop();loadFF26Status();
 })();
 </script>
 <script>
+/* FF26 Development 2 — PPR-only setup simplification (Aug. 26, 2026)
+   Team size: 10/12 | Bench: 4/5 | Header excludes bench count | SUPERFLEX choice removed. */
 /* FF26 v19 Phase 8 league-aware test diagnostics */
 window.FF26_PHASE8=Object.freeze({
   version:'v19.2-phase8a-data-fixed-board',
   league:FF26_LEAGUE_BOOT,
-  modes:['10 PPR','12 PPR','10 SUPERFLEX PPR','12 SUPERFLEX PPR'],
+  modes:['10 TEAM PPR SNAKE DRAFT','12 TEAM PPR SNAKE DRAFT'],
   benchOptions:[4,5],
   benchmark:'2026 consensus + ADP',
   status:'TEST BUILD'
