@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
-<!-- FF26 v19.1 Phase 8A Player History Intelligence concept build — 2026-08-25 -->
+<!-- FF26 v19.2 Draft-Day Position Intelligence build — 2026-08-27 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
 <!-- FF26 v19.9 Setup Anchor Scroll Fix: restores the changed setup control to the same visual position after reload -->
-<title>FF26 v19.1 Phase 8A History Concept</title>
+<title>FF26 v19.2 Draft-Day Intelligence</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -6709,8 +6709,17 @@ const DukesFF26DraftEngine = (() => {
       flexValue:
         calculateFlexValue(pos, roster) * w.flexValue,
 
+      qbIntelligence:
+        pos === "QB" ? numberOr(player.qbIntelligenceAdjustment) : 0,
+
+      rbIntelligence:
+        pos === "RB" ? numberOr(player.rbIntelligenceAdjustment) : 0,
+
       wrIntelligence:
         pos === "WR" ? numberOr(player.wrIntelligenceAdjustment) : 0,
+
+      teIntelligence:
+        pos === "TE" ? numberOr(player.teIntelligenceAdjustment) : 0,
 
       floor:
         numberOr(player.floor) * w.floor,
@@ -6839,10 +6848,28 @@ const DukesFF26DraftEngine = (() => {
       reasons.push("Offers strong ceiling or breakout potential.");
     }
 
+    if (pos === "QB" && components.qbIntelligence >= 1.25) {
+      reasons.push("QB passing/rushing opportunity and offensive environment strengthen the pick.");
+    } else if (pos === "QB" && components.qbIntelligence <= -1.25) {
+      reasons.push("QB volume, rushing floor or role environment lowers the profile.");
+    }
+
+    if (pos === "RB" && components.rbIntelligence >= 1.25) {
+      reasons.push("RB workload, receiving usage and scoring opportunity strengthen the pick.");
+    } else if (pos === "RB" && components.rbIntelligence <= -1.25) {
+      reasons.push("RB workload share or receiving role adds uncertainty to the pick.");
+    }
+
     if (pos === "WR" && components.wrIntelligence >= 1.25) {
       reasons.push("WR role, volume and PPR opportunity strengthen the pick.");
     } else if (pos === "WR" && components.wrIntelligence <= -1.25) {
       reasons.push("WR opportunity profile adds volatility or lowers the weekly floor.");
+    }
+
+    if (pos === "TE" && components.teIntelligence >= 1.25) {
+      reasons.push("TE routes, targets and red-zone receiving role strengthen the pick.");
+    } else if (pos === "TE" && components.teIntelligence <= -1.25) {
+      reasons.push("TE receiving usage or role stability lowers the weekly profile.");
     }
 
     if (components.risk <= -10) {
@@ -7216,9 +7243,178 @@ function ff26WrIntelligenceFromApp(player){
 if(FF26_BUILD_MODE==='development')window.ff26WrIntelligenceFromApp=ff26WrIntelligenceFromApp;
 /* @DEV_EXPORTS_END */
 
+/* =====================================================================
+ * DUKE'S FF26 — QB / RB / TE POSITION INTELLIGENCE
+ * Draft-Day v19.2 — 2026-08-27
+ * ---------------------------------------------------------------------
+ * Mirrors the approved WR philosophy:
+ * - Position-specific opportunity beats generic one-size-fits-all scoring.
+ * - Uses only fields that actually exist on the player record.
+ * - Missing metrics remain neutral; sparse records fall back modestly to
+ *   PPR production / trajectory rather than inventing usage.
+ * - Adjustments stay soft (-4 to +4) so tier, ADP, roster construction,
+ *   scarcity and opportunity cost remain dominant.
+ * ===================================================================== */
+function ff26PositionIntelTools(){
+  const finite=value=>{const x=Number(value);return Number.isFinite(x)?x:null};
+  const first=(...values)=>{for(const value of values){const x=finite(value);if(x!==null)return x}return null};
+  const clamp01=value=>Math.max(0,Math.min(1,value));
+  const scale=(value,min,max)=>value===null?null:clamp01((value-min)/(max-min));
+  const rate=value=>value===null?null:(Math.abs(value)>1.5?value/100:value);
+  const quality=value=>{
+    if(value===null)return null;
+    if(value<=1.5)return clamp01(value);
+    if(value<=10)return clamp01(value/10);
+    return clamp01(value/100);
+  };
+  const perGame=(seasonValue,games=17)=>seasonValue===null?null:seasonValue/Math.max(1,games);
+  const finish=(buckets,used,role='BALANCED')=>{
+    const totalWeight=buckets.reduce((sum,b)=>sum+b.weight,0);
+    if(!totalWeight)return {score:50,adjustment:0,confidence:0,role,inputsUsed:[]};
+    const score=buckets.reduce((sum,b)=>sum+b.value*b.weight,0)/totalWeight*100;
+    const confidence=Math.min(1,totalWeight/95);
+    const adjustment=Math.max(-4,Math.min(4,((score-50)/50)*4*confidence));
+    return {
+      score:Number(score.toFixed(1)),
+      adjustment:Number(adjustment.toFixed(3)),
+      confidence:Number(confidence.toFixed(2)),
+      role,
+      inputsUsed:used
+    };
+  };
+  const addFactory=(buckets,used)=>(name,weight,value)=>{
+    if(value===null||!Number.isFinite(value))return;
+    buckets.push({weight,value:clamp01(value)});used.push(name);
+  };
+  return {finite,first,clamp01,scale,rate,quality,perGame,finish,addFactory};
+}
+
+function ff26QbIntelligenceFromApp(player){
+  const pos=String(player?.pos||player?.position||'').toUpperCase();
+  if(pos!=='QB')return {score:50,adjustment:0,confidence:0,role:'NON_QB',inputsUsed:[]};
+  const T=ff26PositionIntelTools(), {first,scale,rate,quality,perGame,finish,addFactory}=T;
+  const games=first(player.expectedGames,player.projections?.games,17)||17;
+  const attemptsPg=first(player.passAttemptsPerGame,player.projectedPassAttemptsPerGame) ??
+    perGame(first(player.projectedPassAttempts,player.passAttempts,player.projections?.passAttempts),games);
+  const passYardsPg=first(player.passYardsPerGame,player.projectedPassYardsPerGame) ??
+    perGame(first(player.projectedPassingYards,player.passYards,player.projections?.passYards),games);
+  const passTdPg=first(player.passTdPerGame,player.projectedPassTdPerGame) ??
+    perGame(first(player.projectedPassingTouchdowns,player.passTD,player.passTds,player.projections?.passTD),games);
+  const rushYardsPg=first(player.rushYardsPerGame,player.projectedRushYardsPerGame) ??
+    perGame(first(player.projectedRushingYards,player.rushYards,player.projections?.rushYards),games);
+  const rushTd=first(player.projectedRushingTouchdowns,player.rushTD,player.rushTds,player.projections?.rushTD);
+  const rushTdPg=perGame(rushTd,games);
+  const ypa=first(player.yardsPerAttempt,player.passYardsPerAttempt,player.metrics?.yardsPerAttempt);
+  const offense=quality(first(player.offenseQuality,player.passingOffenseGrade,player.teamPassingGrade,player.metrics?.passingOffenseGrade));
+  const roleRisk=quality(first(player.roleRisk,player.roleRiskScore));
+  const ppg=first(player.ppg25,player.pprPointsPerGame,player.projectedPpg,player.projections?.pprPointsPerGame);
+  const trend=first(player.trend,player.ppgTrend);
+
+  const buckets=[],used=[],add=addFactory(buckets,used);
+  const volume=[scale(attemptsPg,27,39),scale(passYardsPg,190,300)].filter(v=>v!==null);
+  if(volume.length)add('passing volume',28,volume.reduce((a,b)=>a+b,0)/volume.length);
+  const efficiency=[scale(ypa,6.2,8.4),scale(passTdPg,1.0,2.4)].filter(v=>v!==null);
+  if(efficiency.length)add('passing efficiency/TDs',20,efficiency.reduce((a,b)=>a+b,0)/efficiency.length);
+  const rushing=[scale(rushYardsPg,5,55),scale(rushTdPg,0,.55)].filter(v=>v!==null);
+  if(rushing.length)add('QB rushing value',22,rushing.reduce((a,b)=>a+b,0)/rushing.length);
+  if(offense!==null)add('offensive environment',12,offense);
+  if(roleRisk!==null)add('job/role security',10,1-roleRisk);
+  if(buckets.reduce((s,b)=>s+b.weight,0)<40&&ppg!==null){
+    add('fantasy production proxy',28,scale(ppg,14,25));
+    if(trend!==null)add('trajectory proxy',8,scale(trend,-5,5));
+  }
+  const role=(rushYardsPg??0)>=30?'DUAL_THREAT':(attemptsPg??0)>=34?'VOLUME_PASSER':'BALANCED_QB';
+  return finish(buckets,used,role);
+}
+
+function ff26RbIntelligenceFromApp(player){
+  const pos=String(player?.pos||player?.position||'').toUpperCase();
+  if(pos!=='RB')return {score:50,adjustment:0,confidence:0,role:'NON_RB',inputsUsed:[]};
+  const T=ff26PositionIntelTools(), {first,scale,rate,quality,perGame,finish,addFactory}=T;
+  const games=first(player.expectedGames,player.projections?.games,17)||17;
+  const carriesPg=first(player.carriesPerGame,player.rushAttemptsPerGame,player.projectedCarriesPerGame) ??
+    perGame(first(player.projectedCarries,player.carries,player.rushAttempts,player.projections?.rushAttempts),games);
+  const targetsPg=first(player.targetsPerGame,player.projectedTargetsPerGame) ??
+    perGame(first(player.projectedTargets,player.targets,player.projections?.targets),games);
+  const recPg=first(player.receptionsPerGame,player.projectedReceptionsPerGame) ??
+    perGame(first(player.projectedReceptions,player.receptions,player.projections?.receptions),games);
+  const touchShare=rate(first(player.touchShare,player.opportunityShare,player.backfieldShare,player.metrics?.opportunityShare));
+  const snapShare=rate(first(player.snapShare,player.snapRate,player.metrics?.snapShare));
+  const rzTouchesPg=first(player.redZoneTouchesPerGame,player.goalLineTouchesPerGame) ??
+    perGame(first(player.redZoneTouches,player.goalLineCarries,player.rzTouches),games);
+  const offense=quality(first(player.runOffenseGrade,player.offenseQuality,player.offensiveLineGrade,player.olGrade));
+  const roleRisk=quality(first(player.roleRisk,player.roleRiskScore));
+  const ppg=first(player.ppg25,player.pprPointsPerGame,player.projectedPpg,player.projections?.pprPointsPerGame);
+  const trend=first(player.trend,player.ppgTrend);
+
+  const buckets=[],used=[],add=addFactory(buckets,used);
+  const workload=[scale(carriesPg,8,20),scale(touchShare,.35,.72),scale(snapShare,.45,.82)].filter(v=>v!==null);
+  if(workload.length)add('backfield workload/share',32,workload.reduce((a,b)=>a+b,0)/workload.length);
+  const receiving=[scale(targetsPg,1.2,6.5),scale(recPg,1,5.5)].filter(v=>v!==null);
+  if(receiving.length)add('PPR receiving role',24,receiving.reduce((a,b)=>a+b,0)/receiving.length);
+  if(rzTouchesPg!==null)add('goal-line/red-zone role',16,scale(rzTouchesPg,.4,3.2));
+  if(offense!==null)add('OL/offensive environment',10,offense);
+  if(roleRisk!==null)add('role stability',10,1-roleRisk);
+  if(buckets.reduce((s,b)=>s+b.weight,0)<40&&ppg!==null){
+    add('PPR production proxy',28,scale(ppg,8,20));
+    if(trend!==null)add('trajectory proxy',8,scale(trend,-6,6));
+  }
+  let role='BALANCED_RB';
+  if((targetsPg??0)>=4.5||(recPg??0)>=3.5)role='THREE_DOWN/PPR';
+  else if((carriesPg??0)>=16)role='EARLY_DOWN/WORKHORSE';
+  else if((targetsPg??0)>=3)role='RECEIVING_BACK';
+  return finish(buckets,used,role);
+}
+
+function ff26TeIntelligenceFromApp(player){
+  const pos=String(player?.pos||player?.position||'').toUpperCase();
+  if(pos!=='TE')return {score:50,adjustment:0,confidence:0,role:'NON_TE',inputsUsed:[]};
+  const T=ff26PositionIntelTools(), {first,scale,rate,quality,perGame,finish,addFactory}=T;
+  const games=first(player.expectedGames,player.projections?.games,17)||17;
+  const targetsPg=first(player.targetsPerGame,player.projectedTargetsPerGame) ??
+    perGame(first(player.projectedTargets,player.targets,player.projections?.targets),games);
+  const recPg=first(player.receptionsPerGame,player.projectedReceptionsPerGame) ??
+    perGame(first(player.projectedReceptions,player.receptions,player.projections?.receptions),games);
+  const targetShare=rate(first(player.targetShare,player.projectedTargetShare,player.metrics?.targetShare));
+  const routeRate=rate(first(player.routeParticipation,player.routeRate,player.routesRunRate,player.metrics?.routeParticipation));
+  const rzTargetsPg=first(player.redZoneTargetsPerGame,player.rzTargetsPerGame) ??
+    perGame(first(player.redZoneTargets,player.rzTargets,player.projections?.redZoneTargets),games);
+  const qbQuality=quality(first(player.qbQuality,player.qbQualityGrade,player.metrics?.qbQuality));
+  const offense=quality(first(player.passingOffenseGrade,player.offenseQuality,player.teamPassingGrade,player.metrics?.passingOffenseGrade));
+  const roleRisk=quality(first(player.roleRisk,player.roleRiskScore));
+  const ppg=first(player.ppg25,player.pprPointsPerGame,player.projectedPpg,player.projections?.pprPointsPerGame);
+  const trend=first(player.trend,player.ppgTrend);
+
+  const buckets=[],used=[],add=addFactory(buckets,used);
+  const routeTarget=[scale(routeRate,.55,.92),scale(targetsPg,3.0,8.0),scale(targetShare,.10,.24)].filter(v=>v!==null);
+  if(routeTarget.length)add('routes/target share',34,routeTarget.reduce((a,b)=>a+b,0)/routeTarget.length);
+  if(recPg!==null)add('PPR receptions',18,scale(recPg,2.2,6.2));
+  if(rzTargetsPg!==null)add('red-zone/end-zone role',16,scale(rzTargetsPg,.15,1.0));
+  const environment=[qbQuality,offense].filter(v=>v!==null);
+  if(environment.length)add('QB/offense quality',12,environment.reduce((a,b)=>a+b,0)/environment.length);
+  if(roleRisk!==null)add('role stability',12,1-roleRisk);
+  if(buckets.reduce((s,b)=>s+b.weight,0)<40&&ppg!==null){
+    add('PPR production proxy',30,scale(ppg,6,16));
+    if(trend!==null)add('trajectory proxy',8,scale(trend,-5,5));
+  }
+  const role=(targetsPg??0)>=6?'FEATURED_RECEIVER':(routeRate??0)>=.78?'EVERY_DOWN_TE':'BALANCED_TE';
+  return finish(buckets,used,role);
+}
+
+/* @DEV_EXPORTS_START */
+if(FF26_BUILD_MODE==='development'){
+  window.ff26QbIntelligenceFromApp=ff26QbIntelligenceFromApp;
+  window.ff26RbIntelligenceFromApp=ff26RbIntelligenceFromApp;
+  window.ff26TeIntelligenceFromApp=ff26TeIntelligenceFromApp;
+}
+/* @DEV_EXPORTS_END */
+
 function strategyPlayerFromApp(player,pickIndex=null){
   const mapped=DraftIntelligence.mapPlayer(player,pickIndex===null?null:{overall:pickIndex+1});
   const wrIntel=ff26WrIntelligenceFromApp(player);
+  const qbIntel=ff26QbIntelligenceFromApp(player);
+  const rbIntel=ff26RbIntelligenceFromApp(player);
+  const teIntel=ff26TeIntelligenceFromApp(player);
   const pool=PLAYERS.filter(x=>x.pos===player.pos).map(x=>DraftIntelligence.mapPlayer(x));
   const replacementIndex={QB:13,RB:35,WR:47,TE:13,K:11,DEF:11}[mapped.position]??11;
   const replacement=pool.sort((a,b)=>b.projectedPoints-a.projectedPoints)[replacementIndex]?.projectedPoints||mapped.projectedPoints*.72;
@@ -7233,7 +7429,10 @@ function strategyPlayerFromApp(player,pickIndex=null){
     breakoutScore:riskScale(mapped.upside),handcuffScore:mapped.handcuffOf?7:0,
     stackScore:0,starterProbability:mapped.depthChartRole==='starter'?.9:mapped.depthChartRole==='committee'?.62:.35,
     expectedGames:Math.max(10,17-riskScale(mapped.injuryRisk)*.45),notes:mapped.tags||[],
+    qbIntelligenceScore:qbIntel.score,qbIntelligenceAdjustment:qbIntel.adjustment,qbIntelligenceConfidence:qbIntel.confidence,qbRole:qbIntel.role,
+    rbIntelligenceScore:rbIntel.score,rbIntelligenceAdjustment:rbIntel.adjustment,rbIntelligenceConfidence:rbIntel.confidence,rbRole:rbIntel.role,
     wrIntelligenceScore:wrIntel.score,wrIntelligenceAdjustment:wrIntel.adjustment,wrIntelligenceConfidence:wrIntel.confidence,wrRole:wrIntel.role,
+    teIntelligenceScore:teIntel.score,teIntelligenceAdjustment:teIntel.adjustment,teIntelligenceConfidence:teIntel.confidence,teRole:teIntel.role,
     projectedTargets:player.projectedTargets??player.targets??player.projections?.targets??null,
     targetShare:player.targetShare??player.projectedTargetShare??player.metrics?.targetShare??null,
     projectedReceptions:player.projectedReceptions??player.receptions??player.projections?.receptions??null,
