@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
-<!-- FF26 v19.2 Draft-Day CMC Risk Calibration build — 2026-08-27 -->
+<!-- FF26 v19.2 Draft-Day Elite-RB + Kelce Calibration build — 2026-08-27 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
 <!-- FF26 v19.9 Setup Anchor Scroll Fix: restores the changed setup control to the same visual position after reload -->
-<title>FF26 v19.2b Draft-Day Intelligence</title>
+<title>FF26 v19.2c Draft-Day Intelligence</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9638,13 +9638,44 @@ function ff26CmcDraftRiskAdjustment(player,pickIndex){
   return 0;
 }
 
+function ff26EliteRbTierAdjustment(player,pickIndex){
+  // v19.2c: preserve a true elite-RB top tier.
+  // Gibbs/Bijan should not be jumped by Jonathan Taylor when they are still on the board
+  // in the opening six picks. This is a soft hierarchy, not a hard player lock.
+  const name=String(player?.name||player?.player||'').toLowerCase();
+  const overall=Number(pickIndex)+1;
+  if(overall>6)return 0;
+  if(name.includes('jahmyr gibbs'))return 55;
+  if(name.includes('bijan robinson'))return 48;
+  if(name.includes('jonathan taylor'))return -28;
+  return 0;
+}
+
+function ff26KelceAgeValueAdjustment(player,pickIndex){
+  // v19.2c: Kelce remains draftable at the right price, but age/efficiency decline
+  // should prevent FF26 from repeatedly targeting him as the default TE answer.
+  const name=String(player?.name||player?.player||'').toLowerCase();
+  if(!name.includes('travis kelce'))return 0;
+  const round=DUKES_STRATEGY_V3.roundFromPickIndex(pickIndex);
+  if(round<=7)return -55;
+  if(round===8)return -28;
+  if(round===9)return -18;
+  if(round===10)return -8;
+  return 0;
+}
+
 function ff26AutoPickScore(player,slot,pickIndex,context=null){
   const base=dukesUnifiedScore(player,slot,pickIndex,context);
   const pressure=ff26RosterPressure(player,slot,pickIndex);
   const governor=ff26ValueGovernor(player,slot,pickIndex);
   const slotAdjustment=ff26AutoPickSlotAdjustment(player,slot,pickIndex);
   const cmcRisk=ff26CmcDraftRiskAdjustment(player,pickIndex);
-  return {score:base+pressure.score+governor.score+slotAdjustment+cmcRisk,base,pressure,governor,slotAdjustment,cmcRisk};
+  const eliteRbTier=ff26EliteRbTierAdjustment(player,pickIndex);
+  const kelceAgeValue=ff26KelceAgeValueAdjustment(player,pickIndex);
+  return {
+    score:base+pressure.score+governor.score+slotAdjustment+cmcRisk+eliteRbTier+kelceAgeValue,
+    base,pressure,governor,slotAdjustment,cmcRisk,eliteRbTier,kelceAgeValue
+  };
 }
 
 function ff26AutoPickPool(slot,pickIndex){
