@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
-<!-- FF26 v19.2 Draft-Day Auto-Pick Calibration build — 2026-08-27 -->
+<!-- FF26 v19.2 Draft-Day CMC Risk Calibration build — 2026-08-27 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
 <!-- FF26 v19.9 Setup Anchor Scroll Fix: restores the changed setup control to the same visual position after reload -->
-<title>FF26 v19.2a Draft-Day Intelligence</title>
+<title>FF26 v19.2b Draft-Day Intelligence</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9625,12 +9625,26 @@ function ff26AutoPickSlotAdjustment(player,slot,pickIndex){
   return Number(((normalized-0.5)*5).toFixed(2)); // -2.5..+2.5
 }
 
+function ff26CmcDraftRiskAdjustment(player,pickIndex){
+  // v19.2b Duke-specific risk calibration:
+  // McCaffrey keeps his elite RB ceiling, but age/workload/injury volatility
+  // makes picks 1-6 too expensive. Picks 7-11 are the intended first-round window.
+  const name=String(player?.name||player?.player||'').toLowerCase();
+  if(!name.includes('christian mccaffrey'))return 0;
+  const overall=Number(pickIndex)+1;
+  if(overall<=3)return -120;
+  if(overall<=6)return -85;
+  if(overall<=11)return 10;
+  return 0;
+}
+
 function ff26AutoPickScore(player,slot,pickIndex,context=null){
   const base=dukesUnifiedScore(player,slot,pickIndex,context);
   const pressure=ff26RosterPressure(player,slot,pickIndex);
   const governor=ff26ValueGovernor(player,slot,pickIndex);
   const slotAdjustment=ff26AutoPickSlotAdjustment(player,slot,pickIndex);
-  return {score:base+pressure.score+governor.score+slotAdjustment,base,pressure,governor,slotAdjustment};
+  const cmcRisk=ff26CmcDraftRiskAdjustment(player,pickIndex);
+  return {score:base+pressure.score+governor.score+slotAdjustment+cmcRisk,base,pressure,governor,slotAdjustment,cmcRisk};
 }
 
 function ff26AutoPickPool(slot,pickIndex){
