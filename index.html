@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Duke's FF26 status layer Step 1 + Step 2 added 2026-08-07 -->
-<!-- FF26 v19.2 Draft-Day Position Intelligence build — 2026-08-27 -->
+<!-- FF26 v19.2 Draft-Day Auto-Pick Calibration build — 2026-08-27 -->
 <!-- DUKE'S FF26 CLEAN CONSOLIDATED BUILD — 2026-08-11 -->
 <!-- FF26 v19.9 Setup Anchor Scroll Fix: restores the changed setup control to the same visual position after reload -->
-<title>FF26 v19.2 Draft-Day Intelligence</title>
+<title>FF26 v19.2a Draft-Day Intelligence</title>
 <!-- Five-view tab revision: 2026-08-03 -->
 <meta name="theme-color" content="#0a0a0a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9445,8 +9445,25 @@ function ff26RosterPressure(player,slot,pickIndex){
   }
 
   // 2) Rounds 6-9: finish starters while preserving FLEX-quality RB/WR value.
+  // v19.2a: QB1 remains available in the preferred window, but Auto-Pick must
+  // finish a credible RB/WR core before repeatedly converging on the same elite QB.
   if(round>=6&&round<=9){
-    if(counts.QB===0&&pos==='QB'){score+=round>=8?32:16;reasons.push('QB1 timing window is open.')}
+    if(counts.QB===0&&pos==='QB'){
+      score+=round>=8?32:16;
+      reasons.push('QB1 timing window is open.');
+      const moneyCore=counts.RB+counts.WR;
+      const missingCore=Math.max(0,5-moneyCore);
+      if(round===6&&missingCore>=2){
+        score-=30;
+        reasons.push('Round 6 QB1 is discounted while two or more RB/WR core spots remain.');
+      }else if(round===7&&missingCore>=2){
+        score-=16;
+        reasons.push('Round 7 QB1 still carries RB/WR opportunity cost.');
+      }else if(round<=7&&missingCore===1){
+        score-=8;
+        reasons.push('One RB/WR core spot is still unfinished.');
+      }
+    }
     if(counts.TE===0&&pos==='TE'){score+=round>=8?24:14;reasons.push('TE1 starter need is increasing.')}
     if(pos==='RB'&&counts.RB<3){score+=16;reasons.push('Adds RB/FLEX strength.')}
     if(pos==='WR'&&counts.WR<4){score+=18;reasons.push('Adds WR/FLEX strength.')}
@@ -9591,11 +9608,29 @@ function ff26ReachContext(player,slot,pickIndex){
   };
 }
 
+function ff26AutoPickSlotAdjustment(player,slot,pickIndex){
+  // Deterministic, tiny tie-breaker only. It cannot rescue a bad pick or override
+  // the value governor; it simply prevents close candidates from resolving to the
+  // exact same roster path at multiple draft slots.
+  const round=DUKES_STRATEGY_V3.roundFromPickIndex(pickIndex);
+  const pos=DUKES_STRATEGY_V3.normalizePosition(player?.pos||player?.position);
+  if(round<2||round>9||!['QB','RB','WR','TE'].includes(pos))return 0;
+  const key=`${String(player?.name||player?.player||player?.rank)}|${slot}|${round}`;
+  let hash=2166136261;
+  for(let i=0;i<key.length;i++){
+    hash^=key.charCodeAt(i);
+    hash=Math.imul(hash,16777619);
+  }
+  const normalized=((hash>>>0)%1001)/1000; // 0..1
+  return Number(((normalized-0.5)*5).toFixed(2)); // -2.5..+2.5
+}
+
 function ff26AutoPickScore(player,slot,pickIndex,context=null){
   const base=dukesUnifiedScore(player,slot,pickIndex,context);
   const pressure=ff26RosterPressure(player,slot,pickIndex);
   const governor=ff26ValueGovernor(player,slot,pickIndex);
-  return {score:base+pressure.score+governor.score,base,pressure,governor};
+  const slotAdjustment=ff26AutoPickSlotAdjustment(player,slot,pickIndex);
+  return {score:base+pressure.score+governor.score+slotAdjustment,base,pressure,governor,slotAdjustment};
 }
 
 function ff26AutoPickPool(slot,pickIndex){
